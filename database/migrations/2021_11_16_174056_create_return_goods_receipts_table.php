@@ -13,7 +13,7 @@ class CreateReturnGoodsReceitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('return_goods_receits', function (Blueprint $table) {
+        Schema::create('return_goods_receipts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('bill_id')->constrained('bills');
             $table->foreignId('customer_id')->constrained('customers');
