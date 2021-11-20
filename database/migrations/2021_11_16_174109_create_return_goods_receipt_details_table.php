@@ -13,9 +13,9 @@ class CreateReturnGoodsReceitDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('return_goods_receit_details', function (Blueprint $table) {
+        Schema::create('return_goods_receipt_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('return_goods_receit_id')->constrained('return_goods_receits');
+            $table->foreignId('return_goods_receipt_id')->constrained('return_goods_receipts');
             $table->foreignId('bill_detail_id')->constrained('bill_details');
             $table->foreignId('product_id')->constrained('products');
             $table->integer('number');
@@ -27,7 +27,7 @@ class CreateReturnGoodsReceitDetailsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
+     *r
      * @return void
      */
     public function down()
