@@ -5,18 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class Provider extends Model
 {
     use HasFactory;
 
-    public function invoices()
+    public function goodsReceipt()
     {
-        return $this->hasMany(Invoice::class);
-    }
-
-    public function returnGoodsReceipts()
-    {
-        return $this->hasMany(ReturnGoodsReceipt::class);
+        return $this->hasMany(GoodsReceipt::class);
     }
 
     public function receipts()
@@ -24,7 +19,7 @@ class Customer extends Model
         return $this->morphMany(Receipt::class, 'receiver');
     }
 
-    public function payments()
+    public function paymentReceiver()
     {
         return $this->morphMany(Payment::class, 'receiver');
     }

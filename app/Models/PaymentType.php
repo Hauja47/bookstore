@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductType extends Model
+class PaymentType extends Model
 {
     use HasFactory;
 
-    public function products()
+    public function payments()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Payment::class);
     }
 }

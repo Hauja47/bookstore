@@ -8,4 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 class ReturnGoodsReceipt extends Model
 {
     use HasFactory;
+
+    public function invoice()
+    {
+        return $this->belongsTo(Invoice::class);
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
+
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class);
+    }
+
+    public function details()
+    {
+        return $this->hasMany(ReturnGoodsReceiptDetail::class);
+    }
 }

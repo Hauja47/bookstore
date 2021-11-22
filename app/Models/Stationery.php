@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Stationery extends Model
 {
     use HasFactory;
+
+    public function product()
+    {
+        return $this->morphOne(Product::class, 'productable');
+    }
 }

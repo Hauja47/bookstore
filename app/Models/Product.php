@@ -8,4 +8,29 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+
+    public function productable()
+    {
+        return $this->morphTo();
+    }
+
+    public function type()
+    {
+        return $this->belongsTo(ProductType::class, 'product_type_id');
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
+
+    public function invoices()
+    {
+        return $this->hasManyThrough(Invoice::class, InvoiceDetail::class);
+    }
+
+    public function goodsReceipt()
+    {
+        return $this->hasManyThrough(GoodsReceipt::class, GoodsReceiptDetail::class);
+    }
 }
