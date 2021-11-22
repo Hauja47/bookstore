@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReturnGoodsReceitDetailsTable extends Migration
+class CreateReturnGoodsReceiptDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,7 +16,7 @@ class CreateReturnGoodsReceitDetailsTable extends Migration
         Schema::create('return_goods_receipt_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('return_goods_receipt_id')->constrained('return_goods_receipts');
-            $table->foreignId('bill_detail_id')->constrained('bill_details');
+            $table->foreignId('invoice_detail_id')->constrained('invoice_details');
             $table->foreignId('product_id')->constrained('products');
             $table->integer('number');
             $table->integer('cost');
