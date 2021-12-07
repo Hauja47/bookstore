@@ -20,7 +20,7 @@ class CreateEmployeesTable extends Migration
             $table->integer('phone_number')->unique();
             $table->string('email')->unique();
             $table->text('address');
-            $table->boolean('is_working');
+            $table->boolean('is_working')->default(false);
             $table->integer('salary');
             $table->foreignId('user_id')->constrained('user');
             $table->timestamps();
