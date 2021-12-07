@@ -94,6 +94,7 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $full_name
+ * @property string $slug
  * @property int $phone_number
  * @property string $email
  * @property string $address
@@ -119,6 +120,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Customer whereFullName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Customer whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Customer wherePhoneNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Customer whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Customer whereUpdatedAt($value)
  */
 	class Customer extends \Eloquent {}
@@ -130,6 +132,7 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $full_name
+ * @property string $slug
  * @property int $phone_number
  * @property string $email
  * @property string $address
@@ -165,6 +168,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereIsWorking($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Employee wherePhoneNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereSalary($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Employee whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereUserId($value)
  */
@@ -327,7 +331,7 @@ namespace App\Models{
  * @property int $payment_method_id
  * @property int $employee_id
  * @property int $money
- * @property string $note
+ * @property string|null $note
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\PaymentMethod $paymentMethod
@@ -357,6 +361,7 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $name
+ * @property string $slug
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Payment[] $payments
@@ -370,6 +375,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|PaymentMethod whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PaymentMethod whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PaymentMethod whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PaymentMethod whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PaymentMethod whereUpdatedAt($value)
  */
 	class PaymentMethod extends \Eloquent {}
@@ -381,6 +387,7 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $name
+ * @property string $slug
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Payment[] $payments
@@ -392,6 +399,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|PaymentType whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PaymentType whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PaymentType whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PaymentType whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PaymentType whereUpdatedAt($value)
  */
 	class PaymentType extends \Eloquent {}
@@ -505,7 +513,7 @@ namespace App\Models{
  * @property int $payment_method_id
  * @property int $employee_id
  * @property int $money
- * @property string $note
+ * @property string|null $note
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Customer $employee
@@ -536,6 +544,7 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $name
+ * @property string $slug
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Receipt[] $receipt
@@ -547,6 +556,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|ReceiptType whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ReceiptType whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ReceiptType whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ReceiptType whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ReceiptType whereUpdatedAt($value)
  */
 	class ReceiptType extends \Eloquent {}
@@ -561,7 +571,7 @@ namespace App\Models{
  * @property int $customer_id
  * @property int $employee_id
  * @property int $total
- * @property string $note
+ * @property string|null $note
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Customer $customer
