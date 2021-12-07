@@ -9,6 +9,16 @@ class Receipt extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'receipt_type_id',
+        'giver_type',
+        'giver_id',
+        'payment_method_id',
+        'employee_id',
+        'money',
+        'note'
+    ];
+
     public function receiver()
     {
         return $this->morphTo();

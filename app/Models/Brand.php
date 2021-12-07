@@ -9,6 +9,11 @@ class Brand extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'slug'
+    ];
+
     public function product()
     {
         return $this->hasMany(Stationery::class);

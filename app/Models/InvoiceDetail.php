@@ -9,6 +9,14 @@ class InvoiceDetail extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'invoice_id',
+        'product_id',
+        'quantity',
+        'cost',
+        'total'
+    ];
+
     public function invoice()
     {
         return $this->belongsTo(Invoice::class);

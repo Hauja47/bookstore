@@ -9,6 +9,17 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'productable_id',
+        'productable_type',
+        'product_type_id',
+        'brand_id',
+        'version',
+        'in_stock',
+        'price'
+    ];
+
     public function productable()
     {
         return $this->morphTo();

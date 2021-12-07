@@ -9,6 +9,15 @@ class ReturnGoodsReceiptDetail extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'return_goods_receipt_id',
+        'invoice_detail_id',
+        'product_id',
+        'number',
+        'cost',
+        'total'
+    ];
+
     public function returnGoodsReceipts()
     {
         return $this->belongsTo(ReturnGoodsReceipt::class);

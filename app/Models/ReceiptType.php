@@ -9,6 +9,11 @@ class ReceiptType extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'slug'
+    ];
+
     public function receipt()
     {
         return $this->hasMany(Receipt::class);

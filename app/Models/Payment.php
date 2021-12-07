@@ -9,6 +9,16 @@ class Payment extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'payment_type_id',
+        'receiver_id',
+        'receiver_type',
+        'payment_method_id',
+        'employee_id',
+        'money',
+        'note'
+    ];
+
     public function receiver()
     {
         return $this->morphTo();

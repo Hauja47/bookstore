@@ -9,6 +9,13 @@ class Provider extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'phone_number',
+        'email',
+        'address'
+    ];
+
     public function goodsReceipt()
     {
         return $this->hasMany(GoodsReceipt::class);
