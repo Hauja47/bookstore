@@ -20,7 +20,7 @@ class CreateReceiptsTable extends Migration
             $table->foreignId('payment_method_id')->constrained('payment_methods');
             $table->foreignId('employee_id')->constrained('employees');
             $table->integer('money');
-            $table->text('note');
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

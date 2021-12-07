@@ -19,7 +19,7 @@ class CreateReturnGoodsReceiptsTable extends Migration
             $table->foreignId('customer_id')->constrained('customers');
             $table->foreignId('employee_id')->constrained('employees');
             $table->integer('total');
-            $table->text('note');
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }
