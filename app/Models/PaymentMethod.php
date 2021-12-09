@@ -11,7 +11,6 @@ class PaymentMethod extends Model
 
     protected $fillable = [
         'name',
-        'slug'
     ];
 
     public function payments()

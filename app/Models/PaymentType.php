@@ -10,8 +10,7 @@ class PaymentType extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'slug'
+        'name'
     ];
 
     public function payments()

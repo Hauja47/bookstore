@@ -16,7 +16,6 @@ class CreateStationeriesTable extends Migration
         Schema::create('stationeries', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained('products');
-            $table->string('slug')->unique();
             $table->string('material');
             $table->string('color');
             $table->string('origin');

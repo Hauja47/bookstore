@@ -10,8 +10,7 @@ class ReceiptType extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'slug'
+        'name'
     ];
 
     public function receipt()

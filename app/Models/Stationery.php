@@ -11,7 +11,6 @@ class Stationery extends Model
 
     protected $fillable = [
         'product_id',
-        'slug',
         'material',
         'color',
         'origin',

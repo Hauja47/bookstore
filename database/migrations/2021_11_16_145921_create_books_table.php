@@ -17,7 +17,6 @@ class CreateBooksTable extends Migration
             $table->id();
             $table->foreignId('product_id')->constrained('products');
             $table->foreignId('category_id')->constrained('categories');
-            $table->string('slug')->unique();
             $table->string('author');
             $table->year('publish_year');
             $table->timestamps();
