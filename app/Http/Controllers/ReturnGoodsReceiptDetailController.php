@@ -35,7 +35,11 @@ class ReturnGoodsReceiptDetailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'number' => 'required|numeric',
+            'cost' => 'required|numeric',
+            'total' => 'required|numeric'
+        ]);
     }
 
     /**

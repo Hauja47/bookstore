@@ -35,7 +35,11 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'total' => 'required|numeric',
+            'paid' => 'required|numeric',
+            'balance' => 'required|numeric'
+        ]);
     }
 
     /**

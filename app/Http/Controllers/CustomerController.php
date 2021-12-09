@@ -35,7 +35,13 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'full_name' => 'required|min:2|max:191',
+            'phone_number' => 'required|numeric',
+            'email' => 'required|email',
+            'address' => 'required',
+            'debt' => 'numeric'
+        ]);
     }
 
     /**

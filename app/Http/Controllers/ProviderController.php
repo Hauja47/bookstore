@@ -35,7 +35,12 @@ class ProviderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'name' => 'required|min:3|max:255',
+            'phone_number' => 'required|numeric',
+            'email' => 'required|email',
+            'address' => 'required'
+        ]);
     }
 
     /**

@@ -24,7 +24,11 @@ class GoodsReceiptDetailController extends Controller
      */
     public function create()
     {
-        //
+        request()->validate([
+            'quantity' => 'required|numeric',
+            'cost' => 'required|numeric',
+            'total' => 'required|numeric'
+        ]);
     }
 
     /**

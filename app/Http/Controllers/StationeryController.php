@@ -35,7 +35,11 @@ class StationeryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'material' => 'required',
+            'color' => 'required',
+            'origin' => 'required'
+        ]);
     }
 
     /**

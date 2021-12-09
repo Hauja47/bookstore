@@ -35,7 +35,9 @@ class ReceiptController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'money' => 'required|numeric',
+        ]);
     }
 
     /**

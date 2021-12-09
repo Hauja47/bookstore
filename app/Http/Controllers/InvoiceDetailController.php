@@ -35,7 +35,11 @@ class InvoiceDetailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'quantity' => 'required|numeric',
+            'cost' => 'required|numeric',
+            'total' => 'required|numeric'
+        ]);
     }
 
     /**

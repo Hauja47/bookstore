@@ -35,7 +35,11 @@ class GoodsReceiptController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            // 'employee_id' => 'require',
+            // 'provider_id' => 'required',
+            'total_price' => 'required'
+        ]);
     }
 
     /**

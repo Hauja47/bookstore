@@ -24,7 +24,8 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+
+
     }
 
     /**
@@ -35,7 +36,13 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            // 'product_id' => 'required',
+            // 'category_id' => 'required',
+            'author' => 'required|min:1|max:255',
+            'publish_year' => 'require|numeric',
+        ]);
+
     }
 
     /**

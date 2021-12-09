@@ -46,7 +46,9 @@ class ProductTypeController extends Controller
      */
     public function show(ProductType $productType)
     {
-        //
+        request()->validate([
+            'name' => 'required|min:3|max:255|unique:product_types,name',
+        ]);
     }
 
     /**
