@@ -20,8 +20,8 @@ class CreateProductsTable extends Migration
             $table->foreignId('product_type_id')->constrained('product_types');
             $table->foreignId('brand_id')->constrained('brands');
             $table->string('version');
-            $table->integer('in_stock');
-            $table->integer('price');
+            $table->integer('in_stock')->default(0);
+            $table->integer('price')->default(0);
             $table->timestamps();
         });
     }
