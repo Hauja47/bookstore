@@ -56,9 +56,10 @@
             <!-- END  -->
 
             @php
+
                 $product_id = $product->id;
                 $product_name = $product->name;
-                $version_name = $product->version;
+                $version = $product->version;
                 $brand_name = $product->brand->name;
 
                 $in_stock = $product->in_stock;
@@ -66,27 +67,7 @@
 
                 $path_photo = asset('/storage/'.$product->photo);
 
-                $product_type_name = $product->type->name;
-
-                $category_name = $product->book?->category->name;
-                $author = $product->book?->author;
-                $publish_year = $product->book?->publishYear;
-
-                $material =  $product->stationery?->material;
-                $color =  $product->stationery?->color;
-                $origin =  $product->stationery?->origin;
-
-                $product_id = $product->id;
-                $product_name = $product->name;
-                $version_name = $product->version;
-                $brand_name = $product->brand->name;
-
-                $in_stock = $product->in_stock;
-                $price = $product->price;
-
-                $path_photo = asset('/storage/'.$product->photo);
-
-                $product_type_name = $product->type->name;
+                $product_type_name = $product->productable_type;
 
                 $category_name = $product->book?->category->name;
                 $author = $product->book?->author;
@@ -177,9 +158,9 @@
                                     'required' => 'required',
                                     'disabled' => 'disabled',
                                     'input_type' => 'number',
-                                    'input_id' => 'stock',
-                                    'input_name' => 'SoLuongTon',
-                                    'input_value' => $stock,
+                                    'input_id' => 'in_stock',
+                                    'input_name' => 'in_stock',
+                                    'input_value' => $in_stock,
                                     'message' => '',
                                     ])
                                 </div>
@@ -190,9 +171,9 @@
                                     'required' => 'required',
                                     'disabled' => 'disabled',
                                     'input_type' => 'number',
-                                    'input_id' => 'sale_price',
-                                    'input_name' => 'DonGiaBan',
-                                    'input_value' => $sale_price,
+                                    'input_id' => 'price',
+                                    'input_name' => 'price',
+                                    'input_value' => $price,
                                     'message' => '',
                                     ])
                                 </div>
@@ -268,7 +249,7 @@
 
                                             <input type="checkbox" hidden id="ckb-select-genre">
                                             <label class="header__search-select" for="ckb-select-genre" id="label-genre">
-                                                <span class="header__search-select-label">{{ $genre_name }}</span>
+                                                <span class="header__search-select-label">{{ $category_name }}</span>
                                                 <i class="header__search-select-icon fas fa-angle-down"></i>
                                             </label>
                                             <ul class="header__search-option" id="genre__drop-down">
@@ -301,9 +282,9 @@
                                         'required' => 'required',
                                         'disabled' => '',
                                         'input_type' => 'text',
-                                        'input_id' => 'author_name',
-                                        'input_name' => 'TacGia',
-                                        'input_value' => $author_name,
+                                        'input_id' => 'author',
+                                        'input_name' => 'author',
+                                        'input_value' => $author,
                                         'message' => '',
                                         ])
 
@@ -312,9 +293,9 @@
                                         'required' => 'required',
                                         'disabled' => '',
                                         'input_type' => 'number',
-                                        'input_id' => 'published_year',
-                                        'input_name' => 'NamXuatBan',
-                                        'input_value' => $published_year,
+                                        'input_id' => 'publish_year',
+                                        'input_name' => 'publish_year',
+                                        'input_value' => $publish_year,
                                         'message' => '',
                                         ])
                                     </div>
@@ -326,7 +307,7 @@
                                         'disabled' => '',
                                         'input_type' => 'text',
                                         'input_id' => 'material',
-                                        'input_name' => 'ChatLieu',
+                                        'input_name' => 'material',
                                         'input_value' => $material,
                                         'message' => '',
                                         ])
@@ -337,7 +318,7 @@
                                         'disabled' => '',
                                         'input_type' => 'text',
                                         'input_id' => 'color',
-                                        'input_name' => 'MauSac',
+                                        'input_name' => 'color',
                                         'input_value' => $color,
                                         'message' => '',
                                         ])
@@ -347,9 +328,9 @@
                                         'required' => 'required',
                                         'disabled' => '',
                                         'input_type' => 'text',
-                                        'input_id' => 'original',
-                                        'input_name' => 'NoiSanXuat',
-                                        'input_value' => $original,
+                                        'input_id' => 'origin',
+                                        'input_name' => 'origin',
+                                        'input_value' => $origin,
                                         'message' => '',
                                         ])
                                     </div>

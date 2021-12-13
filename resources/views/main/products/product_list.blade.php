@@ -313,7 +313,7 @@
 
                             @foreach (\App\Models\Product::all() as $product)
                             <tr>
-                                <td>{{ $product->id }}</td>
+                                <td>{{ 'SP'.$product->id }}</td>
                                 <td>
                                     <img src="{{ asset($product->photo) }}" alt="" class="product-img">
                                 </td>
