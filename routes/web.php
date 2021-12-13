@@ -54,25 +54,25 @@ Route::get('/dashboard', function () {
 // User
 Route::get('/user', function () {
     return view('main.user');
-})->name('user');
+})->middleware('auth')->name('user');
 
 
 // Orders
-Route::prefix('order')->group(function () {
+Route::prefix('order')->middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('main.orders.order_list');
     })->name('orders.index');
 });
 
 // Refunds
-Route::prefix('refund')->group(function () {
+Route::prefix('refund')->middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('main.refunds.refund_list');
     })->name('refunds.index');
 });
 
 // Products
-Route::prefix('product')->group(function () {
+Route::prefix('product')->middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('main.products.product_list');
     })->name('products.index');
@@ -91,14 +91,14 @@ Route::prefix('product')->group(function () {
 });
 
 // Invoices
-Route::prefix('invoice')->group(function () {
+Route::prefix('invoice')->middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('main.invoices.invoice_list');
     })->name('invoices.index');
 });
 
 // Suppliers
-Route::prefix('supplier')->group(function () {
+Route::prefix('supplier')->middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('main.suppliers.supplier_list');
     })->name('suppliers.index');
@@ -113,7 +113,7 @@ Route::prefix('supplier')->group(function () {
 });
 
 // Customers
-Route::prefix('customer')->group(function () {
+Route::prefix('customer')->middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('main.customers.customer_list');
     })->name('customers.index');
@@ -128,28 +128,28 @@ Route::prefix('customer')->group(function () {
 });
 
 // Budgets
-Route::prefix('budgets')->group(function () {
+Route::prefix('budgets')->middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('main.budgets.budget_list');
     })->name('budgets.index');
 });
 
 // Expenditures
-Route::prefix('expenditure')->group(function () {
+Route::prefix('expenditure')->middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('main.expenditures.expenditure_list');
     })->name('expenditures.index');
 });
 
 // Revenues
-Route::prefix('revenue')->group(function () {
+Route::prefix('revenue')->middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('main.revenues.revenue_list');
     })->name('revenues.index');
 });
 
 // Reports
-Route::prefix('reports')->group(function () {
+Route::prefix('reports')->middleware('auth')->group(function () {
     Route::get('/stock', function () {
         return view('main.reports.stock');
     })->name('reports.stock');
@@ -159,7 +159,7 @@ Route::prefix('reports')->group(function () {
 });
 
 // Employees
-Route::prefix('employee')->group(function () {
+Route::prefix('employee')->middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('main.employees.employee_list');
     })->name('employees.index');
@@ -174,7 +174,7 @@ Route::prefix('employee')->group(function () {
 });
 
 // Settings
-Route::prefix('setting')->group(function () {
+Route::prefix('setting')->middleware('auth')->group(function () {
     Route::get('/regulation', function () {
         return view('main.settings.regulation');
     })->name('settings.regulation');
