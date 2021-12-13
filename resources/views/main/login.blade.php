@@ -23,7 +23,7 @@
                     <input type="text" name='username' id="username" placeholder="Tên đăng nhập..." value="{{ old('username') }}">
 
                     @error('username')
-                    <p>{{ $message }}</p>
+                    <p class="error-msg">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="input__wrapper input-password">
@@ -31,7 +31,7 @@
                     {{-- <input type="password" name='password' id="password" placeholder="Mật khẩu..."> --}}
 
                     @error('password')
-                    <p>{{ $message }}</p>
+                    <p class="error-msg">{{ $message }}</p>
                     @enderror
                     <i class="fas fa-eye"></i>
                 </div>
