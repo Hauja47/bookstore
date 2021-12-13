@@ -132,7 +132,6 @@ namespace App\Models{
  * @property int $user_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\User|null $account
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GoodsReceipt[] $goodsReceipts
  * @property-read int|null $goods_receipts_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Invoice[] $invoices
@@ -147,6 +146,7 @@ namespace App\Models{
  * @property-read int|null $receipts_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ReturnGoodsReceipt[] $returnGoodsReceipts
  * @property-read int|null $return_goods_receipts_count
+ * @property-read \App\Models\User $user
  * @method static \Database\Factories\EmployeeFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Employee newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Employee newQuery()
@@ -646,7 +646,7 @@ namespace App\Models{
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Employee $employee
+ * @property-read \App\Models\Employee|null $employee
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens

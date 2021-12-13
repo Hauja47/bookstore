@@ -54,8 +54,8 @@ class Employee extends Model
         return $this->morphMany(Payment::class, 'receiver');
     }
 
-    public function account()
+    public function user()
     {
-        return $this->hasOne(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 }
