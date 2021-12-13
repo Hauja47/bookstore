@@ -327,10 +327,10 @@
                                 </td>
                                 <td>{{ $product->in_stock }}</td>
                                 <td>
-                                    <a href="{{ route('products.edit', ['id' => $product->id]) }}" class="btn btn-outline btn-edit">
+                                    <a href="{{ route('products.edit', ['product' => $product]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
-                                    <a href="{{ route('products.delete', ['id' => $product->id]) }}" class="btn btn-outline btn-remove">
+                                    <a href="{{ route('products.delete', ['product' => $product]) }}" class="btn btn-outline btn-remove">
                                         <i class='btn-icon bx bx-trash-alt' ></i>
                                     </a>
                                 </td>
