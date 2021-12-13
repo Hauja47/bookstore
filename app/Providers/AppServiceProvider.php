@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -46,5 +47,10 @@ class AppServiceProvider extends ServiceProvider
             return "<?php echo ($expression)->format('d/m/Y H:i'); ?>";
         });
         /****************************** */
+
+        Relation::morphMap([
+            'Sách' => 'App\Models\Book',
+            'Văn phòng phẩm' => 'App\Models\Stationery',
+        ]);
     }
 }
