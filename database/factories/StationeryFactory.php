@@ -14,7 +14,9 @@ class StationeryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'material' => $this->faker->word(),
+            'color' => $this->faker->colorName(),
+            'origin' => $this->faker->city(),
         ];
     }
 }
