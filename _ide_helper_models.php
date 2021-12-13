@@ -88,7 +88,7 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $full_name
- * @property int $phone_number
+ * @property string $phone_number
  * @property string $email
  * @property string $address
  * @property int $debt
@@ -124,7 +124,8 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $full_name
- * @property int $phone_number
+ * @property string|null $photo
+ * @property string $phone_number
  * @property string $email
  * @property string $address
  * @property int $is_working
@@ -158,6 +159,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereIsWorking($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Employee wherePhoneNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Employee wherePhoto($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereSalary($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereUserId($value)
@@ -399,6 +401,7 @@ namespace App\Models{
  * @property string $name
  * @property string $productable_type
  * @property int $productable_id
+ * @property string|null $photo
  * @property int $product_type_id
  * @property int $brand_id
  * @property string $version
@@ -422,6 +425,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereInStock($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product wherePhoto($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereProductTypeId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereProductableId($value)
