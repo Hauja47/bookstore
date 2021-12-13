@@ -18,10 +18,10 @@ class SessionController extends Controller
             'password' => 'required'
         ]);
 
-        if (auth()->attempt($attributes)) {
+        if (!auth()->attempt($attributes)) {
             throw ValidationException::withMessages([
                 'username' => 'Tên đăng nhập hoặc mật khẩu không tồn tại!',
-                // 'password' => 'Tên đăng nhập hoặc mật khẩu không tồn tại!'
+                'password' => 'Tên đăng nhập hoặc mật khẩu không tồn tại!'
             ]);
         }
 
