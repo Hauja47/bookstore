@@ -15,6 +15,7 @@ class Employee extends Model
         'email',
         'address',
         'is_working',
+        'salary',
         'user_id'
     ];
 
