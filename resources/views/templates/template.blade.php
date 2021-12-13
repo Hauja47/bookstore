@@ -44,9 +44,11 @@
             <div class="sidebar__user">
                 <a href="" class="sidebar__user-info">
                     <img src="{{ asset('images/user-avatar.png') }}" alt="User Avatar" class="sidebar__user-img">
-                    <span class="sidebar__user-name">Nguyễn A</span>
+                    @auth
+                        <span class="sidebar__user-name">{{ auth()->user()->employee->full_name }}</span>
+                    @endauth
                 </a>
-                <a href="/" class="sidebar__user-logout btn btn-outline">
+                <a href="/logout" class="sidebar__user-logout btn btn-outline">
                     <i class='sidebar__user-logout-icon bx bx-log-out bx-rotate-180'></i>
                 </a>
             </div>

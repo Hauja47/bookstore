@@ -35,7 +35,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [SessionController::class, 'create'])->middleware('guest');
 Route::post('/login', [SessionController::class, 'store'])->name('login')->middleware('guest');
 
-Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth');
+Route::get('/logout', [SessionController::class, 'destroy'])->middleware('auth');
 
 Route::get('dashboard', function () {
     return view('main.dashboard');
