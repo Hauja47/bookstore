@@ -71,7 +71,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            {{-- <tr>
                                 <td>SP0000016</td>
                                 <td>
                                     <img src="{{ asset('images/no-image.png') }}" alt="" class="product-img">
@@ -117,7 +117,7 @@
                                         <i class='btn-icon bx bx-trash-alt' ></i>
                                     </a>
                                 </td>
-                            </tr>
+                            </tr> --}}
                             {{-- <tr>
                                 <td>SP0000002</td>
                                 <td>
@@ -311,11 +311,11 @@
                                 </td>
                             </tr> --}}
 
-                            @foreach (\App\Models\Product as $product)
+                            @foreach (\App\Models\Product::all() as $product)
                             <tr>
                                 <td>{{ $product->id }}</td>
                                 <td>
-                                    <img src="{{ asset($path) }}" alt="" class="product-img">
+                                    <img src="{{ asset($product->photo) }}" alt="" class="product-img">
                                 </td>
                                 <td>
                                     {{ $product->name }}
