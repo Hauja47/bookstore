@@ -154,9 +154,9 @@
                                     'label_title' => 'Mật khẩu',
                                     'required' => 'required',
                                     'disabled' => '',
-                                    'input_type' => 'text',
-                                    'input_id' => 'customer_name',
-                                    'input_name' => 'HoTen',
+                                    'input_type' => 'password',
+                                    'input_id' => 'password',
+                                    'input_name' => 'password',
                                     'input_value' => '',
                                     'message' => '',
                                     ])
@@ -205,4 +205,5 @@
     </script> --}}
 
     <script src="{{ asset('js/create.js') }}"></script>
+    <script src="{{ asset('js/login.js') }}"></script>
 @endsection

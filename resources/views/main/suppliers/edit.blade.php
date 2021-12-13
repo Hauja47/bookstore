@@ -56,9 +56,9 @@
             <!-- END  -->
 
             @php
-                $supplier_code = 'NCC01';
-                $supplier_name = 'Công ty phân phối Gia đình';
-                $phone = '0345678912';
+                $id = 'NCC01';
+                $name = 'Công ty phân phối Gia đình';
+                $phone_number = '0345678912';
                 $email = 'giadinh@company.com';
                 $address = 'Quận 4, Thành phố HCM';
             @endphp
@@ -79,9 +79,9 @@
                                     'required' => 'required',
                                     'disabled' => 'disabled',
                                     'input_type' => 'text',
-                                    'input_id' => 'supplier_code',
-                                    'input_name' => 'MaNCC',
-                                    'input_value' => $supplier_code,
+                                    'input_id' => 'id',
+                                    'input_name' => 'id',
+                                    'input_value' => $id,
                                     'message' => '',
                                     ])
                                 </div>
@@ -91,9 +91,9 @@
                                     'required' => 'required',
                                     'disabled' => '',
                                     'input_type' => 'text',
-                                    'input_id' => 'supplier_name',
-                                    'input_name' => 'TenNhaCC',
-                                    'input_value' => $supplier_name,
+                                    'input_id' => 'name',
+                                    'input_name' => 'name',
+                                    'input_value' => $name,
                                     'message' => '',
                                     ])
                                 </div>
@@ -103,9 +103,9 @@
                                     'required' => 'required',
                                     'disabled' => '',
                                     'input_type' => 'tel',
-                                    'input_id' => 'phone',
-                                    'input_name' => 'SDT',
-                                    'input_value' => $phone,
+                                    'input_id' => 'phone_number',
+                                    'input_name' => 'phone_number',
+                                    'input_value' => $phone_number,
                                     'message' => '',
                                     ])
                                 </div>
@@ -116,7 +116,7 @@
                                     'disabled' => '',
                                     'input_type' => 'email',
                                     'input_id' => 'email',
-                                    'input_name' => 'Email',
+                                    'input_name' => 'email',
                                     'input_value' => $email,
                                     'message' => '',
                                     ])
@@ -128,7 +128,7 @@
                                     'disabled' => '',
                                     'input_type' => 'text',
                                     'input_id' => 'address',
-                                    'input_name' => 'DiaChi',
+                                    'input_name' => 'address',
                                     'input_value' => $address,
                                     'message' => '',
                                     ])

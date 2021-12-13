@@ -31,8 +31,8 @@
 
 @section('main-content')
     <div class="main-content">
-        <form action="" method="post" id="form-main">
-            @csrf
+        {{-- <form action="" method="post" id="form-main"> --}}
+            {{-- @csrf --}}
             <!-- FUNCTION BUTTON -->
             <div class="row main-function">
                 <div class="col l-6 md-6 c-6">
@@ -42,16 +42,12 @@
                     </a>
                 </div>
                 <div class="col l-6 md-6 c-6">
-                    <a href="{{ route('products.index') }}" class="btn-function btn-function__exit">
-                        {{-- <i class='btn-function-icon btn-function__add-icon bx bx-plus' ></i> --}}
-                        <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
+                    {{-- <a href="{{ route('products.index') }}" class="btn-function btn-function__exit">
                         Thoát
                     </a>
                     <button type="submit" href="{{ route('products.index') }}" class="btn-function btn-function__save">
-                        {{-- <i class='btn-function-icon btn-function__add-icon bx bx-plus' ></i> --}}
-                        <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
                         Lưu
-                    </button>
+                    </button> --}}
                 </div>
             </div>
             <!-- END  -->
@@ -124,6 +120,22 @@
 
                                         </td>
                                     </tr>
+                                    @foreach (\App\Models\ProductType as $product_type)
+                                    <tr>
+                                        <td>{{ $product_type->id }}</td>
+                                        <td>
+                                            {{ $product_type->name }}
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('product_types.edit', ['id' => $product_type->id]) }}" class="btn btn-outline btn-edit">
+                                                <i class='btn-icon bx bx-edit-alt' ></i>
+                                            </a>
+                                            <a href="{{ route('product_types.delete', ['id' => $product_type->id]) }}" class="btn btn-outline btn-remove">
+                                                <i class='btn-icon bx bx-trash-alt' ></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -209,6 +221,22 @@
 
                                         </td>
                                     </tr>
+                                    @foreach (\App\Models\Brand as $brand)
+                                    <tr>
+                                        <td>{{ $brand->id }}</td>
+                                        <td>
+                                            {{ $brand->name }}
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('brands.edit', ['id' => $brand->id]) }}" class="btn btn-outline btn-edit">
+                                                <i class='btn-icon bx bx-edit-alt' ></i>
+                                            </a>
+                                            <a href="{{ route('brands.delete', ['id' => $brand->id]) }}" class="btn btn-outline btn-remove">
+                                                <i class='btn-icon bx bx-trash-alt' ></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -295,6 +323,22 @@
 
                                         </td>
                                     </tr>
+                                    @foreach (\App\Models\Category as $category)
+                                    <tr>
+                                        <td>{{ $category->id }}</td>
+                                        <td>
+                                            {{ $category->name }}
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('categories.edit', ['id' => $categorie->id]) }}" class="btn btn-outline btn-edit">
+                                                <i class='btn-icon bx bx-edit-alt' ></i>
+                                            </a>
+                                            <a href="{{ route('categories.delete', ['id' => $categorie->id]) }}" class="btn btn-outline btn-remove">
+                                                <i class='btn-icon bx bx-trash-alt' ></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -305,7 +349,7 @@
 
             </div>
             {{-- END FORM --}}
-        </form>
+        {{-- </form> --}}
     </div>
 @endsection
 
@@ -322,14 +366,15 @@
     'disabled' => '',
     'input_type' => 'text',
     'input_id' => 'brand_name',
-    'input_name' => 'TenNhanHieu',
+    'input_name' => 'brand_name',
     'input_value' => '',
+    'path' => route('brands.add'),
     'message' => '',
     ])
 
-    {{-- Modal add Categpry --}}
+    {{-- Modal add ProductType --}}
     @include('includes.modal_input', [
-    'modal_name' => 'addCategory',
+    'modal_name' => 'addProductType',
     'form_action' => '',
     'form_method' => 'post',
     'modal_title' => 'Thêm loại sản phẩm',
@@ -337,15 +382,16 @@
     'required' => 'required',
     'disabled' => '',
     'input_type' => 'text',
-    'input_id' => 'category_name',
-    'input_name' => 'TenLoaiSanPham',
+    'input_id' => 'product_type_name',
+    'input_name' => 'product_type_name',
     'input_value' => '',
+    'path' => route('product_types.add'),
     'message' => '',
     ])
 
-    {{-- Modal add Genre --}}
+    {{-- Modal add Categpry --}}
     @include('includes.modal_input', [
-    'modal_name' => 'addGenre',
+    'modal_name' => 'addCategpry',
     'form_action' => '',
     'form_method' => 'post',
     'modal_title' => 'Thêm thể loại',
@@ -353,16 +399,17 @@
     'required' => 'required',
     'disabled' => '',
     'input_type' => 'text',
-    'input_id' => 'genre_name',
-    'input_name' => 'TenTheLoai',
+    'input_id' => 'category_name',
+    'input_name' => 'category_name',
     'input_value' => '',
+    'path' => route('categories.add'),
     'message' => '',
     ])
 
     @php
         $brand_name = 'hello';
-        $category_name = 'Sách';
-        $genre_name = 'hello';
+        $product_type_name = 'Sách';
+        $category_name = 'hello';
     @endphp
 
     <!-- Modal -->
@@ -371,46 +418,49 @@
     'modal_name' => 'editBrand',
     'form_action' => '',
     'form_method' => 'post',
-    'modal_title' => 'Sửa nhãn hiệu',
-    'label_title' => 'Tên nhãn hiệu',
+    'modal_title' => 'Thêm nhãn hiệu',
+    'label_title' => 'Tên nhãn hiệu mới',
     'required' => 'required',
     'disabled' => '',
     'input_type' => 'text',
     'input_id' => 'brand_name',
-    'input_name' => 'TenNhanHieu',
+    'input_name' => 'brand_name',
     'input_value' => $brand_name,
+    'path' => route('brands.add', ['id' => $brand->id]),
+    'message' => '',
+    ])
+
+    {{-- Modal edit ProductType --}}
+    @include('includes.modal_input', [
+    'modal_name' => 'editProductType',
+    'form_action' => '',
+    'form_method' => 'post',
+    'modal_title' => 'Thêm loại sản phẩm',
+    'label_title' => 'Tên loại sản phẩm mới',
+    'required' => 'required',
+    'disabled' => '',
+    'input_type' => 'text',
+    'input_id' => 'product_type_name',
+    'input_name' => 'product_type_name',
+    'input_value' => $product_type_name,
+    'path' => route('product_types.add', ['id' => $product_type->id]),
     'message' => '',
     ])
 
     {{-- Modal edit Categpry --}}
     @include('includes.modal_input', [
-    'modal_name' => 'editCategory',
+    'modal_name' => 'editCategpry',
     'form_action' => '',
     'form_method' => 'post',
-    'modal_title' => 'Sửa loại sản phẩm',
-    'label_title' => 'Tên loại sản phẩm',
+    'modal_title' => 'Thêm thể loại',
+    'label_title' => 'Tên thể loại mới',
     'required' => 'required',
     'disabled' => '',
     'input_type' => 'text',
     'input_id' => 'category_name',
-    'input_name' => 'TenLoaiSanPham',
+    'input_name' => 'category_name',
     'input_value' => $category_name,
-    'message' => '',
-    ])
-
-    {{-- Modal edit Genre --}}
-    @include('includes.modal_input', [
-    'modal_name' => 'editGenre',
-    'form_action' => '',
-    'form_method' => 'post',
-    'modal_title' => 'Sửa thể loại',
-    'label_title' => 'Tên thể loại',
-    'required' => 'required',
-    'disabled' => '',
-    'input_type' => 'text',
-    'input_id' => 'genre_name',
-    'input_name' => 'TenTheLoai',
-    'input_value' => $genre_name,
+    'path' => route('categories.add', ['id' => $category->id]),
     'message' => '',
     ])
 @endsection

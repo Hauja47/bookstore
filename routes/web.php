@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
@@ -85,9 +86,12 @@ Route::prefix('product')->middleware('auth')->group(function () {
         return view('main.products.add');
     })->name('products.add');
 
-    Route::get('/edit/{id}', function () {
-        return view('main.products.edit');
-    })->name('products.edit');
+    // Route::get('/edit/{id}', function () {
+    //     return view('main.products.edit');
+    // })->name('products.edit');
+
+    Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('products.edit');
+    Route::get('/delete/{id}', [ProductController::class, 'destroy'])->name('products.delete');
 });
 
 // Invoices

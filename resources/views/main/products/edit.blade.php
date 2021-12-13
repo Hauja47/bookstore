@@ -56,25 +56,45 @@
             <!-- END  -->
 
             @php
-                $product_code = 'SP01';
-                $product_name = 'hello';
-                $version_name = 'hello';
-                $brand_name = 'hello';
+                $product_id = $product->id;
+                $product_name = $product->name;
+                $version_name = $product->version;
+                $brand_name = $product->brand->name;
 
-                $stock = 100;
-                $sale_price = 20000;
+                $in_stock = $product->in_stock;
+                $price = $product->price;
 
-                $path_photo = asset('images/book-1.jpg');
+                $path_photo = asset('/storage/'.$product->photo);
 
-                $category_name = 'Sách';
+                $product_type_name = $product->type->name;
 
-                $genre_name = 'hello';
-                $author_name = 'hello';
-                $published_year = 1955;
+                $category_name = $product->book?->category->name;
+                $author = $product->book?->author;
+                $publish_year = $product->book?->publishYear;
 
-                $material = 'hello';
-                $color = 'hello';
-                $original = 'hello';
+                $material =  $product->stationery?->material;
+                $color =  $product->stationery?->color;
+                $origin =  $product->stationery?->origin;
+
+                $product_id = $product->id;
+                $product_name = $product->name;
+                $version_name = $product->version;
+                $brand_name = $product->brand->name;
+
+                $in_stock = $product->in_stock;
+                $price = $product->price;
+
+                $path_photo = asset('/storage/'.$product->photo);
+
+                $product_type_name = $product->type->name;
+
+                $category_name = $product->book?->category->name;
+                $author = $product->book?->author;
+                $publish_year = $product->book?->publishYear;
+
+                $material =  $product->stationery?->material;
+                $color =  $product->stationery?->color;
+                $origin =  $product->stationery?->origin;
             @endphp
             {{-- FORM --}}
             <div class="row">
@@ -92,9 +112,9 @@
                                     'required' => 'required',
                                     'disabled' => 'disabled',
                                     'input_type' => 'text',
-                                    'input_id' => 'product_code',
-                                    'input_name' => 'MaSP',
-                                    'input_value' => $product_code,
+                                    'input_id' => 'product_id',
+                                    'input_name' => 'product_id',
+                                    'input_value' => $product_id,
                                     'message' => '',
                                     ])
                                 </div>
@@ -105,7 +125,7 @@
                                     'disabled' => '',
                                     'input_type' => 'text',
                                     'input_id' => 'product_name',
-                                    'input_name' => 'TenSanPham',
+                                    'input_name' => 'product_name',
                                     'input_value' => $product_name,
                                     'message' => '',
                                     ])
@@ -116,9 +136,9 @@
                                     'required' => 'required',
                                     'disabled' => '',
                                     'input_type' => 'text',
-                                    'input_id' => 'version_name',
-                                    'input_name' => 'PhienBan',
-                                    'input_value' => $version_name,
+                                    'input_id' => 'version',
+                                    'input_name' => 'version',
+                                    'input_value' => $version,
                                     'message' => '',
                                     ])
                                 </div>
@@ -360,14 +380,15 @@
     'disabled' => '',
     'input_type' => 'text',
     'input_id' => 'brand_name',
-    'input_name' => 'TenNhanHieu',
+    'input_name' => 'brand_name',
     'input_value' => '',
+    'path' => '',
     'message' => '',
     ])
 
-    {{-- Modal add Categpry --}}
+    {{-- Modal add ProductType --}}
     @include('includes.modal_input', [
-    'modal_name' => 'addCategory',
+    'modal_name' => 'addProductType',
     'form_action' => '',
     'form_method' => 'post',
     'modal_title' => 'Thêm loại sản phẩm',
@@ -375,15 +396,16 @@
     'required' => 'required',
     'disabled' => '',
     'input_type' => 'text',
-    'input_id' => 'category_name',
-    'input_name' => 'TenLoaiSanPham',
+    'input_id' => 'product_type_name',
+    'input_name' => 'product_type_name',
     'input_value' => '',
+    'path' => '',
     'message' => '',
     ])
 
-    {{-- Modal add Genre --}}
+    {{-- Modal add Categpry --}}
     @include('includes.modal_input', [
-    'modal_name' => 'addGenre',
+    'modal_name' => 'addCategpry',
     'form_action' => '',
     'form_method' => 'post',
     'modal_title' => 'Thêm thể loại',
@@ -391,9 +413,10 @@
     'required' => 'required',
     'disabled' => '',
     'input_type' => 'text',
-    'input_id' => 'genre_name',
-    'input_name' => 'TenTheLoai',
+    'input_id' => 'category_name',
+    'input_name' => 'category_name',
     'input_value' => '',
+    'path' => '',
     'message' => '',
     ])
 @endsection

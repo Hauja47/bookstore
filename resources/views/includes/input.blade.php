@@ -11,96 +11,57 @@
         <div class="img-wrapper">
             <img src="{{ asset($path_photo) }}" alt="">
         </div>
+
     {{-- date --}}
     @elseif ($input_type == 'date')
-        {{-- add date --}}
-        @if ($input_value == '')
-            <input {{ $disabled }} type="date" placeholder="" value="{{ old($input_name) }}" name="{{ $input_name }}"
-                id="{{ $input_id }}" class="input-text" max="{{ date("Y-m-d") }}">
-            {{-- edit date --}}
-        @else
-            <input {{ $disabled }} type="date" placeholder="" value="{{ $input_value }}" name="{{ $input_name }}"
-                id="{{ $input_id }}" class="input-text" max="{{ date("Y-m-d") }}">
-        @endif
+        <input {{ $disabled }} type="date" placeholder="" value="{{ old($input_name, $input_value) }}"
+            name="{{ $input_name }}" id="{{ $input_id }}" class="input-text" max="{{ date('Y-m-d') }}">
+
     {{-- datetime --}}
     @elseif ($input_type == 'datetime')
-        {{-- add datetime --}}
-        @if ($input_value == '')
-            <input {{ $disabled }} type="datetime" placeholder="" value="{{ old($input_name) }}" name="{{ $input_name }}"
-                id="{{ $input_id }}" class="input-text" max="{{ date("H:i d-m-Y") }}">
-            {{-- edit datetime --}}
-        @else
-            <input {{ $disabled }} type="datetime" placeholder="" value="{{ $input_value }}" name="{{ $input_name }}"
-                id="{{ $input_id }}" class="input-text" max="{{ date("H:i d-m-Y") }}">
-        @endif
+        <input {{ $disabled }} type="datetime" placeholder="" value="{{ old($input_name, $input_value) }}"
+            name="{{ $input_name }}" id="{{ $input_id }}" class="input-text"
+            max="{{ date('H:i d-m-Y') }}">
+
     {{-- email --}}
     @elseif ($input_type == 'email')
-        {{-- add email --}}
-        @if ($input_value == '')
-            <input {{ $disabled }} type="email" placeholder="" value="{{ old($input_name) }}" name="{{ $input_name }}"
-                id="{{ $input_id }}" class="input-text">
-            {{-- edit email --}}
-        @else
-            <input {{ $disabled }} type="email" placeholder="" value="{{ $input_value }}" name="{{ $input_name }}"
-                id="{{ $input_id }}" class="input-text">
-        @endif
+        <input {{ $disabled }} type="email" placeholder="" value="{{ old($input_name, $input_value) }}"
+            name="{{ $input_name }}" id="{{ $input_id }}" class="input-text">
+
     {{-- tel --}}
     @elseif ($input_type == 'tel')
-        {{-- add tel --}}
-        @if ($input_value == '')
-            <input {{ $disabled }} type="tel" pattern="(0|\+84)[0-9]{9}" placeholder="" value="{{ old($input_name) }}" name="{{ $input_name }}"
-                id="{{ $input_id }}" class="input-text">
-            {{-- edit tel --}}
-        @else
-            <input {{ $disabled }} type="tel" pattern="(0|\+84)[0-9]{9}" placeholder="" value="{{ $input_value }}" name="{{ $input_name }}"
-                id="{{ $input_id }}" class="input-text">
-        @endif
+        <input {{ $disabled }} type="tel" pattern="(0|\+84)[0-9]{9}" placeholder=""
+            value="{{ old($input_name, $input_value) }}" name="{{ $input_name }}" id="{{ $input_id }}"
+            class="input-text">
+
+    {{-- password --}}
+    @elseif ($input_type == 'password')
+        <div class="input-password">
+            <input {{ $disabled }} type="password" placeholder=""
+            value="{{ old($input_name, $input_value) }}" name="{{ $input_name }}" id="{{ $input_id }}"
+            class="input-text">
+            <i class="fas fa-eye"></i>
+        </div>
     {{-- text --}}
     @elseif ($input_type == 'text')
-        {{-- add text --}}
-        @if ($input_value == '')
-            <input {{ $disabled }} type="text" placeholder="" value="{{ old($input_name) }}" name="{{ $input_name }}"
-                id="{{ $input_id }}" class="input-text">
-            {{-- edit text --}}
-        @else
-            <input {{ $disabled }} type="text" placeholder="" value="{{ $input_value }}" name="{{ $input_name }}"
-                id="{{ $input_id }}" class="input-text">
-        @endif
+        <input {{ $disabled }} type="text" placeholder="" value="{{ old($input_name, $input_value) }}"
+            name="{{ $input_name }}" id="{{ $input_id }}" class="input-text">
+
     {{-- number --}}
     @elseif ($input_type == 'number')
         {{-- quantity --}}
         @if (str_contains($input_id, 'quantity') || str_contains($input_id, 'stock'))
-            {{-- add --}}
-            @if (empty($input_value))
-                <input {{ $disabled }} type="number" placeholder="" value="{{ old($input_name) }}"
-                    name="{{ $input_name }}" id="{{ $input_id }}" class="input-text" min="0" step="1">
-                {{-- edit --}}
-            @else
-                <input {{ $disabled }} type="number" placeholder="" value="{{ $input_value }}"
-                    name="{{ $input_name }}" id="{{ $input_id }}" class="input-text" min="0" step="1">
-            @endif
+            <input {{ $disabled }} type="number" placeholder="" value="{{ old($input_name, $input_value) }}"
+                name="{{ $input_name }}" id="{{ $input_id }}" class="input-text" min="0" step="1">
         {{-- year --}}
         @elseif (str_contains($input_id, 'year'))
-            {{-- add --}}
-            @if (empty($input_value))
-                <input {{ $disabled }} type="number" placeholder="" value="{{ old($input_name) }}"
-                    name="{{ $input_name }}" id="{{ $input_id }}" class="input-text" min="1900" step="1" max="{{ date("Y") }}">
-                {{-- edit --}}
-            @else
-                <input {{ $disabled }} type="number" placeholder="" value="{{ $input_value }}"
-                    name="{{ $input_name }}" id="{{ $input_id }}" class="input-text" min="1900" step="1" max="{{ date("Y") }}">
-            @endif
+            <input {{ $disabled }} type="number" placeholder="" value="{{ old($input_name, $input_value) }}"
+                name="{{ $input_name }}" id="{{ $input_id }}" class="input-text" min="1900" step="1"
+                max="{{ date('Y') }}">
         {{-- price --}}
         @else
-            {{-- add --}}
-            @if ($input_value == '')
-                <input {{ $disabled }} type="number" placeholder="" value="{{ old($input_name) }}"
-                    name="{{ $input_name }}" id="{{ $input_id }}" class="input-text" min="0" step="1000">
-                {{-- edit --}}
-            @else
-                <input {{ $disabled }} type="number" placeholder="" value="{{ $input_value }}"
-                    name="{{ $input_name }}" id="{{ $input_id }}" class="input-text" min="0" step="1000">
-            @endif
+            <input {{ $disabled }} type="number" placeholder="" value="{{ old($input_name, $input_value) }}"
+                name="{{ $input_name }}" id="{{ $input_id }}" class="input-text" min="0" step="1000">
         @endif
     @endif
 

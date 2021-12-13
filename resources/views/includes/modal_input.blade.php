@@ -12,7 +12,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn-function btn-function__exit" data-bs-dismiss="modal">Thoát</button>
-                    <button type="submit" href="/" class="btn-function btn-function__save" id="btn-{{ $modal_name }}">Lưu</button>
+                    <button type="submit" href="{{ $path }}" class="btn-function btn-function__save" id="btn-{{ $modal_name }}">Lưu</button>
                 </div>
             </form>
         </div>

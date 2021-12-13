@@ -71,8 +71,8 @@
                                     'required' => 'required',
                                     'disabled' => '',
                                     'input_type' => 'text',
-                                    'input_id' => 'supplier_name',
-                                    'input_name' => 'TenNhaCC',
+                                    'input_id' => 'name',
+                                    'input_name' => 'name',
                                     'input_value' => '',
                                     'message' => '',
                                     ])
@@ -83,8 +83,8 @@
                                     'required' => 'required',
                                     'disabled' => '',
                                     'input_type' => 'tel',
-                                    'input_id' => 'phone',
-                                    'input_name' => 'SDT',
+                                    'input_id' => 'phone_number',
+                                    'input_name' => 'phone_number',
                                     'input_value' => '',
                                     'message' => '',
                                     ])
@@ -96,7 +96,7 @@
                                     'disabled' => '',
                                     'input_type' => 'email',
                                     'input_id' => 'email',
-                                    'input_name' => 'Email',
+                                    'input_name' => 'email',
                                     'input_value' => '',
                                     'message' => '',
                                     ])
@@ -108,7 +108,7 @@
                                     'disabled' => '',
                                     'input_type' => 'text',
                                     'input_id' => 'address',
-                                    'input_name' => 'DiaChi',
+                                    'input_name' => 'address',
                                     'input_value' => '',
                                     'message' => '',
                                     ])

@@ -11,6 +11,11 @@ function handleDropDown(checkbox, label, dropdown, box_open = null) {
                 if (i == 0) {
 
                 } else {
+                    // Thêm class selected
+                    removeSelected(dropdown);
+                    dropdown.children[i].classList.add('selected');
+
+                    // Đổi nhãn hiệu
                     let option_label = this.querySelector('span').innerText;
                     label.innerText = option_label;
 
@@ -35,6 +40,17 @@ function handleDropDown(checkbox, label, dropdown, box_open = null) {
     }
 }
 
+// Xoá class selected cho thẻ li của dropdown
+function removeSelected(dropdown) {
+    if (dropdown.children.length > 1) {
+        for (let i = 1; i < dropdown.children.length; i++) {
+            if (dropdown.children[i].classList.contains('selected')) {
+                dropdown.children[i].classList.remove('selected');
+            }
+        }
+    }
+}
+
 // Xử lý drop down cho Brand
 let ckbBrand = document.getElementById('ckb-select-brand');
 let labelBrand = document.querySelector('#label-brand span');
@@ -42,14 +58,14 @@ let dropdownBrand = document.getElementById('brand__drop-down');
 
 handleDropDown(ckbBrand, labelBrand, dropdownBrand);
 
-// Xử lý drop down cho Category
-let ckbCategory = document.getElementById('ckb-select-category');
-let labelCategory = document.querySelector('#label-category span');
-let dropdownCategory = document.getElementById('category__drop-down');
+// Xử lý drop down cho ProductType
+let ckbProductType = document.getElementById('ckb-select-product_type');
+let labelProductType = document.querySelector('#label-product_type span');
+let dropdownProductType = document.getElementById('product_type__drop-down');
 
 let box_open = {};
-for (let i = 1; i < dropdownCategory.children.length; i++) {
-    let key = dropdownCategory.children[i].querySelector('span').innerText.toLowerCase().trim();
+for (let i = 1; i < dropdownProductType.children.length; i++) {
+    let key = dropdownProductType.children[i].querySelector('span').innerText.toLowerCase().trim();
     box_open[key] = '';
 
     switch(key.toLowerCase().trim()) {
@@ -66,14 +82,14 @@ for (let i = 1; i < dropdownCategory.children.length; i++) {
     }
 }
 
-handleDropDown(ckbCategory, labelCategory, dropdownCategory, box_open);
+handleDropDown(ckbProductType, labelProductType, dropdownProductType, box_open);
 
-// Xử lý drop down cho Genre Book
-let ckbGenre = document.getElementById('ckb-select-genre');
-let labelGenre = document.querySelector('#label-genre span');
-let dropdownGenre = document.getElementById('genre__drop-down');
+// Xử lý drop down cho Category Book
+let ckbCategory = document.getElementById('ckb-select-category');
+let labelCategory = document.querySelector('#label-category span');
+let dropdownCategory = document.getElementById('category__drop-down');
 
-handleDropDown(ckbGenre, labelGenre, dropdownGenre);
+handleDropDown(ckbCategory, labelCategory, dropdownCategory);
 
 // Hiển thị form thuộc tính dựa vào loại sản phẩm
 function showAdditionalInfo(label, box_open) {

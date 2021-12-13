@@ -116,10 +116,9 @@
                                     <a href="" class="btn btn-outline btn-remove">
                                         <i class='btn-icon bx bx-trash-alt' ></i>
                                     </a>
-
                                 </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <td>SP0000002</td>
                                 <td>
                                     <img src="{{ asset('images/no-image.png') }}" alt="" class="product-img">
@@ -310,30 +309,33 @@
                                     </a>
 
                                 </td>
-                            </tr>
+                            </tr> --}}
+
+                            @foreach (\App\Models\Product as $product)
                             <tr>
-                                <td>SP0000016</td>
+                                <td>{{ $product->id }}</td>
                                 <td>
-                                    <img src="{{ asset('images/book-1.jpg') }}" alt="" class="product-img">
+                                    <img src="{{ asset($path) }}" alt="" class="product-img">
                                 </td>
                                 <td>
-                                    Thế Nào Và Tại Sao - Những Ngôi Sao - Điều Tuyệt Vời Của Vũ Trụ
+                                    {{ $product->name }}
                                 </td>
-                                <td>Bìa mềm</td>
-                                <td>NXB Phụ nữ</td>
+                                <td>{{ $product->version }}</td>
+                                <td>{{ $product->brand->name }}</td>
                                 <td>
-                                    Sách
+                                    {{ $product->type->name }}
                                 </td>
-                                <td>80</td>
+                                <td>{{ $product->in_stock }}</td>
                                 <td>
-                                    <a href="{{ route('products.edit', ['id' => 1]) }}" class="btn btn-outline btn-edit">
+                                    <a href="{{ route('products.edit', ['id' => $product->id]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
-                                    <a href="" class="btn btn-outline btn-remove">
+                                    <a href="{{ route('products.delete', ['id' => $product->id]) }}" class="btn btn-outline btn-remove">
                                         <i class='btn-icon bx bx-trash-alt' ></i>
                                     </a>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

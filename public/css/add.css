@@ -105,6 +105,21 @@
     display: none;
 }
 
+.input-password {
+    position: relative;
+}
+
+.input-password .input-text {
+    padding-right: 35px;
+}
+
+.input-password i {
+    position: absolute;
+    right: 10px;
+    top: 13px;
+    cursor: pointer;
+}
+
 .error-msg {
     color: var(--warning-color);
     margin: 0;
@@ -112,8 +127,6 @@
     line-height: 1.2;
     padding-top: 6px;
 }
-
-
 
 /* Select */
 .header__search-select {
@@ -185,8 +198,8 @@
 } */
 
 #ckb-select-brand:checked ~ #brand__drop-down,
-#ckb-select-category:checked ~ #category__drop-down,
-#ckb-select-genre:checked ~ #genre__drop-down {
+#ckb-select-product_type:checked ~ #product_type__drop-down,
+#ckb-select-category:checked ~ #category__drop-down {
     display: block;
 }
 

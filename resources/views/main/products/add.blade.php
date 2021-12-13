@@ -72,7 +72,7 @@
                                     'disabled' => '',
                                     'input_type' => 'text',
                                     'input_id' => 'product_name',
-                                    'input_name' => 'TenSanPham',
+                                    'input_name' => 'product_name',
                                     'input_value' => '',
                                     'message' => '',
                                     ])
@@ -83,8 +83,8 @@
                                     'required' => 'required',
                                     'disabled' => '',
                                     'input_type' => 'text',
-                                    'input_id' => 'product_version',
-                                    'input_name' => 'PhienBan',
+                                    'input_id' => 'version',
+                                    'input_name' => 'version',
                                     'input_value' => '',
                                     'message' => '',
                                     ])
@@ -106,7 +106,7 @@
                                                 <i class='bx bx-plus-circle'></i>
                                                 <span>Thêm nhãn hiệu mới</span>
                                             </li>
-                                            <li class="header__search-option-item">
+                                            {{-- <li class="header__search-option-item" value="1">
                                                 <span>NXB Giáo dục</span>
                                             </li>
                                             <li class="header__search-option-item ">
@@ -114,7 +114,12 @@
                                             </li>
                                             <li class="header__search-option-item ">
                                                 <span>NXB Kim Đồng</span>
-                                            </li>
+                                            </li> --}}
+                                            @foreach  (\App\Models\Brand::all() as $brand)
+                                                <li class="header__search-option-item" value="{{ $brand->id }}">
+                                                    <span>{{ $brand->name }}</span>
+                                                </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>
@@ -158,18 +163,18 @@
                                             Loại sản phẩm <span class="required">*</span>
                                         </label>
 
-                                        <input type="checkbox" hidden id="ckb-select-category">
-                                        <label class="header__search-select" for="ckb-select-category" id="label-category">
+                                        <input type="checkbox" hidden id="ckb-select-product_type">
+                                        <label class="header__search-select" for="ckb-select-product_type" id="label-product_type">
                                             <span class="header__search-select-label">Trống</span>
                                             <i class="header__search-select-icon fas fa-angle-down"></i>
                                         </label>
-                                        <ul class="header__search-option" id="category__drop-down">
-                                            <li class="header__search-option-item d-none" data-bs-toggle="modal"
-                                                data-bs-target="#modal-addCategory">
+                                        <ul class="header__search-option" id="product_type__drop-down">
+                                            <li class="header__search-option-item" data-bs-toggle="modal"
+                                                data-bs-target="#modal-addProductType">
                                                 <i class='bx bx-plus-circle'></i>
                                                 <span>Thêm loại sản phẩm mới</span>
                                             </li>
-                                            <li class="header__search-option-item">
+                                            {{-- <li class="header__search-option-item">
                                                 <span>Sách</span>
                                             </li>
                                             <li class="header__search-option-item ">
@@ -177,7 +182,12 @@
                                             </li>
                                             <li class="header__search-option-item">
                                                 <span>Đồ chơi</span>
-                                            </li>
+                                            </li> --}}
+                                            @foreach (\App\Models\ProductType::all() as $product_type)
+                                                <li class="header__search-option-item" value="{{ $product_type->id }}">
+                                                    <span>{{ $product_type->name }}</span>
+                                                </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>
@@ -189,18 +199,18 @@
                                                 Thể loại <span class="required">*</span>
                                             </label>
 
-                                            <input type="checkbox" hidden id="ckb-select-genre">
-                                            <label class="header__search-select" for="ckb-select-genre" id="label-genre">
+                                            <input type="checkbox" hidden id="ckb-select-category">
+                                            <label class="header__search-select" for="ckb-select-category" id="label-category">
                                                 <span class="header__search-select-label">Trống</span>
                                                 <i class="header__search-select-icon fas fa-angle-down"></i>
                                             </label>
-                                            <ul class="header__search-option" id="genre__drop-down">
+                                            <ul class="header__search-option" id="category__drop-down">
                                                 <li class="header__search-option-item" data-bs-toggle="modal"
-                                                    data-bs-target="#modal-addGenre">
+                                                    data-bs-target="#modal-addCategory">
                                                     <i class='bx bx-plus-circle'></i>
                                                     <span>Thêm thể loại mới</span>
                                                 </li>
-                                                <li class="header__search-option-item">
+                                                {{-- <li class="header__search-option-item">
                                                     <span>Giáo khoa</span>
                                                 </li>
                                                 <li class="header__search-option-item ">
@@ -214,8 +224,12 @@
                                                 </li>
                                                 <li class="header__search-option-item ">
                                                     <span>Truyện tranh</span>
+                                                </li> --}}
+                                                @foreach (\App\Models\Category::all() as $category)
+                                                <li class="header__search-option-item" value="{{ $category->id }}">
+                                                    <span>{{ $category->name }}</span>
                                                 </li>
-
+                                            @endforeach
                                             </ul>
                                         </div>
 
@@ -224,8 +238,8 @@
                                             'required' => 'required',
                                             'disabled' => '',
                                             'input_type' => 'text',
-                                            'input_id' => 'author_name',
-                                            'input_name' => 'TacGia',
+                                            'input_id' => 'author',
+                                            'input_name' => 'author',
                                             'input_value' => '',
                                             'message' => '',
                                         ])
@@ -235,8 +249,8 @@
                                             'required' => 'required',
                                             'disabled' => '',
                                             'input_type' => 'text',
-                                            'input_id' => 'published_year',
-                                            'input_name' => 'NamXuatBan',
+                                            'input_id' => 'publish_year',
+                                            'input_name' => 'publish_year',
                                             'input_value' => '',
                                             'message' => '',
                                         ])
@@ -249,7 +263,7 @@
                                             'disabled' => '',
                                             'input_type' => 'text',
                                             'input_id' => 'material',
-                                            'input_name' => 'ChatLieu',
+                                            'input_name' => 'material',
                                             'input_value' => '',
                                             'message' => '',
                                         ])
@@ -260,7 +274,7 @@
                                             'disabled' => '',
                                             'input_type' => 'text',
                                             'input_id' => 'color',
-                                            'input_name' => 'MauSac',
+                                            'input_name' => 'color',
                                             'input_value' => '',
                                             'message' => '',
                                         ])
@@ -270,8 +284,8 @@
                                             'required' => 'required',
                                             'disabled' => '',
                                             'input_type' => 'text',
-                                            'input_id' => 'original',
-                                            'input_name' => 'NoiSanXuat',
+                                            'input_id' => 'origin',
+                                            'input_name' => 'origin',
                                             'input_value' => '',
                                             'message' => '',
                                         ])
@@ -303,14 +317,15 @@
     'disabled' => '',
     'input_type' => 'text',
     'input_id' => 'brand_name',
-    'input_name' => 'TenNhanHieu',
+    'input_name' => 'brand_name',
     'input_value' => '',
+    'path' => '',
     'message' => '',
     ])
 
-    {{-- Modal add Categpry --}}
+    {{-- Modal add ProductType --}}
     @include('includes.modal_input', [
-    'modal_name' => 'addCategory',
+    'modal_name' => 'addProductType',
     'form_action' => '',
     'form_method' => 'post',
     'modal_title' => 'Thêm loại sản phẩm',
@@ -318,15 +333,16 @@
     'required' => 'required',
     'disabled' => '',
     'input_type' => 'text',
-    'input_id' => 'category_name',
-    'input_name' => 'TenLoaiSanPham',
+    'input_id' => 'product_type_name',
+    'input_name' => 'product_type_name',
     'input_value' => '',
+    'path' => '',
     'message' => '',
     ])
 
-    {{-- Modal add Genre --}}
+    {{-- Modal add Categpry --}}
     @include('includes.modal_input', [
-    'modal_name' => 'addGenre',
+    'modal_name' => 'addCategpry',
     'form_action' => '',
     'form_method' => 'post',
     'modal_title' => 'Thêm thể loại',
@@ -334,9 +350,10 @@
     'required' => 'required',
     'disabled' => '',
     'input_type' => 'text',
-    'input_id' => 'genre_name',
-    'input_name' => 'TenTheLoai',
+    'input_id' => 'category_name',
+    'input_name' => 'category_name',
     'input_value' => '',
+    'path' => '',
     'message' => '',
     ])
 
