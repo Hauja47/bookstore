@@ -27,8 +27,8 @@
                     @enderror
                 </div>
                 <div class="input__wrapper input-password">
-                    {{-- <input type="password" name='password' id="password" placeholder="Mật khẩu..." value="{{ old('password') }}"> --}}
-                    <input type="password" name='password' id="password" placeholder="Mật khẩu...">
+                    <input type="password" name='password' id="password" placeholder="Mật khẩu..." value="{{ old('password') }}">
+                    {{-- <input type="password" name='password' id="password" placeholder="Mật khẩu..."> --}}
 
                     @error('password')
                     <p>{{ $message }}</p>
@@ -36,7 +36,7 @@
                     <i class="fas fa-eye"></i>
                 </div>
                 {{-- <a href="forgot-password" class="forgot">Quên mật khẩu</a> --}}
-                <button class="btn-submit"type="submit">Đăng nhập</button>
+                <button class="btn-submit" type="submit">Đăng nhập</button>
             </form>
         </div>
         {{-- <div class="signup">
