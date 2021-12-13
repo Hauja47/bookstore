@@ -90,8 +90,8 @@ Route::prefix('product')->middleware('auth')->group(function () {
     //     return view('main.products.edit');
     // })->name('products.edit');
 
-    Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('products.edit');
-    Route::get('/delete/{id}', [ProductController::class, 'destroy'])->name('products.delete');
+    Route::get('/edit/{product}', [ProductController::class, 'edit'])->name('products.edit');
+    Route::get('/delete/{product}', [ProductController::class, 'destroy'])->name('products.delete');
 });
 
 // Invoices
