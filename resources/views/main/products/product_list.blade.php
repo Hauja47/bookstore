@@ -323,7 +323,7 @@
                                 <td>{{ $product->version }}</td>
                                 <td>{{ $product->brand->name }}</td>
                                 <td>
-                                    {{ $product->type->name }}
+                                    {{ $product->productable_type }}
                                 </td>
                                 <td>{{ $product->in_stock }}</td>
                                 <td>

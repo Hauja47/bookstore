@@ -13,7 +13,7 @@ class Product extends Model
         'name',
         'productable_id',
         'productable_type',
-        'product_type_id',
+        // 'product_type_id',
         'brand_id',
         'version',
         'in_stock',
@@ -25,10 +25,10 @@ class Product extends Model
         return $this->morphTo();
     }
 
-    public function type()
-    {
-        return $this->belongsTo(ProductType::class, 'product_type_id');
-    }
+    // public function type()
+    // {
+    //     return $this->belongsTo(ProductType::class, 'product_type_id');
+    // }
 
     public function brand()
     {

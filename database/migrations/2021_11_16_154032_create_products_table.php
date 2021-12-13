@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->morphs('productable');
             $table->string('photo')->nullable();
-            $table->foreignId('product_type_id')->constrained('product_types');
+            // $table->foreignId('product_type_id')->constrained('product_types');
             $table->foreignId('brand_id')->constrained('brands');
             $table->string('version');
             $table->integer('in_stock')->default(0);

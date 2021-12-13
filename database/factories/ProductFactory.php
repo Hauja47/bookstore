@@ -36,7 +36,7 @@ class ProductFactory extends Factory
 
         return [
             'name' => $this->faker->words(),
-            'product_type_id' => ProductType::factory()->create()->id,
+            // 'product_type_id' => ProductType::factory()->create()->id,
             'brand_id' => Brand::factory()->create()->id,
             'version' => $this->faker->randomNumber(),
         ];

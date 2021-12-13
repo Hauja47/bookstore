@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
 
             $book->product()->create([
                 'name' => 'Test '.$book->id,
-                'product_type_id' => ProductType::factory()->create()->id,
+                // 'product_type_id' => ProductType::factory()->create()->id,
                 'brand_id' => Brand::factory()->create()->id,
                 'version' => '100',
             ]);
@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
 
             $stationery->product()->create([
                 'name' => 'Test '.$stationery->id,
-                'product_type_id' => ProductType::factory()->create()->id,
+                // 'product_type_id' => ProductType::factory()->create()->id,
                 'brand_id' => Brand::factory()->create()->id,
                 'version' => '100',
             ]);

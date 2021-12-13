@@ -15,7 +15,6 @@ namespace App\Models{
  * App\Models\Book
  *
  * @property int $id
- * @property int $product_id
  * @property int $category_id
  * @property string $author
  * @property string $publish_year
@@ -31,7 +30,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Book whereCategoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Book whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Book whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Book whereProductId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Book wherePublishYear($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Book whereUpdatedAt($value)
  */
@@ -402,7 +400,6 @@ namespace App\Models{
  * @property string $productable_type
  * @property int $productable_id
  * @property string|null $photo
- * @property int $product_type_id
  * @property int $brand_id
  * @property string $version
  * @property int $in_stock
@@ -415,7 +412,6 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Invoice[] $invoices
  * @property-read int|null $invoices_count
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $productable
- * @property-read \App\Models\ProductType $type
  * @method static \Database\Factories\ProductFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
@@ -427,7 +423,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product wherePhoto($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product wherePrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereProductTypeId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereProductableId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereProductableType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereUpdatedAt($value)
@@ -617,7 +612,6 @@ namespace App\Models{
  * App\Models\Stationery
  *
  * @property int $id
- * @property int $product_id
  * @property string $material
  * @property string $color
  * @property string $origin
@@ -633,7 +627,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Stationery whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Stationery whereMaterial($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Stationery whereOrigin($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Stationery whereProductId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Stationery whereUpdatedAt($value)
  */
 	class Stationery extends \Eloquent {}
