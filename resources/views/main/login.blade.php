@@ -16,7 +16,7 @@
         </div>
 
         <div class="login__body">
-            <form action="/login" method="POST">
+            <form action="{{ route('login') }}" method="POST">
                 @csrf
 
                 <div class="input__wrapper">

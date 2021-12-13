@@ -1,6 +1,6 @@
 let obj = {
     showPassBtn: document.querySelector('.input-password i'),
-    matkhau: document.getElementById('matkhau'),
+    matkhau: document.getElementById('password'),
 
 };
 

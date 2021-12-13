@@ -27,7 +27,7 @@ class SessionController extends Controller
 
         session()->regenerate();
 
-        return redirect('dashboard')->with('success', 'Welcome back!');
+        return redirect(route('dashboard'))->with('success', 'Welcome back!');
     }
 
     public function create()

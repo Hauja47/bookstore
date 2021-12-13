@@ -8,6 +8,7 @@
 'open_product' => '',
 'active_product' => '',
 'active_invoice' => '',
+'active_supplier' => '',
 'active_customer' => '',
 'open_budget' => '',
 'active_expenditure' => '',

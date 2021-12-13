@@ -9,6 +9,7 @@
 'open_product' => 'sidebar__menu-dropdown-icon--open',
 'active_product' => 'active',
 'active_invoice' => '',
+'active_supplier' => '',
 'active_customer' => '',
 'open_budget' => '',
 'active_expenditure' => '',
@@ -36,9 +37,13 @@
                 <i class='btn-function-icon btn-function__export-icon bx bx-download' ></i>
                 Xuất file
             </a>
+            <a href="{{ route('products.option') }}" class="btn-function btn-function__manage">
+                <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
+                Quản lý tuỳ chọn
+            </a>
         </div>
         <div class="col l-6 md-6 c-6">
-            <a href="product/create" class="btn-function btn-function__add">
+            <a href="{{ route('products.add') }}" class="btn-function btn-function__add">
                 <i class='btn-function-icon btn-function__add-icon bx bx-plus' ></i>
                 <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
                 Thêm sản phẩm
@@ -81,7 +86,7 @@
                                 </td>
                                 <td>80</td>
                                 <td>
-                                    <a href="" class="btn btn-outline btn-edit">
+                                    <a href="{{ route('products.edit', ['id' => 1]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
                                     <a href="" class="btn btn-outline btn-remove">
@@ -105,7 +110,7 @@
                                 </td>
                                 <td>80</td>
                                 <td>
-                                    <a href="" class="btn btn-outline btn-edit">
+                                    <a href="{{ route('products.edit', ['id' => 1]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
                                     <a href="" class="btn btn-outline btn-remove">
@@ -129,7 +134,7 @@
                                 </td>
                                 <td>10</td>
                                 <td>
-                                    <a href="" class="btn btn-outline btn-edit">
+                                    <a href="{{ route('products.edit', ['id' => 1]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
                                     <a href="" class="btn btn-outline btn-remove">
@@ -153,7 +158,7 @@
                                 </td>
                                 <td>200</td>
                                 <td>
-                                    <a href="" class="btn btn-outline btn-edit">
+                                    <a href="{{ route('products.edit', ['id' => 1]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
                                     <a href="" class="btn btn-outline btn-remove">
@@ -177,7 +182,7 @@
                                 </td>
                                 <td>10</td>
                                 <td>
-                                    <a href="" class="btn btn-outline btn-edit">
+                                    <a href="{{ route('products.edit', ['id' => 1]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
                                     <a href="" class="btn btn-outline btn-remove">
@@ -201,7 +206,7 @@
                                 </td>
                                 <td>80</td>
                                 <td>
-                                    <a href="" class="btn btn-outline btn-edit">
+                                    <a href="{{ route('products.edit', ['id' => 1]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
                                     <a href="" class="btn btn-outline btn-remove">
@@ -225,7 +230,7 @@
                                 </td>
                                 <td>80</td>
                                 <td>
-                                    <a href="" class="btn btn-outline btn-edit">
+                                    <a href="{{ route('products.edit', ['id' => 1]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
                                     <a href="" class="btn btn-outline btn-remove">
@@ -249,7 +254,7 @@
                                 </td>
                                 <td>10</td>
                                 <td>
-                                    <a href="" class="btn btn-outline btn-edit">
+                                    <a href="{{ route('products.edit', ['id' => 1]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
                                     <a href="" class="btn btn-outline btn-remove">
@@ -273,7 +278,7 @@
                                 </td>
                                 <td>10</td>
                                 <td>
-                                    <a href="" class="btn btn-outline btn-edit">
+                                    <a href="{{ route('products.edit', ['id' => 1]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
                                     <a href="" class="btn btn-outline btn-remove">
@@ -297,7 +302,7 @@
                                 </td>
                                 <td>200</td>
                                 <td>
-                                    <a href="" class="btn btn-outline btn-edit">
+                                    <a href="{{ route('products.edit', ['id' => 1]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
                                     <a href="" class="btn btn-outline btn-remove">
@@ -309,7 +314,7 @@
                             <tr>
                                 <td>SP0000016</td>
                                 <td>
-                                    <img src="{{ asset('images/no-image.png') }}" alt="" class="product-img">
+                                    <img src="{{ asset('images/book-1.jpg') }}" alt="" class="product-img">
                                 </td>
                                 <td>
                                     Thế Nào Và Tại Sao - Những Ngôi Sao - Điều Tuyệt Vời Của Vũ Trụ
@@ -321,7 +326,7 @@
                                 </td>
                                 <td>80</td>
                                 <td>
-                                    <a href="" class="btn btn-outline btn-edit">
+                                    <a href="{{ route('products.edit', ['id' => 1]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
                                     <a href="" class="btn btn-outline btn-remove">

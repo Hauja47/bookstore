@@ -9,6 +9,7 @@
 'open_product' => '',
 'active_product' => '',
 'active_invoice' => '',
+'active_supplier' => '',
 'active_customer' => '',
 'open_budget' => '',
 'active_expenditure' => '',
@@ -38,17 +39,17 @@
             </a>
         </div>
         <div class="col l-6 md-6 c-6">
-            <a href="" class="btn-function btn-function__add">
+            <a href="{{ route('employees.add') }}" class="btn-function btn-function__add">
                 <i class='btn-function-icon btn-function__add-icon bx bx-plus' ></i>
                 <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
-                Tạo đơn hàng
+                Thêm nhân viên
             </a>
         </div>
     </div>
     <!-- END  -->
 
     <div class="row">
-        <!-- CUSTOMER TABLE -->
+        <!-- EMPLOYEE TABLE -->
         <div class="col l-12 md-12 c-12">
             <div class="box">
                 <div class="box-body">
@@ -185,7 +186,7 @@
                 </div>
             </div>
         </div>
-        <!-- END CUSTOMER TABLE -->
+        <!-- END EMPLOYEE TABLE -->
 
     </div>
 </div>

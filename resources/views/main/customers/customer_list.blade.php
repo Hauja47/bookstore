@@ -9,6 +9,7 @@
 'open_product' => '',
 'active_product' => '',
 'active_invoice' => '',
+'active_supplier' => '',
 'active_customer' => 'active',
 'open_budget' => '',
 'active_expenditure' => '',
@@ -38,10 +39,10 @@
             </a>
         </div>
         <div class="col l-6 md-6 c-6">
-            <a href="" class="btn-function btn-function__add">
+            <a href="{{ route('customers.add') }}" class="btn-function btn-function__add">
                 <i class='btn-function-icon btn-function__add-icon bx bx-plus' ></i>
                 <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
-                Tạo đơn hàng
+                Thêm khách hàng
             </a>
         </div>
     </div>
@@ -79,7 +80,7 @@
                                 </td>
                                 <td>123.000 đ</td>
                                 <td>
-                                    <a href="" class="btn btn-outline btn-edit">
+                                    <a href="{{ route('customers.edit', ['id' => 1]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
                                     <a href="" class="btn btn-outline btn-remove">
@@ -102,7 +103,7 @@
                                 </td>
                                 <td>123.000 đ</td>
                                 <td>
-                                    <a href="" class="btn btn-outline btn-edit">
+                                    <a href="{{ route('customers.edit', ['id' => 1]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
                                     <a href="" class="btn btn-outline btn-remove">
@@ -125,7 +126,7 @@
                                 </td>
                                 <td>123.000 đ</td>
                                 <td>
-                                    <a href="" class="btn btn-outline btn-edit">
+                                    <a href="{{ route('customers.edit', ['id' => 1]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
                                     <a href="" class="btn btn-outline btn-remove">
@@ -148,7 +149,7 @@
                                 </td>
                                 <td>123.000 đ</td>
                                 <td>
-                                    <a href="" class="btn btn-outline btn-edit">
+                                    <a href="{{ route('customers.edit', ['id' => 1]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
                                     <a href="" class="btn btn-outline btn-remove">
@@ -171,7 +172,7 @@
                                 </td>
                                 <td>123.000 đ</td>
                                 <td>
-                                    <a href="" class="btn btn-outline btn-edit">
+                                    <a href="{{ route('customers.edit', ['id' => 1]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
                                     <a href="" class="btn btn-outline btn-remove">

@@ -42,20 +42,18 @@
                 </div>
             </div>
             <div class="sidebar__user">
-                <a href="" class="sidebar__user-info">
+                <a href="{{ route('user') }}" class="sidebar__user-info">
                     <img src="{{ asset('images/user-avatar.png') }}" alt="User Avatar" class="sidebar__user-img">
-                    @auth
-                        <span class="sidebar__user-name">{{ auth()->user()->employee->full_name }}</span>
-                    @endauth
+                    <span class="sidebar__user-name">{{ auth()->user()->employee->full_name }}</span>
                 </a>
-                <a href="/logout" class="sidebar__user-logout btn btn-outline">
+                <a href="{{ route('logout') }}" class="sidebar__user-logout btn btn-outline">
                     <i class='sidebar__user-logout-icon bx bx-log-out bx-rotate-180'></i>
                 </a>
             </div>
             <!-- SIDEBAR MENU -->
             <ul class="sidebar__menu">
                 <li class="sidebar__menu-item {{ $active_dashboard }}">
-                    <a href="dashboard" class="sidebar__menu-link">
+                    <a href="{{ route('dashboard') }}" class="sidebar__menu-link">
                         <i class='sidebar__menu-item-icon bx bx-home'></i>
                         Trang chủ
                     </a>
@@ -68,12 +66,12 @@
                     </div>
                     <ul class="sidebar__sub-menu-list">
                         <li class="sidebar__sub-menu-item {{ $active_order }}">
-                            <a href="order" class="sidebar__sub-menu-link">
+                            <a href="{{ route('orders.index') }}" class="sidebar__sub-menu-link">
                                 Danh sách hoá đơn
                             </a>
                         </li>
                         <li class="sidebar__sub-menu-item {{ $active_refund }}">
-                            <a href="refund" class="sidebar__sub-menu-link">
+                            <a href="{{ route('refunds.index') }}" class="sidebar__sub-menu-link">
                                 Đơn trả hàng
                             </a>
                         </li>
@@ -87,19 +85,24 @@
                     </div>
                     <ul class="sidebar__sub-menu-list">
                         <li class="sidebar__sub-menu-item {{ $active_product }}">
-                            <a href="product" class="sidebar__sub-menu-link">
+                            <a href="{{ route('products.index') }}" class="sidebar__sub-menu-link">
                                 Danh sách sản phẩm
                             </a>
                         </li>
                         <li class="sidebar__sub-menu-item {{ $active_invoice }}">
-                            <a href="invoice" class="sidebar__sub-menu-link">
+                            <a href="{{ route('invoices.index') }}" class="sidebar__sub-menu-link">
                                 Đơn nhập kho
+                            </a>
+                        </li>
+                        <li class="sidebar__sub-menu-item {{ $active_supplier }}">
+                            <a href="{{ route('suppliers.index') }}" class="sidebar__sub-menu-link">
+                                Nhà cung cấp
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li class="sidebar__menu-item {{ $active_customer }}">
-                    <a href="customer" class="sidebar__menu-link">
+                    <a href="{{ route('customers.index') }}" class="sidebar__menu-link">
                         <i class='sidebar__menu-item-icon bx bx-user-circle'></i>
                         Khách hàng
                     </a>
@@ -112,17 +115,17 @@
                     </div>
                     <ul class="sidebar__sub-menu-list">
                         <li class="sidebar__sub-menu-item {{ $active_expenditure }}">
-                            <a href="" class="sidebar__sub-menu-link">
+                            <a href="{{ route('expenditures.index') }}" class="sidebar__sub-menu-link">
                                 Phiếu chi
                             </a>
                         </li>
                         <li class="sidebar__sub-menu-item {{ $active_revenue }}">
-                            <a href="" class="sidebar__sub-menu-link">
+                            <a href="{{ route('revenues.index') }}" class="sidebar__sub-menu-link">
                                 Phiếu thu
                             </a>
                         </li>
                         <li class="sidebar__sub-menu-item {{ $active_budget }}">
-                            <a href="" class="sidebar__sub-menu-link">
+                            <a href="{{ route('budgets.index') }}" class="sidebar__sub-menu-link">
                                 Sổ quỹ
                             </a>
                         </li>
@@ -136,19 +139,19 @@
                     </div>
                     <ul class="sidebar__sub-menu-list">
                         <li class="sidebar__sub-menu-item {{ $active_report_stock }}">
-                            <a href="" class="sidebar__sub-menu-link">
+                            <a href="{{ route('reports.stock') }}" class="sidebar__sub-menu-link">
                                 Báo cáo kho
                             </a>
                         </li>
                         <li class="sidebar__sub-menu-item {{ $active_report_dept }}">
-                            <a href="" class="sidebar__sub-menu-link">
+                            <a href="{{ route('reports.debt') }}" class="sidebar__sub-menu-link">
                                 Báo cáo công nợ
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li class="sidebar__menu-item {{ $active_employee }}">
-                    <a href="employee" class="sidebar__menu-link">
+                    <a href="{{ route('employees.index') }}" class="sidebar__menu-link">
                         <i class='sidebar__menu-item-icon bx bx-user-pin'></i>
                         Nhân viên
                     </a>
@@ -167,7 +170,7 @@
                             </a>
                         </li>
                         <li class="sidebar__sub-menu-item {{ $active_regulation }}">
-                            <a href="regulation" class="sidebar__sub-menu-link">
+                            <a href="{{ route('settings.regulation') }}" class="sidebar__sub-menu-link">
                                 Quy định
                             </a>
                         </li>
@@ -197,6 +200,8 @@
         <!-- END MAIN -->
 
         <div class="app__overlay"></div>
+
+        @yield('modal')
     </div>
 
     <!-- SCRIPTS -->

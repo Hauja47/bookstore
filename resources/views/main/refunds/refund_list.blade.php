@@ -9,6 +9,7 @@
 'open_product' => '',
 'active_product' => '',
 'active_invoice' => '',
+'active_supplier' => '',
 'active_customer' => '',
 'open_budget' => '',
 'active_expenditure' => '',
@@ -48,7 +49,7 @@
     <!-- END  -->
 
     <div class="row">
-        <!-- PRODUCT TABLE -->
+        <!-- REFUND TABLE -->
         <div class="col l-12 md-12 c-12">
             <div class="box">
                 <div class="box-body">
@@ -304,7 +305,7 @@
                 </div>
             </div>
         </div>
-        <!-- END PRODUCT TABLE -->
+        <!-- END REFUND TABLE -->
 
     </div>
 </div>

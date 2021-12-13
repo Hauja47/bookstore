@@ -15,10 +15,6 @@ function openSubMenu(subMenu, hasOpen) {
     }
 }
 // Check activated menus to open their sub menus
-window.onunload = function() {
-
-}
-
 subMenus.forEach(subMenu => {
     let hasOpen = subMenu.querySelector('.sidebar__menu-dropdown-icon').classList.contains('sidebar__menu-dropdown-icon--open');
 

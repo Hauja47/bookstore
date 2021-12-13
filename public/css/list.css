@@ -7,22 +7,38 @@
     text-align: right;
 }
 
-.btn-function__export {
+.btn-function__export,
+.btn-function__manage {
     color: var(--text-color);
     background-color: unset;
 
+    border: 1px solid var(--text-color);
+
 }
 
-.btn-function__export:hover{
+.btn-function__export:hover,
+.btn-function__manage:hover {
     color: var(--main-color);
     background-color: unset;
+    border: 1px solid var(--main-color);
 }
 
-.btn-function__export-icon {
+.btn-function__export-icon,
+.btn-function__manage-icon {
     vertical-align: top;
 }
 
-.btn-function__add-icon{
+.btn-function__add-icon,
+.btn-function__manage-icon{
     position: relative;
     top: 3px;
+}
+
+.btn-function__export {
+    margin-right: 20px;
+}
+
+.main-option-table {
+    width: 100%;
+    min-width: 400px;
 }
