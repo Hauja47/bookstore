@@ -9,6 +9,10 @@ class SessionController extends Controller
 {
     public function store()
     {
+        if (auth()->check()) {
+            return back();
+        }
+
         $attributes = request()->validate([
             'username' => 'required',
             'password' => 'required'
