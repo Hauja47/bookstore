@@ -37,7 +37,7 @@ class CustomerController extends Controller
     {
         request()->validate([
             'full_name' => 'required|min:2|max:191',
-            'phone_number' => 'required|numeric',
+            'phone_number' => 'required|numeric|max:10|regex:/(84|0[3|5|7|8|9])+([0-9]{8})\b/g',
             'email' => 'required|email',
             'address' => 'required',
             'debt' => 'numeric'
