@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,5 +28,23 @@ class AppServiceProvider extends ServiceProvider
     {
         //Fix: Specified key was too long; max key length is 1000 bytes
         Schema::defaultStringLength(191);
+
+        /****************************** */
+        // Add by Huy
+        view()->composer('templates.template', function ($view) {
+            $theme = Cookie::get('theme');
+            // dd($theme);
+            if ($theme != 'dark-mode') {
+                $theme = '';
+            } else {
+                $theme = 'dark-mode';
+            }
+
+            $view->with('theme', $theme);
+        });
+        Blade::directive('datetime', function ($expression) {
+            return "<?php echo ($expression)->format('d/m/Y H:i'); ?>";
+        });
+        /****************************** */
     }
 }

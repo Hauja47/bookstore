@@ -1,0 +1,106 @@
+
+.main-function {
+    padding: 0 20px;
+}
+
+.main-function .col:last-child{
+    text-align: right;
+}
+
+.btn-function__export {
+    color: var(--text-color);
+    background-color: unset;
+    
+}
+
+.btn-function__export:hover{
+    color: var(--main-color);
+    background-color: unset;
+}
+
+.btn-function__export-icon {
+    vertical-align: top;
+}
+
+.btn-function__add-icon{
+    position: relative;
+    top: 3px;
+}
+
+/* ORDER TABLE */
+.main-import-table th:nth-last-child(3),
+.main-import-table td:nth-last-child(3) {
+    text-align: center;
+}
+
+.main-import-table th:nth-last-child(2),
+.main-import-table td:nth-last-child(2) {
+    text-align: right;
+}
+
+.main-import-table th:last-child,
+.main-import-table td:last-child {
+    text-align: center;
+    width: 150px;
+}
+
+.main-import-table__order-owner {
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.main-import-table__order-owner-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.main-import-table__order-status {
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.main-import-table__order-status--ready {
+    color: #2a59d1;
+    background-color: rgba(62, 121, 247, 0.1);
+}
+
+.main-import-table__order-status--shipped {
+    color: #00ab6f;
+    background-color: rgba(4, 209, 130, 0.1);
+}
+
+.main-import-table__order-status--shipping {
+    color: #e4a30b;
+    background-color: rgba(228, 163, 11, 0.1);
+
+}
+
+.main-import-table__payment-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-import-table__payment-status .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.main-import-table__payment-status--paid .dot {
+    background-color: #04d182;
+}
+
+.main-import-table__payment-status--pending .dot {
+    background-color: #ffc542;
+}
+
+.main-import-table__payment-status--not-paid .dot {
+    background-color: #ff4242;
+}

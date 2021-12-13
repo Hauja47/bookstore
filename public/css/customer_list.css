@@ -1,0 +1,80 @@
+
+
+/* CUSTOMER TABLE */
+.main-customer-table th:nth-last-child(7),
+.main-customer-table td:nth-last-child(7) {
+    /* width: 150px; */
+}
+
+.main-customer-table th:nth-last-child(2),
+.main-customer-table td:nth-last-child(2) {
+    text-align: right;
+    width: 180px;
+}
+
+.main-customer-table th:last-child,
+.main-customer-table td:last-child {
+    text-align: center;
+    width: 150px;
+}
+
+.main-customer-table__order-owner {
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.main-customer-table__order-owner-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.main-customer-table__order-status {
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.main-customer-table__order-status--ready {
+    color: #2a59d1;
+    background-color: rgba(62, 121, 247, 0.1);
+}
+
+.main-customer-table__order-status--shipped {
+    color: #00ab6f;
+    background-color: rgba(4, 209, 130, 0.1);
+}
+
+.main-customer-table__order-status--shipping {
+    color: #e4a30b;
+    background-color: rgba(228, 163, 11, 0.1);
+
+}
+
+.main-customer-table__payment-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-customer-table__payment-status .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.main-customer-table__payment-status--paid .dot {
+    background-color: #04d182;
+}
+
+.main-customer-table__payment-status--pending .dot {
+    background-color: #ffc542;
+}
+
+.main-customer-table__payment-status--not-paid .dot {
+    background-color: #ff4242;
+}

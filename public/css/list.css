@@ -1,0 +1,28 @@
+
+.main-function {
+    padding: 0 20px;
+}
+
+.main-function .col:last-child{
+    text-align: right;
+}
+
+.btn-function__export {
+    color: var(--text-color);
+    background-color: unset;
+
+}
+
+.btn-function__export:hover{
+    color: var(--main-color);
+    background-color: unset;
+}
+
+.btn-function__export-icon {
+    vertical-align: top;
+}
+
+.btn-function__add-icon{
+    position: relative;
+    top: 3px;
+}
