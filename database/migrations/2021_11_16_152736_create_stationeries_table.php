@@ -14,8 +14,8 @@ class CreateStationeriesTable extends Migration
     public function up()
     {
         Schema::create('stationeries', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('product_id')->constrained('products');
+            $table->id()->constrained('products', 'product_id');
+            // $table->foreignId('product_id')->constrained('products');
             $table->string('material');
             $table->string('color');
             $table->string('origin');
