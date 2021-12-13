@@ -10,7 +10,7 @@ class Stationery extends Model
     use HasFactory;
 
     protected $fillable = [
-        'product_id',
+        // 'product_id',
         'material',
         'color',
         'origin',
