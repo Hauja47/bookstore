@@ -254,18 +254,13 @@
                                         @include('includes.input', [
                                         'label_title' => 'Loại sản phẩm',
                                         'required' => 'required',
-                                        'disabled' => 'disabled',
+                                        'disabled' => 'readonly',
                                         'input_type' => 'text',
                                         'input_id' => 'productable_type',
                                         'input_name' => 'productable_type',
                                         'input_value' => $product->productable_type,
                                         'message' => '',
                                         ])
-
-                                        @error('productable_type')
-                                            <p class="error-msg">{{ $message }}</p>
-                                            {{-- <p class="error-msg">Trường này không được trống</p> --}}
-                                        @enderror
                                     </div>
                                 </div>
 

@@ -230,6 +230,9 @@
     </script>
     <script src="{{ asset('js/app.js') }}"></script>
 
+
+    <!-- Thông báo xác nhận xóa -->
+    <script src="{{ asset('js/delete-comfirmation.js') }}"></script>
     @yield('js')
 </body>
 
