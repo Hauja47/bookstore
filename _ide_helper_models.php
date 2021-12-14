@@ -44,7 +44,7 @@ namespace App\Models{
  * @property string $name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Stationery[] $product
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Product[] $product
  * @property-read int|null $product_count
  * @method static \Database\Factories\BrandFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Brand newModelQuery()
@@ -66,7 +66,7 @@ namespace App\Models{
  * @property string $name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Stationery[] $product
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Book[] $product
  * @property-read int|null $product_count
  * @method static \Database\Factories\CategoryFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Category newModelQuery()
