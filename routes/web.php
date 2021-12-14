@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CategoryController;
+
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
@@ -78,20 +81,49 @@ Route::prefix('product')->middleware('auth')->group(function () {
         return view('main.products.product_list');
     })->name('products.index');
 
-    Route::get('/option', function () {
-        return view('main.products.option');
-    })->name('products.option');
 
-    Route::get('/add', function () {
-        return view('main.products.add');
-    })->name('products.add');
-
-    // Route::get('/edit/{id}', function () {
-    //     return view('main.products.edit');
-    // })->name('products.edit');
-
+    // Hiển thị form create
+    Route::get('/create', [ProductController::class, 'create'])->name('products.create');
+    // Xử lý create
+    Route::post('/create', [ProductController::class, 'store']);
+    // Hiển thị form edit
     Route::get('/edit/{product}', [ProductController::class, 'edit'])->name('products.edit');
+    // Xử lý edit
+    Route::post('/edit/{product}', [ProductController::class, 'update']);
+    // Xử lý delete
     Route::get('/delete/{product}', [ProductController::class, 'destroy'])->name('products.delete');
+
+    Route::prefix('/option')->group(function () {
+        Route::get('/', function () {
+            return view('main.products.option');
+        })->name('products.option');
+
+        Route::prefix('brand')->group(function () {
+            // Hiển thị form create
+            Route::get('/create', [BrandController::class, 'create'])->name('brands.create');
+            // Xử lý create
+            Route::post('/create', [BrandController::class, 'store']);
+            // Hiển thị form edit
+            Route::get('/edit/{brand}', [BrandController::class, 'edit'])->name('brands.edit');
+            // Xử lý edit
+            Route::post('/edit/{brand}', [BrandController::class, 'update']);
+            // Xử lý delete
+            Route::get('/delete/{brand}', [BrandController::class, 'destroy'])->name('brands.delete');
+        });
+
+        Route::prefix('category')->group(function () {
+            // Hiển thị form create
+            Route::get('/create', [CategoryController::class, 'create'])->name('categories.create');
+            // Xử lý create
+            Route::post('/create', [CategoryController::class, 'store']);
+            // Hiển thị form edit
+            Route::get('/edit/{category}', [CategoryController::class, 'edit'])->name('categories.edit');
+            // Xử lý edit
+            Route::post('/edit/{category}', [CategoryController::class, 'update']);
+            // Xử lý delete
+            Route::get('/delete/{category}', [CategoryController::class, 'destroy'])->name('categories.delete');
+        });
+    });
 });
 
 // Invoices
@@ -107,9 +139,9 @@ Route::prefix('supplier')->middleware('auth')->group(function () {
         return view('main.suppliers.supplier_list');
     })->name('suppliers.index');
 
-    Route::get('/add', function () {
-        return view('main.suppliers.add');
-    })->name('suppliers.add');
+    Route::get('/create', function () {
+        return view('main.suppliers.create');
+    })->name('suppliers.create');
 
     Route::get('/edit/{id}', function () {
         return view('main.suppliers.edit');
@@ -122,9 +154,9 @@ Route::prefix('customer')->middleware('auth')->group(function () {
         return view('main.customers.customer_list');
     })->name('customers.index');
 
-    Route::get('/add', function () {
-        return view('main.customers.add');
-    })->name('customers.add');
+    Route::get('/create', function () {
+        return view('main.customers.create');
+    })->name('customers.create');
 
     Route::get('/edit/{id}', function () {
         return view('main.customers.edit');
@@ -168,9 +200,9 @@ Route::prefix('employee')->middleware('auth')->group(function () {
         return view('main.employees.employee_list');
     })->name('employees.index');
 
-    Route::get('/add', function () {
-        return view('main.employees.add');
-    })->name('employees.add');
+    Route::get('/create', function () {
+        return view('main.employees.create');
+    })->name('employees.create');
 
     Route::get('/edit/{id}', function () {
         return view('main.employees.edit');
@@ -197,11 +229,11 @@ Route::prefix('setting')->middleware('auth')->group(function () {
 //     // Xử lý update chuyên mục
 //     Route::post('/edit/{id}', [OrdersController::class, 'updateOrder']);
 
-//     // Hiển thị form add dữ liệu
-//     Route::get('/add', [OrdersController::class, 'addOrder'])->name('orders.add');
+//     // Hiển thị form create dữ liệu
+//     Route::get('/create', [OrdersController::class, 'createOrder'])->name('orders.create');
 
 //     // Xử lý thêm chuyên mục
-//     Route::post('/add', [OrdersController::class, 'handleAddOrder']);
+//     Route::post('/create', [OrdersController::class, 'handleAddOrder']);
 
 //     // Xoá chuyên mục
 //     Route::delete('/delete/{id}', [OrdersController::class, 'deleteOrder'])->name('orders.delete');

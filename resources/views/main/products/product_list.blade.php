@@ -43,7 +43,7 @@
             </a>
         </div>
         <div class="col l-6 md-6 c-6">
-            <a href="{{ route('products.add') }}" class="btn-function btn-function__add">
+            <a href="{{ route('products.create') }}" class="btn-function btn-function__add">
                 <i class='btn-function-icon btn-function__add-icon bx bx-plus' ></i>
                 <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
                 Thêm sản phẩm
@@ -312,6 +312,9 @@
                             </tr> --}}
 
                             @foreach (\App\Models\Product::all() as $product)
+                            {{-- @php
+                                dd($product->brand->name)
+                            @endphp --}}
                             <tr>
                                 <td>{{ 'SP'.$product->id }}</td>
                                 <td>

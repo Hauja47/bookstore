@@ -25,6 +25,7 @@ class ProductController extends Controller
     public function create()
     {
         //
+        return view('main.products.add');
     }
 
     /**
@@ -35,10 +36,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
-            'name' => 'required|min:3|max:255',
-            'version' => 'required',
-        ]);
+        dd(request());
+        // request()->validate([
+        //     'name' => 'required|min:3|max:255',
+        //     'version' => 'required',
+        // ]);
+
+        // return redirect(route('products.add'));
+
     }
 
     /**
@@ -73,6 +78,8 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         //
+
+        return redirect(route('products.edit', ['product' => $product]));
     }
 
     /**

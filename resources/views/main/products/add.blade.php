@@ -30,7 +30,7 @@
 
 @section('main-content')
     <div class="main-content">
-        <form action="" method="post" id="form-main">
+        <form action="{{ route('products.create') }}" method="post" id="form-main">
             @csrf
             <!-- FUNCTION BUTTON -->
             <div class="row main-function">
@@ -46,7 +46,7 @@
                         <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
                         Thoát
                     </a>
-                    <button type="submit" href="{{ route('products.index') }}" class="btn-function btn-function__save">
+                    <button type="submit" class="btn-function btn-function__save">
                         {{-- <i class='btn-function-icon btn-function__add-icon bx bx-plus' ></i> --}}
                         <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
                         Lưu
@@ -95,32 +95,29 @@
                                             Nhãn hiệu <span class="required">*</span>
                                         </label>
 
-                                        <input type="checkbox" hidden id="ckb-select-brand">
+                                        {{-- <input type="checkbox" hidden id="ckb-select-brand">
                                         <label class="header__search-select" for="ckb-select-brand" id="label-brand">
-                                            <span class="header__search-select-label">Trống</span>
+                                            <span class="header__search-select-label" name="brand_name">Trống</span>
                                             <i class="header__search-select-icon fas fa-angle-down"></i>
                                         </label>
                                         <ul class="header__search-option" id="brand__drop-down">
-                                            <li class="header__search-option-item" data-bs-toggle="modal"
+                                            <li class="header__search-option-item d-none" data-bs-toggle="modal"
                                                 data-bs-target="#modal-addBrand">
                                                 <i class='bx bx-plus-circle'></i>
                                                 <span>Thêm nhãn hiệu mới</span>
                                             </li>
-                                            {{-- <li class="header__search-option-item" value="1">
-                                                <span>NXB Giáo dục</span>
-                                            </li>
-                                            <li class="header__search-option-item ">
-                                                <span>Văn phòng phẩm Hồng Hà</span>
-                                            </li>
-                                            <li class="header__search-option-item ">
-                                                <span>NXB Kim Đồng</span>
-                                            </li> --}}
-                                            @foreach  (\App\Models\Brand::all() as $brand)
+                                            @foreach (\App\Models\Brand::all() as $brand)
                                                 <li class="header__search-option-item" value="{{ $brand->id }}">
                                                     <span>{{ $brand->name }}</span>
                                                 </li>
                                             @endforeach
-                                        </ul>
+                                        </ul> --}}
+
+                                        <select class="header__search-select" name="brand_id" id="brand_id">
+                                            @foreach (\App\Models\Brand::all() as $brand)
+                                                <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -163,32 +160,36 @@
                                             Loại sản phẩm <span class="required">*</span>
                                         </label>
 
-                                        <input type="checkbox" hidden id="ckb-select-product_type">
-                                        <label class="header__search-select" for="ckb-select-product_type" id="label-product_type">
-                                            <span class="header__search-select-label">Trống</span>
+                                        {{-- <input type="checkbox" hidden id="ckb-select-product_type">
+                                        <label class="header__search-select" for="ckb-select-product_type"
+                                            id="label-product_type">
+                                            <span class="header__search-select-label" name="product_type_name">Trống</span>
                                             <i class="header__search-select-icon fas fa-angle-down"></i>
                                         </label>
                                         <ul class="header__search-option" id="product_type__drop-down">
-                                            <li class="header__search-option-item" data-bs-toggle="modal"
+                                            <li class="header__search-option-item d-none" data-bs-toggle="modal"
                                                 data-bs-target="#modal-addProductType">
                                                 <i class='bx bx-plus-circle'></i>
                                                 <span>Thêm loại sản phẩm mới</span>
                                             </li>
-                                            {{-- <li class="header__search-option-item">
+                                            <li class="header__search-option-item">
                                                 <span>Sách</span>
                                             </li>
                                             <li class="header__search-option-item ">
                                                 <span>Văn phòng phẩm</span>
                                             </li>
-                                            <li class="header__search-option-item">
-                                                <span>Đồ chơi</span>
-                                            </li> --}}
                                             @foreach (\App\Models\ProductType::all() as $product_type)
                                                 <li class="header__search-option-item" value="{{ $product_type->id }}">
                                                     <span>{{ $product_type->name }}</span>
                                                 </li>
                                             @endforeach
-                                        </ul>
+                                        </ul> --}}
+
+                                        <select class="header__search-select" name="productable_type" id="productable_type">
+                                            <option hidden value=""></option>
+                                            <option value="Sách">Sách</option>
+                                            <option value="Văn phòng phẩm">Văn phòng phẩm</option>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -199,95 +200,86 @@
                                                 Thể loại <span class="required">*</span>
                                             </label>
 
-                                            <input type="checkbox" hidden id="ckb-select-category">
+                                            {{-- <input type="checkbox" hidden id="ckb-select-category">
                                             <label class="header__search-select" for="ckb-select-category" id="label-category">
                                                 <span class="header__search-select-label">Trống</span>
                                                 <i class="header__search-select-icon fas fa-angle-down"></i>
                                             </label>
                                             <ul class="header__search-option" id="category__drop-down">
-                                                <li class="header__search-option-item" data-bs-toggle="modal"
+                                                <li class="header__search-option-item d-none" data-bs-toggle="modal"
                                                     data-bs-target="#modal-addCategory">
                                                     <i class='bx bx-plus-circle'></i>
                                                     <span>Thêm thể loại mới</span>
                                                 </li>
-                                                {{-- <li class="header__search-option-item">
-                                                    <span>Giáo khoa</span>
-                                                </li>
-                                                <li class="header__search-option-item ">
-                                                    <span>Khoa học viễn tưởng</span>
-                                                </li>
-                                                <li class="header__search-option-item ">
-                                                    <span>Văn học</span>
-                                                </li>
-                                                <li class="header__search-option-item ">
-                                                    <span>Tiểu thuyết</span>
-                                                </li>
-                                                <li class="header__search-option-item ">
-                                                    <span>Truyện tranh</span>
-                                                </li> --}}
                                                 @foreach (\App\Models\Category::all() as $category)
-                                                <li class="header__search-option-item" value="{{ $category->id }}">
+                                                <li class="header__search-option-item" value="{{ $category->id }}" name="category_name">
                                                     <span>{{ $category->name }}</span>
                                                 </li>
-                                            @endforeach
-                                            </ul>
+                                                @endforeach
+                                            </ul> --}}
+
+                                            <select class="header__search-select" name="category_id" id="category_id">
+                                                @foreach (\App\Models\Category::all() as $category)
+                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
 
                                         @include('includes.input', [
-                                            'label_title' => 'Tác giả',
-                                            'required' => 'required',
-                                            'disabled' => '',
-                                            'input_type' => 'text',
-                                            'input_id' => 'author',
-                                            'input_name' => 'author',
-                                            'input_value' => '',
-                                            'message' => '',
+                                        'label_title' => 'Tác giả',
+                                        'required' => 'required',
+                                        'disabled' => '',
+                                        'input_type' => 'text',
+                                        'input_id' => 'author',
+                                        'input_name' => 'author',
+                                        'input_value' => '',
+                                        'message' => '',
                                         ])
 
                                         @include('includes.input', [
-                                            'label_title' => 'Năm xuất bản',
-                                            'required' => 'required',
-                                            'disabled' => '',
-                                            'input_type' => 'text',
-                                            'input_id' => 'publish_year',
-                                            'input_name' => 'publish_year',
-                                            'input_value' => '',
-                                            'message' => '',
+                                        'label_title' => 'Năm xuất bản',
+                                        'required' => 'required',
+                                        'disabled' => '',
+                                        'input_type' => 'text',
+                                        'input_id' => 'publish_year',
+                                        'input_name' => 'publish_year',
+                                        'input_value' => '',
+                                        'message' => '',
                                         ])
                                     </div>
 
                                     <div class="info-stationary">
                                         @include('includes.input', [
-                                            'label_title' => 'Chất liệu',
-                                            'required' => 'required',
-                                            'disabled' => '',
-                                            'input_type' => 'text',
-                                            'input_id' => 'material',
-                                            'input_name' => 'material',
-                                            'input_value' => '',
-                                            'message' => '',
+                                        'label_title' => 'Chất liệu',
+                                        'required' => 'required',
+                                        'disabled' => '',
+                                        'input_type' => 'text',
+                                        'input_id' => 'material',
+                                        'input_name' => 'material',
+                                        'input_value' => '',
+                                        'message' => '',
                                         ])
 
                                         @include('includes.input', [
-                                            'label_title' => 'Màu sắc',
-                                            'required' => 'required',
-                                            'disabled' => '',
-                                            'input_type' => 'text',
-                                            'input_id' => 'color',
-                                            'input_name' => 'color',
-                                            'input_value' => '',
-                                            'message' => '',
+                                        'label_title' => 'Màu sắc',
+                                        'required' => 'required',
+                                        'disabled' => '',
+                                        'input_type' => 'text',
+                                        'input_id' => 'color',
+                                        'input_name' => 'color',
+                                        'input_value' => '',
+                                        'message' => '',
                                         ])
 
                                         @include('includes.input', [
-                                            'label_title' => 'Nơi sản xuất',
-                                            'required' => 'required',
-                                            'disabled' => '',
-                                            'input_type' => 'text',
-                                            'input_id' => 'origin',
-                                            'input_name' => 'origin',
-                                            'input_value' => '',
-                                            'message' => '',
+                                        'label_title' => 'Nơi sản xuất',
+                                        'required' => 'required',
+                                        'disabled' => '',
+                                        'input_type' => 'text',
+                                        'input_id' => 'origin',
+                                        'input_name' => 'origin',
+                                        'input_value' => '',
+                                        'message' => '',
                                         ])
                                     </div>
                                 </div>
@@ -307,7 +299,7 @@
 @section('modal')
     <!-- Modal -->
     {{-- Modal add Brand --}}
-    @include('includes.modal_input', [
+    {{-- @include('includes.modal_input', [
     'modal_name' => 'addBrand',
     'form_action' => '',
     'form_method' => 'post',
@@ -321,10 +313,10 @@
     'input_value' => '',
     'path' => '',
     'message' => '',
-    ])
+    ]) --}}
 
     {{-- Modal add ProductType --}}
-    @include('includes.modal_input', [
+    {{-- @include('includes.modal_input', [
     'modal_name' => 'addProductType',
     'form_action' => '',
     'form_method' => 'post',
@@ -338,10 +330,10 @@
     'input_value' => '',
     'path' => '',
     'message' => '',
-    ])
+    ]) --}}
 
     {{-- Modal add Categpry --}}
-    @include('includes.modal_input', [
+    {{-- @include('includes.modal_input', [
     'modal_name' => 'addCategpry',
     'form_action' => '',
     'form_method' => 'post',
@@ -355,7 +347,7 @@
     'input_value' => '',
     'path' => '',
     'message' => '',
-    ])
+    ]) --}}
 
 @endsection
 

@@ -24,6 +24,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        return view('main.products.option');
 
     }
 
@@ -38,6 +39,9 @@ class CategoryController extends Controller
         request()->validate([
             'name' => 'required|min:2|max:255|unique:category,name'
         ]);
+
+        return view('main.products.option');
+
     }
 
     /**
@@ -60,6 +64,9 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         //
+
+        return view('main.products.option', ['category' => $category]);
+
     }
 
     /**
@@ -72,6 +79,8 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         //
+        return redirect(route('products.option'));
+
     }
 
     /**
@@ -83,5 +92,8 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
+        $category->delete();
+
+        return back();
     }
 }

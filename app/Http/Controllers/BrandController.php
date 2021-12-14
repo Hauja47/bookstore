@@ -38,6 +38,10 @@ class BrandController extends Controller
         request()->validate([
             'name' => 'required|min:2|max:255|unique:brand,name'
         ]);
+
+
+
+        return view('main.products.option');
     }
 
     /**
@@ -60,6 +64,8 @@ class BrandController extends Controller
     public function edit(Brand $brand)
     {
         //
+
+        return view('main.products.option', ['brand' => $brand]);
     }
 
     /**
@@ -72,6 +78,7 @@ class BrandController extends Controller
     public function update(Request $request, Brand $brand)
     {
         //
+        return redirect(route('products.option'));
     }
 
     /**
@@ -83,5 +90,8 @@ class BrandController extends Controller
     public function destroy(Brand $brand)
     {
         //
+        $brand->delete();
+
+        return back();
     }
 }

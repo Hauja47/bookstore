@@ -32,136 +32,52 @@
 @section('main-content')
     <div class="main-content">
         {{-- <form action="" method="post" id="form-main"> --}}
-            {{-- @csrf --}}
-            <!-- FUNCTION BUTTON -->
-            <div class="row main-function">
-                <div class="col l-6 md-6 c-6">
-                    <a href="{{ route('products.index') }}" class="btn-function btn-function__back">
-                        <i class='btn-function-icon btn-function__back-icon bx bx-chevron-left'></i>
-                        Quay lại danh sách sản phẩm
-                    </a>
-                </div>
-                <div class="col l-6 md-6 c-6">
-                    {{-- <a href="{{ route('products.index') }}" class="btn-function btn-function__exit">
+        {{-- @csrf --}}
+        <!-- FUNCTION BUTTON -->
+        <div class="row main-function">
+            <div class="col l-6 md-6 c-6">
+                <a href="{{ route('products.index') }}" class="btn-function btn-function__back">
+                    <i class='btn-function-icon btn-function__back-icon bx bx-chevron-left'></i>
+                    Quay lại danh sách sản phẩm
+                </a>
+            </div>
+            <div class="col l-6 md-6 c-6">
+                {{-- <a href="{{ route('products.index') }}" class="btn-function btn-function__exit">
                         Thoát
                     </a>
                     <button type="submit" href="{{ route('products.index') }}" class="btn-function btn-function__save">
                         Lưu
                     </button> --}}
-                </div>
             </div>
-            <!-- END  -->
+        </div>
+        <!-- END  -->
 
-            {{-- FORM --}}
-            <div class="row">
-                <!-- FORM CREATE PRODUCT -->
-                <div class="col l-6 md-12 c-12">
-                    <div class="box info-general">
-                        <div class="box-header">
-                            Loại sản phẩm
-                            <a href="{{ route('products.option') }}" class="btn-function btn-function__add" data-bs-toggle="modal" data-bs-target="#modal-addCategory">
-                                <i class='btn-function-icon btn-function__add-icon bx bx-plus'></i>
-                                <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
-                                Thêm
-                            </a>
-                        </div>
-                        <div class="box-body">
-                            <table class="main-option-table">
-                                <thead>
-                                    <tr>
-                                        <th>Mã loại sản phẩm</th>
-                                        <th>Tên loại sản phẩm</th>
-                                        <th data-sortable="false"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>LSP0000016</td>
-                                        <td>
-                                            Sách
-                                        </td>
-                                        <td>
-                                            <a href="" class="btn btn-outline btn-edit" data-bs-toggle="modal" data-bs-target="#modal-editCategory">
-                                                <i class='btn-icon bx bx-edit-alt'></i>
-                                            </a>
-                                            <a href="" class="btn btn-outline btn-remove">
-                                                <i class='btn-icon bx bx-trash-alt'></i>
-                                            </a>
+        {{-- FORM --}}
+        <div class="row">
+            <!-- FORM CREATE PRODUCT -->
 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>LSP0000016</td>
-                                        <td>
-                                            Văn phòng phẩm
-                                        </td>
-                                        <td>
-                                            <a href="" class="btn btn-outline btn-edit" data-bs-toggle="modal" data-bs-target="#modal-editCategory">
-                                                <i class='btn-icon bx bx-edit-alt'></i>
-                                            </a>
-                                            <a href="" class="btn btn-outline btn-remove">
-                                                <i class='btn-icon bx bx-trash-alt'></i>
-                                            </a>
-
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>LSP0000016</td>
-                                        <td>
-                                            Đồ chơi
-                                        </td>
-                                        <td>
-                                            <a href="" class="btn btn-outline btn-edit" data-bs-toggle="modal" data-bs-target="#modal-editCategory">
-                                                <i class='btn-icon bx bx-edit-alt'></i>
-                                            </a>
-                                            <a href="" class="btn btn-outline btn-remove">
-                                                <i class='btn-icon bx bx-trash-alt'></i>
-                                            </a>
-
-                                        </td>
-                                    </tr>
-                                    @foreach (\App\Models\ProductType as $product_type)
-                                    <tr>
-                                        <td>{{ $product_type->id }}</td>
-                                        <td>
-                                            {{ $product_type->name }}
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('product_types.edit', ['id' => $product_type->id]) }}" class="btn btn-outline btn-edit">
-                                                <i class='btn-icon bx bx-edit-alt' ></i>
-                                            </a>
-                                            <a href="{{ route('product_types.delete', ['id' => $product_type->id]) }}" class="btn btn-outline btn-remove">
-                                                <i class='btn-icon bx bx-trash-alt' ></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+            <div class="col l-6 md-12 c-12">
+                <div class="box info-general">
+                    <div class="box-header">
+                        Nhãn hiệu
+                        <a href="javascript:void(0)" class="btn-function btn-function__add" data-bs-toggle="modal"
+                            data-bs-target="#modal-addBrand">
+                            <i class='btn-function-icon btn-function__add-icon bx bx-plus'></i>
+                            <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
+                            Thêm
+                        </a>
                     </div>
-                </div>
-                <div class="col l-6 md-12 c-12">
-                    <div class="box info-general">
-                        <div class="box-header">
-                            Nhãn hiệu
-                            <a href="{{ route('products.option') }}" class="btn-function btn-function__add" data-bs-toggle="modal" data-bs-target="#modal-addBrand">
-                                <i class='btn-function-icon btn-function__add-icon bx bx-plus'></i>
-                                <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
-                                Thêm
-                            </a>
-                        </div>
-                        <div class="box-body">
-                            <table class="main-option-table">
-                                <thead>
-                                    <tr>
-                                        <th>Mã nhãn hiệu</th>
-                                        <th>Tên nhãn hiệu</th>
-                                        <th data-sortable="false"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
+                    <div class="box-body">
+                        <table class="main-option-table">
+                            <thead>
+                                <tr>
+                                    <th>Mã nhãn hiệu</th>
+                                    <th>Tên nhãn hiệu</th>
+                                    <th data-sortable="false"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{-- <tr>
                                         <td>NH0000016</td>
                                         <td>
                                             NXB Kim Đồng
@@ -220,50 +136,53 @@
                                             </a>
 
                                         </td>
-                                    </tr>
-                                    @foreach (\App\Models\Brand as $brand)
+                                    </tr> --}}
+                                @foreach (\App\Models\Brand::all() as $brand)
                                     <tr>
-                                        <td>{{ $brand->id }}</td>
+                                        <td>{{ 'NH' . $brand->id }}</td>
                                         <td>
                                             {{ $brand->name }}
                                         </td>
                                         <td>
-                                            <a href="{{ route('brands.edit', ['id' => $brand->id]) }}" class="btn btn-outline btn-edit">
-                                                <i class='btn-icon bx bx-edit-alt' ></i>
+                                            <a href="javascript:void(0)" class="btn btn-outline btn-edit"
+                                                data-bs-toggle="modal" data-bs-target="#modal-editBrand">
+                                                <i class='btn-icon bx bx-edit-alt'></i>
                                             </a>
-                                            <a href="{{ route('brands.delete', ['id' => $brand->id]) }}" class="btn btn-outline btn-remove">
-                                                <i class='btn-icon bx bx-trash-alt' ></i>
+                                            <a href="{{ route('brands.delete', ['brand' => $brand]) }}"
+                                                class="btn btn-outline btn-remove">
+                                                <i class='btn-icon bx bx-trash-alt'></i>
                                             </a>
                                         </td>
                                     </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
-
                 </div>
-                <div class="col l-6 md-12 c-12">
-                    <div class="box info-general">
-                        <div class="box-header">
-                            Thể loại
-                            <a href="{{ route('products.option') }}" class="btn-function btn-function__add" data-bs-toggle="modal" data-bs-target="#modal-addGenre">
-                                <i class='btn-function-icon btn-function__add-icon bx bx-plus'></i>
-                                <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
-                                Thêm
-                            </a>
-                        </div>
-                        <div class="box-body">
-                            <table class="main-option-table">
-                                <thead>
-                                    <tr>
-                                        <th>Mã thể loại</th>
-                                        <th>Tên thể loại</th>
-                                        <th data-sortable="false"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
+
+            </div>
+            <div class="col l-6 md-12 c-12">
+                <div class="box info-general">
+                    <div class="box-header">
+                        Thể loại
+                        <a href="javascript:void(0)" class="btn-function btn-function__add" data-bs-toggle="modal"
+                            data-bs-target="#modal-addCategory">
+                            <i class='btn-function-icon btn-function__add-icon bx bx-plus'></i>
+                            <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
+                            Thêm
+                        </a>
+                    </div>
+                    <div class="box-body">
+                        <table class="main-option-table">
+                            <thead>
+                                <tr>
+                                    <th>Mã thể loại</th>
+                                    <th>Tên thể loại</th>
+                                    <th data-sortable="false"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{-- <tr>
                                         <td>TL0000016</td>
                                         <td>
                                             Giáo khoa
@@ -322,33 +241,50 @@
                                             </a>
 
                                         </td>
-                                    </tr>
-                                    @foreach (\App\Models\Category as $category)
+                                    </tr> --}}
+                                @foreach (\App\Models\Category::all() as $category)
                                     <tr>
-                                        <td>{{ $category->id }}</td>
+                                        <td>{{ 'TL' . $category->id }}</td>
                                         <td>
                                             {{ $category->name }}
                                         </td>
                                         <td>
-                                            <a href="{{ route('categories.edit', ['id' => $categorie->id]) }}" class="btn btn-outline btn-edit">
-                                                <i class='btn-icon bx bx-edit-alt' ></i>
+                                            <a href="javascript:void(0)" class="btn btn-outline btn-edit"
+                                                data-bs-toggle="modal" data-bs-target="#modal-editCategory">
+                                                <i class='btn-icon bx bx-edit-alt'></i>
                                             </a>
-                                            <a href="{{ route('categories.delete', ['id' => $categorie->id]) }}" class="btn btn-outline btn-remove">
-                                                <i class='btn-icon bx bx-trash-alt' ></i>
+                                            <a href="{{ route('categories.delete', ['category' => $category]) }}"
+                                                class="btn btn-outline btn-remove">
+                                                <i class='btn-icon bx bx-trash-alt'></i>
                                             </a>
                                         </td>
                                     </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                    {{-- Modal edit Categpry --}}
+                                    @include('includes.modal_input', [
+                                    'modal_name' => 'editCategory',
+                                    'form_action' => route('categories.edit', ['category' => $category]),
+                                    'form_method' => 'post',
+                                    'modal_title' => 'Sửa thể loại',
+                                    'label_title' => 'Tên thể loại',
+                                    'required' => 'required',
+                                    'disabled' => '',
+                                    'input_type' => 'text',
+                                    'input_id' => 'category_name',
+                                    'input_name' => 'category_name',
+                                    'input_value' => $category->name,
+                                    'message' => '',
+                                    ])
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
-
                 </div>
-                <!-- END PRODUCT TABLE -->
 
             </div>
-            {{-- END FORM --}}
+            <!-- END PRODUCT TABLE -->
+
+        </div>
+        {{-- END FORM --}}
         {{-- </form> --}}
     </div>
 @endsection
@@ -358,7 +294,7 @@
     {{-- Modal add Brand --}}
     @include('includes.modal_input', [
     'modal_name' => 'addBrand',
-    'form_action' => '',
+    'form_action' => route('brands.create'),
     'form_method' => 'post',
     'modal_title' => 'Thêm nhãn hiệu',
     'label_title' => 'Tên nhãn hiệu mới',
@@ -368,31 +304,13 @@
     'input_id' => 'brand_name',
     'input_name' => 'brand_name',
     'input_value' => '',
-    'path' => route('brands.add'),
     'message' => '',
     ])
 
-    {{-- Modal add ProductType --}}
+    {{-- Modal add Category --}}
     @include('includes.modal_input', [
-    'modal_name' => 'addProductType',
-    'form_action' => '',
-    'form_method' => 'post',
-    'modal_title' => 'Thêm loại sản phẩm',
-    'label_title' => 'Tên loại sản phẩm mới',
-    'required' => 'required',
-    'disabled' => '',
-    'input_type' => 'text',
-    'input_id' => 'product_type_name',
-    'input_name' => 'product_type_name',
-    'input_value' => '',
-    'path' => route('product_types.add'),
-    'message' => '',
-    ])
-
-    {{-- Modal add Categpry --}}
-    @include('includes.modal_input', [
-    'modal_name' => 'addCategpry',
-    'form_action' => '',
+    'modal_name' => 'addCategory',
+    'form_action' => route('categories.create'),
     'form_method' => 'post',
     'modal_title' => 'Thêm thể loại',
     'label_title' => 'Tên thể loại mới',
@@ -402,67 +320,19 @@
     'input_id' => 'category_name',
     'input_name' => 'category_name',
     'input_value' => '',
-    'path' => route('categories.add'),
     'message' => '',
     ])
 
     @php
-        $brand_name = 'hello';
-        $product_type_name = 'Sách';
-        $category_name = 'hello';
+    $brand_name = 'hello';
+    $product_type_name = 'Sách';
+    $category_name = 'hello';
     @endphp
 
     <!-- Modal -->
-    {{-- Modal edit Brand --}}
-    @include('includes.modal_input', [
-    'modal_name' => 'editBrand',
-    'form_action' => '',
-    'form_method' => 'post',
-    'modal_title' => 'Thêm nhãn hiệu',
-    'label_title' => 'Tên nhãn hiệu mới',
-    'required' => 'required',
-    'disabled' => '',
-    'input_type' => 'text',
-    'input_id' => 'brand_name',
-    'input_name' => 'brand_name',
-    'input_value' => $brand_name,
-    'path' => route('brands.add', ['id' => $brand->id]),
-    'message' => '',
-    ])
 
-    {{-- Modal edit ProductType --}}
-    @include('includes.modal_input', [
-    'modal_name' => 'editProductType',
-    'form_action' => '',
-    'form_method' => 'post',
-    'modal_title' => 'Thêm loại sản phẩm',
-    'label_title' => 'Tên loại sản phẩm mới',
-    'required' => 'required',
-    'disabled' => '',
-    'input_type' => 'text',
-    'input_id' => 'product_type_name',
-    'input_name' => 'product_type_name',
-    'input_value' => $product_type_name,
-    'path' => route('product_types.add', ['id' => $product_type->id]),
-    'message' => '',
-    ])
 
-    {{-- Modal edit Categpry --}}
-    @include('includes.modal_input', [
-    'modal_name' => 'editCategpry',
-    'form_action' => '',
-    'form_method' => 'post',
-    'modal_title' => 'Thêm thể loại',
-    'label_title' => 'Tên thể loại mới',
-    'required' => 'required',
-    'disabled' => '',
-    'input_type' => 'text',
-    'input_id' => 'category_name',
-    'input_name' => 'category_name',
-    'input_value' => $category_name,
-    'path' => route('categories.add', ['id' => $category->id]),
-    'message' => '',
-    ])
+
 @endsection
 
 @section('js')
