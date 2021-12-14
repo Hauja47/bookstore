@@ -216,6 +216,13 @@
     <!-- JSTable -->
     <script src="{{ asset('dist/jstable.min.js') }}"></script>
 
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('dist/sweetalert2.all.min.js') }}"></script>
+
     <!-- APP JS -->
     <script>
         // truyền biến $theme sang javascript
