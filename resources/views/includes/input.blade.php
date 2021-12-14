@@ -65,7 +65,7 @@
         @endif
     @endif
 
-    @error('{{ $input_name }}')
+    @error($input_name)
         <p class="error-msg">{{ $message }}</p>
         {{-- <p class="error-msg">Trường này không được trống</p> --}}
     @enderror
