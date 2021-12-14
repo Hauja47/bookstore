@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Provider;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProviderController extends Controller
 {
@@ -25,6 +26,7 @@ class ProviderController extends Controller
     public function create()
     {
         //
+        return view('main.providers.add');
     }
 
     /**
@@ -63,6 +65,8 @@ class ProviderController extends Controller
     public function edit(Provider $provider)
     {
         //
+        return view('main.providers.edit', ['provider' => $provider]);
+
     }
 
     /**
@@ -86,5 +90,8 @@ class ProviderController extends Controller
     public function destroy(Provider $provider)
     {
         //
+        $provider->delete();
+
+        return back();
     }
 }

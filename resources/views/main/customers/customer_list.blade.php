@@ -9,7 +9,7 @@
 'open_product' => '',
 'active_product' => '',
 'active_invoice' => '',
-'active_supplier' => '',
+'active_provider' => '',
 'active_customer' => 'active',
 'open_budget' => '',
 'active_expenditure' => '',
@@ -39,7 +39,7 @@
             </a>
         </div>
         <div class="col l-6 md-6 c-6">
-            <a href="{{ route('customers.add') }}" class="btn-function btn-function__add">
+            <a href="{{ route('customers.create') }}" class="btn-function btn-function__add">
                 <i class='btn-function-icon btn-function__add-icon bx bx-plus' ></i>
                 <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
                 Thêm khách hàng
@@ -181,6 +181,31 @@
 
                                 </td>
                             </tr>
+                            @foreach (\App\Models\Provider::all() as $provider)
+                            <tr>
+                                <td>KH0000016</td>
+                                <td>
+                                    nguyễn trùng khánh
+                                </td>
+                                <td>0123456789</td>
+                                <td>
+                                    khanhnguyen@gmail.com
+                                </td>
+                                <td>
+                                    Bù Đăng, Bình Phước
+                                </td>
+                                <td>123.000 đ</td>
+                                <td>
+                                    <a href="{{ route('customers.edit', ['id' => 1]) }}" class="btn btn-outline btn-edit">
+                                        <i class='btn-icon bx bx-edit-alt' ></i>
+                                    </a>
+                                    <a href="" class="btn btn-outline btn-remove">
+                                        <i class='btn-icon bx bx-trash-alt' ></i>
+                                    </a>
+
+                                </td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 
@@ -75,7 +75,7 @@ Route::prefix('refund')->middleware('auth')->group(function () {
     })->name('refunds.index');
 });
 
-// Products
+// Providers
 Route::prefix('product')->middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('main.products.product_list');
@@ -83,15 +83,15 @@ Route::prefix('product')->middleware('auth')->group(function () {
 
 
     // Hiển thị form create
-    Route::get('/create', [ProductController::class, 'create'])->name('products.create');
+    Route::get('/create', [ProviderController::class, 'create'])->name('products.create');
     // Xử lý create
-    Route::post('/create', [ProductController::class, 'store']);
+    Route::post('/create', [ProviderController::class, 'store']);
     // Hiển thị form edit
-    Route::get('/edit/{product}', [ProductController::class, 'edit'])->name('products.edit');
+    Route::get('/edit/{product}', [ProviderController::class, 'edit'])->name('products.edit');
     // Xử lý edit
-    Route::post('/edit/{product}', [ProductController::class, 'update']);
+    Route::post('/edit/{product}', [ProviderController::class, 'update']);
     // Xử lý delete
-    Route::get('/delete/{product}', [ProductController::class, 'destroy'])->name('products.delete');
+    Route::get('/delete/{product}', [ProviderController::class, 'destroy'])->name('products.delete');
 
     Route::prefix('/option')->group(function () {
         Route::get('/', function () {
@@ -133,19 +133,23 @@ Route::prefix('invoice')->middleware('auth')->group(function () {
     })->name('invoices.index');
 });
 
-// Suppliers
-Route::prefix('supplier')->middleware('auth')->group(function () {
+// Providers
+Route::prefix('provider')->middleware('auth')->group(function () {
     Route::get('/', function () {
-        return view('main.suppliers.supplier_list');
-    })->name('suppliers.index');
+        return view('main.providers.provider_list');
+    })->name('providers.index');
 
-    Route::get('/create', function () {
-        return view('main.suppliers.create');
-    })->name('suppliers.create');
 
-    Route::get('/edit/{id}', function () {
-        return view('main.suppliers.edit');
-    })->name('suppliers.edit');
+    // Hiển thị form create
+    Route::get('/create', [ProviderController::class, 'create'])->name('providers.create');
+    // Xử lý create
+    Route::post('/create', [ProviderController::class, 'store']);
+    // Hiển thị form edit
+    Route::get('/edit/{provider}', [ProviderController::class, 'edit'])->name('providers.edit');
+    // Xử lý edit
+    Route::post('/edit/{provider}', [ProviderController::class, 'update']);
+    // Xử lý delete
+    Route::get('/delete/{provider}', [ProviderController::class, 'destroy'])->name('providers.delete');
 });
 
 // Customers

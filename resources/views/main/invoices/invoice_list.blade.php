@@ -9,7 +9,7 @@
 'open_product' => 'sidebar__menu-dropdown-icon--open',
 'active_product' => '',
 'active_invoice' => 'active',
-'active_supplier' => '',
+'active_provider' => '',
 'active_customer' => '',
 'open_budget' => '',
 'active_expenditure' => '',

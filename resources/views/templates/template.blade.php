@@ -95,8 +95,8 @@
                                 Đơn nhập kho
                             </a>
                         </li>
-                        <li class="sidebar__sub-menu-item {{ $active_supplier }}">
-                            <a href="{{ route('suppliers.index') }}" class="sidebar__sub-menu-link">
+                        <li class="sidebar__sub-menu-item {{ $active_provider }}">
+                            <a href="{{ route('providers.index') }}" class="sidebar__sub-menu-link">
                                 Nhà cung cấp
                             </a>
                         </li>

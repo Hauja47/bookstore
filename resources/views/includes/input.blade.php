@@ -56,7 +56,7 @@
         {{-- year --}}
         @elseif (str_contains($input_id, 'year'))
             <input {{ $disabled }} type="number" placeholder="" value="{{ old($input_name, $input_value) }}"
-                name="{{ $input_name }}" id="{{ $input_id }}" class="input-text" min="1900" step="1"
+                name="{{ $input_name }}" id="{{ $input_id }}" class="input-text" min="1901" step="1"
                 max="{{ date('Y') }}">
         {{-- price --}}
         @else

@@ -9,7 +9,7 @@
 'open_product' => 'sidebar__menu-dropdown-icon--open',
 'active_product' => '',
 'active_invoice' => '',
-'active_supplier' => 'active',
+'active_provider' => 'active',
 'active_customer' => '',
 'open_budget' => '',
 'active_expenditure' => '',
@@ -25,7 +25,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/list.css') }}">
-<link rel="stylesheet" href="{{ asset('css/supplier_list.css') }}">
+<link rel="stylesheet" href="{{ asset('css/provider_list.css') }}">
 @endsection
 
 @section('main-content')
@@ -39,7 +39,7 @@
             </a>
         </div>
         <div class="col l-6 md-6 c-6">
-            <a href="{{ route('suppliers.add') }}" class="btn-function btn-function__add">
+            <a href="{{ route('providers.create') }}" class="btn-function btn-function__add">
                 <i class='btn-function-icon btn-function__add-icon bx bx-plus' ></i>
                 <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
                 Thêm nhà cung cấp
@@ -49,11 +49,11 @@
     <!-- END  -->
 
     <div class="row">
-        <!-- SUPPLIER TABLE -->
+        <!-- provider TABLE -->
         <div class="col l-12 md-12 c-12">
             <div class="box">
                 <div class="box-body">
-                    <table class="main-supplier-table">
+                    <table class="main-provider-table">
                         <thead>
                             <tr>
                                 <th>Mã nhà cung cấp</th>
@@ -65,7 +65,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            {{-- <tr>
                                 <td>KH0000016</td>
                                 <td>
                                     nguyễn trùng khánh
@@ -78,7 +78,7 @@
                                     Bù Đăng, Bình Phước
                                 </td>
                                 <td>
-                                    <a href="{{ route('suppliers.edit', ['id' => 1]) }}" class="btn btn-outline btn-edit">
+                                    <a href="{{ route('providers.edit', ['id' => 1]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
                                     <a href="" class="btn btn-outline btn-remove">
@@ -86,13 +86,33 @@
                                     </a>
 
                                 </td>
+                            </tr> --}}
+                            @foreach (\App\Models\Provider::all() as $provider)
+                            <tr>
+                                <td>{{ 'NCC'.$provider->id }}</td>
+                                <td>
+                                    {{ $provider->name }}
+                                </td>
+                                <td>{{ $provider->phone_number }}</td>
+                                <td>{{ $provider->email }}</td>
+                                <td>
+                                    {{ $provider->address }}
+                                </td>
+                                    <a href="{{ route('providers.edit', ['provider' => $provider]) }}" class="btn btn-outline btn-edit">
+                                        <i class='btn-icon bx bx-edit-alt' ></i>
+                                    </a>
+                                    <a href="{{ route('providers.delete', ['provider' => $provider]) }}" class="btn btn-outline btn-remove">
+                                        <i class='btn-icon bx bx-trash-alt' ></i>
+                                    </a>
+                                </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        <!-- END SUPPLIER TABLE -->
+        <!-- END provider TABLE -->
 
     </div>
 </div>
