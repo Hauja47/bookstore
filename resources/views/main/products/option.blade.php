@@ -139,13 +139,13 @@
                                     </tr> --}}
                                 @foreach (\App\Models\Brand::all() as $brand)
                                     <tr>
-                                        <td>{{ 'NH' . $brand->id }}</td>
+                                        <td>{{ 'NH'.$brand->id }}</td>
                                         <td>
                                             {{ $brand->name }}
                                         </td>
                                         <td>
                                             <a href="javascript:void(0)" class="btn btn-outline btn-edit"
-                                                data-bs-toggle="modal" data-bs-target="#modal-editBrand">
+                                                data-bs-toggle="modal" data-bs-target="#modal-editBrand-{{ $brand->id }}">
                                                 <i class='btn-icon bx bx-edit-alt'></i>
                                             </a>
                                             <a href="{{ route('brands.delete', ['brand' => $brand]) }}"
@@ -154,6 +154,21 @@
                                             </a>
                                         </td>
                                     </tr>
+                                    {{-- Modal edit Categpry --}}
+                                    @include('includes.modal_input', [
+                                    'modal_name' => 'editBrand-'.$brand->id,
+                                    'form_action' => route('brands.edit', ['brand' => $brand]),
+                                    'form_method' => 'post',
+                                    'modal_title' => 'Sửa nhãn hiệu/nhà xuất bản',
+                                    'label_title' => 'Tên nhãn hiệu/nhà xuất bản',
+                                    'required' => 'required',
+                                    'disabled' => '',
+                                    'input_type' => 'text',
+                                    'input_id' => 'brand_name',
+                                    'input_name' => 'brand_name',
+                                    'input_value' => $brand->name,
+                                    'message' => '',
+                                    ])
                                 @endforeach
                             </tbody>
                         </table>
@@ -244,13 +259,13 @@
                                     </tr> --}}
                                 @foreach (\App\Models\Category::all() as $category)
                                     <tr>
-                                        <td>{{ 'TL' . $category->id }}</td>
+                                        <td>{{ 'TL'.$category->id }}</td>
                                         <td>
                                             {{ $category->name }}
                                         </td>
                                         <td>
                                             <a href="javascript:void(0)" class="btn btn-outline btn-edit"
-                                                data-bs-toggle="modal" data-bs-target="#modal-editCategory">
+                                                data-bs-toggle="modal" data-bs-target="#modal-editCategory-{{ $category->id }}">
                                                 <i class='btn-icon bx bx-edit-alt'></i>
                                             </a>
                                             <a href="{{ route('categories.delete', ['category' => $category]) }}"
@@ -261,7 +276,7 @@
                                     </tr>
                                     {{-- Modal edit Categpry --}}
                                     @include('includes.modal_input', [
-                                    'modal_name' => 'editCategory',
+                                    'modal_name' => 'editCategory-'.$category->id,
                                     'form_action' => route('categories.edit', ['category' => $category]),
                                     'form_method' => 'post',
                                     'modal_title' => 'Sửa thể loại',
@@ -322,16 +337,6 @@
     'input_value' => '',
     'message' => '',
     ])
-
-    @php
-    $brand_name = 'hello';
-    $product_type_name = 'Sách';
-    $category_name = 'hello';
-    @endphp
-
-    <!-- Modal -->
-
-
 
 @endsection
 
