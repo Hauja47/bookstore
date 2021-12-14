@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\Brand;
 use App\Models\Product;
 use App\Models\ProductType;
+use App\Models\Provider;
 use App\Models\Stationery;
 use Illuminate\Database\Seeder;
 
@@ -32,40 +33,28 @@ class DatabaseSeeder extends Seeder
             ])->id
         ]);
 
+        Provider::factory(10)->create();
+
         $books = Book::factory(10)->create();
 
         foreach ($books as $book)
         {
-            // $product = Product::factory()->create();
-
             $book->product()->create([
                 'name' => 'Test '.$book->id,
-                // 'product_type_id' => ProductType::factory()->create()->id,
                 'brand_id' => Brand::factory()->create()->id,
                 'version' => '100',
             ]);
-
-            // $product = Product::factory()->create();
-            // $book->product()->create(compact('product'));
         }
 
         $stationeries = Stationery::factory(10)->create();
 
         foreach ($stationeries as $stationery)
         {
-            // $product = Product::factory()->create();
-
             $stationery->product()->create([
                 'name' => 'Test '.$stationery->id,
-                // 'product_type_id' => ProductType::factory()->create()->id,
                 'brand_id' => Brand::factory()->create()->id,
                 'version' => '100',
             ]);
-
-            // $product = Product::factory()->create();
-            // $book->product()->create(compact('product'));
         }
-
-        // Product::factory(20)->create();
     }
 }

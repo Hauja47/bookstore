@@ -14,7 +14,10 @@ class ProviderFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->company(),
+            'phone_number' => $this->faker->phoneNumber(),
+            'email' => $this->faker->email(),
+            'address' => $this->faker->address()
         ];
     }
 }
