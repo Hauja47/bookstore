@@ -66,7 +66,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            {{-- <tr>
                                 <td>KH0000016</td>
                                 <td>
                                     nguyễn trùng khánh
@@ -180,23 +180,21 @@
                                     </a>
 
                                 </td>
-                            </tr>
-                            @foreach (\App\Models\Provider::all() as $provider)
+                            </tr> --}}
+                            @foreach (\App\Models\Customer::all() as $customer)
                             <tr>
-                                <td>KH0000016</td>
+                                <td>{{ 'KH'.$customer->id }}</td>
                                 <td>
-                                    nguyễn trùng khánh
+                                    {{ $customer->full_name }}
                                 </td>
-                                <td>0123456789</td>
+                                <td>{{ $customer->phone_number }}</td>
+                                <td>{{ $customer->email }}</td>
                                 <td>
-                                    khanhnguyen@gmail.com
+                                    {{ $customer->address }}
                                 </td>
+                                <td>{{ $customer->debt.'đ' }}</td>
                                 <td>
-                                    Bù Đăng, Bình Phước
-                                </td>
-                                <td>123.000 đ</td>
-                                <td>
-                                    <a href="{{ route('customers.edit', ['id' => 1]) }}" class="btn btn-outline btn-edit">
+                                    <a href="{{ route('customers.edit', ['customer' => $customer]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
                                     <a href="" class="btn btn-outline btn-remove">

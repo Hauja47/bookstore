@@ -1,6 +1,6 @@
 @extends('templates.template', [
-'title'=> 'Thêm khách hàng',
-'main_header'=> 'Thêm khách hàng',
+'title'=> 'Sửa khách hàng',
+'main_header'=> 'Sửa khách hàng',
 
 'active_dashboard' => '',
 'open_order' => '',
@@ -30,7 +30,7 @@
 
 @section('main-content')
     <div class="main-content">
-        <form action="" method="post" id="form-main">
+        <form {{ route('customers.edit', ['customer'=> $customer]) }}" method="post" id="form-main" enctype="multipart/form-data">
             @csrf
             <!-- FUNCTION BUTTON -->
             <div class="row main-function">
@@ -46,7 +46,7 @@
                         <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
                         Thoát
                     </a>
-                    <button type="submit" href="{{ route('customers.index') }}" class="btn-function btn-function__save">
+                    <button type="submit" class="btn-function btn-function__save">
                         {{-- <i class='btn-function-icon btn-function__add-icon bx bx-plus' ></i> --}}
                         <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
                         Lưu
@@ -56,12 +56,12 @@
             <!-- END  -->
 
             @php
-                $customer_code = 'KH01';
-                $customer_name = 'Nguyễn Duy Trì';
-                $phone = '0345678912';
-                $email = 'giadinh@company.com';
-                $address = 'Quận 4, Thành phố HCM';
-                $debt = 0;
+                $id = $customer->id;
+                $full_name = $customer->full_name;
+                $phone_number = $customer->phone_number;
+                $email = $customer->email;
+                $address = $customer->address;
+                $debt = $customer->debt;
             @endphp
 
             {{-- FORM --}}
@@ -80,9 +80,9 @@
                                     'required' => 'required',
                                     'disabled' => 'disabled',
                                     'input_type' => 'text',
-                                    'input_id' => 'customer_code',
-                                    'input_name' => 'MaKH',
-                                    'input_value' => $customer_code,
+                                    'input_id' => 'id',
+                                    'input_name' => 'id',
+                                    'input_value' => $id,
                                     'message' => '',
                                     ])
                                 </div>
@@ -92,9 +92,9 @@
                                     'required' => 'required',
                                     'disabled' => '',
                                     'input_type' => 'text',
-                                    'input_id' => 'customer_name',
-                                    'input_name' => 'HoTen',
-                                    'input_value' => $customer_name,
+                                    'input_id' => 'full_name',
+                                    'input_name' => 'full_name',
+                                    'input_value' => $full_name,
                                     'message' => '',
                                     ])
                                 </div>
@@ -104,9 +104,9 @@
                                     'required' => 'required',
                                     'disabled' => '',
                                     'input_type' => 'tel',
-                                    'input_id' => 'phone',
-                                    'input_name' => 'SDT',
-                                    'input_value' => $phone,
+                                    'input_id' => 'phone_number',
+                                    'input_name' => 'phone_number',
+                                    'input_value' => $phone_number,
                                     'message' => '',
                                     ])
                                 </div>
@@ -140,7 +140,7 @@
                                     'required' => 'required',
                                     'disabled' => 'disabled',
                                     'input_type' => 'number',
-                                    'input_id' => 'email',
+                                    'input_id' => 'debt',
                                     'input_name' => 'debt',
                                     'input_value' => $debt,
                                     'message' => '',

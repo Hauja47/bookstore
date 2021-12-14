@@ -25,6 +25,7 @@ class CustomerController extends Controller
     public function create()
     {
         //
+        return view('main.customers.add');
     }
 
     /**
@@ -64,6 +65,8 @@ class CustomerController extends Controller
     public function edit(Customer $customer)
     {
         //
+        return view('main.customers.edit', ['customer' => $customer]);
+
     }
 
     /**
@@ -87,5 +90,8 @@ class CustomerController extends Controller
     public function destroy(Customer $customer)
     {
         //
+        $customer->delete();
+
+        return back();
     }
 }
