@@ -65,7 +65,6 @@ class ProductController extends Controller
 
             if ($book)
             {
-                // ddd(request()->file('photo')->store('photos'));
                 $book->product()->save(new Product([
                     'name' => $attributes['product_name'],
                     'photo' => request()->file('photo')->store('photos'),
@@ -73,9 +72,9 @@ class ProductController extends Controller
                     'version' => $attributes['version'],
                 ]));
 
-                Alert::success('Thành công', 'Thêm sản phẩm mới thành công');
+                // Alert::success('Thành công', );
 
-                return redirect(route('products.index'));
+                return redirect(route('products.index'))->withSuccess('Thêm sản phẩm mới thành công');
             }
             else
             {
