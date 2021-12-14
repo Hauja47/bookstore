@@ -187,8 +187,11 @@
 
                                         <select class="header__search-select" name="productable_type" id="productable_type">
                                             <option hidden value=""></option>
-                                            <option value="Sách">Sách</option>
-                                            <option value="Văn phòng phẩm">Văn phòng phẩm</option>
+                                            <option value="Sách" {{ old(request('productable_type')) == "Sách" ? 'selected' : ''}}>Sách</option>
+                                            <option value="Văn phòng phẩm" {{ old(request('productable_type')) == "Văn phòng phẩm" ? 'selected' : ''}}>Văn phòng phẩm</option>
+
+                                            {{-- <option value="Sách">Sách</option>
+                                            <option value="Văn phòng phẩm">Văn phòng phẩm</option> --}}
                                         </select>
                                     </div>
                                 </div>
@@ -240,7 +243,7 @@
                                         'label_title' => 'Năm xuất bản',
                                         'required' => 'required',
                                         'disabled' => '',
-                                        'input_type' => 'text',
+                                        'input_type' => 'number',
                                         'input_id' => 'publish_year',
                                         'input_name' => 'publish_year',
                                         'input_value' => '',
