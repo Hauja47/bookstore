@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\ProviderController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\EmployeeController;
 
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
@@ -75,7 +78,7 @@ Route::prefix('refund')->middleware('auth')->group(function () {
     })->name('refunds.index');
 });
 
-// Providers
+// Prooducts
 Route::prefix('product')->middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('main.products.product_list');
@@ -83,15 +86,15 @@ Route::prefix('product')->middleware('auth')->group(function () {
 
 
     // Hiển thị form create
-    Route::get('/create', [ProviderController::class, 'create'])->name('products.create');
+    Route::get('/create', [ProductController::class, 'create'])->name('products.create');
     // Xử lý create
-    Route::post('/create', [ProviderController::class, 'store']);
+    Route::post('/create', [ProductController::class, 'store']);
     // Hiển thị form edit
-    Route::get('/edit/{product}', [ProviderController::class, 'edit'])->name('products.edit');
+    Route::get('/edit/{product}', [ProductController::class, 'edit'])->name('products.edit');
     // Xử lý edit
-    Route::post('/edit/{product}', [ProviderController::class, 'update']);
+    Route::post('/edit/{product}', [ProductController::class, 'update']);
     // Xử lý delete
-    Route::get('/delete/{product}', [ProviderController::class, 'destroy'])->name('products.delete');
+    Route::get('/delete/{product}', [ProductController::class, 'destroy'])->name('products.delete');
 
     Route::prefix('/option')->group(function () {
         Route::get('/', function () {
@@ -139,7 +142,6 @@ Route::prefix('provider')->middleware('auth')->group(function () {
         return view('main.providers.provider_list');
     })->name('providers.index');
 
-
     // Hiển thị form create
     Route::get('/create', [ProviderController::class, 'create'])->name('providers.create');
     // Xử lý create
@@ -158,13 +160,16 @@ Route::prefix('customer')->middleware('auth')->group(function () {
         return view('main.customers.customer_list');
     })->name('customers.index');
 
-    Route::get('/create', function () {
-        return view('main.customers.create');
-    })->name('customers.create');
-
-    Route::get('/edit/{id}', function () {
-        return view('main.customers.edit');
-    })->name('customers.edit');
+    // Hiển thị form create
+    Route::get('/create', [CustomerController::class, 'create'])->name('customers.create');
+    // Xử lý create
+    Route::post('/create', [CustomerController::class, 'store']);
+    // Hiển thị form edit
+    Route::get('/edit/{customer}', [CustomerController::class, 'edit'])->name('customers.edit');
+    // Xử lý edit
+    Route::post('/edit/{customer}', [CustomerController::class, 'update']);
+    // Xử lý delete
+    Route::get('/delete/{customer}', [CustomerController::class, 'destroy'])->name('customers.delete');
 });
 
 // Budgets
