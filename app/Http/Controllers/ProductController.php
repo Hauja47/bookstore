@@ -53,7 +53,7 @@ class ProductController extends Controller
         {
             $attributes = array_merge($attributes, request()->validate([
                 'author' => 'required',
-                'publish_year' => 'required|numeric',
+                'publish_year' => 'required|numeric|min:1901|max:2155',
                 'category_id' => 'required'
             ]));
 
@@ -65,9 +65,15 @@ class ProductController extends Controller
 
             if ($book)
             {
+                if ($request->file('photo') == null) {
+                    $file = null;
+                } else {
+                   $file = $request->file('photo')->store('images');
+                }
+
                 $book->product()->save(new Product([
                     'name' => $attributes['product_name'],
-                    'photo' => request()->file('photo')->store('photos'),
+                    'photo' => $file,
                     'brand_id' => $attributes['brand_id'],
                     'version' => $attributes['version'],
                 ]));
@@ -78,8 +84,12 @@ class ProductController extends Controller
             }
             else
             {
-                Alert::error('Thất bại', 'Thêm sản phẩm mới thất bại');
+                return back()->withInput()->withErrors('Thất bại', 'Thêm sản phẩm mới thất bại');
             }
+        }
+        else if (strcmp(request('productable_type'), "Văn phòng phẩm") == 0)
+        {
+
         }
     }
 
