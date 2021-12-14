@@ -187,6 +187,9 @@ return [
         'publish_year' => 'Năm xuất bản',
         'photo' => 'Ảnh',
         'brand_id' => 'Nhãn hiệu',
-        'productable_type' => 'Loại sản phẩm'
+        'productable_type' => 'Loại sản phẩm',
+        'brand_name' => 'Tên nhãn hiệu/nhà xuất bản',
+        'category_name' => 'Tên thể loại',
+
     ],
 ];
