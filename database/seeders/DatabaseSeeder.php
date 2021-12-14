@@ -39,27 +39,29 @@ class DatabaseSeeder extends Seeder
 
         Provider::factory(10)->create();
         PaymentType::factory(10)->create();
-        PaymentMethod::factory(10);
+        PaymentMethod::factory(10)->create();
+        Brand::factory(15)->create();
 
         $customers = Customer::factory(10)->create();
+        $employees = Employee::factory(10)->create();
+
         foreach ($customers as $customer)
         {
             $customer->payments()->create([
-                'payment_type_id' => PaymentType::factory()->create()->id,
-                'payment_method_id' => PaymentMethod::factory()->create()->id,
-                'employee_id' => Employee::factory()->create()->id,
+                'payment_type_id' => PaymentType::all()->random()->id,
+                'payment_method_id' => PaymentMethod::all()->random()->id,
+                'employee_id' => Employee::all()->random()->id,
                 'money' => rand(0, 100) * 1000,
                 'note' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde nihil quo quidem aperiam, praesentium minima numquam excepturi tempore debitis vel esse hic incidunt laborum mollitia illum quod cupiditate. Provident, natus!'
             ]);
         }
 
-        $customers = Customer::factory(10)->create();
-        foreach ($customers as $customer)
+        foreach ($employees as $employee)
         {
-            $customer->payments()->create([
-                'payment_type_id' => PaymentType::factory()->create()->id,
-                'payment_method_id' => PaymentMethod::factory()->create()->id,
-                'employee_id' => Employee::factory()->create()->id,
+            $employee->paymentReceiver()->create([
+                'payment_type_id' => PaymentType::all()->random()->id,
+                'payment_method_id' => PaymentMethod::all()->random()->id,
+                'employee_id' => Employee::all()->random()->id,
                 'money' => rand(0, 100) * 1000,
                 'note' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde nihil quo quidem aperiam, praesentium minima numquam excepturi tempore debitis vel esse hic incidunt laborum mollitia illum quod cupiditate. Provident, natus!'
             ]);
@@ -71,7 +73,7 @@ class DatabaseSeeder extends Seeder
         {
             $book->product()->create([
                 'name' => 'Test '.$book->id,
-                'brand_id' => Brand::factory()->create()->id,
+                'brand_id' => Brand::all()->random()->id,
                 'version' => '100',
             ]);
         }
@@ -82,7 +84,7 @@ class DatabaseSeeder extends Seeder
         {
             $stationery->product()->create([
                 'name' => 'Test '.$stationery->id,
-                'brand_id' => Brand::factory()->create()->id,
+                'brand_id' => Brand::all()->random()->id,
                 'version' => '100',
             ]);
         }
