@@ -11,12 +11,14 @@ class Employee extends Model
 
     protected $fillable = [
         'full_name',
+        'photo',
         'phone_number',
         'email',
         'address',
         'is_working',
         'salary',
-        'user_id'
+        'user_id',
+        'created_at'
     ];
 
     public function goodsReceipts()
