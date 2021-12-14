@@ -51,6 +51,9 @@ class AppServiceProvider extends ServiceProvider
         Relation::morphMap([
             'Sách' => 'App\Models\Book',
             'Văn phòng phẩm' => 'App\Models\Stationery',
+            'Nhân viên' => 'App\Models\Employee',
+            'Nhà cung cấp' => 'App\Models\Provider',
+            'Khách hàng' => 'App\Models\Customer'
         ]);
     }
 }
