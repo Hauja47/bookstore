@@ -3,7 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\GoodsReceipt;
+use App\Models\GoodsReceiptDetail;
+use App\Models\Invoice;
+use App\Models\InvoiceDetail;
 use App\Models\Product;
+use App\Models\ReturnGoodsReceiptDetail;
+use App\Models\Stationery;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\File;
@@ -39,8 +45,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // ddd(request()->file('photo'));
-
         $attributes = request()->validate([
             'product_name' => 'required',
             'version' => 'required',
@@ -49,7 +53,13 @@ class ProductController extends Controller
             'productable_type' => 'required'
         ]);
 
-        if (strcmp(request('productable_type'), "Sách") == 0)
+        if ($request->file('photo') == null) {
+            $file = null;
+        } else {
+            $file = $request->file('photo')->store('images');
+        }
+
+        if (request('productable_type') == "Sách")
         {
             $attributes = array_merge($attributes, request()->validate([
                 'author' => 'required',
@@ -57,39 +67,41 @@ class ProductController extends Controller
                 'category_id' => 'required'
             ]));
 
-            $book = Book::create([
+            $product = Book::create([
                 'category_id' => request('category_id'),
                 'author' => $attributes['author'],
                 'publish_year' => $attributes['publish_year']
             ]);
-
-            if ($book)
-            {
-                if ($request->file('photo') == null) {
-                    $file = null;
-                } else {
-                   $file = $request->file('photo')->store('images');
-                }
-
-                $book->product()->save(new Product([
-                    'name' => $attributes['product_name'],
-                    'photo' => $file,
-                    'brand_id' => $attributes['brand_id'],
-                    'version' => $attributes['version'],
-                ]));
-
-                // Alert::success('Thành công', );
-
-                return redirect(route('products.index'))->withSuccess('Thêm sản phẩm mới thành công');
-            }
-            else
-            {
-                return back()->withInput()->withErrors('Thất bại', 'Thêm sản phẩm mới thất bại');
-            }
         }
-        else if (strcmp(request('productable_type'), "Văn phòng phẩm") == 0)
+        else if (request('productable_type') == "Văn phòng phẩm")
         {
+            $attributes = array_merge($attributes, request()->validate([
+                'material' => 'required',
+                'color' => 'required',
+                'origin' => 'required'
+            ]));
 
+            $product = Stationery::create([
+                'material' => $attributes['material'],
+                'color' => $attributes['color'],
+                'origin' => $attributes['origin']
+            ]);
+        }
+
+        if ($product)
+        {
+            $product->product()->create([
+                'name' => $attributes['product_name'],
+                'photo' => $file,
+                'brand_id' => $attributes['brand_id'],
+                'version' => $attributes['version'],
+            ]);
+
+            return redirect(route('products.index'))->withSuccess('Thêm sản phẩm mới thành công');
+        }
+        else
+        {
+            return back()->withInput()->withErrors('Thất bại', 'Thêm sản phẩm mới thất bại');
         }
     }
 
@@ -124,13 +136,61 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        // dd(request());
-        if (request('productable_type') == 'Sách')
-        {
-            request()->validate([
-                'product_name' => 'required',
+        $attributes = request()->validate([
+            'product_name' => 'required',
+            'version' => 'required',
+            'photo' => 'image',
+            'brand_id' => 'required',
+            'productable_type' => 'required'
+        ]);
 
+        if ($request->file('photo') == null) {
+            $file = null;
+        } else {
+            $file = $request->file('photo')->store('images');
+        }
+
+        if (request('productable_type') == "Sách")
+        {
+            $attributes = array_merge($attributes, request()->validate([
+                'author' => 'required',
+                'publish_year' => 'required|numeric|min:1901|max:2155',
+                'category_id' => 'required'
+            ]));
+
+            $product->productable->update([
+                'category_id' => request('category_id'),
+                'author' => $attributes['author'],
+                'publish_year' => $attributes['publish_year']
             ]);
+        }
+        else if (request('productable_type') == "Văn phòng phẩm")
+        {
+            $attributes = array_merge($attributes, request()->validate([
+                'material' => 'required',
+                'color' => 'required',
+                'origin' => 'required'
+            ]));
+
+            $product->productable->update([
+                'material' => $attributes['material'],
+                'color' => $attributes['color'],
+                'origin' => $attributes['origin']
+            ]);
+        }
+
+        if ($product->update([
+            'name' => $attributes['product_name'],
+            'photo' => $file,
+            'brand_id' => $attributes['brand_id'],
+            'version' => $attributes['version'],
+        ]))
+        {
+            return redirect(route('products.index'))->withSuccess('Thay đổi thông tin sản phẩm mới thành công');
+        }
+        else
+        {
+            return back()->withInput()->withErrors('Thất bại', 'Thay đổi thông tin sản phẩm mới thất bại');
         }
     }
 
@@ -142,8 +202,21 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        if (GoodsReceiptDetail::whereHas('product_id', '==', $product->id))
+        {
+            return back()->withErrors('Sản phẩm không thể xóa do có phiếu nhập hàng liên quan');
+        }
+        if (InvoiceDetail::whereHas('product_id', '==', $product->id))
+        {
+            return back()->withErrors('Sản phẩm không thể xóa do có hóa đơn liên quan');
+        }
+        if (ReturnGoodsReceiptDetail::whereHas('product_id', '==', $product->id))
+        {
+            return back()->withErrors('Sản phẩm không thể xóa do có đơn trả hàng liên quan');
+        }
+
         $product->delete();
 
-        return back();
+        return back()->withSuccess('Xóa sản phẩm thành công');
     }
 }
