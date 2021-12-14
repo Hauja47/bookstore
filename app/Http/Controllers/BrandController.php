@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Alert;
+use Validator;
+use App\Models\Book;
 use App\Models\Brand;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
@@ -35,13 +39,26 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
-            'name' => 'required|min:2|max:255|unique:brand,name'
+        $validator = Validator::make(request()->all(), [
+            'brand_name' => ['required' ,'max:255' ,'unique:brands,name']
         ]);
+        if ($validator->fails())
+        {
+            Alert::error($validator->messages()->all()[0]);
 
+            return back();
+        }
 
-
-        return view('main.products.option');
+        if (Brand::create([
+            'name' => request('brand_name')
+        ]))
+        {
+            return back()->withSuccess('Thêm Nhãn hiệu/Nhà xuất bản thành công');
+        }
+        else {
+            Alert::error('Thêm Nhãn hiệu/Nhà xuất bản thất bại');
+        }
+        return back();
     }
 
     /**
@@ -63,8 +80,6 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        //
-
         return view('main.products.option', ['brand' => $brand]);
     }
 
@@ -77,8 +92,26 @@ class BrandController extends Controller
      */
     public function update(Request $request, Brand $brand)
     {
-        //
-        return redirect(route('products.option'));
+        $validator = Validator::make(request()->all(), [
+            'brand_name' => ['required' ,'max:255' ,'unique:brands,name']
+        ]);
+        if ($validator->fails())
+        {
+            Alert::error($validator->messages()->all()[0]);
+
+            return back();
+        }
+
+        if ($brand->update([
+            'name' => request('brand_name')
+        ]))
+        {
+            return back()->withSuccess('Thay đổi thông tin Nhãn hiệu/Nhà xuất bản thành công');
+        }
+        else {
+            Alert::error('Thay đổi thông tin Nhãn hiệu/Nhà xuất bản thất bại');
+        }
+        return back();
     }
 
     /**
@@ -89,9 +122,14 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        //
+        if (Product::where('brand_id', '=', $brand->id)->exists())
+        {
+            Alert::error('Có sản phẩm thuộc Nhãn hiệu/Nhà xuất bản');
+
+            return back();
+        }
         $brand->delete();
 
-        return back();
+        return back()->withSuccess('Xóa Nhãn hiệu/Nhà xuất bản thành công');
     }
 }

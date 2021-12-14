@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GoodsReceipt;
 use App\Models\Provider;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -25,7 +26,6 @@ class ProviderController extends Controller
      */
     public function create()
     {
-        //
         return view('main.providers.add');
     }
 
@@ -37,12 +37,20 @@ class ProviderController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
-            'name' => 'required|min:3|max:255',
-            'phone_number' => 'required|numeric',
+        if (Provider::create(request()->validate([
+            'name' => 'required|min:2|max:255',
+            'phone_number' => ['required', 'numeric', 'digits:10', 'regex:/(84|0[3|5|7|8|9])+([0-9]{8})\b/'],
             'email' => 'required|email',
             'address' => 'required'
-        ]);
+        ])))
+        {
+            return redirect(route('providers.index'))->withSuccess('Thêm Nhà cung cấp thành công');
+        }
+        else
+        {
+            Alert::alert('Thêm Nhà cung cấp thất bại');
+            return back()->withInput();
+        }
     }
 
     /**
@@ -64,9 +72,7 @@ class ProviderController extends Controller
      */
     public function edit(Provider $provider)
     {
-        //
         return view('main.providers.edit', ['provider' => $provider]);
-
     }
 
     /**
@@ -78,7 +84,20 @@ class ProviderController extends Controller
      */
     public function update(Request $request, Provider $provider)
     {
-        //
+        if ($provider->update(request()->validate([
+            'name' => 'required|min:2|max:255',
+            'phone_number' => ['required', 'numeric', 'digits:10', 'regex:/(84|0[3|5|7|8|9])+([0-9]{8})\b/'],
+            'email' => 'required|email',
+            'address' => 'required'
+        ])))
+        {
+            return redirect(route('providers.index'))->withSuccess('Thay đổi thông tin Nhà cung cấp thành công');
+        }
+        else
+        {
+            Alert::alert('Thay đổi thông tin Nhà cung cấp thất bại');
+            return back()->withInput();
+        }
     }
 
     /**
@@ -89,9 +108,14 @@ class ProviderController extends Controller
      */
     public function destroy(Provider $provider)
     {
-        //
+        if (GoodsReceipt::where('provider_id', '=', $provider->id)->exists())
+        {
+            Alert::error('Có đơn nhập hàng đến từ nhà cung cấp đã chọn');
+            return back();
+        }
+
         $provider->delete();
 
-        return back();
+        return back()->withSuccess('Xóa Nhà cung cấp thành công');
     }
 }

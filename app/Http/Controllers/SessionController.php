@@ -27,7 +27,9 @@ class SessionController extends Controller
 
         session()->regenerate();
 
-        return redirect(route('dashboard'))->with('success', 'Welcome back!');
+        auth()->user()->employee->update(['is_working' => 1]);
+
+        return redirect(route('dashboard'));
     }
 
     public function create()
@@ -37,8 +39,10 @@ class SessionController extends Controller
 
     public function destroy()
     {
+        auth()->user()->employee->update(['is_working' => 0]);
+
         auth()->logout();
 
-        return redirect('/')->with('success', 'Goodbye!');
+        return redirect('/');
     }
 }

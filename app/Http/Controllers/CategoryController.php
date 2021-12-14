@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Alert;
+use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
@@ -36,12 +39,26 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
-            'name' => 'required|min:2|max:255|unique:category,name'
+        $validator = Validator::make(request()->all(), [
+            'category_name' => ['required' ,'max:255' ,'unique:brands,name']
         ]);
+        if ($validator->fails())
+        {
+            Alert::error($validator->messages()->all()[0]);
 
-        return view('main.products.option');
+            return back();
+        }
 
+        if (Category::create([
+            'name' => request('category_name')
+        ]))
+        {
+            return back()->withSuccess('Thêm Thể loại thành công');
+        }
+        else {
+            Alert::error('Thêm Thể loại thất bại');
+        }
+        return back();
     }
 
     /**
@@ -78,9 +95,26 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
-        return redirect(route('products.option'));
+        $validator = Validator::make(request()->all(), [
+            'category_name' => ['required' ,'max:255' ,'unique:brands,name']
+        ]);
+        if ($validator->fails())
+        {
+            Alert::error($validator->messages()->all()[0]);
 
+            return back();
+        }
+
+        if ($category->update([
+            'name' => request('category_name')
+        ]))
+        {
+            return back()->withSuccess('Thay đổi thông tin Thể loại thành công');
+        }
+        else {
+            Alert::error('Thay đổi thông tin Thể loại thất bại');
+        }
+        return back();
     }
 
     /**
@@ -91,9 +125,14 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        if (Book::where('category_id', '=', $category->id)->exists())
+        {
+            Alert::error('Có sản phẩm thuộc thể loại');
+
+            return back();
+        }
         $category->delete();
 
-        return back();
+        return back()->withSuccess('Xóa Thể loại thành công');
     }
 }

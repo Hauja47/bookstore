@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CustomerController extends Controller
 {
@@ -36,13 +37,20 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
+        if (Customer::create(request()->validate([
             'full_name' => 'required|min:2|max:191',
-            'phone_number' => 'required|numeric|max:10|regex:/(84|0[3|5|7|8|9])+([0-9]{8})\b/g',
+            'phone_number' => ['required', 'numeric', 'digits:10', 'regex:/(84|0[3|5|7|8|9])+([0-9]{8})\b/'],
             'email' => 'required|email',
-            'address' => 'required',
-            'debt' => 'numeric'
-        ]);
+            'address' => 'required'
+        ])))
+        {
+            return redirect(route('customers.index'))->withSuccess('Thêm Khách hàng thành công');
+        }
+        else
+        {
+            Alert::alert('Thêm Khách hàng thất bại');
+            return back()->withInput();
+        }
     }
 
     /**
@@ -64,9 +72,7 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //
         return view('main.customers.edit', ['customer' => $customer]);
-
     }
 
     /**
@@ -78,7 +84,20 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
-        //
+        if ($customer->update(request()->validate([
+            'full_name' => 'required|min:2|max:255',
+            'phone_number' => ['required', 'numeric', 'digits:10', 'regex:/(84|0[3|5|7|8|9])+([0-9]{8})\b/'],
+            'email' => 'required|email',
+            'address' => 'required'
+        ])))
+        {
+            return redirect(route('customers.index'))->withSuccess('Thay đổi thông tin Khách hàng thành công');
+        }
+        else
+        {
+            Alert::alert('Thay đổi thông tin Khách hàng thất bại');
+            return back()->withInput();
+        }
     }
 
     /**
@@ -89,9 +108,9 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        //
+        //TODO
         $customer->delete();
 
-        return back();
+        return back()->withSuccess('Xóa Khách hàng thành công');
     }
 }

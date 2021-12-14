@@ -202,17 +202,20 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        if (GoodsReceiptDetail::whereHas('product_id', '==', $product->id))
+        if (GoodsReceiptDetail::where('product_id', '=', $product->id)->exists())
         {
-            return back()->withErrors('Sản phẩm không thể xóa do có phiếu nhập hàng liên quan');
+            Alert::error('Có đơn nhập hàng cho sản phẩm đã chọn');
+            return back();
         }
-        if (InvoiceDetail::whereHas('product_id', '==', $product->id))
+        if (InvoiceDetail::where('product_id', '=', $product->id)->exists())
         {
-            return back()->withErrors('Sản phẩm không thể xóa do có hóa đơn liên quan');
+            Alert::error('Có hóa đơn cho sản phẩm đã chọn');
+            return back();
         }
-        if (ReturnGoodsReceiptDetail::whereHas('product_id', '==', $product->id))
+        if (ReturnGoodsReceiptDetail::where('product_id', '=', $product->id)->exists())
         {
-            return back()->withErrors('Sản phẩm không thể xóa do có đơn trả hàng liên quan');
+            Alert::error('Có đơn trả hàng cho sản phẩm đã chọn');
+            return back();
         }
 
         $product->delete();
