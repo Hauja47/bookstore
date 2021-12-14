@@ -466,8 +466,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GoodsReceipt[] $goodsReceipt
  * @property-read int|null $goods_receipt_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Payment[] $paymentReceiver
- * @property-read int|null $payment_receiver_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Payment[] $payments
+ * @property-read int|null $payments_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Receipt[] $receipts
  * @property-read int|null $receipts_count
  * @method static \Database\Factories\ProviderFactory factory(...$parameters)
