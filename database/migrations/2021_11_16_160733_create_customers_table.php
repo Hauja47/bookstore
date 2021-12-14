@@ -19,7 +19,7 @@ class CreateCustomersTable extends Migration
             $table->string('phone_number')->unique();
             $table->string('email')->unique();
             $table->text('address');
-            $table->integer('debt');
+            $table->integer('debt')->default(0);
             $table->timestamps();
         });
     }
