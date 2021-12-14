@@ -191,6 +191,8 @@ return [
         'brand_name' => 'Tên nhãn hiệu/nhà xuất bản',
         'category_name' => 'Tên thể loại',
         'phone_number' => "Số điện thoại",
-        'full_name' => 'Tên'
+        'full_name' => 'Tên',
+        'role' => 'Vai trò',
+        'created_at' => 'Thời gian'
     ],
 ];
