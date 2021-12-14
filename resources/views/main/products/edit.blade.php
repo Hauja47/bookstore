@@ -70,13 +70,13 @@
 
                 $productable_type = $product->productable_type;
 
-                $category_name = $product->book?->category->name;
-                $author = $product->book?->author;
-                $publish_year = $product->book?->publishYear;
+                $category_name = $product->productable?->category->name;
+                $author = $product->productable?->author;
+                $publish_year = $product->productable?->publish_year;
 
-                $material =  $product->stationery?->material;
-                $color =  $product->stationery?->color;
-                $origin =  $product->stationery?->origin;
+                $material =  $product->productable?->material;
+                $color =  $product->productable?->color;
+                $origin =  $product->productable?->origin;
             @endphp
             {{-- FORM --}}
             <div class="row">
@@ -163,7 +163,7 @@
                                     'label_title' => 'Số lượng tồn',
                                     'required' => 'required',
                                     'disabled' => 'disabled',
-                                    'input_type' => 'number',
+                                    'input_type' => 'text',
                                     'input_id' => 'in_stock',
                                     'input_name' => 'in_stock',
                                     'input_value' => $in_stock,
@@ -243,8 +243,8 @@
 
                                         <select class="header__search-select" name="productable_type" id="productable_type">
                                             <option hidden value=""></option>
-                                            <option value="Sách">Sách</option>
-                                            <option value="Văn phòng phẩm">Văn phòng phẩm</option>
+                                            <option value="Sách" {{ $product->productable_type == "Sách" ? 'selected' : "" }}>Sách</option>
+                                            <option value="Văn phòng phẩm" {{ $product->productable_type == "Văn phòng phẩm" ? 'selected' : "" }}>Văn phòng phẩm</option>
                                         </select>
                                     </div>
                                 </div>
