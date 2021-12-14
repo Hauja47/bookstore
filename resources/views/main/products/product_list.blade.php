@@ -318,7 +318,7 @@
                             <tr>
                                 <td>{{ 'SP'.$product->id }}</td>
                                 <td>
-                                    <img src="{{ asset($product->photo) }}" alt="" class="product-img">
+                                    <img src="{{ $product->photo ? asset('/storage/'.$product->photo) : asset('images/no-image.png')}}" alt="" class="product-img">
                                 </td>
                                 <td>
                                     {{ $product->name }}
