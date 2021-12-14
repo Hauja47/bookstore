@@ -145,8 +145,8 @@
                                     'required' => 'required',
                                     'disabled' => '',
                                     'input_type' => 'date',
-                                    'input_id' => 'start_date',
-                                    'input_name' => 'NgayVaoLam',
+                                    'input_id' => 'created_at',
+                                    'input_name' => 'created_at',
                                     'input_value' => \Carbon\Carbon::parse($employee->created_at)->format("Y-m-d"),
                                     'message' => '',
                                     ])
