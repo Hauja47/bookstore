@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Book;
 use App\Models\Brand;
+use App\Models\Customer;
 use App\Models\Product;
 use App\Models\ProductType;
 use App\Models\Provider;
@@ -34,6 +35,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Provider::factory(10)->create();
+        Customer::factory(10)->create();
 
         $books = Book::factory(10)->create();
 
