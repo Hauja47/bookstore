@@ -138,7 +138,7 @@
                                     'input_type' => 'file',
                                     'input_id' => 'photo',
                                     'input_name' => 'photo',
-                                    'path_photo' => 'images/book-1.jpg',
+                                    'path_photo' => 'images/no-image.png',
                                     'message' => '',
                                     ])
 
