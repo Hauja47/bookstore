@@ -60,6 +60,7 @@
                 $product_id = $product->id;
                 $product_name = $product->name;
                 $version = $product->version;
+                $brand_id = $product->brand->id;
                 $brand_name = $product->brand->name;
 
                 $in_stock = $product->in_stock;
@@ -129,7 +130,7 @@
                                             Nhãn hiệu <span class="required">*</span>
                                         </label>
 
-                                        <input type="checkbox" hidden id="ckb-select-brand">
+                                        {{-- <input type="checkbox" hidden id="ckb-select-brand">
                                         <label class="header__search-select" for="ckb-select-brand" id="label-brand">
                                             <span class="header__search-select-label">{{ $brand_name }}</span>
                                             <i class="header__search-select-icon fas fa-angle-down"></i>
@@ -140,21 +141,21 @@
                                                 <i class='bx bx-plus-circle'></i>
                                                 <span>Thêm nhãn hiệu mới</span>
                                             </li>
-                                            {{-- <li class="header__search-option-item">
-                                                <span>NXB Giáo dục</span>
-                                            </li>
-                                            <li class="header__search-option-item ">
-                                                <span>Văn phòng phẩm Hồng Hà</span>
-                                            </li>
-                                            <li class="header__search-option-item ">
-                                                <span>NXB Kim Đồng</span>
-                                            </li> --}}
                                             @foreach  (\App\Models\Brand::all() as $brand)
                                                 <li class="header__search-option-item" value="{{ $brand->id }}">
                                                     <span>{{ $brand->name }}</span>
                                                 </li>
                                             @endforeach
-                                        </ul>
+                                        </ul> --}}
+
+                                        <select class="header__search-select" name="brand_id" id="brand_id">
+                                            @foreach (\App\Models\Brand::all() as $brand)
+                                                <option value="{{ $brand->id }}"
+                                                    @if ($brand->id == $brand_id)
+                                                        selected
+                                                    @endif>{{ $brand->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col l-6 md-6 c-12">
@@ -221,7 +222,7 @@
                                             Loại sản phẩm <span class="required">*</span>
                                         </label>
 
-                                        <input type="checkbox" hidden id="ckb-select-product_type">
+                                        {{-- <input type="checkbox" hidden id="ckb-select-product_type">
                                         <label class="header__search-select" for="ckb-select-product_type" id="label-product_type">
                                             <span class="header__search-select-label">{{ $productable_type }}</span>
                                             <i class="header__search-select-icon fas fa-angle-down"></i>
@@ -238,7 +239,13 @@
                                             <li class="header__search-option-item ">
                                                 <span>Văn phòng phẩm</span>
                                             </li>
-                                        </ul>
+                                        </ul> --}}
+
+                                        <select class="header__search-select" name="productable_type" id="productable_type">
+                                            <option hidden value=""></option>
+                                            <option value="Sách">Sách</option>
+                                            <option value="Văn phòng phẩm">Văn phòng phẩm</option>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -249,7 +256,7 @@
                                                 Thể loại <span class="required">*</span>
                                             </label>
 
-                                            <input type="checkbox" hidden id="ckb-select-category">
+                                            {{-- <input type="checkbox" hidden id="ckb-select-category">
                                             <label class="header__search-select" for="ckb-select-category" id="label-category">
                                                 <span class="header__search-select-label">{{ $category_name }}</span>
                                                 <i class="header__search-select-icon fas fa-angle-down"></i>
@@ -260,27 +267,17 @@
                                                     <i class='bx bx-plus-circle'></i>
                                                     <span>Thêm thể loại mới</span>
                                                 </li>
-                                                {{-- <li class="header__search-option-item">
-                                                    <span>Giáo khoa</span>
-                                                </li>
-                                                <li class="header__search-option-item ">
-                                                    <span>Khoa học viễn tưởng</span>
-                                                </li>
-                                                <li class="header__search-option-item ">
-                                                    <span>Văn học</span>
-                                                </li>
-                                                <li class="header__search-option-item ">
-                                                    <span>Tiểu thuyết</span>
-                                                </li>
-                                                <li class="header__search-option-item ">
-                                                    <span>Truyện tranh</span>
-                                                </li> --}}
                                                 @foreach (\App\Models\Category::all() as $category)
                                                 <li class="header__search-option-item" value="{{ $category->id }}">
                                                     <span>{{ $category->name }}</span>
                                                 </li>
                                                 @endforeach
-                                            </ul>
+                                            </ul> --}}
+                                            <select class="header__search-select" name="category_id" id="category_id">
+                                                @foreach (\App\Models\Category::all() as $category)
+                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
 
                                         @include('includes.input', [
