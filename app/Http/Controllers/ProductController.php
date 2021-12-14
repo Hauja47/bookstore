@@ -145,7 +145,7 @@ class ProductController extends Controller
         ]);
 
         if ($request->file('photo') == null) {
-            $file = null;
+            $file = $product->photo;
         } else {
             $file = $request->file('photo')->store('images');
         }
