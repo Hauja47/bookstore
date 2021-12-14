@@ -197,7 +197,7 @@
                                     <a href="{{ route('customers.edit', ['customer' => $customer]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
-                                    <a href="{{ route('customers.delete', ['customer' => $customer]) }}" class="btn btn-outline btn-remove">
+                                    <a onclick="confirmation(event)" href="{{ route('customers.delete', ['customer' => $customer]) }}" class="btn btn-outline btn-remove">
                                         <i class='btn-icon bx bx-trash-alt' ></i>
                                     </a>
 

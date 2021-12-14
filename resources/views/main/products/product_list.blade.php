@@ -333,7 +333,7 @@
                                     <a href="{{ route('products.edit', ['product' => $product]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
-                                    <a href="{{ route('products.delete', ['product' => $product]) }}" class="btn btn-outline btn-remove">
+                                    <a onclick="confirmation(event)" href="{{ route('products.delete', ['product' => $product]) }}" class="btn btn-outline btn-remove">
                                         <i class='btn-icon bx bx-trash-alt' ></i>
                                     </a>
                                 </td>
