@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -25,6 +26,7 @@ class EmployeeController extends Controller
     public function create()
     {
         //
+        return view('main.employees.add');
     }
 
     /**
@@ -64,6 +66,7 @@ class EmployeeController extends Controller
     public function edit(Employee $employee)
     {
         //
+        return view('main.employees.edit', ['employee' => $employee]);
     }
 
     /**
@@ -87,5 +90,8 @@ class EmployeeController extends Controller
     public function destroy(Employee $employee)
     {
         //
+        $employee->delete();
+
+        return back();
     }
 }
