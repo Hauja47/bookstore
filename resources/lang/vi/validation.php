@@ -190,6 +190,6 @@ return [
         'productable_type' => 'Loại sản phẩm',
         'brand_name' => 'Tên nhãn hiệu/nhà xuất bản',
         'category_name' => 'Tên thể loại',
-
+        'phone_number' => "Số điện thoại"
     ],
 ];
