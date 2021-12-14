@@ -21,7 +21,7 @@ class CreateEmployeesTable extends Migration
             $table->string('email')->unique();
             $table->text('address');
             $table->boolean('is_working')->default(false);
-            $table->integer('salary');
+            $table->integer('salary')->default(0);
             $table->foreignId('user_id')->constrained('user');
             $table->timestamps();
         });
