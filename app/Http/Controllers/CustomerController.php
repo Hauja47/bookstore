@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class CustomerController extends Controller
@@ -39,8 +40,8 @@ class CustomerController extends Controller
     {
         if (Customer::create(request()->validate([
             'full_name' => 'required|min:2|max:191',
-            'phone_number' => ['required', 'numeric', 'digits:10', 'regex:/(84|0[3|5|7|8|9])+([0-9]{8})\b/'],
-            'email' => 'required|email',
+            'phone_number' => ['required', 'numeric', 'digits:10', 'regex:/(84|0[3|5|7|8|9])+([0-9]{8})\b/', 'unique:customers,phone_number'],
+            'email' => 'required|email|unique:customers,email',
             'address' => 'required'
         ])))
         {
@@ -86,8 +87,14 @@ class CustomerController extends Controller
     {
         if ($customer->update(request()->validate([
             'full_name' => 'required|min:2|max:255',
-            'phone_number' => ['required', 'numeric', 'digits:10', 'regex:/(84|0[3|5|7|8|9])+([0-9]{8})\b/'],
-            'email' => 'required|email',
+            'phone_number' => [
+                'required',
+                'numeric',
+                'digits:10',
+                'regex:/(84|0[3|5|7|8|9])+([0-9]{8})\b/',
+                Rule::unique('customers')->ignore($customer)
+            ],
+            'email' => ['required', 'email', Rule::unique('customers')->ignore($customer)],
             'address' => 'required'
         ])))
         {

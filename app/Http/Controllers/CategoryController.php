@@ -6,6 +6,7 @@ use Alert;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
@@ -96,7 +97,11 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $validator = Validator::make(request()->all(), [
-            'category_name' => ['required' ,'max:255' ,'unique:brands,name']
+            'category_name' => [
+                'required',
+                'max:255',
+                Rule::unique('categories')->ignore($category)
+            ]
         ]);
         if ($validator->fails())
         {

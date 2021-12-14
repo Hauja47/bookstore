@@ -8,6 +8,7 @@ use App\Models\Book;
 use App\Models\Brand;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class BrandController extends Controller
 {
@@ -93,7 +94,11 @@ class BrandController extends Controller
     public function update(Request $request, Brand $brand)
     {
         $validator = Validator::make(request()->all(), [
-            'brand_name' => ['required' ,'max:255' ,'unique:brands,name']
+            'brand_name' => [
+                'required',
+                'max:255',
+                Rule::unique('brands')->ignore($brand)
+            ]
         ]);
         if ($validator->fails())
         {
