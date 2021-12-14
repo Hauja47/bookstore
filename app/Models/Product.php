@@ -16,6 +16,7 @@ class Product extends Model
         // 'product_type_id',
         'brand_id',
         'version',
+        'photo',
         'in_stock',
         'price'
     ];
