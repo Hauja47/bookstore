@@ -82,7 +82,7 @@
                                     'input_type' => 'text',
                                     'input_id' => 'id',
                                     'input_name' => 'id',
-                                    'input_value' => $id,
+                                    'input_value' => 'KH'.$id,
                                     'message' => '',
                                     ])
                                 </div>
@@ -117,7 +117,7 @@
                                     'disabled' => '',
                                     'input_type' => 'email',
                                     'input_id' => 'email',
-                                    'input_name' => 'Email',
+                                    'input_name' => 'email',
                                     'input_value' => $email,
                                     'message' => '',
                                     ])
@@ -129,14 +129,14 @@
                                     'disabled' => '',
                                     'input_type' => 'text',
                                     'input_id' => 'address',
-                                    'input_name' => 'DiaChi',
+                                    'input_name' => 'address',
                                     'input_value' => $address,
                                     'message' => '',
                                     ])
                                 </div>
                                 <div class="col l-6 md-6 c-12 l-o-6 md-o-6">
                                     @include('includes.input', [
-                                    'label_title' => 'Số tiền nợ (VND)',
+                                    'label_title' => 'Công nợ tiền nợ (VND)',
                                     'required' => 'required',
                                     'disabled' => 'disabled',
                                     'input_type' => 'number',

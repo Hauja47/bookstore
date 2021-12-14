@@ -192,12 +192,12 @@
                                 <td>
                                     {{ $customer->address }}
                                 </td>
-                                <td>{{ $customer->debt.'đ' }}</td>
+                                <td>{{ number_format($customer->debt,).'đ' }}</td>
                                 <td>
                                     <a href="{{ route('customers.edit', ['customer' => $customer]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
-                                    <a href="" class="btn btn-outline btn-remove">
+                                    <a href="{{ route('customers.delete', ['customer' => $customer]) }}" class="btn btn-outline btn-remove">
                                         <i class='btn-icon bx bx-trash-alt' ></i>
                                     </a>
 

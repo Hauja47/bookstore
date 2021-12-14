@@ -97,7 +97,7 @@
                                     'input_type' => 'text',
                                     'input_id' => 'product_id',
                                     'input_name' => 'product_id',
-                                    'input_value' => $product_id,
+                                    'input_value' => 'SP'.$product_id,
                                     'message' => '',
                                     ])
                                 </div>
@@ -223,9 +223,14 @@
                             <div class="grid row">
                                 <div class="col l-12 md-12 c-">
                                     <div class="input-wrapper">
-                                        <label for="" class="input-label">
+                                        {{-- <label for="" class="input-label">
                                             Loại sản phẩm <span class="required">*</span>
                                         </label>
+                                        <select class="header__search-select" name="productable_type" id="productable_type">
+                                            <option hidden value=""></option>
+                                            <option value="Sách" {{ $product->productable_type == "Sách" ? 'selected' : "" }}>Sách</option>
+                                            <option value="Văn phòng phẩm" {{ $product->productable_type == "Văn phòng phẩm" ? 'selected' : "" }}>Văn phòng phẩm</option>
+                                        </select> --}}
 
                                         {{-- <input type="checkbox" hidden id="ckb-select-product_type">
                                         <label class="header__search-select" for="ckb-select-product_type" id="label-product_type">
@@ -246,11 +251,17 @@
                                             </li>
                                         </ul> --}}
 
-                                        <select class="header__search-select" name="productable_type" id="productable_type">
-                                            <option hidden value=""></option>
-                                            <option value="Sách" {{ $product->productable_type == "Sách" ? 'selected' : "" }}>Sách</option>
-                                            <option value="Văn phòng phẩm" {{ $product->productable_type == "Văn phòng phẩm" ? 'selected' : "" }}>Văn phòng phẩm</option>
-                                        </select>
+                                        @include('includes.input', [
+                                        'label_title' => 'Loại sản phẩm',
+                                        'required' => 'required',
+                                        'disabled' => 'disabled',
+                                        'input_type' => 'text',
+                                        'input_id' => 'productable_type',
+                                        'input_name' => 'productable_type',
+                                        'input_value' => $product->productable_type,
+                                        'message' => '',
+                                        ])
+
                                         @error('productable_type')
                                             <p class="error-msg">{{ $message }}</p>
                                             {{-- <p class="error-msg">Trường này không được trống</p> --}}

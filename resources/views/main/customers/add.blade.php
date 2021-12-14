@@ -96,7 +96,7 @@
                                     'disabled' => '',
                                     'input_type' => 'email',
                                     'input_id' => 'email',
-                                    'input_name' => 'Email',
+                                    'input_name' => 'email',
                                     'input_value' => '',
                                     'message' => '',
                                     ])
@@ -108,7 +108,7 @@
                                     'disabled' => '',
                                     'input_type' => 'text',
                                     'input_id' => 'address',
-                                    'input_name' => 'DiaChi',
+                                    'input_name' => 'address',
                                     'input_value' => '',
                                     'message' => '',
                                     ])

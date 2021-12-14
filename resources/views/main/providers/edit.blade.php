@@ -81,7 +81,7 @@
                                     'input_type' => 'text',
                                     'input_id' => 'id',
                                     'input_name' => 'id',
-                                    'input_value' => $id,
+                                    'input_value' => 'NCC'.$id,
                                     'message' => '',
                                     ])
                                 </div>
