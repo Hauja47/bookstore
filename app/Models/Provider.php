@@ -23,10 +23,10 @@ class Provider extends Model
 
     public function receipts()
     {
-        return $this->morphMany(Receipt::class, 'receiver');
+        return $this->morphMany(Receipt::class, 'giver');
     }
 
-    public function paymentReceiver()
+    public function payments()
     {
         return $this->morphMany(Payment::class, 'receiver');
     }
