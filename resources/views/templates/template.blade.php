@@ -31,6 +31,7 @@
 </head>
 
 <body class="{{ $theme }}">
+    @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
     <!-- APP -->
     <div class="app">
         <!-- SIDEBAR -->
