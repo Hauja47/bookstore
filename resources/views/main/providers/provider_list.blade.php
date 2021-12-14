@@ -98,6 +98,7 @@
                                 <td>
                                     {{ $provider->address }}
                                 </td>
+                                <td>
                                     <a href="{{ route('providers.edit', ['provider' => $provider]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
