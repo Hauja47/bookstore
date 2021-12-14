@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\File;
 
 class ProductController extends Controller
 {
@@ -36,14 +39,49 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        dd(request());
-        // request()->validate([
-        //     'name' => 'required|min:3|max:255',
-        //     'version' => 'required',
-        // ]);
+        // ddd(request()->file('photo'));
 
-        // return redirect(route('products.add'));
+        $attributes = request()->validate([
+            'product_name' => 'required',
+            'version' => 'required',
+            'photo' => 'image',
+            'brand_id' => 'required',
+            'productable_type' => 'required'
+        ]);
 
+        if (strcmp(request('productable_type'), "Sách") == 0)
+        {
+            $attributes = array_merge($attributes, request()->validate([
+                'author' => 'required',
+                'publish_year' => 'required|numeric',
+                'category_id' => 'required'
+            ]));
+
+            $book = Book::create([
+                'category_id' => request('category_id'),
+                'author' => $attributes['author'],
+                'publish_year' => $attributes['publish_year']
+            ]);
+
+            if ($book)
+            {
+                // ddd(request()->file('photo')->store('photos'));
+                $book->product()->save(new Product([
+                    'name' => $attributes['product_name'],
+                    'photo' => request()->file('photo')->store('photos'),
+                    'brand_id' => $attributes['brand_id'],
+                    'version' => $attributes['version'],
+                ]));
+
+                Alert::success('Thành công', 'Thêm sản phẩm mới thành công');
+
+                return redirect(route('products.index'));
+            }
+            else
+            {
+                Alert::error('Thất bại', 'Thêm sản phẩm mới thất bại');
+            }
+        }
     }
 
     /**
@@ -77,9 +115,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        // dd(request());
+        if (request('productable_type') == 'Sách')
+        {
+            request()->validate([
+                'product_name' => 'required',
 
-        return redirect(route('products.edit', ['product' => $product]));
+            ]);
+        }
     }
 
     /**
