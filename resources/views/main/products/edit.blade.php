@@ -70,13 +70,13 @@
 
                 $productable_type = $product->productable_type;
 
-                $category_name = $product->productable?->category->name;
-                $author = $product->productable?->author;
-                $publish_year = $product->productable?->publish_year;
+                $category_name = $product->productable->category?->name;
+                $author = $product->productable->author;
+                $publish_year = $product->productable->publish_year;
 
-                $material =  $product->productable?->material;
-                $color =  $product->productable?->color;
-                $origin =  $product->productable?->origin;
+                $material =  $product->productable->material;
+                $color =  $product->productable->color;
+                $origin =  $product->productable->origin;
             @endphp
             {{-- FORM --}}
             <div class="row">
