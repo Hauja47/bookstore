@@ -6,7 +6,7 @@
 
     {{-- photo --}}
     @if ($input_type == 'file')
-        <input type="file" accept="image/png, image/gif, image/jpeg" name="{{ $input_name }}" id="{{ $input_id }}"
+        <input type="file" accept="image/*" name="{{ $input_name }}" id="{{ $input_id }}"
             class="input-file">
         <div class="img-wrapper">
             <img src="{{ asset($path_photo) }}" alt="">
