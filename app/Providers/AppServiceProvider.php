@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Schema;
@@ -30,8 +32,7 @@ class AppServiceProvider extends ServiceProvider
         //Fix: Specified key was too long; max key length is 1000 bytes
         Schema::defaultStringLength(191);
 
-        /****************************** */
-        // Add by Huy
+        //Dark mode
         view()->composer('templates.template', function ($view) {
             $theme = Cookie::get('theme');
             // dd($theme);
@@ -46,8 +47,8 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('datetime', function ($expression) {
             return "<?php echo ($expression)->format('d/m/Y H:i'); ?>";
         });
-        /****************************** */
 
+        //Map model with name
         Relation::morphMap([
             'Sách' => 'App\Models\Book',
             'Văn phòng phẩm' => 'App\Models\Stationery',
@@ -55,5 +56,10 @@ class AppServiceProvider extends ServiceProvider
             'Nhà cung cấp' => 'App\Models\Provider',
             'Khách hàng' => 'App\Models\Customer'
         ]);
+
+        //Define role admin
+        Gate::define('admin', function (User $user) {
+            return $user->role == 1;
+        });
     }
 }
