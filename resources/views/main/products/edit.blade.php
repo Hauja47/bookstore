@@ -30,7 +30,7 @@
 
 @section('main-content')
     <div class="main-content">
-        <form action="{{ route('products.edit', ['product'=> $product]) }}" method="post" id="form-main">
+        <form action="{{ route('products.edit', ['product'=> $product]) }}" method="post" id="form-main" enctype="multipart/form-data">
             @csrf
             <!-- FUNCTION BUTTON -->
             <div class="row main-function">
