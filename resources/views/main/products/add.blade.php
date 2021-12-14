@@ -379,4 +379,5 @@
     </script> --}}
 
     <script src="{{ asset('js/create.js') }}"></script>
+    <script src="{{ asset('js/photo.js') }}"></script>
 @endsection

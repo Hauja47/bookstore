@@ -209,13 +209,16 @@ Route::prefix('employee')->middleware('auth')->group(function () {
         return view('main.employees.employee_list');
     })->name('employees.index');
 
-    Route::get('/create', function () {
-        return view('main.employees.create');
-    })->name('employees.create');
-
-    Route::get('/edit/{id}', function () {
-        return view('main.employees.edit');
-    })->name('employees.edit');
+    // Hiển thị form create
+    Route::get('/create', [EmployeeController::class, 'create'])->name('employees.create');
+    // Xử lý create
+    Route::post('/create', [EmployeeController::class, 'store']);
+    // Hiển thị form edit
+    Route::get('/edit/{employee}', [EmployeeController::class, 'edit'])->name('employees.edit');
+    // Xử lý edit
+    Route::post('/edit/{employee}', [EmployeeController::class, 'update']);
+    // Xử lý delete
+    Route::get('/delete/{employee}', [EmployeeController::class, 'destroy'])->name('employees.delete');
 });
 
 // Settings

@@ -1,6 +1,6 @@
 @extends('templates.template', [
-'title'=> 'Thêm khách hàng',
-'main_header'=> 'Thêm khách hàng',
+'title'=> 'Sửa nhân viên',
+'main_header'=> 'Sửa nhân viên',
 
 'active_dashboard' => '',
 'open_order' => '',
@@ -10,7 +10,7 @@
 'active_product' => '',
 'active_invoice' => '',
 'active_provider' => '',
-'active_customer' => 'active',
+'active_customer' => '',
 'open_budget' => '',
 'active_expenditure' => '',
 'active_revenue' => '',
@@ -18,7 +18,7 @@
 'open_report' => '',
 'active_report_stock' => '',
 'active_report_dept' => '',
-'active_employee' => '',
+'active_employee' => 'active',
 'open_setting' => '',
 'active_regulation' => '',
 ])
@@ -30,23 +30,23 @@
 
 @section('main-content')
     <div class="main-content">
-        <form action="" method="post" id="form-main">
+        <form action="{{ route('employees.edit', ['employee' => $employee]) }}" method="post" id="form-main" enctype="multipart/form-data">
             @csrf
             <!-- FUNCTION BUTTON -->
             <div class="row main-function">
                 <div class="col l-6 md-6 c-6">
-                    <a href="{{ route('customers.index') }}" class="btn-function btn-function__back">
+                    <a href="{{ route('employees.index') }}" class="btn-function btn-function__back">
                         <i class='btn-function-icon btn-function__back-icon bx bx-chevron-left'></i>
-                        Quay lại danh sách khách hàng
+                        Quay lại danh sách nhân viên
                     </a>
                 </div>
                 <div class="col l-6 md-6 c-6">
-                    <a href="{{ route('customers.index') }}" class="btn-function btn-function__exit">
+                    <a href="{{ route('employees.index') }}" class="btn-function btn-function__exit">
                         {{-- <i class='btn-function-icon btn-function__add-icon bx bx-plus' ></i> --}}
                         <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
                         Thoát
                     </a>
-                    <button type="submit" href="{{ route('customers.index') }}" class="btn-function btn-function__save">
+                    <button type="submit" class="btn-function btn-function__save">
                         {{-- <i class='btn-function-icon btn-function__add-icon bx bx-plus' ></i> --}}
                         <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
                         Lưu
@@ -56,45 +56,50 @@
             <!-- END  -->
 
             @php
-                $customer_code = 'KH01';
-                $customer_name = 'Nguyễn Duy Trì';
-                $phone = '0345678912';
-                $email = 'giadinh@company.com';
-                $address = 'Quận 4, Thành phố HCM';
-                $debt = 0;
+                $id = $employee->id;
+                $full_name = $employee->full_name;
+                $phone_number = $employee->phone_number;
+                $email = $employee->email;
+                $address = $employee->address;
+
+                $username = $employee->user->username;
+                $password = $employee->user->password;
+                $role = $employee->user->role;
+
+                $path_photo = asset('/storage/'.$employee->photo);
             @endphp
 
             {{-- FORM --}}
             <div class="row">
-                <!-- FORM ADD CUSTOMER -->
-                <div class="col l-8 md-10 c-12 l-o-2 md-o-1">
+                <!-- FORM ADD EMPLOYEE -->
+                <div class="col l-7 md-12 c-12">
                     <div class="box info-general">
                         <div class="box-header">
-                            Thông tin khách hàng
+                            Thông tin nhân viên
                         </div>
                         <div class="box-body">
                             <div class="grid row">
                                 <div class="col l-6 md-6 c-12">
                                     @include('includes.input', [
-                                    'label_title' => 'Mã khách hàng',
+                                    'label_title' => 'Mã nhân viên',
                                     'required' => 'required',
                                     'disabled' => 'disabled',
                                     'input_type' => 'text',
-                                    'input_id' => 'customer_code',
-                                    'input_name' => 'MaKH',
-                                    'input_value' => $customer_code,
+                                    'input_id' => 'id',
+                                    'input_name' => 'id',
+                                    'input_value' => 'NV'.$id,
                                     'message' => '',
                                     ])
                                 </div>
                                 <div class="col l-12 md-12 c-12">
                                     @include('includes.input', [
-                                    'label_title' => 'Tên khách hàng',
+                                    'label_title' => 'Tên nhân viên',
                                     'required' => 'required',
                                     'disabled' => '',
                                     'input_type' => 'text',
-                                    'input_id' => 'customer_name',
-                                    'input_name' => 'HoTen',
-                                    'input_value' => $customer_name,
+                                    'input_id' => 'full_name',
+                                    'input_name' => 'full_name',
+                                    'input_value' => $full_name,
                                     'message' => '',
                                     ])
                                 </div>
@@ -104,9 +109,9 @@
                                     'required' => 'required',
                                     'disabled' => '',
                                     'input_type' => 'tel',
-                                    'input_id' => 'phone',
-                                    'input_name' => 'SDT',
-                                    'input_value' => $phone,
+                                    'input_id' => 'phone_number',
+                                    'input_name' => 'phone_number',
+                                    'input_value' => $phone_number,
                                     'message' => '',
                                     ])
                                 </div>
@@ -117,7 +122,7 @@
                                     'disabled' => '',
                                     'input_type' => 'email',
                                     'input_id' => 'email',
-                                    'input_name' => 'Email',
+                                    'input_name' => 'email',
                                     'input_value' => $email,
                                     'message' => '',
                                     ])
@@ -129,29 +134,105 @@
                                     'disabled' => '',
                                     'input_type' => 'text',
                                     'input_id' => 'address',
-                                    'input_name' => 'DiaChi',
+                                    'input_name' => 'address',
                                     'input_value' => $address,
                                     'message' => '',
                                     ])
                                 </div>
-                                <div class="col l-6 md-6 c-12 l-o-6 md-o-6">
+                                <div class="col l-6 md-6 c-12">
                                     @include('includes.input', [
-                                    'label_title' => 'Số tiền nợ (VND)',
+                                    'label_title' => 'Ngày vào làm',
                                     'required' => 'required',
-                                    'disabled' => 'disabled',
-                                    'input_type' => 'number',
-                                    'input_id' => 'email',
-                                    'input_name' => 'debt',
-                                    'input_value' => $debt,
+                                    'disabled' => '',
+                                    'input_type' => 'date',
+                                    'input_id' => 'start_date',
+                                    'input_name' => 'NgayVaoLam',
+                                    'input_value' => \Carbon\Carbon::parse($employee->created_at)->format("Y-m-d"),
                                     'message' => '',
                                     ])
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                <!-- END customer TABLE -->
                 </div>
+
+                <div class="col l-5 md-12 c-12">
+                    <div class="box info-general">
+                        <div class="box-header">
+                            Thông tin Tài khoản
+                        </div>
+                        <div class="box-body">
+                            <div class="grid row">
+                                <div class="col l-6 md-6 c-12">
+                                    @include('includes.input', [
+                                    'label_title' => 'Tài khoản',
+                                    'required' => 'required',
+                                    'disabled' => 'disabled',
+                                    'input_type' => 'text',
+                                    'input_id' => 'username',
+                                    'input_name' => 'username',
+                                    'input_value' => $username,
+                                    'message' => '',
+                                    ])
+                                </div>
+                                <div class="col l-6 md-6 c-12">
+                                    @include('includes.input', [
+                                    'label_title' => 'Đổi mật khẩu',
+                                    'required' => '',
+                                    'disabled' => '',
+                                    'input_type' => 'password',
+                                    'input_id' => 'password',
+                                    'input_name' => 'password',
+                                    'input_value' => '',
+                                    'message' => '',
+                                    ])
+                                </div>
+
+                                <div class="col l-6 md-6 c-12">
+                                    <div class="input-wrapper">
+                                        <label for="" class="input-label">
+                                            Vai trò <span class="required">*</span>
+                                        </label>
+                                        <select class="header__search-select" name="role" id="role">
+                                            <option hidden value=""></option>
+                                            <option value="0" {{ $role == '0' ? 'selected' : '' }}>
+                                                Nhân viên</option>
+                                            <option value="1"
+                                                {{ $role == '1' ? 'selected' : '' }}>Quản trị viên</option>
+                                        </select>
+                                        @error('role')
+                                                <p class="error-msg">{{ $message }}</p>
+                                                {{-- <p class="error-msg">Trường này không được trống</p> --}}
+                                            @enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box info-general">
+                        <div class="box-header">
+                            Ảnh đại diện
+                        </div>
+                        <div class="box-body">
+                            <div class="grid row">
+                                <div class="col l-12 md-12 c-12">
+                                    @include('includes.input', [
+                                    'label_title' => 'Chọn đường dẫn ảnh',
+                                    'required' => '',
+                                    'disabled' => '',
+                                    'input_type' => 'file',
+                                    'input_id' => 'photo',
+                                    'input_name' => 'photo',
+                                    'path_photo' => $path_photo,
+                                    'message' => '',
+                                    ])
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END EMPLOYEE TABLE -->
             </div>
             {{-- END FORM --}}
         </form>
@@ -169,4 +250,6 @@
     </script> --}}
 
     <script src="{{ asset('js/create.js') }}"></script>
+    <script src="{{ asset('js/login.js') }}"></script>
+    <script src="{{ asset('js/photo.js') }}"></script>
 @endsection

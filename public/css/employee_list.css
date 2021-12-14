@@ -10,7 +10,7 @@
 .btn-function__export {
     color: var(--text-color);
     background-color: unset;
-    
+
 }
 
 .btn-function__export:hover{
@@ -35,7 +35,7 @@
 
 .main-employee-table th:nth-last-child(2),
 .main-employee-table td:nth-last-child(2) {
-    
+
 }
 
 .main-employee-table th:last-child,
@@ -103,4 +103,11 @@
 
 .main-employee-table__payment-status--not-paid .dot {
     background-color: #ff4242;
+}
+
+.main-employee-table .employee-img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    object-position: center;
 }

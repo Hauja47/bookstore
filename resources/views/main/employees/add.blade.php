@@ -30,7 +30,7 @@
 
 @section('main-content')
     <div class="main-content">
-        <form action="" method="post" id="form-main">
+        <form action="{{ route('employees.create') }}" method="post" id="form-main" enctype="multipart/form-data">
             @csrf
             <!-- FUNCTION BUTTON -->
             <div class="row main-function">
@@ -46,7 +46,7 @@
                         <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
                         Thoát
                     </a>
-                    <button type="submit" href="{{ route('employees.index') }}" class="btn-function btn-function__save">
+                    <button type="submit" class="btn-function btn-function__save">
                         {{-- <i class='btn-function-icon btn-function__add-icon bx bx-plus' ></i> --}}
                         <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
                         Lưu
@@ -71,8 +71,8 @@
                                     'required' => 'required',
                                     'disabled' => '',
                                     'input_type' => 'text',
-                                    'input_id' => 'customer_name',
-                                    'input_name' => 'HoTen',
+                                    'input_id' => 'full_name',
+                                    'input_name' => 'full_name',
                                     'input_value' => '',
                                     'message' => '',
                                     ])
@@ -83,8 +83,8 @@
                                     'required' => 'required',
                                     'disabled' => '',
                                     'input_type' => 'tel',
-                                    'input_id' => 'phone',
-                                    'input_name' => 'SDT',
+                                    'input_id' => 'phone_number',
+                                    'input_name' => 'phone_number',
                                     'input_value' => '',
                                     'message' => '',
                                     ])
@@ -96,7 +96,7 @@
                                     'disabled' => '',
                                     'input_type' => 'email',
                                     'input_id' => 'email',
-                                    'input_name' => 'Email',
+                                    'input_name' => 'email',
                                     'input_value' => '',
                                     'message' => '',
                                     ])
@@ -108,7 +108,7 @@
                                     'disabled' => '',
                                     'input_type' => 'text',
                                     'input_id' => 'address',
-                                    'input_name' => 'DiaChi',
+                                    'input_name' => 'address',
                                     'input_value' => '',
                                     'message' => '',
                                     ])
@@ -119,8 +119,8 @@
                                     'required' => 'required',
                                     'disabled' => '',
                                     'input_type' => 'date',
-                                    'input_id' => 'start_date',
-                                    'input_name' => 'NgayVaoLam',
+                                    'input_id' => 'created_at',
+                                    'input_name' => 'created_at',
                                     'input_value' => date("Y-m-d"),
                                     'message' => '',
                                     ])
@@ -143,8 +143,8 @@
                                     'required' => 'required',
                                     'disabled' => '',
                                     'input_type' => 'text',
-                                    'input_id' => 'customer_name',
-                                    'input_name' => 'HoTen',
+                                    'input_id' => 'username',
+                                    'input_name' => 'username',
                                     'input_value' => '',
                                     'message' => '',
                                     ])
@@ -161,6 +161,23 @@
                                     'message' => '',
                                     ])
                                 </div>
+
+                                <div class="col l-6 md-6 c-12">
+                                    <div class="input-wrapper">
+                                        <label for="" class="input-label">
+                                            Vai trò <span class="required">*</span>
+                                        </label>
+                                        <select class="header__search-select" name="role" id="role">
+                                            <option hidden value=""></option>
+                                            <option value="0">Nhân viên</option>
+                                            <option value="1">Quản trị viên</option>
+                                        </select>
+                                        @error('role')
+                                            <p class="error-msg">{{ $message }}</p>
+                                            {{-- <p class="error-msg">Trường này không được trống</p> --}}
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -171,6 +188,7 @@
                         <div class="box-body">
                             <div class="grid row">
                                 <div class="col l-12 md-12 c-12">
+                                    <div class="img-wrapper">
                                     @include('includes.input', [
                                     'label_title' => 'Chọn đường dẫn ảnh',
                                     'required' => '',
@@ -178,10 +196,11 @@
                                     'input_type' => 'file',
                                     'input_id' => 'photo',
                                     'input_name' => 'photo',
-                                    'path_photo' => 'images/book-1.jpg',
+                                    'path_photo' => 'images/no-avatar.png',
                                     'message' => '',
                                     ])
 
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -206,4 +225,5 @@
 
     <script src="{{ asset('js/create.js') }}"></script>
     <script src="{{ asset('js/login.js') }}"></script>
+    <script src="{{ asset('js/photo.js') }}"></script>
 @endsection

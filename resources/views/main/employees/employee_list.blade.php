@@ -39,7 +39,7 @@
             </a>
         </div>
         <div class="col l-6 md-6 c-6">
-            <a href="{{ route('employees.add') }}" class="btn-function btn-function__add">
+            <a href="{{ route('employees.create') }}" class="btn-function btn-function__add">
                 <i class='btn-function-icon btn-function__add-icon bx bx-plus' ></i>
                 <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
                 Thêm nhân viên
@@ -57,6 +57,7 @@
                         <thead>
                             <tr>
                                 <th>Mã nhân viên</th>
+                                <th>Ảnh</th>
                                 <th>Tên nhân viên</th>
                                 <th>Số điện thoại</th>
                                 <th>Email</th>
@@ -66,7 +67,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            {{-- <tr>
                                 <td>NV0000016</td>
                                 <td>
                                     trần thị nhung
@@ -180,7 +181,31 @@
                                     </a>
 
                                 </td>
+                            </tr> --}}
+                            @foreach (\App\Models\Employee::all() as $employee)
+                            <tr>
+                                <td>{{ 'NV'.$employee->id }}</td>
+                                <td>
+                                    <img src="{{ $employee->photo ? asset('/storage/'.$employee->photo) : asset('images/no-avatar.png')}}" alt="" class="employee-img">
+                                </td>
+                                <td>{{ $employee->full_name }}</td>
+                                <td>{{ $employee->phone_number }}</td>
+                                <td>{{ $employee->email }}</td>
+                                <td>
+                                    {{ $employee->address }}
+                                </td>
+                                <td>{{ \Carbon\Carbon::parse($employee->created_at)->format('d/m/Y')}}</td>
+                                <td>
+                                    <a href="{{ route('employees.edit', ['employee' => $employee]) }}" class="btn btn-outline btn-edit">
+                                        <i class='btn-icon bx bx-edit-alt' ></i>
+                                    </a>
+                                    <a href="" class="btn btn-outline btn-remove">
+                                        <i class='btn-icon bx bx-trash-alt' ></i>
+                                    </a>
+
+                                </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
