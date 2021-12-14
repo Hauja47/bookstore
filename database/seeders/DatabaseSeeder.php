@@ -11,6 +11,7 @@ use App\Models\Provider;
 use App\Models\Stationery;
 use App\Models\PaymentType;
 use App\Models\ProductType;
+use App\Models\ReceiptType;
 use App\Models\PaymentMethod;
 use Illuminate\Database\Seeder;
 
@@ -37,13 +38,14 @@ class DatabaseSeeder extends Seeder
             ])->id
         ]);
 
-        Provider::factory(10)->create();
+        ReceiptType::factory(10)->create();
         PaymentType::factory(10)->create();
         PaymentMethod::factory(10)->create();
         Brand::factory(15)->create();
 
         $customers = Customer::factory(10)->create();
         $employees = Employee::factory(10)->create();
+        $providers = Provider::factory(10)->create();
 
         foreach ($customers as $customer)
         {
@@ -53,6 +55,14 @@ class DatabaseSeeder extends Seeder
                 'employee_id' => Employee::all()->random()->id,
                 'money' => rand(0, 100) * 1000,
                 'note' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde nihil quo quidem aperiam, praesentium minima numquam excepturi tempore debitis vel esse hic incidunt laborum mollitia illum quod cupiditate. Provident, natus!'
+            ]);
+
+            $customer->receipts()->create([
+                'receipt_type_id' => ReceiptType::all()->random()->id,
+                'payment_method_id' => PaymentMethod::all()->random()->id,
+                'employee_id' => Employee::all()->random()->id,
+                'money' => rand(0, 100) * 1000,
+                'note' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde nihil quo quidem aperiam, praesentium minima numquam excepturi tempore debitis vel esse hic incidunt laborum mollitia illum quod cupiditate. Provident, natus!',
             ]);
         }
 
@@ -64,6 +74,33 @@ class DatabaseSeeder extends Seeder
                 'employee_id' => Employee::all()->random()->id,
                 'money' => rand(0, 100) * 1000,
                 'note' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde nihil quo quidem aperiam, praesentium minima numquam excepturi tempore debitis vel esse hic incidunt laborum mollitia illum quod cupiditate. Provident, natus!'
+            ]);
+
+            $employee->receiptGiver()->create([
+                'receipt_type_id' => PaymentType::all()->random()->id,
+                'payment_method_id' => PaymentMethod::all()->random()->id,
+                'employee_id' => Employee::all()->random()->id,
+                'money' => rand(0, 100) * 1000,
+                'note' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde nihil quo quidem aperiam, praesentium minima numquam excepturi tempore debitis vel esse hic incidunt laborum mollitia illum quod cupiditate. Provident, natus!'
+            ]);
+        }
+
+        foreach ($providers as $provider)
+        {
+            $provider->payments()->create([
+                'payment_type_id' => PaymentType::all()->random()->id,
+                'payment_method_id' => PaymentMethod::all()->random()->id,
+                'employee_id' => Employee::all()->random()->id,
+                'money' => rand(0, 100) * 1000,
+                'note' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde nihil quo quidem aperiam, praesentium minima numquam excepturi tempore debitis vel esse hic incidunt laborum mollitia illum quod cupiditate. Provident, natus!'
+            ]);
+
+            $provider->receipts()->create([
+                'receipt_type_id' => ReceiptType::all()->random()->id,
+                'payment_method_id' => PaymentMethod::all()->random()->id,
+                'employee_id' => Employee::all()->random()->id,
+                'money' => rand(0, 100) * 1000,
+                'note' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde nihil quo quidem aperiam, praesentium minima numquam excepturi tempore debitis vel esse hic incidunt laborum mollitia illum quod cupiditate. Provident, natus!',
             ]);
         }
 
@@ -88,7 +125,5 @@ class DatabaseSeeder extends Seeder
                 'version' => '100',
             ]);
         }
-
-
     }
 }
