@@ -126,10 +126,9 @@ function showBoxInfo() {
     if (productableType.value == 'Sách') {
         boxInfos['Sách'].style.display = 'block';
         boxInfos['Văn phòng phẩm'].style.display = 'none';
-    } else {
+    } else if(productableType.value == 'Văn phòng phẩm') {
         boxInfos['Văn phòng phẩm'].style.display = 'block';
         boxInfos['Sách'].style.display = 'none';
-
     }
 }
 
