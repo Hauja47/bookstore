@@ -15,6 +15,6 @@ class Category extends Model
 
     public function product()
     {
-        return $this->hasMany(Stationery::class);
+        return $this->hasMany(Book::class);
     }
 }

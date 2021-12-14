@@ -15,6 +15,6 @@ class Brand extends Model
 
     public function product()
     {
-        return $this->hasMany(Stationery::class);
+        return $this->hasMany(Product::class);
     }
 }
