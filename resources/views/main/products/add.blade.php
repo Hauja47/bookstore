@@ -114,10 +114,15 @@
                                         </ul> --}}
 
                                         <select class="header__search-select" name="brand_id" id="brand_id">
+                                            <option hidden value=""></option>
                                             @foreach (\App\Models\Brand::all() as $brand)
                                                 <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                                             @endforeach
                                         </select>
+                                        @error('brand_id')
+                                            <p class="error-msg">{{ $message }}</p>
+                                            {{-- <p class="error-msg">Trường này không được trống</p> --}}
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -187,12 +192,20 @@
 
                                         <select class="header__search-select" name="productable_type" id="productable_type">
                                             <option hidden value=""></option>
-                                            <option value="Sách" {{ old(request('productable_type')) == "Sách" ? 'selected' : ''}}>Sách</option>
-                                            <option value="Văn phòng phẩm" {{ old(request('productable_type')) == "Văn phòng phẩm" ? 'selected' : ''}}>Văn phòng phẩm</option>
+                                            <option value="Sách"
+                                                {{ old(request('productable_type')) == 'Sách' ? 'selected' : '' }}>Sách
+                                            </option>
+                                            <option value="Văn phòng phẩm"
+                                                {{ old(request('productable_type')) == 'Văn phòng phẩm' ? 'selected' : '' }}>
+                                                Văn phòng phẩm</option>
 
                                             {{-- <option value="Sách">Sách</option>
                                             <option value="Văn phòng phẩm">Văn phòng phẩm</option> --}}
                                         </select>
+                                        @error('productable_type')
+                                            <p class="error-msg">{{ $message }}</p>
+                                            {{-- <p class="error-msg">Trường này không được trống</p> --}}
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -222,10 +235,15 @@
                                             </ul> --}}
 
                                             <select class="header__search-select" name="category_id" id="category_id">
+                                                <option hidden value=""></option>
                                                 @foreach (\App\Models\Category::all() as $category)
                                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                                                 @endforeach
                                             </select>
+                                            @error('category_id')
+                                                <p class="error-msg">{{ $message }}</p>
+                                                {{-- <p class="error-msg">Trường này không được trống</p> --}}
+                                            @enderror
                                         </div>
 
                                         @include('includes.input', [

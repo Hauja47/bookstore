@@ -70,6 +70,7 @@
 
                 $productable_type = $product->productable_type;
 
+                $category_id = $product->productable->category?->id;
                 $category_name = $product->productable->category?->name;
                 $author = $product->productable->author;
                 $publish_year = $product->productable->publish_year;
@@ -156,6 +157,10 @@
                                                     @endif>{{ $brand->name }}</option>
                                             @endforeach
                                         </select>
+                                        @error('brand_id')
+                                            <p class="error-msg">{{ $message }}</p>
+                                            {{-- <p class="error-msg">Trường này không được trống</p> --}}
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col l-6 md-6 c-12">
@@ -163,7 +168,7 @@
                                     'label_title' => 'Số lượng tồn',
                                     'required' => 'required',
                                     'disabled' => 'disabled',
-                                    'input_type' => 'text',
+                                    'input_type' => 'number',
                                     'input_id' => 'in_stock',
                                     'input_name' => 'in_stock',
                                     'input_value' => $in_stock,
@@ -246,6 +251,10 @@
                                             <option value="Sách" {{ $product->productable_type == "Sách" ? 'selected' : "" }}>Sách</option>
                                             <option value="Văn phòng phẩm" {{ $product->productable_type == "Văn phòng phẩm" ? 'selected' : "" }}>Văn phòng phẩm</option>
                                         </select>
+                                        @error('productable_type')
+                                            <p class="error-msg">{{ $message }}</p>
+                                            {{-- <p class="error-msg">Trường này không được trống</p> --}}
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -275,7 +284,10 @@
                                             </ul> --}}
                                             <select class="header__search-select" name="category_id" id="category_id">
                                                 @foreach (\App\Models\Category::all() as $category)
-                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                    <option value="{{ $category->id }}"
+                                                        @if ($category->id == $category_id)
+                                                            selected
+                                                        @endif>{{ $category->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
