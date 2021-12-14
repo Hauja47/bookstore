@@ -459,7 +459,7 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $name
- * @property int $phone_number
+ * @property string $phone_number
  * @property string $email
  * @property string $address
  * @property \Illuminate\Support\Carbon|null $created_at
