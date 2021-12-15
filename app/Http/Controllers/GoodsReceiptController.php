@@ -25,6 +25,7 @@ class GoodsReceiptController extends Controller
     public function create()
     {
         //
+        return view('main.goods_receipts.add');
     }
 
     /**
@@ -85,5 +86,8 @@ class GoodsReceiptController extends Controller
     public function destroy(GoodsReceipt $goodsReceipt)
     {
         //
+        $goodsReceipt->delete();
+
+        return back()->withSuccess('Xóa Nhà cung cấp thành công');
     }
 }

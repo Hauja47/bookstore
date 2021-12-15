@@ -1,14 +1,14 @@
 @extends('templates.template', [
-'title'=> 'Đơn nhập kho',
-'main_header'=> 'Đơn nhập kho',
+'title'=> 'Danh sách Hoá đơn',
+'main_header'=> 'Danh sách Hoá đơn',
 
 'active_dashboard' => '',
-'open_order' => '',
-'active_order' => '',
-'active_refund' => '',
-'open_product' => 'sidebar__menu-dropdown-icon--open',
-'active_product' => '',
+'open_invoice' => 'sidebar__menu-dropdown-icon--open',
 'active_invoice' => 'active',
+'active_return_good' => '',
+'open_product' => '',
+'active_product' => '',
+'active_goods_receipt' => '',
 'active_provider' => '',
 'active_customer' => '',
 'open_budget' => '',
@@ -42,7 +42,7 @@
             <a href="" class="btn-function btn-function__add">
                 <i class='btn-function-icon btn-function__add-icon bx bx-plus' ></i>
                 <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
-                Tạo đơn nhập kho
+                Tạo đơn hàng
             </a>
         </div>
     </div>
@@ -56,9 +56,8 @@
                     <table class="main-invoice-table">
                         <thead>
                             <tr>
-                                <th>Mã đơn nhập</th>
-                                <th>Nhà cung cấp</th>
-                                <th>Nhân viên thực hiện</th>
+                                <th>Mã hoá đơn</th>
+                                <th>Khách hàng</th>
                                 <th>Ngày tạo đơn</th>
                                 <th>Thanh toán</th>
                                 <th>Tổng tiền</th>
@@ -66,17 +65,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>DNK0000016</td>
-                                <td>
-                                    Công ty Văn phòng phẩm
-                                </td>
+
+                            {{-- <tr>
+                                <td>HD0000016</td>
                                 <td>
                                     nguyễn trùng khánh
                                 </td>
                                 <td>17/11/2021 7:51</td>
                                 <td>
-                                    <div class="main-invoice-table__payment-status main-invoice-table__payment-status--paid">
+                                    <div class="main-latest-invoice-table__payment-status main-latest-invoice-table__payment-status--paid">
                                         <div class="dot"></div>
                                         <span>Hoàn tất</span>
                                     </div>
@@ -92,7 +89,102 @@
 
                                 </td>
                             </tr>
+                            <tr>
+                                <td>HD0000016</td>
+                                <td>
+                                    nguyễn trùng khánh
+                                </td>
+                                <td>17/11/2021 7:51</td>
+                                <td>
+                                    <div class="main-latest-invoice-table__payment-status main-latest-invoice-table__payment-status--paid">
+                                        <div class="dot"></div>
+                                        <span>Hoàn tất</span>
+                                    </div>
+                                </td>
+                                <td>123.000 đ</td>
+                                <td>
+                                    <a href="" class="btn btn-outline btn-edit">
+                                        <i class='btn-icon bx bx-edit-alt' ></i>
+                                    </a>
+                                    <a href="" class="btn btn-outline btn-remove">
+                                        <i class='btn-icon bx bx-trash-alt' ></i>
+                                    </a>
 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>HD0000016</td>
+                                <td>
+                                    nguyễn trùng khánh
+                                </td>
+                                <td>17/11/2021 7:51</td>
+                                <td>
+                                    <div class="main-latest-invoice-table__payment-status main-latest-invoice-table__payment-status--paid">
+                                        <div class="dot"></div>
+                                        <span>Hoàn tất</span>
+                                    </div>
+                                </td>
+                                <td>123.000 đ</td>
+                                <td>
+                                    <a href="" class="btn btn-outline btn-edit">
+                                        <i class='btn-icon bx bx-edit-alt' ></i>
+                                    </a>
+                                    <a href="" class="btn btn-outline btn-remove">
+                                        <i class='btn-icon bx bx-trash-alt' ></i>
+                                    </a>
+
+                                </td>
+                            </tr> --}}
+                            <tr>
+                                <td>HD0000016</td>
+                                <td>
+                                    nguyễn trùng khánh
+                                </td>
+                                <td>17/11/2021 7:51</td>
+                                <td>
+                                    <div class="main-latest-invoice-table__payment-status main-latest-invoice-table__payment-status--paid">
+                                        <div class="dot"></div>
+                                        <span>Hoàn tất</span>
+                                    </div>
+                                </td>
+                                <td>123.000 đ</td>
+                                <td>
+                                    <a href="" class="btn btn-outline btn-edit">
+                                        <i class='btn-icon bx bx-edit-alt' ></i>
+                                    </a>
+                                    <a href="" class="btn btn-outline btn-remove">
+                                        <i class='btn-icon bx bx-trash-alt' ></i>
+                                    </a>
+
+                                </td>
+                            </tr>
+                            @foreach (\App\Models\Invoice::all() as $invoice)
+                            <tr>
+                                <td>{{ 'DNK'.$invoice->id }}</td>
+                                <td>
+                                    {{ $invoice->provider->name }}
+                                </td>
+                                <td>
+                                    {{ $invoice->employee->full_name }}
+                                </td>
+                                <td>{{ \Carbon\Carbon::parse($invoice->created_at)->format('H:i d/m/Y')}}</td>
+                                <td>
+                                    <div class="main-invoice-table__payment-status main-invoice-table__payment-status--paid">
+                                        <div class="dot"></div>
+                                        <span>Hoàn tất</span>
+                                    </div>
+                                </td>
+                                <td>{{ number_format($invoice->total_price,).'đ' }}</td>
+                                <td>
+                                    <a href="{{ route('invoices.edit', ['invoice' => $invoice]) }}" class="btn btn-outline btn-edit">
+                                        <i class='btn-icon bx bx-edit-alt' ></i>
+                                    </a>
+                                    <a onclick="confirmation(event)" href="{{ route('invoices.delete', ['invoice' => $invoice]) }}" class="btn btn-outline btn-remove">
+                                        <i class='btn-icon bx bx-trash-alt' ></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

@@ -11,7 +11,6 @@
         <div class="img-wrapper">
             <img src="{{ asset($path_photo) }}" alt="">
         </div>
-
     {{-- date --}}
     @elseif ($input_type == 'date')
         <input {{ $disabled }} type="date" placeholder="" value="{{ old($input_name, $input_value) }}"

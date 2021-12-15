@@ -6,6 +6,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\GoodsReceiptController;
 
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
@@ -64,18 +65,18 @@ Route::get('/user', function () {
 })->middleware('auth')->name('user');
 
 
-// Orders
-Route::prefix('order')->middleware('auth')->group(function () {
+// Invoices
+Route::prefix('invoice')->middleware('auth')->group(function () {
     Route::get('/', function () {
-        return view('main.orders.order_list');
-    })->name('orders.index');
+        return view('main.invoices.invoice_list');
+    })->name('invoices.index');
 });
 
-// Refunds
-Route::prefix('refund')->middleware('auth')->group(function () {
+// Return_goods
+Route::prefix('return_good')->middleware('auth')->group(function () {
     Route::get('/', function () {
-        return view('main.refunds.refund_list');
-    })->name('refunds.index');
+        return view('main.return_goods.return_good_list');
+    })->name('return_goods.index');
 });
 
 // Prooducts
@@ -129,11 +130,22 @@ Route::prefix('product')->middleware('auth')->group(function () {
     });
 });
 
-// Invoices
-Route::prefix('invoice')->middleware('auth')->group(function () {
+// Goods_receipts
+Route::prefix('goods_receipt')->middleware('auth')->group(function () {
     Route::get('/', function () {
-        return view('main.invoices.invoice_list');
-    })->name('invoices.index');
+        return view('main.goods_receipts.goods_receipt_list');
+    })->name('goods_receipts.index');
+
+    // Hiển thị form create
+    Route::get('/create', [GoodsReceiptController::class, 'create'])->name('goods_receipts.create');
+    // Xử lý create
+    Route::post('/create', [GoodsReceiptController::class, 'store']);
+    // Hiển thị form edit
+    Route::get('/edit/{goods_receipt}', [GoodsReceiptController::class, 'edit'])->name('goods_receipts.edit');
+    // Xử lý edit
+    Route::post('/edit/{goods_receipt}', [GoodsReceiptController::class, 'update']);
+    // Xử lý delete
+    Route::get('/delete/{goods_receipt}', [GoodsReceiptController::class, 'destroy'])->name('goods_receipts.delete');
 });
 
 // Providers
@@ -231,28 +243,28 @@ Route::prefix('setting')->middleware('auth')->group(function () {
 
 
 
-// Route::prefix('orders')->group(function () {
+// Route::prefix('invoices')->group(function () {
 //     // Danh sách danh mục
-//     Route::get('/', [OrdersController::class, 'index'])->name('orders.list');
+//     Route::get('/', [InvoicesController::class, 'index'])->name('invoices.list');
 
 //     // Lấy chi tiết 1 chuyên mục (Áp dụng show form sửa chuyên mục)
-//     Route::get('/edit/{id}', [OrdersController::class, 'getOrder'])->name('orders.edit');
+//     Route::get('/edit/{id}', [InvoicesController::class, 'getInvoice'])->name('invoices.edit');
 
 //     // Xử lý update chuyên mục
-//     Route::post('/edit/{id}', [OrdersController::class, 'updateOrder']);
+//     Route::post('/edit/{id}', [InvoicesController::class, 'updateInvoice']);
 
 //     // Hiển thị form create dữ liệu
-//     Route::get('/create', [OrdersController::class, 'createOrder'])->name('orders.create');
+//     Route::get('/create', [InvoicesController::class, 'createInvoice'])->name('invoices.create');
 
 //     // Xử lý thêm chuyên mục
-//     Route::post('/create', [OrdersController::class, 'handleAddOrder']);
+//     Route::post('/create', [InvoicesController::class, 'handleAddInvoice']);
 
 //     // Xoá chuyên mục
-//     Route::delete('/delete/{id}', [OrdersController::class, 'deleteOrder'])->name('orders.delete');
+//     Route::delete('/delete/{id}', [InvoicesController::class, 'deleteInvoice'])->name('invoices.delete');
 
 //     // Hiển thị form upload
-//     Route::get('/upload', [OrdersController::class, 'getFile'])->name('orders.upload');
+//     Route::get('/upload', [InvoicesController::class, 'getFile'])->name('invoices.upload');
 
 //     // Xử lý lấy thông tin file
-//     Route::post('/upload', [OrdersController::class, 'handleFile']);
+//     Route::post('/upload', [InvoicesController::class, 'handleFile']);
 // });

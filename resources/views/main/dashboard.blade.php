@@ -2,12 +2,12 @@
 'title'=> 'Trang chủ',
 'main_header'=> 'Trang chủ',
 'active_dashboard' => 'active',
-'open_order' => '',
-'active_order' => '',
-'active_refund' => '',
+'open_invoice' => '',
+'active_invoice' => '',
+'active_return_good' => '',
 'open_product' => '',
 'active_product' => '',
-'active_invoice' => '',
+'active_goods_receipt' => '',
 'active_provider' => '',
 'active_customer' => '',
 'open_budget' => '',
@@ -209,12 +209,12 @@
         </div>
         <!-- END CUSTOMER CHART -->
 
-        <!-- ORDER TABLE -->
+        <!-- INVOICE TABLE -->
         <!-- <div class="col l-12 md-12 c-12">
-                    <div class="main-latest-order-table">
+                    <div class="main-latest-invoice-table">
                         <div class="box">
                             <div class="box-header">
-                                Recent orders
+                                Recent invoices
                             </div>
                             <div class="box-body">
                                 <table>
@@ -223,7 +223,7 @@
                                             <th>ID</th>
                                             <th>Customer</th>
                                             <th>Date</th>
-                                            <th>Order status</th>
+                                            <th>Invoice status</th>
                                             <th>Payment</th>
                                             <th>Total</th>
                                         </tr>
@@ -232,19 +232,19 @@
                                         <tr>
                                             <td>#2345</td>
                                             <td>
-                                                <div class="main-latest-order-table__order-owner">
-                                                    <img src="images/user-avatar.png" alt="user image" class="main-latest-order-table__order-owner-img">
+                                                <div class="main-latest-invoice-table__invoice-owner">
+                                                    <img src="images/user-avatar.png" alt="user image" class="main-latest-invoice-table__invoice-owner-img">
                                                     <span>trần b</span>
                                                 </div>
                                             </td>
                                             <td>7:51 17/11/2021</td>
                                             <td>
-                                                <span class="main-latest-order-table__order-status main-latest-order-table__order-status--ready">
+                                                <span class="main-latest-invoice-table__invoice-status main-latest-invoice-table__invoice-status--ready">
                                                     Ready
                                                 </span>
                                             </td>
                                             <td>
-                                                <div class="main-latest-order-table__payment-status main-latest-order-table__payment-status--pending">
+                                                <div class="main-latest-invoice-table__payment-status main-latest-invoice-table__payment-status--pending">
                                                     <div class="dot"></div>
                                                     <span>Pending</span>
                                                 </div>
@@ -254,19 +254,19 @@
                                         <tr>
                                             <td>#2345</td>
                                             <td>
-                                                <div class="main-latest-order-table__order-owner">
-                                                    <img src="images/user-avatar.png" alt="user image" class="main-latest-order-table__order-owner-img">
+                                                <div class="main-latest-invoice-table__invoice-owner">
+                                                    <img src="images/user-avatar.png" alt="user image" class="main-latest-invoice-table__invoice-owner-img">
                                                     <span>trần b</span>
                                                 </div>
                                             </td>
                                             <td>7:51 17/11/2021</td>
                                             <td>
-                                                <span class="main-latest-order-table__order-status main-latest-order-table__order-status--ready">
+                                                <span class="main-latest-invoice-table__invoice-status main-latest-invoice-table__invoice-status--ready">
                                                     Ready
                                                 </span>
                                             </td>
                                             <td>
-                                                <div class="main-latest-order-table__payment-status main-latest-order-table__payment-status--pending">
+                                                <div class="main-latest-invoice-table__payment-status main-latest-invoice-table__payment-status--pending">
                                                     <div class="dot"></div>
                                                     <span>Pending</span>
                                                 </div>
@@ -276,19 +276,19 @@
                                         <tr>
                                             <td>#2345</td>
                                             <td>
-                                                <div class="main-latest-order-table__order-owner">
-                                                    <img src="images/user-avatar.png" alt="user image" class="main-latest-order-table__order-owner-img">
+                                                <div class="main-latest-invoice-table__invoice-owner">
+                                                    <img src="images/user-avatar.png" alt="user image" class="main-latest-invoice-table__invoice-owner-img">
                                                     <span>trần b</span>
                                                 </div>
                                             </td>
                                             <td>7:51 17/11/2021</td>
                                             <td>
-                                                <span class="main-latest-order-table__order-status main-latest-order-table__order-status--shipping">
+                                                <span class="main-latest-invoice-table__invoice-status main-latest-invoice-table__invoice-status--shipping">
                                                     Shipping
                                                 </span>
                                             </td>
                                             <td>
-                                                <div class="main-latest-order-table__payment-status main-latest-order-table__payment-status--paid">
+                                                <div class="main-latest-invoice-table__payment-status main-latest-invoice-table__payment-status--paid">
                                                     <div class="dot"></div>
                                                     <span>Paid</span>
                                                 </div>
@@ -298,19 +298,19 @@
                                         <tr>
                                             <td>#2345</td>
                                             <td>
-                                                <div class="main-latest-order-table__order-owner">
-                                                    <img src="images/user-avatar.png" alt="user image" class="main-latest-order-table__order-owner-img">
+                                                <div class="main-latest-invoice-table__invoice-owner">
+                                                    <img src="images/user-avatar.png" alt="user image" class="main-latest-invoice-table__invoice-owner-img">
                                                     <span>trần b</span>
                                                 </div>
                                             </td>
                                             <td>7:51 17/11/2021</td>
                                             <td>
-                                                <span class="main-latest-order-table__order-status main-latest-order-table__order-status--shipped">
+                                                <span class="main-latest-invoice-table__invoice-status main-latest-invoice-table__invoice-status--shipped">
                                                     Shipped
                                                 </span>
                                             </td>
                                             <td>
-                                                <div class="main-latest-order-table__payment-status main-latest-order-table__payment-status--pending">
+                                                <div class="main-latest-invoice-table__payment-status main-latest-invoice-table__payment-status--pending">
                                                     <div class="dot"></div>
                                                     <span>Paid</span>
                                                 </div>
@@ -320,19 +320,19 @@
                                         <tr>
                                             <td>#2345</td>
                                             <td>
-                                                <div class="main-latest-order-table__order-owner">
-                                                    <img src="images/user-avatar.png" alt="user image" class="main-latest-order-table__order-owner-img">
+                                                <div class="main-latest-invoice-table__invoice-owner">
+                                                    <img src="images/user-avatar.png" alt="user image" class="main-latest-invoice-table__invoice-owner-img">
                                                     <span>trần b</span>
                                                 </div>
                                             </td>
                                             <td>7:51 17/11/2021</td>
                                             <td>
-                                                <span class="main-latest-order-table__order-status main-latest-order-table__order-status--ready">
+                                                <span class="main-latest-invoice-table__invoice-status main-latest-invoice-table__invoice-status--ready">
                                                     Shipping
                                                 </span>
                                             </td>
                                             <td>
-                                                <div class="main-latest-order-table__payment-status main-latest-order-table__payment-status--pending">
+                                                <div class="main-latest-invoice-table__payment-status main-latest-invoice-table__payment-status--pending">
                                                     <div class="dot"></div>
                                                     <span>Pending</span>
                                                 </div>
@@ -345,16 +345,16 @@
                         </div>
                     </div>
                 </div> -->
-        <!-- END ORDER TABLE -->
+        <!-- END INVOICE TABLE -->
 
-        <!-- LATEST ORDER TABLE -->
+        <!-- LATEST INVOICE TABLE -->
         <div class="col l-12 md-12 c-12">
             <div class="box">
                 <div class="box-header">
                     Hoá đơn gần đây
                 </div>
                 <div class="box-body">
-                    <table class="main-latest-order-table">
+                    <table class="main-latest-invoice-table">
                         <thead>
                             <tr>
                                 <th>Mã hoá đơn</th>
@@ -374,7 +374,7 @@
                                 <td>7:51 17/11/2021</td>
                                 <td>
                                     <div
-                                        class="main-latest-order-table__payment-status main-latest-order-table__payment-status--paid">
+                                        class="main-latest-invoice-table__payment-status main-latest-invoice-table__payment-status--paid">
                                         <div class="dot"></div>
                                         <span>Hoàn tất</span>
                                     </div>
@@ -390,7 +390,7 @@
                                 <td>7:51 17/11/2021</td>
                                 <td>
                                     <div
-                                        class="main-latest-order-table__payment-status main-latest-order-table__payment-status--paid">
+                                        class="main-latest-invoice-table__payment-status main-latest-invoice-table__payment-status--paid">
                                         <div class="dot"></div>
                                         <span>Hoàn tất</span>
                                     </div>
@@ -406,7 +406,7 @@
                                 <td>7:51 17/11/2021</td>
                                 <td>
                                     <div
-                                        class="main-latest-order-table__payment-status main-latest-order-table__payment-status--paid">
+                                        class="main-latest-invoice-table__payment-status main-latest-invoice-table__payment-status--paid">
                                         <div class="dot"></div>
                                         <span>Hoàn tất</span>
                                     </div>
@@ -422,7 +422,7 @@
                                 <td>7:51 17/11/2021</td>
                                 <td>
                                     <div
-                                        class="main-latest-order-table__payment-status main-latest-order-table__payment-status--paid">
+                                        class="main-latest-invoice-table__payment-status main-latest-invoice-table__payment-status--paid">
                                         <div class="dot"></div>
                                         <span>Hoàn tất</span>
                                     </div>
@@ -438,7 +438,7 @@
                                 <td>7:51 17/11/2021</td>
                                 <td>
                                     <div
-                                        class="main-latest-order-table__payment-status main-latest-order-table__payment-status--paid">
+                                        class="main-latest-invoice-table__payment-status main-latest-invoice-table__payment-status--paid">
                                         <div class="dot"></div>
                                         <span>Hoàn tất</span>
                                     </div>
@@ -451,7 +451,7 @@
                 </div>
             </div>
         </div>
-        <!-- END LATEST ORDER TABLE -->
+        <!-- END LATEST INVOICE TABLE -->
 
     </div>
 </div>

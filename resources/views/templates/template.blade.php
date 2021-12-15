@@ -63,16 +63,16 @@
                     <div class="sidebar__menu-dropdown">
                         <i class='sidebar__menu-item-icon bx bx-receipt'></i>
                         Hoá đơn
-                        <span class="sidebar__menu-dropdown-icon {{ $open_order }}"></span>
+                        <span class="sidebar__menu-dropdown-icon {{ $open_invoice }}"></span>
                     </div>
                     <ul class="sidebar__sub-menu-list">
-                        <li class="sidebar__sub-menu-item {{ $active_order }}">
-                            <a href="{{ route('orders.index') }}" class="sidebar__sub-menu-link">
+                        <li class="sidebar__sub-menu-item {{ $active_invoice }}">
+                            <a href="{{ route('invoices.index') }}" class="sidebar__sub-menu-link">
                                 Danh sách hoá đơn
                             </a>
                         </li>
-                        <li class="sidebar__sub-menu-item {{ $active_refund }}">
-                            <a href="{{ route('refunds.index') }}" class="sidebar__sub-menu-link">
+                        <li class="sidebar__sub-menu-item {{ $active_return_good }}">
+                            <a href="{{ route('return_goods.index') }}" class="sidebar__sub-menu-link">
                                 Đơn trả hàng
                             </a>
                         </li>
@@ -90,8 +90,8 @@
                                 Danh sách sản phẩm
                             </a>
                         </li>
-                        <li class="sidebar__sub-menu-item {{ $active_invoice }}">
-                            <a href="{{ route('invoices.index') }}" class="sidebar__sub-menu-link">
+                        <li class="sidebar__sub-menu-item {{ $active_goods_receipt }}">
+                            <a href="{{ route('goods_receipts.index') }}" class="sidebar__sub-menu-link">
                                 Đơn nhập kho
                             </a>
                         </li>

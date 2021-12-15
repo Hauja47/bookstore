@@ -27,80 +27,96 @@
     top: 3px;
 }
 
-/* ORDER TABLE */
-.main-invoice-table th:nth-last-child(3),
-.main-invoice-table td:nth-last-child(3) {
+/* goods_receipt TABLE */
+.main-goods_receipt-table th:nth-last-child(3),
+.main-goods_receipt-table td:nth-last-child(3) {
     text-align: center;
 }
 
-.main-invoice-table th:nth-last-child(2),
-.main-invoice-table td:nth-last-child(2) {
+.main-goods_receipt-table th:nth-last-child(2),
+.main-goods_receipt-table td:nth-last-child(2) {
     text-align: right;
 }
 
-.main-invoice-table th:last-child,
-.main-invoice-table td:last-child {
+.main-goods_receipt-table th:last-child,
+.main-goods_receipt-table td:last-child {
     text-align: center;
     width: 150px;
 }
 
-.main-invoice-table__order-owner {
+.main-goods_receipt-table__goods_receipt-owner {
     display: flex;
     align-items: center;
     text-transform: capitalize;
     font-weight: 500;
 }
 
-.main-invoice-table__order-owner-img {
+.main-goods_receipt-table__goods_receipt-owner-img {
     width: 45px;
     height: 45px;
     border-radius: 50%;
     margin-right: 15px;
 }
 
-.main-invoice-table__order-status {
+.main-goods_receipt-table__goods_receipt-status {
     padding: 5px 15px;
     border-radius: 5px;
     font-weight: 500;
 }
 
-.main-invoice-table__order-status--ready {
+.main-goods_receipt-table__goods_receipt-status--ready {
     color: #2a59d1;
     background-color: rgba(62, 121, 247, 0.1);
 }
 
-.main-invoice-table__order-status--shipped {
+.main-goods_receipt-table__goods_receipt-status--shipped {
     color: #00ab6f;
     background-color: rgba(4, 209, 130, 0.1);
 }
 
-.main-invoice-table__order-status--shipping {
+.main-goods_receipt-table__goods_receipt-status--shipping {
     color: #e4a30b;
     background-color: rgba(228, 163, 11, 0.1);
 
 }
 
-.main-invoice-table__payment-status {
+.main-goods_receipt-table__payment-status {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.main-invoice-table__payment-status .dot {
+.main-goods_receipt-table__payment-status .dot {
     width: 10px;
     height: 10px;
     border-radius: 50%;
     margin-right: 10px;
 }
 
-.main-invoice-table__payment-status--paid .dot {
+.main-goods_receipt-table__payment-status--paid .dot {
     background-color: #04d182;
 }
 
-.main-invoice-table__payment-status--pending .dot {
+.main-goods_receipt-table__payment-status--pending .dot {
     background-color: #ffc542;
 }
 
-.main-invoice-table__payment-status--not-paid .dot {
+.main-goods_receipt-table__payment-status--not-paid .dot {
     background-color: #ff4242;
+}
+
+
+/* Provider Table */
+.main-provider-table,
+.main-product-table {
+    min-width: 700px;
+}
+
+table th,
+table td {
+    padding: 20px 15px;
+}
+
+#total_price {
+    font-size: 25px;
 }

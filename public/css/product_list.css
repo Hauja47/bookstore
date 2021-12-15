@@ -1,6 +1,6 @@
 
 
-/* ORDER TABLE */
+/* INVOICE TABLE */
 .main-product-table th:nth-child(2),
 .main-product-table td:nth-child(2) {
     padding: 10px 5px;
@@ -22,37 +22,37 @@
     width: 150px;
 }
 
-.main-product-table__order-owner {
+.main-product-table__invoice-owner {
     display: flex;
     align-items: center;
     text-transform: capitalize;
     font-weight: 500;
 }
 
-.main-product-table__order-owner-img {
+.main-product-table__invoice-owner-img {
     width: 45px;
     height: 45px;
     border-radius: 50%;
     margin-right: 15px;
 }
 
-.main-product-table__order-status {
+.main-product-table__invoice-status {
     padding: 5px 15px;
     border-radius: 5px;
     font-weight: 500;
 }
 
-.main-product-table__order-status--ready {
+.main-product-table__invoice-status--ready {
     color: #2a59d1;
     background-color: rgba(62, 121, 247, 0.1);
 }
 
-.main-product-table__order-status--shipped {
+.main-product-table__invoice-status--shipped {
     color: #00ab6f;
     background-color: rgba(4, 209, 130, 0.1);
 }
 
-.main-product-table__order-status--shipping {
+.main-product-table__invoice-status--shipping {
     color: #e4a30b;
     background-color: rgba(228, 163, 11, 0.1);
 
