@@ -148,7 +148,7 @@
                                                 data-bs-toggle="modal" data-bs-target="#modal-editBrand-{{ $brand->id }}">
                                                 <i class='btn-icon bx bx-edit-alt'></i>
                                             </a>
-                                            <a href="{{ route('brands.delete', ['brand' => $brand]) }}"
+                                            <a onclick="confirmation(event)" href="{{ route('brands.delete', ['brand' => $brand]) }}"
                                                 class="btn btn-outline btn-remove">
                                                 <i class='btn-icon bx bx-trash-alt'></i>
                                             </a>
@@ -268,7 +268,7 @@
                                                 data-bs-toggle="modal" data-bs-target="#modal-editCategory-{{ $category->id }}">
                                                 <i class='btn-icon bx bx-edit-alt'></i>
                                             </a>
-                                            <a href="{{ route('categories.delete', ['category' => $category]) }}"
+                                            <a onclick="confirmation(event)" href="{{ route('categories.delete', ['category' => $category]) }}"
                                                 class="btn btn-outline btn-remove">
                                                 <i class='btn-icon bx bx-trash-alt'></i>
                                             </a>
