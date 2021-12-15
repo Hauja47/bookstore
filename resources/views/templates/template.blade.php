@@ -44,7 +44,7 @@
             </div>
             <div class="sidebar__user">
                 <a href="javascript:void(0)" class="sidebar__user-info">
-                    <img src="{{ asset('images/user-avatar.png') }}" alt="User Avatar" class="sidebar__user-img">
+                    <img src="{{ auth()->user()->employee->photo ? asset('/storage/'.auth()->user()->employee->photo) : asset('images/no-image.png')}}" alt="User Avatar" class="sidebar__user-img">
                     <span class="sidebar__user-name">{{ auth()->user()->employee->full_name }}</span>
                 </a>
                 <a href="{{ route('logout') }}" class="sidebar__user-logout btn btn-outline">
