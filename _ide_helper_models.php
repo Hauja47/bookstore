@@ -178,6 +178,7 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GoodsReceiptDetail[] $details
  * @property-read int|null $details_count
  * @property-read \App\Models\Employee $employee
+ * @property-read \App\Models\Payment|null $payment
  * @property-read \App\Models\Provider $provider
  * @method static \Database\Factories\GoodsReceiptFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|GoodsReceipt newModelQuery()
@@ -315,15 +316,18 @@ namespace App\Models{
  * App\Models\Payment
  *
  * @property int $id
- * @property int $payment_type_id
  * @property string $receiver_type
  * @property int $receiver_id
- * @property int $payment_method_id
+ * @property string|null $payable_type
+ * @property int|null $payable_id
  * @property int $employee_id
  * @property int $money
+ * @property int $can_edit_note
  * @property string|null $note
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Employee $employee
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $payable
  * @property-read \App\Models\PaymentMethod $paymentMethod
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $receiver
  * @property-read \App\Models\PaymentType $type
@@ -331,13 +335,14 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Payment newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Payment newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Payment query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment whereCanEditNote($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment whereEmployeeId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment whereMoney($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment whereNote($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Payment wherePaymentMethodId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Payment wherePaymentTypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment wherePayableId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment wherePayableType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment whereReceiverId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment whereReceiverType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment whereUpdatedAt($value)
@@ -409,6 +414,8 @@ namespace App\Models{
  * @property-read \App\Models\Brand $brand
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GoodsReceipt[] $goodsReceipt
  * @property-read int|null $goods_receipt_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GoodsReceiptDetail[] $goodsReceiptDetails
+ * @property-read int|null $goods_receipt_details_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Invoice[] $invoices
  * @property-read int|null $invoices_count
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $productable
@@ -490,12 +497,11 @@ namespace App\Models{
  * App\Models\Receipt
  *
  * @property int $id
- * @property int $receipt_type_id
  * @property string $giver_type
  * @property int $giver_id
- * @property int $payment_method_id
  * @property int $employee_id
  * @property int $money
+ * @property int $can_edit_note
  * @property string|null $note
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -507,6 +513,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Receipt newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Receipt newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Receipt query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Receipt whereCanEditNote($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Receipt whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Receipt whereEmployeeId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Receipt whereGiverId($value)
@@ -514,8 +521,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Receipt whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Receipt whereMoney($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Receipt whereNote($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Receipt wherePaymentMethodId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Receipt whereReceiptTypeId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Receipt whereUpdatedAt($value)
  */
 	class Receipt extends \Eloquent {}
@@ -560,6 +565,7 @@ namespace App\Models{
  * @property-read int|null $details_count
  * @property-read \App\Models\Employee $employee
  * @property-read \App\Models\Invoice $invoice
+ * @property-read \App\Models\Payment|null $payment
  * @method static \Illuminate\Database\Eloquent\Builder|ReturnGoodsReceipt newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ReturnGoodsReceipt newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ReturnGoodsReceipt query()
