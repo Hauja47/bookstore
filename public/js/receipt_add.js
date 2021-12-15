@@ -29,6 +29,8 @@ function updateBalance() {
     }
 }
 
+
+
 let btnMove = document.getElementById('btn-move');
 btnMove.onclick = function (e) {
 
@@ -40,6 +42,7 @@ btnMove.onclick = function (e) {
     let product_name = product_select[0];
     let product_version = product_select[1];
     let product_brand_name = product_select[2];
+    let product_price = product_select[3];
 
 
     console.log(quantity.value);
@@ -70,16 +73,16 @@ btnMove.onclick = function (e) {
                 <td>${product_version}</td>
                 <td>${product_brand_name}</td>
                 <td>
-                    <input hidden value="${cost.value}" name="cost[]">
-                    ${cost.value}đ
+                    <input hidden value="${product_price}" name="cost[]">
+                    ${product_price}đ
                 </td>
                 <td>
                     <input hidden value="${quantity.value}" name="quantity[]">
                     ${quantity.value}
                 </td>
                 <td>
-                <input hidden value="${cost.value * quantity.value}" name="total[]">
-                    ${cost.value * quantity.value}đ
+                <input hidden value="${product_price * quantity.value}" name="total[]">
+                    ${product_price * quantity.value}đ
                 </td>
             </tr>`;
 
@@ -104,4 +107,18 @@ btnMove.onclick = function (e) {
     //     // Add some text to the new cells:
     //     cell1.innerHTML = "NEW CELL1";
     //     cell2.innerHTML = "NEW CELL2";
+}
+
+
+product.onchange = function(e) {
+    console.log(product.value);
+    console.log(product.options[product.selectedIndex].text.split(' - '));
+
+    let product_select = product.options[product.selectedIndex].text.split(' - ');
+    let product_name = product_select[0];
+    let product_version = product_select[1];
+    let product_brand_name = product_select[2];
+    let product_price = product_select[3];
+
+    cost.value = product_price;
 }

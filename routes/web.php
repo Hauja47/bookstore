@@ -204,18 +204,18 @@ Route::prefix('budgets')->middleware('auth')->group(function () {
     })->name('budgets.index');
 });
 
-// Expenditures
-Route::prefix('expenditure')->middleware('auth')->group(function () {
+// Payments Chi
+Route::prefix('payment')->middleware('auth')->group(function () {
     Route::get('/', function () {
-        return view('main.expenditures.expenditure_list');
-    })->name('expenditures.index');
+        return view('main.payments.payment_list');
+    })->name('payments.index');
 });
 
-// Revenues
-Route::prefix('revenue')->middleware('auth')->group(function () {
+// Receipt Thu
+Route::prefix('receipt')->middleware('auth')->group(function () {
     Route::get('/', function () {
-        return view('main.revenues.revenue_list');
-    })->name('revenues.index');
+        return view('main.receipts.receipt_list');
+    })->name('receipts.index');
 });
 
 // Reports

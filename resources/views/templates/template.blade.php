@@ -123,24 +123,25 @@
                         <span class="sidebar__menu-dropdown-icon {{ $open_budget }}"></span>
                     </div>
                     <ul class="sidebar__sub-menu-list">
-                        <li class="sidebar__sub-menu-item {{ $active_expenditure }}">
-                            <a href="{{ route('expenditures.index') }}" class="sidebar__sub-menu-link">
+                        <li class="sidebar__sub-menu-item {{ $active_payment }}">
+                            <a href="{{ route('payments.index') }}" class="sidebar__sub-menu-link">
                                 Phiếu chi
                             </a>
                         </li>
-                        <li class="sidebar__sub-menu-item {{ $active_revenue }}">
-                            <a href="{{ route('revenues.index') }}" class="sidebar__sub-menu-link">
+                        <li class="sidebar__sub-menu-item {{ $active_receipt }}">
+                            <a href="{{ route('receipts.index') }}" class="sidebar__sub-menu-link">
                                 Phiếu thu
                             </a>
                         </li>
-                        <li class="sidebar__sub-menu-item {{ $active_budget }}">
+                        {{-- <li class="sidebar__sub-menu-item {{ $active_budget }}">
                             <a href="{{ route('budgets.index') }}" class="sidebar__sub-menu-link">
                                 Sổ quỹ
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
-                <li class="sidebar__sub-menu">
+                {{-- Báo cáo --}}
+                {{-- <li class="sidebar__sub-menu">
                     <div class="sidebar__menu-dropdown">
                         <i class='sidebar__menu-item-icon bx bx-bar-chart-alt-2'></i>
                         Báo cáo
@@ -158,7 +159,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 <li class="sidebar__menu-item {{ $active_employee }}">
                     <a href="{{ route('employees.index') }}" class="sidebar__menu-link">
                         <i class='sidebar__menu-item-icon bx bx-user-pin'></i>

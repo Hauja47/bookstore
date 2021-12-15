@@ -12,8 +12,8 @@
 'active_provider' => '',
 'active_customer' => '',
 'open_budget' => '',
-'active_expenditure' => '',
-'active_revenue' => '',
+'active_payment' => '',
+'active_receipt' => '',
 'active_budget' => '',
 'open_report' => '',
 'active_report_stock' => '',
@@ -94,7 +94,10 @@
                                     <option hidden value=""></option>
                                     @foreach (\App\Models\Product::all() as $product)
                                         <option value="{{ $product->id }}">
-                                            {{ $product->name . ' - ' . $product->version . ' - ' . $product->brand->name }}</option>
+                                            {{ $product->name . ' - ' . $product->version . ' - ' . $product->brand->name .' - ' . $product->price }}</option>
+                                            @php
+                                                $price = $product->price;
+                                            @endphp
                                     @endforeach
                                 </select>
                                 @error('product')
@@ -119,11 +122,11 @@
                                     @include('includes.input', [
                                     'label_title' => 'Đơn giá',
                                     'required' => 'required',
-                                    'disabled' => '',
+                                    'disabled' => 'readonly',
                                     'input_type' => 'number',
                                     'input_id' => 'cost',
                                     'input_name' => 'cost',
-                                    'input_value' => '1000',
+                                    'input_value' => $price,
                                     'message' => '',
                                     ])
                                 </div>
