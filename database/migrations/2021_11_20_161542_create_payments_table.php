@@ -15,11 +15,13 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('payment_type_id')->constrained('payment_types');
+            // $table->foreignId('payment_type_id')->constrained('payment_types');
             $table->morphs('receiver');
-            $table->foreignId('payment_method_id')->constrained('payment_methods');
+            $table->nullableMorphs('payable');
+            // $table->foreignId('payment_method_id')->constrained('payment_methods');
             $table->foreignId('employee_id')->constrained('employees');
             $table->integer('money');
+            $table->boolean('can_edit_note')->default(1);
             $table->text('note')->nullable();
             $table->timestamps();
         });

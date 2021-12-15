@@ -15,11 +15,12 @@ class CreateReceiptsTable extends Migration
     {
         Schema::create('receipts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('receipt_type_id')->constrained('receipt_types');
+            // $table->foreignId('receipt_type_id')->constrained('receipt_types');
             $table->morphs('giver');
-            $table->foreignId('payment_method_id')->constrained('payment_methods');
+            // $table->foreignId('payment_method_id')->constrained('payment_methods');
             $table->foreignId('employee_id')->constrained('employees');
             $table->integer('money');
+            $table->boolean('can_edit_note')->default(1);
             $table->text('note')->nullable();
             $table->timestamps();
         });
