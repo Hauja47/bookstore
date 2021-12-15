@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\GoodsReceiptController;
+use App\Http\Controllers\InvoiceController;
 
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
@@ -65,13 +66,6 @@ Route::get('/user', function () {
 })->middleware('auth')->name('user');
 
 
-// Invoices
-Route::prefix('invoice')->middleware('auth')->group(function () {
-    Route::get('/', function () {
-        return view('main.invoices.invoice_list');
-    })->name('invoices.index');
-});
-
 // Return_goods
 Route::prefix('return_good')->middleware('auth')->group(function () {
     Route::get('/', function () {
@@ -79,7 +73,7 @@ Route::prefix('return_good')->middleware('auth')->group(function () {
     })->name('return_goods.index');
 });
 
-// Prooducts
+// Products
 Route::prefix('product')->middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('main.products.product_list');
@@ -164,6 +158,24 @@ Route::prefix('provider')->middleware('auth')->group(function () {
     Route::post('/edit/{provider}', [ProviderController::class, 'update']);
     // Xử lý delete
     Route::get('/delete/{provider}', [ProviderController::class, 'destroy'])->name('providers.delete');
+});
+
+// Invoices
+Route::prefix('invoice')->middleware('auth')->group(function () {
+    Route::get('/', function () {
+        return view('main.invoices.invoice_list');
+    })->name('invoices.index');
+
+    // Hiển thị form create
+    Route::get('/create', [InvoiceController::class, 'create'])->name('invoices.create');
+    // Xử lý create
+    Route::post('/create', [InvoiceController::class, 'store']);
+    // Hiển thị form edit
+    Route::get('/edit/{invoice}', [InvoiceController::class, 'edit'])->name('invoices.edit');
+    // Xử lý edit
+    Route::post('/edit/{invoice}', [InvoiceController::class, 'update']);
+    // Xử lý delete
+    Route::get('/delete/{invoice}', [InvoiceController::class, 'destroy'])->name('invoices.delete');
 });
 
 // Customers

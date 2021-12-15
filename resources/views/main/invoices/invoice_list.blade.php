@@ -39,7 +39,7 @@
             </a> --}}
         </div>
         <div class="col l-6 md-6 c-6">
-            <a href="" class="btn-function btn-function__add">
+            <a href="{{ route('invoices.create') }}" class="btn-function btn-function__add">
                 <i class='btn-function-icon btn-function__add-icon bx bx-plus' ></i>
                 <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
                 Tạo đơn hàng
@@ -57,7 +57,8 @@
                         <thead>
                             <tr>
                                 <th>Mã hoá đơn</th>
-                                <th>Khách hàng</th>
+                                <th>Tên khách hàng</th>
+                                <th>Nhân viên thực hiện</th>
                                 <th>Ngày tạo đơn</th>
                                 <th>Thanh toán</th>
                                 <th>Tổng tiền</th>
@@ -135,34 +136,12 @@
 
                                 </td>
                             </tr> --}}
-                            <tr>
-                                <td>HD0000016</td>
-                                <td>
-                                    nguyễn trùng khánh
-                                </td>
-                                <td>17/11/2021 7:51</td>
-                                <td>
-                                    <div class="main-latest-invoice-table__payment-status main-latest-invoice-table__payment-status--paid">
-                                        <div class="dot"></div>
-                                        <span>Hoàn tất</span>
-                                    </div>
-                                </td>
-                                <td>123.000 đ</td>
-                                <td>
-                                    <a href="" class="btn btn-outline btn-edit">
-                                        <i class='btn-icon bx bx-edit-alt' ></i>
-                                    </a>
-                                    <a href="" class="btn btn-outline btn-remove">
-                                        <i class='btn-icon bx bx-trash-alt' ></i>
-                                    </a>
 
-                                </td>
-                            </tr>
                             @foreach (\App\Models\Invoice::all() as $invoice)
                             <tr>
                                 <td>{{ 'HD'.$invoice->id }}</td>
                                 <td>
-                                    {{ $invoice->provider->name }}
+                                    {{ $invoice->customer->full_name }}
                                 </td>
                                 <td>
                                     {{ $invoice->employee->full_name }}
@@ -177,7 +156,8 @@
                                 <td>{{ number_format($invoice->total_price,).'đ' }}</td>
                                 <td>
                                     <a href="{{ route('invoices.edit', ['invoice' => $invoice]) }}" class="btn btn-outline btn-edit">
-                                        <i class='btn-icon bx bx-edit-alt' ></i>
+                                        {{-- <i class='btn-icon bx bx-edit-alt' ></i> --}}
+                                        <i class='btn-icon bx bx-info-circle'></i>
                                     </a>
                                     <a onclick="confirmation(event)" href="{{ route('invoices.delete', ['invoice' => $invoice]) }}" class="btn btn-outline btn-remove">
                                         <i class='btn-icon bx bx-trash-alt' ></i>

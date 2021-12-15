@@ -25,6 +25,7 @@ class InvoiceController extends Controller
     public function create()
     {
         //
+        return view('main.invoices.add');
     }
 
     /**
@@ -62,6 +63,7 @@ class InvoiceController extends Controller
     public function edit(Invoice $invoice)
     {
         //
+        return view('main.invoices.edit', ['invoice'=> $invoice]);
     }
 
     /**
@@ -85,5 +87,8 @@ class InvoiceController extends Controller
     public function destroy(Invoice $invoice)
     {
         //
+        $invoice->delete();
+
+        return back();
     }
 }

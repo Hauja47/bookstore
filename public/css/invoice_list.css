@@ -104,3 +104,18 @@
 .main-invoice-table__payment-status--not-paid .dot {
     background-color: #ff4242;
 }
+
+/* Css hoá đơn */
+.main-customer-table,
+.main-product-table {
+    min-width: 900px;
+}
+
+table th,
+table td {
+    padding: 20px 15px;
+}
+
+#total_price {
+    font-size: 25px;
+}
