@@ -115,7 +115,8 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Test '.$book->id,
                 'brand_id' => Brand::all()->random()->id,
                 'version' => '100',
-                'price' => '10000'
+                'price' => '10000',
+                'in_stock' => '100'
             ]);
         }
 
@@ -127,7 +128,8 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Test '.$stationery->id,
                 'brand_id' => Brand::all()->random()->id,
                 'version' => '100',
-                'price' => '10000'
+                'price' => '10000',
+                'in_stock' => '100'
             ]);
         }
 
