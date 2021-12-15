@@ -196,6 +196,7 @@ return [
         'created_at' => 'Thời gian',
         'provider' => 'Nhà cung cấp',
         'product' => 'Sản phẩm',
-        'product_id' => 'Sản phẩm đã thêm'
+        'product_id' => 'Sản phẩm đã thêm',
+        'customer_id' => 'Khách hàng'
     ],
 ];
