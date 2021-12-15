@@ -42,15 +42,15 @@ class InvoiceController extends Controller
     public function store(Request $request)
     {
         // dd(request());
-        // request()->validate([
-        //     'customer_id' => 'required',
-        //     'total' => 'required',
-        //     'paid' => 'required',
-        //     'balance' => 'required',
-        //     'total_price' => 'required',
-        //     'quantity' => 'required',
-        //     'product_id' => 'required'
-        // ]);
+        request()->validate([
+            'customer_id' => 'required',
+            'total' => 'required',
+            'paid' => 'required',
+            'balance' => 'required',
+            'total_price' => 'required',
+            'quantity' => 'required',
+            'product_id' => 'required'
+        ]);
 
         if (Parameter::find(3)->value > 0 && Customer::find(request('customer_id'))->debt >= Parameter::find(3)->value)
         {
