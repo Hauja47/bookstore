@@ -58,6 +58,7 @@ class ParameterController extends Controller
     public function edit(Parameter $parameter)
     {
         //
+        return view('main.settings.regulation');
     }
 
     /**
@@ -70,6 +71,7 @@ class ParameterController extends Controller
     public function update(Request $request, Parameter $parameter)
     {
         //
+
     }
 
     /**

@@ -8,6 +8,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\GoodsReceiptController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\ParameterController;
 
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
@@ -248,8 +249,13 @@ Route::prefix('employee')->middleware('auth')->group(function () {
 // Settings
 Route::prefix('setting')->middleware('auth')->group(function () {
     Route::get('/regulation', function () {
-        return view('main.settings.regulation');
+        return view('main.settings.regulation', ['parameters' => \App\Models\Parameter::all()]);
     })->name('settings.regulation');
+
+
+
+    // Xử lý edit
+    Route::post('/regulation', [ParameterController::class, 'update']);
 });
 
 

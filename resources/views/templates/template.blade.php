@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div class="sidebar__user">
-                <a href="{{ route('user') }}" class="sidebar__user-info">
+                <a href="javascript:void(0)" class="sidebar__user-info">
                     <img src="{{ asset('images/user-avatar.png') }}" alt="User Avatar" class="sidebar__user-img">
                     <span class="sidebar__user-name">{{ auth()->user()->employee->full_name }}</span>
                 </a>
