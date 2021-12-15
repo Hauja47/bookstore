@@ -6,6 +6,13 @@
     /* width: 150px; */
 }
 
+
+.main-budget-table th:nth-last-child(3),
+.main-budget-table td:nth-last-child(3) {
+    text-align: left;
+    width: 300px;
+}
+
 .main-budget-table th:nth-last-child(2),
 .main-budget-table td:nth-last-child(2) {
     text-align: right;

@@ -26,6 +26,8 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/list.css') }}">
 <link rel="stylesheet" href="{{ asset('css/customer_list.css') }}">
+<link rel="stylesheet" href="{{ asset('css/budget_list.css') }}">
+
 @endsection
 
 @section('main-content')
