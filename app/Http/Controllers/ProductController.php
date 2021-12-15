@@ -218,6 +218,7 @@ class ProductController extends Controller
             return back();
         }
 
+        $product->productable->delete();
         $product->delete();
 
         return back()->withSuccess('Xóa sản phẩm thành công');

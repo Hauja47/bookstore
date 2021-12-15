@@ -9,6 +9,7 @@ use App\Models\Customer;
 use App\Models\Employee;
 use App\Models\GoodsReceipt;
 use App\Models\GoodsReceiptDetail;
+use App\Models\Invoice;
 use App\Models\Provider;
 use App\Models\Stationery;
 use App\Models\PaymentType;
@@ -40,9 +41,9 @@ class DatabaseSeeder extends Seeder
             ])->id
         ]);
 
-        ReceiptType::factory(10)->create();
-        PaymentType::factory(10)->create();
-        PaymentMethod::factory(10)->create();
+        // ReceiptType::factory(10)->create();
+        // PaymentType::factory(10)->create();
+        // PaymentMethod::factory(10)->create();
         Brand::factory(15)->create();
 
         $customers = Customer::factory(10)->create();
@@ -52,16 +53,16 @@ class DatabaseSeeder extends Seeder
         foreach ($customers as $customer)
         {
             $customer->payments()->create([
-                'payment_type_id' => PaymentType::all()->random()->id,
-                'payment_method_id' => PaymentMethod::all()->random()->id,
+                // 'payment_type_id' => PaymentType::all()->random()->id,
+                // 'payment_method_id' => PaymentMethod::all()->random()->id,
                 'employee_id' => Employee::all()->random()->id,
                 'money' => rand(0, 100) * 1000,
                 'note' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde nihil quo quidem aperiam, praesentium minima numquam excepturi tempore debitis vel esse hic incidunt laborum mollitia illum quod cupiditate. Provident, natus!'
             ]);
 
             $customer->receipts()->create([
-                'receipt_type_id' => ReceiptType::all()->random()->id,
-                'payment_method_id' => PaymentMethod::all()->random()->id,
+                // 'receipt_type_id' => ReceiptType::all()->random()->id,
+                // 'payment_method_id' => PaymentMethod::all()->random()->id,
                 'employee_id' => Employee::all()->random()->id,
                 'money' => rand(0, 100) * 1000,
                 'note' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde nihil quo quidem aperiam, praesentium minima numquam excepturi tempore debitis vel esse hic incidunt laborum mollitia illum quod cupiditate. Provident, natus!',
@@ -71,16 +72,16 @@ class DatabaseSeeder extends Seeder
         foreach ($employees as $employee)
         {
             $employee->paymentReceiver()->create([
-                'payment_type_id' => PaymentType::all()->random()->id,
-                'payment_method_id' => PaymentMethod::all()->random()->id,
+                // 'payment_type_id' => PaymentType::all()->random()->id,
+                // 'payment_method_id' => PaymentMethod::all()->random()->id,
                 'employee_id' => Employee::all()->random()->id,
                 'money' => rand(0, 100) * 1000,
                 'note' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde nihil quo quidem aperiam, praesentium minima numquam excepturi tempore debitis vel esse hic incidunt laborum mollitia illum quod cupiditate. Provident, natus!'
             ]);
 
             $employee->receiptGiver()->create([
-                'receipt_type_id' => PaymentType::all()->random()->id,
-                'payment_method_id' => PaymentMethod::all()->random()->id,
+                // 'receipt_type_id' => PaymentType::all()->random()->id,
+                // 'payment_method_id' => PaymentMethod::all()->random()->id,
                 'employee_id' => Employee::all()->random()->id,
                 'money' => rand(0, 100) * 1000,
                 'note' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde nihil quo quidem aperiam, praesentium minima numquam excepturi tempore debitis vel esse hic incidunt laborum mollitia illum quod cupiditate. Provident, natus!'
@@ -90,16 +91,16 @@ class DatabaseSeeder extends Seeder
         foreach ($providers as $provider)
         {
             $provider->payments()->create([
-                'payment_type_id' => PaymentType::all()->random()->id,
-                'payment_method_id' => PaymentMethod::all()->random()->id,
+                // 'payment_type_id' => PaymentType::all()->random()->id,
+                // 'payment_method_id' => PaymentMethod::all()->random()->id,
                 'employee_id' => Employee::all()->random()->id,
                 'money' => rand(0, 100) * 1000,
                 'note' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde nihil quo quidem aperiam, praesentium minima numquam excepturi tempore debitis vel esse hic incidunt laborum mollitia illum quod cupiditate. Provident, natus!'
             ]);
 
             $provider->receipts()->create([
-                'receipt_type_id' => ReceiptType::all()->random()->id,
-                'payment_method_id' => PaymentMethod::all()->random()->id,
+                // 'receipt_type_id' => ReceiptType::all()->random()->id,
+                // 'payment_method_id' => PaymentMethod::all()->random()->id,
                 'employee_id' => Employee::all()->random()->id,
                 'money' => rand(0, 100) * 1000,
                 'note' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde nihil quo quidem aperiam, praesentium minima numquam excepturi tempore debitis vel esse hic incidunt laborum mollitia illum quod cupiditate. Provident, natus!',
@@ -143,5 +144,33 @@ class DatabaseSeeder extends Seeder
                 'total_price' => $details->sum('total')
             ]);
         }
+
+        foreach ($goodsReceipts as $goodsReceipt)
+        {
+            $goodsReceipt->payment()->create([
+                // 'payment_type_id' => PaymentType::all()->random()->id,
+                // 'payment_method_id' => PaymentMethod::all()->random()->id,
+                'employee_id' => $goodsReceipt->employee_id,
+                'money' => $goodsReceipt->total_price,
+                'note' => 'Phiếu chi tạo tự động cho DNH'.$goodsReceipt->id,
+                'receiver_type' => 'Nhà cung cấp',
+                'receiver_id' => $goodsReceipt->provider_id
+            ]);
+        }
+
+        // $invoice = Invoice::create([
+        //     'customer_id' => Customer::all()->random()->id,
+        //     'employee_id' => Employee::all()->random()->id,
+        //     'total' => 1000,
+        //     'paid' => 1000,
+        //     'balance' => 0
+        // ]);
+
+        // $invoice->details()->create([
+        //     'product_id' => 1,
+        //     'quantity' => 1,
+        //     'cost' => 1000,
+        //     'total' => 1000,
+        // ]);
     }
 }

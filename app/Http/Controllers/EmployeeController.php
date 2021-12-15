@@ -7,6 +7,7 @@ use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use RealRashid\SweetAlert\Facades\Alert;
+use Session;
 
 class EmployeeController extends Controller
 {
@@ -182,6 +183,32 @@ class EmployeeController extends Controller
         if ($employee->user == auth()->user())
         {
             Alert::error('Không thể thực hiện hành động');
+            return back();
+        }
+
+        if ($employee->goodsReceipts()->exists())
+        {
+            Alert::error('Không thể xóa Nhân viên', 'Nhân viên có liên quan đến Đơn nhập hàng');
+            return back();
+        }
+        if ($employee->invoices()->exists())
+        {
+            Alert::error('Không thể xóa Nhân viên', 'Nhân viên có liên quan đến Hóa đơn');
+            return back();
+        }
+        if ($employee->returnGoodsReceipts()->exists())
+        {
+            Alert::error('Không thể xóa Nhân viên', 'Nhân viên có liên quan đến Phiếu trả hàng');
+            return back();
+        }
+        if ($employee->receipts()->exists() || $employee->receiptGiver()->exists())
+        {
+            Alert::error('Không thể xóa Nhân viên', 'Nhân viên có liên quan đến Phiếu thu');
+            return back();
+        }
+        if ($employee->payments()->exists() || $employee->paymentReceiver()->exists())
+        {
+            Alert::error('Không thể xóa Nhân viên', 'Nhân viên có liên quan đến Phiếu chi');
             return back();
         }
 

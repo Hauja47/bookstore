@@ -127,7 +127,7 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        if (Product::where('brand_id', '=', $brand->id)->exists())
+        if ($brand->product()->exists())
         {
             Alert::error('Có sản phẩm thuộc Nhãn hiệu/Nhà xuất bản');
 

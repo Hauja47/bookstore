@@ -27,6 +27,11 @@ class GoodsReceipt extends Model
 
     public function details()
     {
-        return $this->hasMany(GoodsReceiptDetail::class);
+        return $this->hasMany(GoodsReceiptDetail::class, 'goods_receipt_id');
+    }
+
+    public function payment()
+    {
+        return $this->morphOne(Payment::class, 'payable');
     }
 }

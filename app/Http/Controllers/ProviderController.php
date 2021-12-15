@@ -108,9 +108,19 @@ class ProviderController extends Controller
      */
     public function destroy(Provider $provider)
     {
-        if (GoodsReceipt::where('provider_id', '=', $provider->id)->exists())
+        if ($provider->goodsReceipt()->exists())
         {
-            Alert::error('Có đơn nhập hàng đến từ nhà cung cấp đã chọn');
+            Alert::error('Không thể xóa Nhà cung cấp', 'Nhà cung cấp có liên quan đến Đơn nhập hàng');
+            return back();
+        }
+        if ($provider->receipts()->exists())
+        {
+            Alert::error('Không thể xóa Nhà cung cấp', 'Nhà cung cấp có liên quan đến Phiếu thu');
+            return back();
+        }
+        if ($provider->payments()->exists())
+        {
+            Alert::error('Không thể xóa Nhà cung cấp', 'Nhà cung cấp có liên quan đến Phiếu chi');
             return back();
         }
 

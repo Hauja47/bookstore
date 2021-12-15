@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class CustomerController extends Controller
@@ -26,7 +28,10 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        // if (Session::has('backUrl')) {
+        //     Session::keep('backUrl');
+        // }
+
         return view('main.customers.add');
     }
 
@@ -38,6 +43,10 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
+        if (Session::has('backUrl')) {
+            Session::keep('backUrl');
+        }
+
         if (Customer::create(request()->validate([
             'full_name' => 'required|min:2|max:191',
             'phone_number' => ['required', 'numeric', 'digits:10', 'regex:/(84|0[3|5|7|8|9])+([0-9]{8})\b/', 'unique:customers,phone_number'],
@@ -46,6 +55,9 @@ class CustomerController extends Controller
         ])))
         {
             return redirect(route('customers.index'))->withSuccess('Thêm Khách hàng thành công');
+            // return ($url = Session::get('backUrl'))
+            //             ? Redirect::to($url)
+            //             : Redirect::route('providers.index');
         }
         else
         {
@@ -115,7 +127,27 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        //TODO
+        if ($customer->invoices()->exists())
+        {
+            Alert::error('Không thể xóa Khách hàng', 'Khách hàng có liên quan đến Hóa đơn');
+            return back();
+        }
+        if ($customer->returnGoodsReceipts()->exists())
+        {
+            Alert::error('Không thể xóa Khách hàng', 'Khách hàng có liên quan đến Phiếu trả hàng');
+            return back();
+        }
+        if ($customer->receipts()->exists())
+        {
+            Alert::error('Không thể xóa Khách hàng', 'Khách hàng có liên quan đến Phiếu thu');
+            return back();
+        }
+        if ($customer->payments()->exists())
+        {
+            Alert::error('Không thể xóa Khách hàng', 'Khách hàng có liên quan đến Phiếu chi');
+            return back();
+        }
+
         $customer->delete();
 
         return back()->withSuccess('Xóa Khách hàng thành công');

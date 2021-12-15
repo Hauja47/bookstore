@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Alert;
 use App\Models\Invoice;
+use App\Models\Product;
+use App\Models\Customer;
+use App\Models\Parameter;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class InvoiceController extends Controller
 {
@@ -36,11 +41,42 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
-            'total' => 'required|numeric',
-            'paid' => 'required|numeric',
-            'balance' => 'required|numeric'
-        ]);
+        // dd(request());
+        // request()->validate([
+        //     'customer_id' => 'required',
+        //     'total' => 'required',
+        //     'paid' => 'required',
+        //     'balance' => 'required',
+        //     'total_price' => 'required',
+        //     'quantity' => 'required',
+        //     'product_id' => 'required'
+        // ]);
+
+        if (Parameter::find(3)->value > 0 && Customer::find(request('customer_id'))->debt >= Parameter::find(3)->value)
+        {
+            Alert::error('Số tiền nợ của khách hàng lớn hơn số tiền nợ tối đa');
+            return redirect(route('invoices.index'));
+        }
+
+        if (Parameter::find(3)->value > 0 && request('balance') + Customer::find(request('customer_id'))->debt >= Parameter::find(3)->value)
+        {
+            Alert::error('Số tiền nợ của khách hàng sau khi mua lớn hơn số tiền nợ tối đa');
+            return redirect(route('invoices.index'));
+        }
+
+        $product_id = request('product_id');
+        $quantity = request('quantity');
+        $count = count($product_id);
+
+        for ($i = 0; $i < $count; $i++)
+        {
+            $p = Product::find($product_id);
+            if (Parameter::find(4)->value > 0 && $p->in_stock - $quantity[$i] < Parameter::find(4)->value)
+            {
+                Alert::error('Số lượng sản phẩm sau bán ít hơn số lượng tối thiểu qui định');
+                return redirect(route('invoices.index'));
+            }
+        }
     }
 
     /**

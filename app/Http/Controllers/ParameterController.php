@@ -70,8 +70,18 @@ class ParameterController extends Controller
      */
     public function update(Request $request, Parameter $parameter)
     {
-        //
+        // $parameter_temp = Parameter::all();
+        // $i = 1;
+        // foreach (request()->all() as $pa)
+        // {
+        //     if ($pa == null || $pa = '')
+        //     {
+        //         $pa = $parameter_temp[$i];
+        //     }
+        //     $i++;
 
+        //     $parameter
+        // }
     }
 
     /**

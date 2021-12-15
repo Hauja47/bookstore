@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\ReturnGoodsReceipt;
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Blade;
@@ -54,7 +55,9 @@ class AppServiceProvider extends ServiceProvider
             'Văn phòng phẩm' => 'App\Models\Stationery',
             'Nhân viên' => 'App\Models\Employee',
             'Nhà cung cấp' => 'App\Models\Provider',
-            'Khách hàng' => 'App\Models\Customer'
+            'Khách hàng' => 'App\Models\Customer',
+            'Đơn nhập hàng' => 'App\Models\GoodsReceipt',
+            'Đơn trả hàng' => ReturnGoodsReceipt::class
         ]);
 
         //Define role admin

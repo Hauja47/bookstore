@@ -186,9 +186,12 @@
                                             </td>
                                         </tr>
                                     @endforeach --}}
-
                                 </tbody>
                             </table>
+                            @error('product_id')
+                            <p class="error-msg">{{ $message }}</p>
+                            {{-- <p class="error-msg">Trường này không được trống</p> --}}
+                        @enderror
                         </div>
                     </div>
                 </div>

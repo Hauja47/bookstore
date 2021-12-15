@@ -36,4 +36,9 @@ class ReturnGoodsReceipt extends Model
     {
         return $this->hasMany(ReturnGoodsReceiptDetail::class);
     }
+
+    public function payment()
+    {
+        return $this->morphOne(Payment::class, 'payable');
+    }
 }

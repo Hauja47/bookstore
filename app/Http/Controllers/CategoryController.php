@@ -130,7 +130,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        if (Book::where('category_id', '=', $category->id)->exists())
+        if ($category->book()->exists())
         {
             Alert::error('Có sản phẩm thuộc thể loại');
 

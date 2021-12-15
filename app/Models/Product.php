@@ -45,4 +45,9 @@ class Product extends Model
     {
         return $this->hasManyThrough(GoodsReceipt::class, GoodsReceiptDetail::class);
     }
+
+    public function goodsReceiptDetails()
+    {
+        return $this->hasMany(GoodsReceiptDetail::class);
+    }
 }

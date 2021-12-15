@@ -193,6 +193,9 @@ return [
         'phone_number' => "Số điện thoại",
         'full_name' => 'Tên',
         'role' => 'Vai trò',
-        'created_at' => 'Thời gian'
+        'created_at' => 'Thời gian',
+        'provider' => 'Nhà cung cấp',
+        'product' => 'Sản phẩm',
+        'product_id' => 'Sản phẩm đã thêm'
     ],
 ];
