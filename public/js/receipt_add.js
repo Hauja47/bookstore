@@ -16,6 +16,10 @@ let paid = document.getElementById('paid');
 let balance = document.getElementById('balance');
 
 paid.onchange = function(e) {
+    updateBalance();
+}
+
+function updateBalance() {
     let balance_value = Number.parseInt(total_price.value) - Number.parseInt(paid.value);
 
     if (balance_value >= 0) {
@@ -24,7 +28,6 @@ paid.onchange = function(e) {
         alert('Số tiền thanh toán phải nhỏ hơn Tổng tiền');
     }
 }
-
 
 let btnMove = document.getElementById('btn-move');
 btnMove.onclick = function (e) {
@@ -85,6 +88,8 @@ btnMove.onclick = function (e) {
         product.remove(product.selectedIndex);
         quantity.value = 1;
         cost.value = 1000;
+
+        updateBalance();
     } else {
         alert('Vui lòng chọn sản phẩm và nhập số lượng, đơn giá');
     }
