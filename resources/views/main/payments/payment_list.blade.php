@@ -39,11 +39,10 @@
             </a> --}}
         </div>
         <div class="col l-6 md-6 c-6">
-            <a href="{{ route('customers.create') }}" class="btn-function btn-function__add">
+            {{-- <a href="{{ route('customers.create') }}" class="btn-function btn-function__add">
                 <i class='btn-function-icon btn-function__add-icon bx bx-plus' ></i>
-                <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
                 Thêm phiếu chi
-            </a>
+            </a> --}}
         </div>
     </div>
     <!-- END  -->
@@ -53,7 +52,7 @@
         <div class="col l-12 md-12 c-12">
             <div class="box">
                 <div class="box-body">
-                    <table class="main-customer-table">
+                    <table class="main-budget-table">
                         <thead>
                             <tr>
                                 <th>Mã phiếu chi</th>
@@ -70,17 +69,20 @@
                             @foreach (\App\Models\Payment::all() as $payment)
                             <tr>
                                 <td>{{ 'PC'.$payment->id }}</td>
-                                <td>{{ $payment->receiver->type}}</td>
+                                <td>{{ $payment->receiver_type}}</td>
                                 <td>{{ $payment->receiver->name ?? $payment->receiver->full_name }}</td>
                                 <td>
                                     {{ $payment->employee->full_name }}
                                 </td>
-                                <td>{{ number_format($payment->debt,).'đ' }}</td>
+                                <td>
+                                    {{ $payment->note }}
+                                </td>
+                                <td>{{ number_format($payment->money,).'đ' }}</td>
                                 <td>
                                     <a href="{{ route('payments.edit', ['payment' => $payment]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
-                                    <a onclick="confirmation(event)" href="{{ route('payments.delete', ['customer' => $customer]) }}" class="btn btn-outline btn-remove">
+                                    <a onclick="confirmation(event)" href="{{ route('payments.delete', ['payment' => $payment]) }}" class="btn btn-outline btn-remove">
                                         <i class='btn-icon bx bx-trash-alt' ></i>
                                     </a>
 

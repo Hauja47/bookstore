@@ -53,7 +53,7 @@
         <div class="col l-12 md-12 c-12">
             <div class="box">
                 <div class="box-body">
-                    <table class="main-customer-table">
+                    <table class="main-budget-table">
                         <thead>
                             <tr>
                                 <th>Mã phiếu thu</th>
@@ -68,11 +68,7 @@
                         <tbody>
 
                             @foreach (\App\Models\Receipt::all() as $receipt)
-
-                            @php
-                                dd($receipt->giver);
-                            @endphp
-                            {{-- <tr>
+                            <tr>
                                 <td>{{ 'PC'.$receipt->id }}</td>
                                 <td>{{ $receipt->giver_type}}</td>
                                 <td>{{ $receipt->giver->name ?? $receipt->giver->full_name }}</td>
@@ -92,7 +88,7 @@
                                     </a>
 
                                 </td>
-                            </tr> --}}
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
