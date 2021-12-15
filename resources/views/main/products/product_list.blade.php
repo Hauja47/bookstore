@@ -33,10 +33,10 @@
     <!-- FUNCTION BUTTON -->
     <div class="row main-function">
         <div class="col l-6 md-6 c-6">
-            <a href="" class="btn-function btn-function__export">
+            {{-- <a href="" class="btn-function btn-function__export">
                 <i class='btn-function-icon btn-function__export-icon bx bx-download' ></i>
                 Xuất file
-            </a>
+            </a> --}}
             <a href="{{ route('products.option') }}" class="btn-function btn-function__manage">
                 <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
                 Quản lý tuỳ chọn
