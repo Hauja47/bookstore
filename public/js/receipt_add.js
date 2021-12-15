@@ -12,26 +12,7 @@ total_price.onchange = function(e) {
     paid.setAttributeNode(attr);
 }
 
-let paid = document.getElementById('paid');
-let balance = document.getElementById('balance');
-
-paid.onchange = function(e) {
-    updateBalance();
-}
-
-function updateBalance() {
-    let balance_value = Number.parseInt(total_price.value) - Number.parseInt(paid.value);
-
-    if (balance_value >= 0) {
-        balance.value = balance_value;
-    } else {
-        alert('Số tiền thanh toán phải nhỏ hơn Tổng tiền');
-    }
-}
-
-
-
-let btnMove = document.getElementById('btn-move');
+var btnMove = document.getElementById('btn-move');
 btnMove.onclick = function (e) {
 
 
@@ -121,4 +102,22 @@ product.onchange = function(e) {
     let product_price = product_select[3];
 
     cost.value = product_price;
+}
+
+
+let paid = document.getElementById('paid');
+let balance = document.getElementById('balance');
+
+paid.onchange = function(e) {
+    updateBalance();
+}
+
+function updateBalance() {
+    let balance_value = Number.parseInt(total_price.value) - Number.parseInt(paid.value);
+
+    if (balance_value >= 0) {
+        balance.value = balance_value;
+    } else {
+        alert('Số tiền thanh toán phải nhỏ hơn Tổng tiền');
+    }
 }
