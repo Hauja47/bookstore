@@ -70,18 +70,38 @@ class ParameterController extends Controller
      */
     public function update(Request $request, Parameter $parameter)
     {
-        // $parameter_temp = Parameter::all();
-        // $i = 1;
-        // foreach (request()->all() as $pa)
-        // {
-        //     if ($pa == null || $pa = '')
-        //     {
-        //         $pa = $parameter_temp[$i];
-        //     }
-        //     $i++;
+        // dd(request());
+        request()->validate([
+            'min_imported_number' => 'required|numeric',
+            'max_in_stock_number_before_import' => 'required|numeric',
+            'max_debt' => 'required|numeric',
+            'min_in_stock_number_after_sale' => 'required|numeric',
+            'rate_price' => 'required|numeric',
+        ]);
 
-        //     $parameter
-        // }
+        $p = Parameter::all();
+
+        $p[0]->update([
+            'value' => request('min_imported_number')
+        ]);
+
+        $p[1]->update([
+            'value' => request('max_in_stock_number_before_import')
+        ]);
+
+        $p[2]->update([
+            'value' => request('max_debt')
+        ]);
+
+        $p[3]->update([
+            'value' => request('min_in_stock_number_after_sale')
+        ]);
+
+        $p[4]->update([
+            'value' => request('rate_price')
+        ]);
+
+        return back();
     }
 
     /**

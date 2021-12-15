@@ -255,7 +255,7 @@ Route::prefix('setting')->middleware('auth')->group(function () {
 
 
     // Xử lý edit
-    Route::post('/regulation', [ParameterController::class, 'update']);
+    Route::post('/regulation', [ParameterController::class, 'update'])->middleware('can:admin')->name('settings.regulation.edit');
 });
 
 
