@@ -164,6 +164,14 @@ class GoodsReceiptController extends Controller
                 Alert::error('Đã có hóa đơn tạo sau khi đơn nhập hàng này được tạo');
                 return back();
             }
+
+        }
+
+        foreach ($details as $detail)
+        {
+            $detail->product->update([
+                'in_stock' => $detail->product->in_stock - $detail->quantity,
+            ]);
         }
 
         $goods_receipt->delete();

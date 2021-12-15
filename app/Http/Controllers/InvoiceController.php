@@ -70,13 +70,44 @@ class InvoiceController extends Controller
 
         for ($i = 0; $i < $count; $i++)
         {
-            $p = Product::find($product_id);
-            if (Parameter::find(4)->value > 0 && $p->in_stock - $quantity[$i] < Parameter::find(4)->value)
+            $p = Product::find($product_id[$i]);
+            if (Parameter::find(4)->value > 0 && (($p->in_stock - $quantity[$i]) < Parameter::find(4)->value))
             {
-                Alert::error('Số lượng sản phẩm sau bán ít hơn số lượng tối thiểu qui định');
+                Alert::error('Số lượng sản phẩm '.$p->name.' sau bán ít hơn số lượng tối thiểu qui định');
+                return redirect(route('invoices.index'));
+            }
+
+            if ($p->in_stock - $quantity[$i] < 0)
+            {
+                Alert::error('Số lượng sản phẩm '.$p->name.' sau bán ít nhỏ hơn 0');
                 return redirect(route('invoices.index'));
             }
         }
+
+        $invoice = Invoice::create([
+            'employee_id' => auth()->user()->employee->id,
+            'customer_id' => request('customer_id'),
+            'total' => request('total_price'),
+            'paid' => request('paid'),
+            'balance' => request('balance')
+        ]);
+
+        for ($i = 0; $i < $count; $i++)
+        {
+            $invoice->details()->create([
+                'product_id' => $product_id[$i],
+                'quantity' => $quantity[$i],
+                'cost' => Product::find($product_id[$i])->price,
+                'total' => request('total')[$i]
+            ]);
+
+            $product = Product::find($product_id[$i]);
+            $product->update([
+                'in_stock' => $product->in_stock - $quantity[$i],
+            ]);
+        }
+
+        return redirect(route('invoices.index'))->withSuccess('Tạo hóa đơn mới thành công');
     }
 
     /**
@@ -123,6 +154,14 @@ class InvoiceController extends Controller
     public function destroy(Invoice $invoice)
     {
         //
+        $details = $invoice->details->all();
+
+        foreach ($details as $detail)
+        {
+            $detail->product->update([
+                'in_stock' => $detail->product->in_stock + $detail->quantity,
+            ]);
+        }
         $invoice->delete();
 
         return back();
