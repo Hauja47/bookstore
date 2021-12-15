@@ -109,7 +109,7 @@
 /* Provider Table */
 .main-provider-table,
 .main-product-table {
-    min-width: 700px;
+    min-width: 900px;
 }
 
 table th,

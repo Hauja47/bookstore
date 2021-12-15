@@ -33,10 +33,10 @@
     <!-- FUNCTION BUTTON -->
     <div class="row main-function">
         <div class="col l-6 md-6 c-6">
-            <a href="" class="btn-function btn-function__export">
+            {{-- <a href="" class="btn-function btn-function__export">
                 <i class='btn-function-icon btn-function__export-icon bx bx-download' ></i>
                 Xuất file
-            </a>
+            </a> --}}
         </div>
         <div class="col l-6 md-6 c-6">
             <a href="" class="btn-function btn-function__add">
@@ -160,7 +160,7 @@
                             </tr>
                             @foreach (\App\Models\Invoice::all() as $invoice)
                             <tr>
-                                <td>{{ 'DNK'.$invoice->id }}</td>
+                                <td>{{ 'HD'.$invoice->id }}</td>
                                 <td>
                                     {{ $invoice->provider->name }}
                                 </td>

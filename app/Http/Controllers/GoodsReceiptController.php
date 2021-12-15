@@ -46,10 +46,10 @@ class GoodsReceiptController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\GoodsReceipt  $goodsReceipt
+     * @param  \App\Models\GoodsReceipt  $goods_receipt
      * @return \Illuminate\Http\Response
      */
-    public function show(GoodsReceipt $goodsReceipt)
+    public function show(GoodsReceipt $goods_receipt)
     {
         //
     }
@@ -57,22 +57,24 @@ class GoodsReceiptController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\GoodsReceipt  $goodsReceipt
+     * @param  \App\Models\GoodsReceipt  $goods_receipt
      * @return \Illuminate\Http\Response
      */
-    public function edit(GoodsReceipt $goodsReceipt)
+    public function edit(GoodsReceipt $goods_receipt)
     {
         //
+        return view('main.goods_receipts.edit', ['goods_receipt' => $goods_receipt]);
+
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\GoodsReceipt  $goodsReceipt
+     * @param  \App\Models\GoodsReceipt  $goods_receipt
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GoodsReceipt $goodsReceipt)
+    public function update(Request $request, GoodsReceipt $goods_receipt)
     {
         //
     }
@@ -80,13 +82,13 @@ class GoodsReceiptController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\GoodsReceipt  $goodsReceipt
+     * @param  \App\Models\GoodsReceipt  $goods_receipt
      * @return \Illuminate\Http\Response
      */
-    public function destroy(GoodsReceipt $goodsReceipt)
+    public function destroy(GoodsReceipt $goods_receipt)
     {
         //
-        $goodsReceipt->delete();
+        $goods_receipt->delete();
 
         return back()->withSuccess('Xóa Nhà cung cấp thành công');
     }

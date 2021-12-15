@@ -59,7 +59,7 @@
             {{-- FORM --}}
             <div class="row grid">
                 <!-- FORM CREATE goods_receipt -->
-                <div class="col l-4 md-12 c-12 ">
+                <div class="col l-4 md-5 c-12 ">
                     <div class="box info-general">
                         <div class="box-header">
                             Chọn nhà cung cấp
@@ -94,7 +94,7 @@
                                     <option hidden value=""></option>
                                     @foreach (\App\Models\Product::all() as $product)
                                         <option value="{{ $product->id }}">
-                                            {{ $product->name . ' - ' . $product->version }}</option>
+                                            {{ $product->name . ' - ' . $product->version . ' - ' . $product->brand->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('product')
@@ -111,7 +111,7 @@
                                     'input_type' => 'number',
                                     'input_id' => 'quantity',
                                     'input_name' => 'quantity',
-                                    'input_value' => '',
+                                    'input_value' => '1',
                                     'message' => '',
                                     ])
                                 </div>
@@ -123,7 +123,7 @@
                                     'input_type' => 'number',
                                     'input_id' => 'cost',
                                     'input_name' => 'cost',
-                                    'input_value' => '',
+                                    'input_value' => '1000',
                                     'message' => '',
                                     ])
                                 </div>
@@ -151,7 +151,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col l-8 md-12 c-12">
+                <div class="col l-8 md-7 c-12">
                     <div class="box info-general">
                         <div class="box-header">
                             Sản phẩm đã thêm
@@ -162,6 +162,7 @@
                                     <tr>
                                         <th>Tên sản phẩm</th>
                                         <th>Phiên bản</th>
+                                        <th>NXB/Nhãn hiệu</th>
                                         <th>Đơn giá</th>
                                         <th>Số lượng</th>
                                         <th>Thành tiền</th>
@@ -264,5 +265,5 @@
 
     <script src="{{ asset('js/create.js') }}"></script>
     <script src="{{ asset('js/photo.js') }}"></script>
-    <script src="{{ asset('js/receipt.js') }}"></script>
+    <script src="{{ asset('js/receipt_add.js') }}"></script>
 @endsection

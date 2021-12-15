@@ -1,13 +1,15 @@
+// Find a <table> element with id="myTable":
+var table = document.querySelector(".main-product-table tbody");
+
+var product = document.getElementById('product');
+var quantity = document.getElementById('quantity');
+var cost = document.getElementById('cost');
+var total_price = document.getElementById('total_price');
+
+
+
 let btnMove = document.getElementById('btn-move');
-
 btnMove.onclick = function (e) {
-    // Find a <table> element with id="myTable":
-    var table = document.querySelector(".main-product-table tbody");
-
-    let product = document.getElementById('product');
-    let quantity = document.getElementById('quantity');
-    let cost = document.getElementById('cost');
-    let total_price = document.getElementById('total_price');
 
 
     console.log(product.value);
@@ -16,13 +18,14 @@ btnMove.onclick = function (e) {
     let product_select = product.options[product.selectedIndex].text.split(' - ');
     let product_name = product_select[0];
     let product_version = product_select[1];
+    let product_brand_name = product_select[2];
 
 
     console.log(quantity.value);
     console.log(cost.value);
     console.log(total_price.value);
 
-    if (quantity.value > 0 && cost.value > 0) {
+    if (quantity.value > 0 && cost.value > 0 && product.value != '') {
         let total_price_num = Number.parseInt(total_price.value);
 
         let total = Number.parseInt(quantity.value) * Number.parseInt(cost.value);
@@ -44,6 +47,7 @@ btnMove.onclick = function (e) {
                     ${product_name}
                 </td>
                 <td>${product_version}</td>
+                <td>${product_brand_name}</td>
                 <td>
                     <input hidden value="${cost.value}" name="cost[]">
                     ${cost.value}đ
@@ -59,12 +63,13 @@ btnMove.onclick = function (e) {
             </tr>`;
 
         table.appendChild(t_row);
+
+        product.remove(product.selectedIndex);
+        quantity.value = 1;
+        cost.value = 1000;
     } else {
         alert('Vui lòng chọn sản phẩm và nhập số lượng, đơn giá');
     }
-
-
-
 
     //     // Create an empty <tr> element and add it to the 1st position of the table:
     //     var row = table.insertRow(0);

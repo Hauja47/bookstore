@@ -59,7 +59,8 @@
                         Trang chủ
                     </a>
                 </li>
-                <li class="sidebar__sub-menu">
+                {{-- Hoá dơn --}}
+                {{-- <li class="sidebar__sub-menu">
                     <div class="sidebar__menu-dropdown">
                         <i class='sidebar__menu-item-icon bx bx-receipt'></i>
                         Hoá đơn
@@ -77,6 +78,13 @@
                             </a>
                         </li>
                     </ul>
+                </li> --}}
+                {{-- Hoá đơn not open --}}
+                <li class="sidebar__menu-item {{ $active_invoice }}">
+                    <a href="{{ route('invoices.index') }}" class="sidebar__menu-link">
+                        <i class='sidebar__menu-item-icon bx bx-receipt'></i>
+                        Hoá đơn
+                    </a>
                 </li>
                 <li class="sidebar__sub-menu">
                     <div class="sidebar__menu-dropdown">
