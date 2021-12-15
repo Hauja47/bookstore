@@ -30,7 +30,7 @@
 
 @section('main-content')
     <div class="main-content">
-        <form action="{{ route('providers.create') }}" method="post" id="form-main" enctype="multipart/form-data">
+        <form action="{{ route('settings.regulation.edit') }}" method="post" id="form-main" enctype="multipart/form-data">
             @csrf
             <!-- FUNCTION BUTTON -->
             <div class="row main-function">
