@@ -1,14 +1,14 @@
 @extends('templates.template', [
-'title'=> 'Thông tin đơn nhập kho',
-'main_header'=> 'Thông tin đơn nhập kho',
+'title'=> 'Sửa Thông tin hoá đơn',
+'main_header'=> 'Sửa Thông tin hoá đơn',
 
 'active_dashboard' => '',
-'open_invoice' => '',
-'active_invoice' => '',
+'open_invoice' => 'sidebar__menu-dropdown-icon--open',
+'active_invoice' => 'active',
 'active_return_good' => '',
-'open_product' => 'sidebar__menu-dropdown-icon--open',
+'open_product' => '',
 'active_product' => '',
-'active_goods_receipt' => 'active',
+'active_goods_receipt' => '',
 'active_provider' => '',
 'active_customer' => '',
 'open_budget' => '',
@@ -26,41 +26,43 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/list.css') }}">
     <link rel="stylesheet" href="{{ asset('css/add.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/goods_receipt_list.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/invoice_list.css') }}">
 @endsection
 
 @section('main-content')
     <div class="main-content">
-        <form action="{{ route('goods_receipts.edit', ['goods_receipt'=> $goods_receipt]) }}" method="post" id="form-main" enctype="multipart/form-data">
+        <form action="{{ route('invoices.edit', ['invoice'=> $invoice]) }}" method="post" id="form-main" enctype="multipart/form-data">
             @csrf
             <!-- FUNCTION BUTTON -->
             <div class="row main-function">
                 <div class="col l-6 md-6 c-6">
-                    <a href="{{ route('goods_receipts.index') }}" class="btn-function btn-function__back">
+                    <a href="{{ route('invoices.index') }}" class="btn-function btn-function__back">
                         <i class='btn-function-icon btn-function__back-icon bx bx-chevron-left'></i>
-                        Quay lại đơn nhập kho
+                        Quay lại danh sách hoá đơn
                     </a>
                 </div>
                 <div class="col l-6 md-6 c-6">
-                    {{-- <a href="{{ route('goods_receipts.index') }}" class="btn-function btn-function__exit">
+                    <a href="{{ route('invoices.index') }}" class="btn-function btn-function__exit">
                         Thoát
                     </a>
                     <button type="submit" class="btn-function btn-function__save">
                         Lưu
-                    </button> --}}
+                    </button>
                 </div>
             </div>
             <!-- END  -->
 
             @php
-                $id = $goods_receipt->id;
-                $provider_id = $goods_receipt->provider->id;
-                $employee_id = $goods_receipt->employee->id;
-                $employee_name = $goods_receipt->employee->full_name;
+                $id = $invoice->id;
+                $customer_id = $invoice->customer->id;
+                $employee_id = $invoice->employee->id;
+                $employee_name = $invoice->employee->full_name;
 
-                // dd($goods_receipt->employee);
+                // dd($invoice->employee);
 
-                $total_price = $goods_receipt->total_price;
+                $total_price = $invoice->total;
+                $paid = $invoice->paid;
+                $balance = $invoice->balance;
             @endphp
             {{-- @foreach (\App\Models\Employee::all() as $employee)
                 @if ($employee->id == $employee_id)
@@ -70,7 +72,7 @@
 
             {{-- FORM --}}
             <div class="row grid">
-                <!-- FORM CREATE goods_receipt -->
+                <!-- FORM CREATE invoice -->
                 <div class="col l-4 md-12 c-12 ">
                     <div class="box info-general">
                         <div class="box-header">
@@ -79,16 +81,16 @@
                         <div class="box-body">
                             <div class="input-wrapper">
                                 <label for="" class="input-label">
-                                    Nhà cung cấp <span class="required">*</span>
+                                    Khách hàng <span class="required">*</span>
                                 </label>
-                                <select class="header__search-select" name="provider" id="provider" disabled>
+                                <select class="header__search-select" name="customer_id" id="customer_id" disabled>
                                     <option hidden value=""></option>
-                                    @foreach (\App\Models\Provider::all() as $provider)
-                                        <option value="{{ $provider->id }}" {{ ($provider_id == $provider->id) ? 'selected' : '' }}>
-                                            {{ $provider->name . ' - ' . $provider->phone_number }}</option>
+                                    @foreach (\App\Models\Customer::all() as $customer)
+                                        <option value="{{ $customer->id }}" {{ ($customer_id == $customer->id) ? 'selected' : '' }}>
+                                            {{ $customer->full_name . ' - ' . $customer->phone_number }}</option>
                                     @endforeach
                                 </select>
-                                @error('provider')
+                                @error('customer_id')
                                     <p class="error-msg">{{ $message }}</p>
                                     {{-- <p class="error-msg">Trường này không được trống</p> --}}
                                 @enderror
@@ -108,10 +110,10 @@
                                 'label_title' => 'Ngày tạo đơn',
                                 'required' => 'required',
                                 'disabled' => 'readonly',
-                                'input_type' => 'date',
+                                'input_type' => 'datetime',
                                 'input_id' => 'created_at',
                                 'input_name' => 'created_at',
-                                'input_value' => \Carbon\Carbon::parse($goods_receipt->created_at)->format("Y-m-d"),
+                                'input_value' => \Carbon\Carbon::parse($invoice->created_at)->format("H:i d/m/Y"),
                                 'message' => '',
                                 ])
                         </div>
@@ -184,6 +186,33 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row grid">
+                                <div class="col l-5 md-5 c-12">
+                                    @include('includes.input', [
+                                    'label_title' => 'Thanh toán (VND)',
+                                    'required' => 'required',
+                                    'disabled' => '',
+                                    'input_type' => 'number',
+                                    'input_id' => 'paid',
+                                    'input_name' => 'paid',
+                                    'input_value' => $paid,
+                                    'message' => '',
+                                    ])
+                                </div>
+                                <div class="col l-5 md-5 c-12 l-o-2 md-o-2">
+                                    @include('includes.input', [
+                                    'label_title' => 'Còn lại (VND)',
+                                    'required' => '',
+                                    'disabled' => 'readonly',
+                                    'input_type' => 'number',
+                                    'input_id' => 'balance',
+                                    'input_name' => 'balance',
+                                    'input_value' => $balance,
+                                    'message' => '',
+                                    ])
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -205,26 +234,26 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (\App\Models\GoodsReceiptDetail::all() as $goods_receipt_detail)
-                                        @if ($goods_receipt_detail->goodsReceipt->id == $id)
+                                    @foreach (\App\Models\InvoiceDetail::all() as $invoice_detail)
+                                        @if ($invoice_detail->invoice->id == $id)
                                         <tr>
                                             <td>
-                                                <input hidden value="{{ $goods_receipt_detail->product->id }}" name="product_id[]">
-                                                {{ $goods_receipt_detail->product->name }}
+                                                <input hidden value="{{ $invoice_detail->product->id }}" name="product_id[]">
+                                                {{ $invoice_detail->product->name }}
                                             </td>
-                                            <td>{{ $goods_receipt_detail->product->version }}</td>
-                                            <td>{{ $goods_receipt_detail->product->brand->name }}</td>
+                                            <td>{{ $invoice_detail->product->version }}</td>
+                                            <td>{{ $invoice_detail->product->brand->name }}</td>
                                             <td>
-                                                <input hidden value="{{ $goods_receipt_detail->cost }}" name="cost[]">
-                                                {{ $goods_receipt_detail->cost.'đ' }}
-                                            </td>
-                                            <td>
-                                                <input hidden value="{{ $goods_receipt_detail->quantity }}" name="quantity[]">
-                                                {{ $goods_receipt_detail->quantity }}
+                                                <input hidden value="{{ $invoice_detail->cost }}" name="cost[]">
+                                                {{ $invoice_detail->cost.'đ' }}
                                             </td>
                                             <td>
-                                            <input hidden value="{{ $goods_receipt_detail->total }}" name="total[]">
-                                                {{ $goods_receipt_detail->total.'đ' }}
+                                                <input hidden value="{{ $invoice_detail->quantity }}" name="quantity[]">
+                                                {{ $invoice_detail->quantity }}
+                                            </td>
+                                            <td>
+                                            <input hidden value="{{ $invoice_detail->total }}" name="total[]">
+                                                {{ $invoice_detail->total.'đ' }}
                                             </td>
                                         </tr>
                                         @endif
@@ -235,7 +264,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- END goods_receipt TABLE -->
+                <!-- END invoice TABLE -->
             </div>
             {{-- END FORM --}}
         </form>
@@ -261,9 +290,9 @@
     'message' => '',
     ]) --}}
 
-    {{-- Modal add goods_receiptType --}}
+    {{-- Modal add invoiceType --}}
     {{-- @include('includes.modal_input', [
-    'modal_name' => 'addgoods_receiptType',
+    'modal_name' => 'addinvoiceType',
     'form_action' => '',
     'form_method' => 'post',
     'modal_title' => 'Thêm loại sản phẩm',
@@ -271,8 +300,8 @@
     'required' => 'required',
     'disabled' => '',
     'input_type' => 'text',
-    'input_id' => 'goods_receipt_type_name',
-    'input_name' => 'goods_receipt_type_name',
+    'input_id' => 'invoice_type_name',
+    'input_name' => 'invoice_type_name',
     'input_value' => '',
     'path' => '',
     'message' => '',

@@ -108,10 +108,10 @@
                                 'label_title' => 'Ngày tạo đơn',
                                 'required' => 'required',
                                 'disabled' => 'readonly',
-                                'input_type' => 'date',
+                                'input_type' => 'datetime',
                                 'input_id' => 'created_at',
                                 'input_name' => 'created_at',
-                                'input_value' => \Carbon\Carbon::parse($goods_receipt->created_at)->format("Y-m-d"),
+                                'input_value' => \Carbon\Carbon::parse($goods_receipt->created_at)->format("H:i d/m/Y"),
                                 'message' => '',
                                 ])
                         </div>
