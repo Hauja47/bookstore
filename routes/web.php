@@ -9,6 +9,8 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\GoodsReceiptController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ParameterController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ReceiptController;
 
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
@@ -209,6 +211,17 @@ Route::prefix('payment')->middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('main.payments.payment_list');
     })->name('payments.index');
+
+    // Hiển thị form create
+    Route::get('/create', [PaymentController::class, 'create'])->name('payments.create');
+    // Xử lý create
+    Route::post('/create', [PaymentController::class, 'store']);
+    // Hiển thị form edit
+    Route::get('/edit/{payment}', [PaymentController::class, 'edit'])->name('payments.edit');
+    // Xử lý edit
+    Route::post('/edit/{payment}', [PaymentController::class, 'update']);
+    // Xử lý delete
+    Route::get('/delete/{payment}', [PaymentController::class, 'destroy'])->name('payments.delete');
 });
 
 // Receipt Thu
@@ -216,6 +229,17 @@ Route::prefix('receipt')->middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('main.receipts.receipt_list');
     })->name('receipts.index');
+
+    // Hiển thị form create
+    Route::get('/create', [ReceiptController::class, 'create'])->name('receipts.create');
+    // Xử lý create
+    Route::post('/create', [ReceiptController::class, 'store']);
+    // Hiển thị form edit
+    Route::get('/edit/{receipt}', [ReceiptController::class, 'edit'])->name('receipts.edit');
+    // Xử lý edit
+    Route::post('/edit/{receipt}', [ReceiptController::class, 'update']);
+    // Xử lý delete
+    Route::get('/delete/{receipt}', [ReceiptController::class, 'destroy'])->name('receipts.delete');
 });
 
 // Reports

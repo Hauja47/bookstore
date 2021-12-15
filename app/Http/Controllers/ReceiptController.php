@@ -25,6 +25,8 @@ class ReceiptController extends Controller
     public function create()
     {
         //
+        return view('main.receipts.add');
+
     }
 
     /**
@@ -49,6 +51,8 @@ class ReceiptController extends Controller
     public function show(Receipt $receipt)
     {
         //
+        return view('main.receipts.edit', ['receipt' => $receipt]);
+
     }
 
     /**

@@ -25,6 +25,7 @@ class PaymentController extends Controller
     public function create()
     {
         //
+        return view('main.payments.add');
     }
 
     /**
@@ -60,6 +61,8 @@ class PaymentController extends Controller
     public function edit(Payment $payment)
     {
         //
+        return view('main.payments.edit', ['payment' => $payment]);
+
     }
 
     /**

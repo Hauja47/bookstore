@@ -38,7 +38,6 @@
                 Xuất file
             </a> --}}
             <a href="{{ route('products.option') }}" class="btn-function btn-function__manage">
-                <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
                 Quản lý tuỳ chọn
             </a>
         </div>
