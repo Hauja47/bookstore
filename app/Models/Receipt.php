@@ -27,7 +27,7 @@ class Receipt extends Model
 
     public function employee()
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(Employee::class);
     }
 
     public function paymentMethod()
