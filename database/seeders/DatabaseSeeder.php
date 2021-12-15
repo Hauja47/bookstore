@@ -7,6 +7,8 @@ use App\Models\Brand;
 use App\Models\Product;
 use App\Models\Customer;
 use App\Models\Employee;
+use App\Models\GoodsReceipt;
+use App\Models\GoodsReceiptDetail;
 use App\Models\Provider;
 use App\Models\Stationery;
 use App\Models\PaymentType;
@@ -123,6 +125,22 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Test '.$stationery->id,
                 'brand_id' => Brand::all()->random()->id,
                 'version' => '100',
+            ]);
+        }
+
+        $goodsReceipts = GoodsReceipt::factory(10)->create([
+            'employee_id' => Employee::all()->random()->id,
+            'provider_id' => Provider::all()->random()->id,
+            'total_price' => 0
+        ]);
+
+        foreach ($goodsReceipts as $goodsReceipt)
+        {
+            $details = GoodsReceiptDetail::factory(rand(1, 10))->create([
+                'goods_receipt_id' => $goodsReceipt->id,
+            ]);
+            $goodsReceipt->update([
+                'total_price' => $details->sum('total')
             ]);
         }
     }
