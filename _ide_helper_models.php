@@ -506,8 +506,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Customer $employee
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $giver
  * @property-read \App\Models\PaymentMethod $paymentMethod
- * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $receiver
  * @property-read \App\Models\ReceiptType $type
  * @method static \Database\Factories\ReceiptFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Receipt newModelQuery()

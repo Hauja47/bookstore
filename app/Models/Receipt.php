@@ -20,7 +20,7 @@ class Receipt extends Model
         'note'
     ];
 
-    public function receiver()
+    public function giver()
     {
         return $this->morphTo();
     }
