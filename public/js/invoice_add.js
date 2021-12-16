@@ -8,7 +8,6 @@ var cost = document.getElementById('cost_input');
 var total_price = document.getElementById('total_price');
 
 
-
 // Kiểm tra thay đổi product_select
 product.onchange = function(e) {
     console.log('product_id = ' + product.value);
@@ -19,14 +18,20 @@ product.onchange = function(e) {
     let product_brand_name = product_select[2];
 
     let product_option_value = product.options[product.selectedIndex].value.split(' _ ');
-    let product_id = product_select[0];
-    let product_in_stock = product_select[1];
-    let product_price = product_select[2];
+    let product_id = product_option_value[0];
+    let product_in_stock = product_option_value[1];
+    let product_price = product_option_value[2];
 
     console.log(product_select);
     console.log(product_option_value);
 
     cost.value = product_price;
+    in_stock.value = product_in_stock;
+    quantity.setAttribute('max', product_in_stock);
+    quantity.setAttribute('min', 1);
+}
+
+quantity.onchange = function(e) {
 }
 
 var btnMove = document.getElementById('btn-move');
@@ -38,9 +43,9 @@ btnMove.onclick = function (e) {
         let product_brand_name = product_select[2];
 
         let product_option_value = product.options[product.selectedIndex].value.split(' _ ');
-        let product_id = product_select[0];
-        let product_in_stock = product_select[1];
-        let product_price = product_select[2];
+        let product_id = product_option_value[0];
+        let product_in_stock = product_option_value[1];
+        let product_price = product_option_value[2];
 
 
         console.log('product_id = ' + product_id);
