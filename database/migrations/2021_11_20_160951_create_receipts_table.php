@@ -19,6 +19,7 @@ class CreateReceiptsTable extends Migration
             $table->morphs('giver');
             // $table->foreignId('payment_method_id')->constrained('payment_methods');
             $table->foreignId('employee_id')->constrained('employees');
+            $table->foreignId('invoice_id')->nullable()->constrained('invoices');
             $table->integer('money');
             $table->boolean('can_edit_note')->default(1);
             $table->boolean('can_delete')->default(1);
