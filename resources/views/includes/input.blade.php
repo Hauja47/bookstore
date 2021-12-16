@@ -59,7 +59,7 @@
             {{-- price --}}
         @else
             <input {{ $disabled }} type="number" placeholder="" value="{{ old($input_name, $input_value) }}"
-                name="{{ $input_name }}" id="{{ $input_id }}" class="input-text" min="0" step="1000">
+                name="{{ $input_name }}" id="{{ $input_id }}" class="input-text" min="0" step="100">
         @endif
     @endif
 
