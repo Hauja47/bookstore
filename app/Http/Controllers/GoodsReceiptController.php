@@ -65,7 +65,7 @@ class GoodsReceiptController extends Controller
 
         foreach ($quantity as $n)
         {
-            $product = Product::find($n);
+            $product = Product::find($id);
             if ($product->in_stock > Parameter::find(1)->value)
             {
                 Alert::error('Sản phẩm '.$product->name.' của '.$product->brand->name.' có số lượng nhập nhỏ hơn số lượng nhập tối thiểu');

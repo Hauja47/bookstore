@@ -70,7 +70,7 @@
                                     <option hidden value=""></option>
                                     @foreach (\App\Models\Customer::all() as $customer)
                                         <option value="{{ $customer->id }}">
-                                            {{ $customer->full_name . ' - ' . $customer->phone_number }}</option>
+                                            {{ $customer->full_name . ' _ ' . $customer->phone_number }}</option>
                                     @endforeach
                                 </select>
                                 @error('customer_id')
@@ -94,7 +94,7 @@
                                     <option hidden value=""></option>
                                     @foreach (\App\Models\Product::all() as $product)
                                         <option value="{{ $product->id }}">
-                                            {{ $product->name . ' - ' . $product->version . ' - ' . $product->brand->name .' - ' . $product->price }}</option>
+                                            {{ $product->name.' _ '.$product->version.' _ '.$product->brand->name.' _ '.$product->price }}</option>
                                             @php
                                                 $price = $product->price;
                                             @endphp
@@ -112,8 +112,8 @@
                                     'required' => 'required',
                                     'disabled' => '',
                                     'input_type' => 'number',
-                                    'input_id' => 'quantity',
-                                    'input_name' => 'quantity',
+                                    'input_id' => 'quantity_input',
+                                    'input_name' => 'quantity_input',
                                     'input_value' => '1',
                                     'message' => '',
                                     ])
@@ -124,8 +124,8 @@
                                     'required' => 'required',
                                     'disabled' => 'readonly',
                                     'input_type' => 'number',
-                                    'input_id' => 'cost',
-                                    'input_name' => 'cost',
+                                    'input_id' => 'cost_input',
+                                    'input_name' => 'cost_input',
                                     'input_value' => $price,
                                     'message' => '',
                                     ])
@@ -230,57 +230,6 @@
 @endsection
 
 @section('modal')
-    <!-- Modal -->
-    {{-- Modal add Brand --}}
-    {{-- @include('includes.modal_input', [
-    'modal_name' => 'addBrand',
-    'form_action' => '',
-    'form_method' => 'post',
-    'modal_title' => 'Thêm nhãn hiệu',
-    'label_title' => 'Tên nhãn hiệu mới',
-    'required' => 'required',
-    'disabled' => '',
-    'input_type' => 'text',
-    'input_id' => 'brand_name',
-    'input_name' => 'brand_name',
-    'input_value' => '',
-    'path' => '',
-    'message' => '',
-    ]) --}}
-
-    {{-- Modal add invoiceType --}}
-    {{-- @include('includes.modal_input', [
-    'modal_name' => 'addinvoiceType',
-    'form_action' => '',
-    'form_method' => 'post',
-    'modal_title' => 'Thêm loại sản phẩm',
-    'label_title' => 'Tên loại sản phẩm mới',
-    'required' => 'required',
-    'disabled' => '',
-    'input_type' => 'text',
-    'input_id' => 'invoice_type_name',
-    'input_name' => 'invoice_type_name',
-    'input_value' => '',
-    'path' => '',
-    'message' => '',
-    ]) --}}
-
-    {{-- Modal add Categpry --}}
-    {{-- @include('includes.modal_input', [
-    'modal_name' => 'addCategpry',
-    'form_action' => '',
-    'form_method' => 'post',
-    'modal_title' => 'Thêm thể loại',
-    'label_title' => 'Tên thể loại mới',
-    'required' => 'required',
-    'disabled' => '',
-    'input_type' => 'text',
-    'input_id' => 'category_name',
-    'input_name' => 'category_name',
-    'input_value' => '',
-    'path' => '',
-    'message' => '',
-    ]) --}}
 
 @endsection
 
@@ -293,7 +242,7 @@
         // }
     </script>
 
-    <script src="{{ asset('js/create.js') }}"></script>
-    <script src="{{ asset('js/photo.js') }}"></script>
-    <script src="{{ asset('js/receipt_add.js') }}"></script>
+    {{-- <script src="{{ asset('js/create.js') }}"></script> --}}
+    {{-- <script src="{{ asset('js/photo.js') }}"></script> --}}
+    <script src="{{ asset('js/invoice_add.js') }}"></script>
 @endsection

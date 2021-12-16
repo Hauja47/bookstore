@@ -43,13 +43,9 @@
                 </div>
                 <div class="col l-6 md-6 c-6">
                     <a href="{{ route('goods_receipts.index') }}" class="btn-function btn-function__exit">
-                        {{-- <i class='btn-function-icon btn-function__add-icon bx bx-plus' ></i> --}}
-                        <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
                         Thoát
                     </a>
                     <button type="submit" class="btn-function btn-function__save">
-                        {{-- <i class='btn-function-icon btn-function__add-icon bx bx-plus' ></i> --}}
-                        <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
                         Lưu
                     </button>
                 </div>
@@ -66,14 +62,14 @@
                         </div>
                         <div class="box-body">
                             <div class="input-wrapper">
-                                <select class="header__search-select" name="provider_id" id="provider_id">
+                                <select class="header__search-select" name="provider" id="provider">
                                     <option hidden value=""></option>
                                     @foreach (\App\Models\Provider::all() as $provider)
                                         <option value="{{ $provider->id }}">
                                             {{ $provider->name . ' - ' . $provider->phone_number }}</option>
                                     @endforeach
                                 </select>
-                                @error('provider_id')
+                                @error('provider')
                                     <p class="error-msg">{{ $message }}</p>
                                     {{-- <p class="error-msg">Trường này không được trống</p> --}}
                                 @enderror
@@ -84,7 +80,6 @@
                         <div class="box-header">
                             Chọn sản phẩm
                             <a href="javascript:void(0)" class="btn-function btn-function__add" id="btn-move">
-                                <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
                                 Cho vào danh sách
                             </a>
                         </div>
@@ -94,23 +89,26 @@
                                     <option hidden value=""></option>
                                     @foreach (\App\Models\Product::all() as $product)
                                         <option value="{{ $product->id }}">
-                                            {{ $product->name . ' - ' . $product->version . ' - ' . $product->brand->name }}</option>
+                                            {{ $product->name . ' _ ' . $product->version . ' _ ' . $product->brand->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('product')
                                     <p class="error-msg">{{ $message }}</p>
-                                    {{-- <p class="error-msg">Trường này không được trống</p> --}}
                                 @enderror
                             </div>
                             <div class="row grid">
                                 <div class="col l-5 md-5 c-12">
+                                    @php
+                                        $quantity = 1;
+                                        $cost = 1;
+                                    @endphp
                                     @include('includes.input', [
                                     'label_title' => 'Số lượng',
                                     'required' => 'required',
                                     'disabled' => '',
                                     'input_type' => 'number',
-                                    'input_id' => 'quantity',
-                                    'input_name' => 'quantity',
+                                    'input_id' => 'quantity_input',
+                                    'input_name' => 'quantity_input',
                                     'input_value' => '1',
                                     'message' => '',
                                     ])
@@ -121,8 +119,8 @@
                                     'required' => 'required',
                                     'disabled' => '',
                                     'input_type' => 'number',
-                                    'input_id' => 'cost',
-                                    'input_name' => 'cost',
+                                    'input_id' => 'cost_input',
+                                    'input_name' => 'cost_input',
                                     'input_value' => '1000',
                                     'message' => '',
                                     ])
@@ -203,57 +201,6 @@
 @endsection
 
 @section('modal')
-    <!-- Modal -->
-    {{-- Modal add Brand --}}
-    {{-- @include('includes.modal_input', [
-    'modal_name' => 'addBrand',
-    'form_action' => '',
-    'form_method' => 'post',
-    'modal_title' => 'Thêm nhãn hiệu',
-    'label_title' => 'Tên nhãn hiệu mới',
-    'required' => 'required',
-    'disabled' => '',
-    'input_type' => 'text',
-    'input_id' => 'brand_name',
-    'input_name' => 'brand_name',
-    'input_value' => '',
-    'path' => '',
-    'message' => '',
-    ]) --}}
-
-    {{-- Modal add goods_receiptType --}}
-    {{-- @include('includes.modal_input', [
-    'modal_name' => 'addgoods_receiptType',
-    'form_action' => '',
-    'form_method' => 'post',
-    'modal_title' => 'Thêm loại sản phẩm',
-    'label_title' => 'Tên loại sản phẩm mới',
-    'required' => 'required',
-    'disabled' => '',
-    'input_type' => 'text',
-    'input_id' => 'goods_receipt_type_name',
-    'input_name' => 'goods_receipt_type_name',
-    'input_value' => '',
-    'path' => '',
-    'message' => '',
-    ]) --}}
-
-    {{-- Modal add Categpry --}}
-    {{-- @include('includes.modal_input', [
-    'modal_name' => 'addCategpry',
-    'form_action' => '',
-    'form_method' => 'post',
-    'modal_title' => 'Thêm thể loại',
-    'label_title' => 'Tên thể loại mới',
-    'required' => 'required',
-    'disabled' => '',
-    'input_type' => 'text',
-    'input_id' => 'category_name',
-    'input_name' => 'category_name',
-    'input_value' => '',
-    'path' => '',
-    'message' => '',
-    ]) --}}
 
 @endsection
 
@@ -268,5 +215,5 @@
 
     {{-- <script src="{{ asset('js/create.js') }}"></script> --}}
     {{-- <script src="{{ asset('js/photo.js') }}"></script> --}}
-    <script src="{{ asset('js/receipt_add.js') }}"></script>
+    <script src="{{ asset('js/goods_receipt_add.js') }}"></script>
 @endsection

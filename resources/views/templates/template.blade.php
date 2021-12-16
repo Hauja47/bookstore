@@ -36,12 +36,12 @@
     <div class="app">
         <!-- SIDEBAR -->
         <div class="sidebar">
-            <div class="sidebar__logo">
+            <a href="{{ route('dashboard') }}" class="sidebar__logo">
                 <img src="{{ asset('images/logo.png') }}" alt="Logo Trang chủ" class="sidebar__logo-img">
                 <div class="sidebar__logo-mobile-close" id="mobile-sidebar-close">
                     <i class='sidebar__logo-mobile-close-icon bx bx-left-arrow-alt'></i>
                 </div>
-            </div>
+            </a>
             <div class="sidebar__user">
                 <a href="javascript:void(0)" class="sidebar__user-info">
                     <img src="{{ auth()->user()->employee->photo ? asset('/storage/'.auth()->user()->employee->photo) : asset('images/no-image.png')}}" alt="User Avatar" class="sidebar__user-img">

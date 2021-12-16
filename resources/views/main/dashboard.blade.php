@@ -41,7 +41,7 @@
                         <span class="main-counter__item-count">
                             60
                         </span>
-                        <i class='main-counter__item-icon bx bx-shopping-bag'></i>
+                        <i class='main-counter__item-icon bx bx-receipt'></i>
                     </div>
                 </div>
             </div>
@@ -50,13 +50,13 @@
             <div class="main-counter__item">
                 <div class="box box-hover ">
                     <div class="main-counter__item-title">
-                        Tỉ lệ trả hàng
+                        Lợi nhuận
                     </div>
                     <div class="main-counter__item-info">
                         <span class="main-counter__item-count">
                             0%
                         </span>
-                        <i class='main-counter__item-icon bx bx-reset'></i>
+                        <i class='main-counter__item-icon bx bx-wallet'></i>
                     </div>
                 </div>
             </div>

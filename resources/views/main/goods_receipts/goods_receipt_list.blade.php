@@ -111,8 +111,8 @@
                                 <td>{{ number_format($goods_receipt->total_price,).'đ' }}</td>
                                 <td>
                                     <a href="{{ route('goods_receipts.edit', ['goods_receipt' => $goods_receipt]) }}" class="btn btn-outline btn-edit">
-                                        {{-- <i class='btn-icon bx bx-edit-alt' ></i> --}}
-                                        <i class='btn-icon bx bx-info-circle'></i>
+                                        <i class='btn-icon bx bx-edit-alt' ></i>
+                                        {{-- <i class='btn-icon bx bx-info-circle'></i> --}}
                                     </a>
                                     <a onclick="confirmation(event)" href="{{ route('goods_receipts.delete', ['goods_receipt' => $goods_receipt]) }}" class="btn btn-outline btn-remove">
                                         <i class='btn-icon bx bx-trash-alt' ></i>

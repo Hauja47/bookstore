@@ -268,13 +268,14 @@
                                                 data-bs-toggle="modal" data-bs-target="#modal-editCategory-{{ $category->id }}">
                                                 <i class='btn-icon bx bx-edit-alt'></i>
                                             </a>
-                                            <a onclick="confirmation(event)" href="{{ route('categories.delete', ['category' => $category]) }}"
+                                            <a onclick="confirmation(event)"
+                                                href="{{ route('categories.delete', ['category' => $category]) }}"
                                                 class="btn btn-outline btn-remove">
                                                 <i class='btn-icon bx bx-trash-alt'></i>
                                             </a>
                                         </td>
                                     </tr>
-                                    {{-- Modal edit Categpry --}}
+                                    {{-- Modal edit Category --}}
                                     @include('includes.modal_input', [
                                     'modal_name' => 'editCategory-'.$category->id,
                                     'form_action' => route('categories.edit', ['category' => $category]),
@@ -338,6 +339,52 @@
     'message' => '',
     ])
 
+
+    {{-- Modal edit Category --}}
+    {{-- @include('includes.modal_input', [
+    'modal_name' => 'editCategory',
+    'form_action' => route('categories.edit', ['category' => $category]),
+    'form_method' => 'post',
+    'modal_title' => 'Sửa thể loại',
+    'label_title' => 'Tên thể loại',
+    'required' => 'required',
+    'disabled' => '',
+    'input_type' => 'text',
+    'input_id' => 'category_name',
+    'input_name' => 'category_name',
+    'input_value' => $category->name,
+    'message' => '',
+    ]) --}}
+
+
+
+    {{-- <p>Link 1</p>
+    <a data-bs-toggle="modal" data-id="ISBN564541" title="Add this item" class="open-AddBookDialog btn btn-primary" data-bs-target="#addBookDialog">test</a>
+
+    <p>&nbsp;</p>
+
+
+    <p>Link 2</p>
+    <a data-bs-toggle="modal" data-id="ISBN-001122" title="Add this item" class="open-AddBookDialog btn btn-primary" data-bs-target="#addBookDialog">test</a>
+
+<!-- Modal -->
+<div class="modal fade" id="addBookDialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="text" my-data="" value="" name="myModalInput" id="myModalInput">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div> --}}
 @endsection
 
 @section('js')
@@ -350,4 +397,11 @@
     </script>
 
     <script src="{{ asset('js/create.js') }}"></script>
+
+    <script>
+        //  $(document).on("click", ".editCategoryDialog", function () {
+        //  var myCategoryId = $(this).attr('category_id');
+        //  $("#category_name").val( myBookId );
+        });
+    </script>
 @endsection
