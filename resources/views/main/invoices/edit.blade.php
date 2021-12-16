@@ -234,8 +234,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (\App\Models\InvoiceDetail::all() as $invoice_detail)
-                                        @if ($invoice_detail->invoice->id == $id)
+                                    @foreach (\App\Models\Invoice::find($invoice->id)->details as $invoice_detail)
+                                        {{-- @if ($invoice_detail->invoice_id == $id) --}}
                                         <tr>
                                             <td>
                                                 <input hidden value="{{ $invoice_detail->product->id }}" name="product_id[]">
@@ -256,7 +256,7 @@
                                                 {{ $invoice_detail->total.'đ' }}
                                             </td>
                                         </tr>
-                                        @endif
+                                        {{-- @endif --}}
                                     @endforeach
 
                                 </tbody>

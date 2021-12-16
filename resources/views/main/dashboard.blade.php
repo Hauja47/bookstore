@@ -30,7 +30,7 @@
 <!-- MAIN-CONTENT -->
 <div class="main-content">
     <!-- COUNTER -->
-    <div class="row main-counter">
+    {{-- <div class="row main-counter">
         <div class="col l-3 md-6 c-12">
             <div class="main-counter__item">
                 <div class="box box-hover">
@@ -91,7 +91,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- END COUNTER -->
 
     <div class="row">
@@ -100,7 +100,7 @@
             <div class="main-top-product">
                 <div class="box full-height">
                     <div class="box-header">
-                        top sản phẩm
+                        top sản phẩm 7 ngày gần đây
                     </div>
                     <div class="box-body">
                         <div class="main-top-product__list">

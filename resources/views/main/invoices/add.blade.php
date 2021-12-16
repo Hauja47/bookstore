@@ -93,11 +93,10 @@
                                 <select class="header__search-select" name="product" id="product">
                                     <option hidden value=""></option>
                                     @foreach (\App\Models\Product::all() as $product)
-                                        <option value="{{ $product->id }}">
-                                            {{ $product->name.' _ '.$product->version.' _ '.$product->brand->name.' _ '.$product->price }}</option>
-                                            @php
-                                                $price = $product->price;
-                                            @endphp
+                                        @if ($product->in_stock > 0)
+                                        <option value="{{ $product->id.' _ '.$product->in_stock.' _ '.$product->price }}">
+                                            {{ $product->name.' _ '.$product->version.' _ '.$product->brand->name }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                                 @error('product')
@@ -106,7 +105,19 @@
                                 @enderror
                             </div>
                             <div class="row grid">
-                                <div class="col l-5 md-5 c-12">
+                                <div class="col l-6 md-6 c-12 l-o-3 md-o-3">
+                                    @include('includes.input', [
+                                    'label_title' => 'Tồn kho',
+                                    'required' => 'required',
+                                    'disabled' => 'readonly',
+                                    'input_type' => 'number',
+                                    'input_id' => 'in_stock_input',
+                                    'input_name' => 'in_stock_input',
+                                    'input_value' => '0',
+                                    'message' => '',
+                                    ])
+                                </div>
+                                <div class="col l-6 md-6 c-12">
                                     @include('includes.input', [
                                     'label_title' => 'Số lượng',
                                     'required' => 'required',
@@ -118,7 +129,7 @@
                                     'message' => '',
                                     ])
                                 </div>
-                                <div class="col l-5 md-5 c-12 l-o-2 md-o-2">
+                                <div class="col l-6 md-6 c-12">
                                     @include('includes.input', [
                                     'label_title' => 'Đơn giá',
                                     'required' => 'required',
@@ -126,7 +137,7 @@
                                     'input_type' => 'number',
                                     'input_id' => 'cost_input',
                                     'input_name' => 'cost_input',
-                                    'input_value' => $price,
+                                    'input_value' => '0',
                                     'message' => '',
                                     ])
                                 </div>
@@ -219,6 +230,10 @@
 
                                 </tbody>
                             </table>
+                            @error('product_id')
+                            <p class="error-msg">{{ $message }}</p>
+                            {{-- <p class="error-msg">Trường này không được trống</p> --}}
+                        @enderror
                         </div>
                     </div>
                 </div>

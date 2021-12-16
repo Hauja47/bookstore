@@ -136,7 +136,7 @@
                                 </div>
                                 <div class="col l-6 md-6 c-12 l-o-6 md-o-6">
                                     @include('includes.input', [
-                                    'label_title' => 'Công nợ tiền nợ (VND)',
+                                    'label_title' => 'Số tiền nợ (VND)',
                                     'required' => 'required',
                                     'disabled' => 'disabled',
                                     'input_type' => 'number',

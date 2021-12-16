@@ -61,7 +61,7 @@
                                 <th>Số điện thoại</th>
                                 <th>Email</th>
                                 <th>Địa chỉ</th>
-                                <th>Công nợ hiện tại</th>
+                                <th>Số tiền nợ</th>
                                 <th data-sortable="false"></th>
                             </tr>
                         </thead>

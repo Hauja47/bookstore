@@ -2,25 +2,31 @@
 var table = document.querySelector(".main-product-table tbody");
 
 var product = document.getElementById('product');
+var in_stock = document.getElementById('in_stock_input');
 var quantity = document.getElementById('quantity_input');
 var cost = document.getElementById('cost_input');
 var total_price = document.getElementById('total_price');
+
+
 
 // Kiểm tra thay đổi product_select
 product.onchange = function(e) {
     console.log('product_id = ' + product.value);
     console.log(product.options[product.selectedIndex].text.split(' _ '));
     let product_select = product.options[product.selectedIndex].text.split(' _ ');
-        let product_name = product_select[0];
-        let product_version = product_select[1];
-        let product_brand_name = product_select[2];
-        let product_price = product_select[3];
+    let product_name = product_select[0];
+    let product_version = product_select[1];
+    let product_brand_name = product_select[2];
 
-        console.log(product_name);
-        console.log(product_version);
-        console.log(product_brand_name);
-        console.log(product_price);
+    let product_option_value = product.options[product.selectedIndex].value.split(' _ ');
+    let product_id = product_select[0];
+    let product_in_stock = product_select[1];
+    let product_price = product_select[2];
 
+    console.log(product_select);
+    console.log(product_option_value);
+
+    cost.value = product_price;
 }
 
 var btnMove = document.getElementById('btn-move');
@@ -30,10 +36,14 @@ btnMove.onclick = function (e) {
         let product_name = product_select[0];
         let product_version = product_select[1];
         let product_brand_name = product_select[2];
-        let product_price = product_select[3];
+
+        let product_option_value = product.options[product.selectedIndex].value.split(' _ ');
+        let product_id = product_select[0];
+        let product_in_stock = product_select[1];
+        let product_price = product_select[2];
 
 
-        console.log('product_id = ' + product.value);
+        console.log('product_id = ' + product_id);
         console.log(product_select);
         console.log(quantity.value);
         console.log(cost.value);
@@ -43,7 +53,7 @@ btnMove.onclick = function (e) {
         t_row.innerHTML
         = `<tr>
             <td>
-                <input hidden value="${product.value}" name="product_id[]">
+                <input hidden value="${product_id}" name="product_id[]">
                 ${product_name}
             </td>
             <td>${product_version}</td>
@@ -77,18 +87,26 @@ btnMove.onclick = function (e) {
 
         product.remove(product.selectedIndex);
 
+        balance_value = Number.parseInt(total_price.value) - Number.parseInt(paid.value);
+        if (balance_value >= 0) {
+            balance.value = balance_value;
+        } else {
+            alert('Số tiền thanh toán phải <= Tổng tiền hoá đơn');
+        }
+
     } else {
         alert('Vui lòng chọn sản phẩm và nhập số lượng, đơn giá');
     }
+}
 
-    //     // Create an empty <tr> element and add it to the 1st position of the table:
-    //     var row = table.insertRow(0);
-    // <table><tr></tr><tr></tr></table>
-    //     // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
-    //     var cell1 = row.insertCell(0);
-    //     var cell2 = row.insertCell(1);
+var paid = document.getElementById('paid');
+var balance = document.getElementById('balance');
+paid.onchange = function(e) {
 
-    //     // Add some text to the new cells:
-    //     cell1.innerHTML = "NEW CELL1";
-    //     cell2.innerHTML = "NEW CELL2";
+    balance_value = Number.parseInt(total_price.value) - Number.parseInt(paid.value);
+    if (balance_value >= 0) {
+        balance.value = balance_value;
+    } else {
+        alert('Số tiền thanh toán phải <= Tổng tiền hoá đơn');
+    }
 }

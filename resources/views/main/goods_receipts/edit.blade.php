@@ -156,11 +156,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (\App\Models\GoodsReceiptDetail::all() as $goods_receipt_detail)
-                                    @php
-                                        // dd($goods_receipt_detail->goods_receipt_id);
-                                    @endphp
-                                        @if ($goods_receipt_detail->goods_receipt_id == $id)
+                                    @foreach (\App\Models\GoodsReceipt::find($goods_receipt->id)->details as $goods_receipt_detail)
+                                        {{-- @if ($goods_receipt_detail->goods_receipt_id == $id) --}}
                                         <tr>
                                             <td>
                                                 <input hidden value="{{ $goods_receipt_detail->product->id }}" name="product_id[]">
@@ -181,7 +178,7 @@
                                                 {{ $goods_receipt_detail->total.'đ' }}
                                             </td>
                                         </tr>
-                                        @endif
+                                        {{-- @endif --}}
                                     @endforeach
 
                                 </tbody>
