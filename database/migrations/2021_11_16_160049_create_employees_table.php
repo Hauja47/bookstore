@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\User;
+use App\Models\Employee;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateEmployeesTable extends Migration
 {
@@ -25,6 +27,20 @@ class CreateEmployeesTable extends Migration
             $table->foreignId('user_id')->constrained('user');
             $table->timestamps();
         });
+
+        if (Schema::hasTable('users') && Schema::hasTable('employees')) {
+            Employee::create([
+                'full_name' => "Tên quản trị viên",
+                'phone_number' => '0000000000',
+                'email' => 'email',
+                'address' => 'Địa chỉ',
+                'user_id' => User::create([
+                    'username' => 'admin',
+                    'password' => '123456',
+                    'role' => '1',
+                ])->id
+            ]);
+        }
     }
 
     /**
