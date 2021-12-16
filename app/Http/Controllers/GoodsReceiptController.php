@@ -84,7 +84,9 @@ class GoodsReceiptController extends Controller
             'money' => $goodsReceipt->total_price,
             'note' => 'Phiếu chi tạo tự động cho DNH'.$goodsReceipt->id,
             'receiver_type' => 'Nhà cung cấp',
-            'receiver_id' => $goodsReceipt->provider_id
+            'receiver_id' => $goodsReceipt->provider_id,
+            'can_delete' => 0,
+            'can_edit_note' => 0
         ]);
 
         $count = count($product_id);
