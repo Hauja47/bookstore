@@ -71,7 +71,7 @@
 
                             @foreach (\App\Models\Receipt::all() as $receipt)
                             <tr>
-                                <td>{{ 'PC'.$receipt->id }}</td>
+                                <td>{{ 'PT'.$receipt->id }}</td>
                                 <td>{{ $receipt->giver_type}}</td>
                                 <td>{{ $receipt->giver->name ?? $receipt->giver->full_name }}</td>
                                 <td>
@@ -82,13 +82,14 @@
                                 </td>
                                 <td>{{ number_format($receipt->money,).'đ' }}</td>
                                 <td>
+                                    @if ($receipt->can_delete == 1)
                                     <a href="{{ route('receipts.edit', ['receipt' => $receipt]) }}" class="btn btn-outline btn-edit">
                                         <i class='btn-icon bx bx-edit-alt' ></i>
                                     </a>
                                     <a onclick="confirmation(event)" href="{{ route('receipts.delete', ['receipt' => $receipt]) }}" class="btn btn-outline btn-remove">
                                         <i class='btn-icon bx bx-trash-alt' ></i>
                                     </a>
-
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach
