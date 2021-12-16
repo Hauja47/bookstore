@@ -128,11 +128,6 @@ class EmployeeController extends Controller
             ],
             'address' => 'required',
             'role' => 'required',
-            // 'username' => [
-            //     'required',
-            //     Rule::unique('users')->ignore($employee->user)
-            // ],
-            // 'password' => 'required',
             'created_at' => 'required|date',
             'photo' => 'image'
         ]);
@@ -144,11 +139,16 @@ class EmployeeController extends Controller
         }
 
         $user = $employee->user;
-        if ($attributes['password'] ?? null) {
+        if (request('password')) {
             $user->update([
-                'password' => $attributes['password'],
+                'password' => request('password'),
             ]);
         }
+
+        $user->update([
+            // 'password' => $attributes['password'],
+            'role' => $attributes['role']
+        ]);
 
         if ($employee->update([
             'full_name' => $attributes['full_name'],
@@ -156,10 +156,6 @@ class EmployeeController extends Controller
             'phone_number' => $attributes['phone_number'],
             'email' => $attributes['email'],
             'address' => $attributes['address'],
-            'user_id' => $employee->user->update([
-                // 'password' => $attributes['password'],
-                'role' => $attributes['role']
-            ]),
             'created_at' => $attributes['created_at']
         ]))
         {
