@@ -39,4 +39,9 @@ class Receipt extends Model
     {
         return $this->belongsTo(ReceiptType::class, 'receipt_type_id');
     }
+
+    public function invoice()
+    {
+        return $this->belongsTo(Invoice::class);
+    }
 }
