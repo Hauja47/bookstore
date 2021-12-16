@@ -104,6 +104,10 @@ class InvoiceController extends Controller
             'can_edit_note' => 0,
         ]);
 
+        $invoice->customer()->update([
+            'debt' => $invoice->customer->debt + $invoice->balance
+        ]);
+
         for ($i = 0; $i < $count; $i++)
         {
             $invoice->details()->create([
@@ -175,7 +179,7 @@ class InvoiceController extends Controller
             ]);
         }
         $invoice->customer()->update([
-            'debt' => $invoice->customer->debt + $invoice->balance
+            'debt' => $invoice->customer->debt - $invoice->balance
         ]);
         $invoice->delete();
         $invoice->receipt()->delete();
