@@ -97,7 +97,7 @@ class BrandController extends Controller
             'brand_name' => [
                 'required',
                 'max:255',
-                Rule::unique('brands')->ignore($brand)
+                Rule::unique('brands', 'name')->ignore($brand)
             ]
         ]);
         if ($validator->fails())

@@ -100,7 +100,7 @@ class CategoryController extends Controller
             'category_name' => [
                 'required',
                 'max:255',
-                Rule::unique('categories')->ignore($category)
+                Rule::unique('categories', 'name')->ignore($category)
             ]
         ]);
         if ($validator->fails())
