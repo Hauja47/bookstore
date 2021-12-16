@@ -52,13 +52,15 @@ class InvoiceController extends Controller
             'product_id' => 'required'
         ]);
 
-        if (Parameter::find(3)->value > 0 && Customer::find(request('customer_id'))->debt >= Parameter::find(3)->value)
+        // if (Parameter::find(3)->value > 0 && Customer::find(request('customer_id'))->debt >= Parameter::find(3)->value)
+        if (Customer::find(request('customer_id'))->debt >= Parameter::find(3)->value)
         {
             Alert::error('Số tiền nợ của khách hàng lớn hơn số tiền nợ tối đa');
             return redirect(route('invoices.index'));
         }
 
-        if (Parameter::find(3)->value > 0 && request('balance') + Customer::find(request('customer_id'))->debt >= Parameter::find(3)->value)
+        // if (Parameter::find(3)->value > 0 && request('balance') + Customer::find(request('customer_id'))->debt >= Parameter::find(3)->value)
+        if (request('balance') + Customer::find(request('customer_id'))->debt >= Parameter::find(3)->value)
         {
             Alert::error('Số tiền nợ của khách hàng sau khi mua lớn hơn số tiền nợ tối đa');
             return redirect(route('invoices.index'));
