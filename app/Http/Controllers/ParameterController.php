@@ -101,7 +101,7 @@ class ParameterController extends Controller
             'value' => request('rate_price')
         ]);
 
-        return back();
+        return back()->withSucces('Thay đổi quy định thành công');
     }
 
     /**
