@@ -155,5 +155,5 @@
         let mytable = new JSTable('table');
     </script> --}}
 
-    <script src="{{ asset('js/create.js') }}"></script>
+    <script src="{{ asset('js/product_add') }}"></script>
 @endsection

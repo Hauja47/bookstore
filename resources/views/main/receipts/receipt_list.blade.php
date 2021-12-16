@@ -41,11 +41,11 @@
             </a> --}}
         </div>
         <div class="col l-6 md-6 c-6">
-            {{-- <a href="{{ route('payments.create') }}" class="btn-function btn-function__add">
+            <a href="{{ route('receipts.create') }}" class="btn-function btn-function__add">
                 <i class='btn-function-icon btn-function__add-icon bx bx-plus' ></i>
                 <!-- <i class='btn-function-icon bx bx-plus-circle' ></i> -->
-                Thêm phiếu chi
-            </a> --}}
+                Thêm phiếu thu
+            </a>
         </div>
     </div>
     <!-- END  -->
@@ -82,10 +82,14 @@
                                 </td>
                                 <td>{{ number_format($receipt->money,).'đ' }}</td>
                                 <td>
-                                    @if ($receipt->can_delete == 1)
                                     <a href="{{ route('receipts.edit', ['receipt' => $receipt]) }}" class="btn btn-outline btn-edit">
-                                        <i class='btn-icon bx bx-edit-alt' ></i>
+                                        @if ($receipt->can_delete == 1)
+                                            <i class='btn-icon bx bx-edit-alt' ></i>
+                                        @else
+                                            <i class='btn-icon bx bx-info-circle'></i>
+                                        @endif
                                     </a>
+                                    @if ($receipt->can_delete == 1)
                                     <a onclick="confirmation(event)" href="{{ route('receipts.delete', ['receipt' => $receipt]) }}" class="btn btn-outline btn-remove">
                                         <i class='btn-icon bx bx-trash-alt' ></i>
                                     </a>

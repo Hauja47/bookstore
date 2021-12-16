@@ -42,12 +42,12 @@
                     </a>
                 </div>
                 <div class="col l-6 md-6 c-6">
-                    <a href="{{ route('invoices.index') }}" class="btn-function btn-function__exit">
+                    {{-- <a href="{{ route('invoices.index') }}" class="btn-function btn-function__exit">
                         Thoát
                     </a>
                     <button type="submit" class="btn-function btn-function__save">
                         Lưu
-                    </button>
+                    </button> --}}
                 </div>
             </div>
             <!-- END  -->
@@ -79,6 +79,16 @@
                             Thông tin chung
                         </div>
                         <div class="box-body">
+                            @include('includes.input', [
+                                'label_title' => 'Mã hoá đơn',
+                                'required' => 'required',
+                                'disabled' => 'disabled',
+                                'input_type' => 'text',
+                                'input_id' => 'id',
+                                'input_name' => 'id',
+                                'input_value' => 'HD'.$id,
+                                'message' => '',
+                                ])
                             <div class="input-wrapper">
                                 <label for="" class="input-label">
                                     Khách hàng <span class="required">*</span>
@@ -192,7 +202,7 @@
                                     @include('includes.input', [
                                     'label_title' => 'Thanh toán (VND)',
                                     'required' => 'required',
-                                    'disabled' => '',
+                                    'disabled' => 'readonly',
                                     'input_type' => 'number',
                                     'input_id' => 'paid',
                                     'input_name' => 'paid',
@@ -335,7 +345,7 @@
         // }
     </script>
 
-    <script src="{{ asset('js/create.js') }}"></script>
+    <script src="{{ asset('js/product_add') }}"></script>
     <script src="{{ asset('js/photo.js') }}"></script>
     <script src="{{ asset('js/receipt_edit.js') }}"></script>
 @endsection

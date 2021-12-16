@@ -97,7 +97,7 @@
                                 @enderror
                             </div>
                             <div class="row grid">
-                                <div class="col l-5 md-5 c-12">
+                                <div class="col l-6 md-6 c-12">
                                     @php
                                         $quantity = 1;
                                         $cost = 1;
@@ -113,7 +113,7 @@
                                     'message' => '',
                                     ])
                                 </div>
-                                <div class="col l-5 md-5 c-12 l-o-2 md-o-2">
+                                <div class="col l-6 md-6 c-12">
                                     @include('includes.input', [
                                     'label_title' => 'Đơn giá',
                                     'required' => 'required',
@@ -213,7 +213,7 @@
         // }
     </script>
 
-    {{-- <script src="{{ asset('js/create.js') }}"></script> --}}
+    {{-- <script src="{{ asset('js/product_add') }}"></script> --}}
     {{-- <script src="{{ asset('js/photo.js') }}"></script> --}}
     <script src="{{ asset('js/goods_receipt_add.js') }}"></script>
 @endsection

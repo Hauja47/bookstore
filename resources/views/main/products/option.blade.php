@@ -396,7 +396,7 @@
         }
     </script>
 
-    <script src="{{ asset('js/create.js') }}"></script>
+    <script src="{{ asset('js/product_add') }}"></script>
 
     <script>
         //  $(document).on("click", ".editCategoryDialog", function () {

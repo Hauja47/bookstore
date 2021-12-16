@@ -26,6 +26,11 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/list.css') }}">
     <link rel="stylesheet" href="{{ asset('css/add.css') }}">
+    <style>
+        #receiver_names_div .input-wrapper{
+            display: none;
+        }
+    </style>
 @endsection
 
 @section('main-content')
@@ -37,7 +42,7 @@
                 <div class="col l-6 md-6 c-6">
                     <a href="{{ route('payments.index') }}" class="btn-function btn-function__back">
                         <i class='btn-function-icon btn-function__back-icon bx bx-chevron-left'></i>
-                        Quay lại danh sách khách hàng
+                        Quay lại danh sách phiếu chi
                     </a>
                 </div>
                 <div class="col l-6 md-6 c-6">
@@ -65,7 +70,7 @@
                         </div>
                         <div class="box-body">
                             <div class="grid row">
-                                <div class="col l-6 md-12 c-12">
+                                <div class="col l-6 md-6 c-12">
                                     <div class="input-wrapper">
                                         <label for="" class="input-label">
                                             Đối tượng nhận <span class="required">*</span>
@@ -74,8 +79,8 @@
                                         <select class="header__search-select" name="receiver_type" id="receiver_type">
                                             <option hidden value=""></option>
                                             <option value="Nhân viên"
-                                                {{ old(request('receiver_type')) == 'Nhân viên' ? 'selected' : '' }}>Nhân
-                                                viên
+                                                {{ old(request('receiver_type')) == 'Nhân viên' ? 'selected' : '' }}>
+                                                Nhân viên
                                             </option>
                                             <option value="Khách hàng"
                                                 {{ old(request('receiver_type')) == 'Khách hàng' ? 'selected' : '' }}>
@@ -83,8 +88,6 @@
                                             <option value="Nhà cung cấp"
                                                 {{ old(request('receiver_type')) == 'Nhà cung cấp' ? 'selected' : '' }}>
                                                 Nhà cung cấp</option>
-                                            {{-- <option value="Sách">Sách</option>
-                                            <option value="Văn phòng phẩm">Văn phòng phẩm</option> --}}
                                         </select>
                                         @error('receiver_type')
                                             <p class="error-msg">{{ $message }}</p>
@@ -92,38 +95,94 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="col l-6 md-6 c-12" id="receiver_names_div">
+                                    {{-- Nhân viên --}}
+                                    <div class="input-wrapper" id="">
+                                        <label for="" class="input-label">
+                                            Tên đối tượng <span class="required">*</span>
+                                        </label>
+
+                                        <select class="header__search-select" name="receiver_employee_id" id="receiver_employee_id">
+                                            <option hidden value=""></option>
+                                            @foreach (\App\Models\Employee::all() as $employee)
+                                                <option value="{{ $employee->id }}">{{ $employee->full_name.' _ '.$employee->phone_number }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('receiver_employee_id')
+                                            <p class="error-msg">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    {{-- Khách hàng --}}
+                                    <div class="input-wrapper" id="">
+                                        <label for="" class="input-label">
+                                            Tên đối tượng <span class="required">*</span>
+                                        </label>
+
+                                        <select class="header__search-select" name="receiver_customer_id" id="receiver_customer_id">
+                                            <option hidden value=""></option>
+                                            @foreach (\App\Models\Customer::all() as $customer)
+                                                <option value="{{ $customer->id }}">{{ $customer->full_name.' _ '.$customer->phone_number }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('receiver_customer_id')
+                                            <p class="error-msg">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    {{-- Nhà cung cấp --}}
+                                    <div class="input-wrapper" id="">
+                                        <label for="" class="input-label">
+                                            Tên đối tượng <span class="required">*</span>
+                                        </label>
+
+                                        <select class="header__search-select" name="receiver_provider_id" id="receiver_provider_id">
+                                            <option hidden value=""></option>
+                                            @foreach (\App\Models\Provider::all() as $provider)
+                                                <option value="{{ $provider->id }}">{{ $provider->name.' _ '.$provider->phone_number }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('receiver_provider_id')
+                                            <p class="error-msg">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
                                 <div class="col l-6 md-6 c-12">
-                                    @include('includes.input', [
-                                    'label_title' => 'Số điện thoại',
-                                    'required' => 'required',
-                                    'disabled' => '',
-                                    'input_type' => 'tel',
-                                    'input_id' => 'phone_number',
-                                    'input_name' => 'phone_number',
-                                    'input_value' => '',
-                                    'message' => '',
-                                    ])
+                                    {{-- Nhân viên thực hiện --}}
+                                    <div class="input-wrapper" id="">
+                                        <label for="" class="input-label">
+                                            Nhân viên thực hiện <span class="required">*</span>
+                                        </label>
+
+                                        <select class="header__search-select" name="employee_id" id="employee_id">
+                                            <option hidden value=""></option>
+                                            @foreach (\App\Models\Employee::all() as $employee)
+                                                <option value="{{ $employee->id }}">{{ $employee->full_name.' _ '.$employee->phone_number }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('employee_id')
+                                            <p class="error-msg">{{ $message }}</p>
+                                        @enderror
+                                    </div>
                                 </div>
                                 <div class="col l-6 md-6 c-12">
                                     @include('includes.input', [
-                                    'label_title' => 'Email',
+                                    'label_title' => 'Số tiền chi (VND)',
                                     'required' => 'required',
                                     'disabled' => '',
-                                    'input_type' => 'email',
-                                    'input_id' => 'email',
-                                    'input_name' => 'email',
-                                    'input_value' => '',
+                                    'input_type' => 'number',
+                                    'input_id' => 'money',
+                                    'input_name' => 'money',
+                                    'input_value' => '0',
                                     'message' => '',
                                     ])
                                 </div>
                                 <div class="col l-12 md-12 c-12">
                                     @include('includes.input', [
-                                    'label_title' => 'Địa chỉ',
+                                    'label_title' => 'Ghi chú',
                                     'required' => 'required',
                                     'disabled' => '',
                                     'input_type' => 'text',
-                                    'input_id' => 'address',
-                                    'input_name' => 'address',
+                                    'input_id' => 'text',
+                                    'input_name' => 'text',
                                     'input_value' => '',
                                     'message' => '',
                                     ])
@@ -150,5 +209,5 @@
         let mytable = new JSTable('table');
     </script> --}}
 
-    <script src="{{ asset('js/create.js') }}"></script>
+    <script src="{{ asset('js/payment_add.js') }}"></script>
 @endsection

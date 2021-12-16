@@ -100,7 +100,7 @@
             <div class="main-top-product">
                 <div class="box full-height">
                     <div class="box-header">
-                        top sản phẩm 7 ngày gần đây
+                        top sản phẩm 7 ngày gần nhất
                     </div>
                     <div class="box-body">
                         <div class="main-top-product__list">

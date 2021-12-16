@@ -156,8 +156,8 @@
                                 <td>{{ number_format($invoice->total,).'đ' }}</td>
                                 <td>
                                     <a href="{{ route('invoices.edit', ['invoice' => $invoice]) }}" class="btn btn-outline btn-edit">
-                                        <i class='btn-icon bx bx-edit-alt' ></i>
-                                        {{-- <i class='btn-icon bx bx-info-circle'></i> --}}
+                                        {{-- <i class='btn-icon bx bx-edit-alt' ></i> --}}
+                                        <i class='btn-icon bx bx-info-circle'></i>
                                     </a>
                                     <a onclick="confirmation(event)" href="{{ route('invoices.delete', ['invoice' => $invoice]) }}" class="btn btn-outline btn-remove">
                                         <i class='btn-icon bx bx-trash-alt' ></i>

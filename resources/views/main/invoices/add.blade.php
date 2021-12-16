@@ -257,7 +257,7 @@
         // }
     </script>
 
-    {{-- <script src="{{ asset('js/create.js') }}"></script> --}}
+    {{-- <script src="{{ asset('js/product_add') }}"></script> --}}
     {{-- <script src="{{ asset('js/photo.js') }}"></script> --}}
     <script src="{{ asset('js/invoice_add.js') }}"></script>
 @endsection

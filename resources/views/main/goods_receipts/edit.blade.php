@@ -77,6 +77,16 @@
                             Thông tin chung
                         </div>
                         <div class="box-body">
+                                @include('includes.input', [
+                                'label_title' => 'Mã đơn nhập kho',
+                                'required' => 'required',
+                                'disabled' => 'disabled',
+                                'input_type' => 'text',
+                                'input_id' => 'id',
+                                'input_name' => 'id',
+                                'input_value' => 'DNK'.$id,
+                                'message' => '',
+                                ])
                             <div class="input-wrapper">
                                 <label for="" class="input-label">
                                     Nhà cung cấp <span class="required">*</span>
@@ -206,7 +216,7 @@
         // }
     </script>
 
-    <script src="{{ asset('js/create.js') }}"></script>
+    <script src="{{ asset('js/product_add') }}"></script>
     <script src="{{ asset('js/photo.js') }}"></script>
     <script src="{{ asset('js/receipt_edit.js') }}"></script>
 @endsection

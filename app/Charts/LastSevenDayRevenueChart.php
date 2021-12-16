@@ -32,7 +32,7 @@ class LastSevenDayRevenueChart
         // ddd($total);
 
         return $this->chart->barChart()
-            // ->setTitle('Doanh thu 7 ngày gần nhất')
+            ->setTitle('Đơn vị (VND)')
             ->addData('Doanh thu', $total)
             ->setXAxis([
                 Carbon::now()->subDays(6)->toDate()->format('d-m-Y'),

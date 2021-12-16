@@ -223,7 +223,7 @@
         let mytable = new JSTable('table');
     </script> --}}
 
-    <script src="{{ asset('js/create.js') }}"></script>
+    <script src="{{ asset('js/product_add') }}"></script>
     <script src="{{ asset('js/login.js') }}"></script>
     <script src="{{ asset('js/photo.js') }}"></script>
 @endsection
