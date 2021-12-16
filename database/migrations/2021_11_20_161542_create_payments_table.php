@@ -22,6 +22,7 @@ class CreatePaymentsTable extends Migration
             $table->foreignId('employee_id')->constrained('employees');
             $table->integer('money');
             $table->boolean('can_edit_note')->default(1);
+            $table->boolean('can_delete')->default(1);
             $table->text('note')->nullable();
             $table->timestamps();
         });
