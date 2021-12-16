@@ -104,74 +104,33 @@
                     </div>
                     <div class="box-body">
                         <div class="main-top-product__list">
+                            @php
+                                $i = 1
+                            @endphp
+                            @foreach (\App\Models\InvoiceDetail::selectRaw('*, sum(quantity) as sum')
+                                                                    ->groupBy('product_id')
+                                                                    ->orderByRaw('sum(quantity) DESC')
+                                                                    ->whereRaw('created_at >= DATE(NOW()) - INTERVAL 7 DAY')
+                                                                    ->take(4)
+                                                                    ->get() as $detail)
                             <a href="" class="main-top-product__item">
-                                <img src="images/home/number-1.png" alt="Ảnh sản phẩm"
+                                <img src={{ "images/home/number-".$i.".png" }} alt="Ảnh sản phẩm"
                                     class="main-top-product__item-img">
                                 <div class="main-top-product__item-info">
                                     <h5 class="main-top-product__item-name text-ellipse"
-                                        title="Cà Phê Cùng Tony - Tái Bản (Tặng Kèm 1 Cuốn Sổ Tay Cà Phê Cùng Tony - Số Lượng Có Hạn) - Bìa mềm">
-                                        Cà Phê Cùng Tony - Tái Bản (Tặng Kèm 1 Cuốn Sổ Tay Cà Phê Cùng Tony - Số Lượng
-                                        Có Hạn) - Bìa mềm</h5>
-                                    <span class="main-top-product__item-text">SP0000001</span>
+                                        title="{{ $detail->product->name }}">
+                                        {{ $detail->product->name }}</h5>
+                                    <span class="main-top-product__item-text">{{ 'SP'.$detail->product->id }}</span>
                                 </div>
                                 <div class="main-top-product__item-sold">
                                     <span class="main-top-product__item-text">Số lượng</span>
-                                    <h5 class="main-top-product__item-sold-quantity">10</h5>
+                                    <h5 class="main-top-product__item-sold-quantity">{{ $detail->sum }}</h5>
                                 </div>
                             </a>
-                            <a href="" class="main-top-product__item">
-                                <img src="images/home/number-2.png" alt="Ảnh sản phẩm"
-                                    class="main-top-product__item-img">
-                                <div class="main-top-product__item-info">
-                                    <h5 class="main-top-product__item-name text-ellipse"
-                                        title="Lẽ Phải Của Phi Lý Trí (Tái Bản) - Bìa mềm">Lẽ Phải Của Phi Lý Trí (Tái
-                                        Bản) - Bìa mềm</h5>
-                                    <span class="main-top-product__item-text">SP0000002</span>
-                                </div>
-                                <div class="main-top-product__item-sold">
-                                    <span class="main-top-product__item-text">Số lượng</span>
-                                    <h5 class="main-top-product__item-sold-quantity">8</h5>
-                                </div>
-                            </a>
-                            <a href="" class="main-top-product__item">
-                                <img src="images/home/number-3.png" alt="Ảnh sản phẩm"
-                                    class="main-top-product__item-img">
-                                <div class="main-top-product__item-info">
-                                    <h5 class="main-top-product__item-name text-ellipse"
-                                        title="Những Giấc Mơ Ở Hiệu Sách Morisaki - Bìa mềm">Những Giấc Mơ Ở Hiệu Sách
-                                        Morisaki - Bìa mềm</h5>
-                                    <span class="main-top-product__item-text">SP0000003</span>
-                                </div>
-                                <div class="main-top-product__item-sold">
-                                    <span class="main-top-product__item-text">Số lượng</span>
-                                    <h5 class="main-top-product__item-sold-quantity">7</h5>
-                                </div>
-                            </a>
-                            <a href="" class="main-top-product__item">
-                                <img src="images/home/number-4.png" alt="Ảnh sản phẩm"
-                                    class="main-top-product__item-img">
-                                <div class="main-top-product__item-info">
-                                    <h5 class="main-top-product__item-name text-ellipse"
-                                        title="3 Phút Cho Ông Bố Bận Rộn - Bìa mềm">3 Phút Cho Ông Bố Bận Rộn - Bìa mềm
-                                    </h5>
-                                    <span class="main-top-product__item-text">SP0000004</span>
-                                </div>
-                                <div class="main-top-product__item-sold">
-                                    <span class="main-top-product__item-text">Số lượng</span>
-                                    <h5 class="main-top-product__item-sold-quantity">4</h5>
-                                </div>
-                            </a>
-                            <!-- <a href="" class="main-top-product__item">
-                                        <img src="images/home/number-5.png" alt="Ảnh sản phẩm" class="main-top-product__item-img">
-                                        <div class="main-top-product__item-info">
-                                            <h5 class="main-top-product__item-name text-ellipse" title="20 Tuổi Trở Thành Người Biết Nói Giỏi Làm - Bìa mềm">20 Tuổi Trở Thành Người Biết Nói Giỏi Làm - Bìa mềm</h5>
-                                            <span class="main-top-product__item-text">SP0000005</span>
-                                        </div>
-                                        <div class="main-top-product__item-sold">
-                                            <span class="main-top-product__item-text">Số lượng</span>
-                                            <h5 class="main-top-product__item-sold-quantity">3</h5>
-                                        </div>
-                                    </a> -->
+                            @php
+                                $i++
+                            @endphp
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -202,7 +161,8 @@
                         doanh thu 7 ngày gần nhất
                     </div>
                     <div class="box-body">
-                        <div id="sale-chart"></div>
+                        {{-- <div id="sale-chart"></div> --}}
+                        {!! $chart->container() !!}
                     </div>
                 </div>
             </div>
@@ -366,12 +326,13 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach (\App\Models\Invoice::take(5)->latest()->get() as $invoice)
                             <tr>
-                                <td>HD0000016</td>
+                                <td>HD{{ $invoice->id }}</td>
                                 <td>
-                                    nguyễn trùng khánh
+                                    {{ $invoice->customer->full_name }}
                                 </td>
-                                <td>7:51 17/11/2021</td>
+                                <td>{{ $invoice->created_at }}</td>
                                 <td>
                                     <div
                                         class="main-latest-invoice-table__payment-status main-latest-invoice-table__payment-status--paid">
@@ -379,73 +340,10 @@
                                         <span>Hoàn tất</span>
                                     </div>
                                 </td>
-                                <td>10</td>
-                                <td>123.000 đ</td>
+                                <td>{{ $invoice->details->sum('quantity') }}</td>
+                                <td>{{ $invoice->total }} đ</td>
                             </tr>
-                            <tr>
-                                <td>HD0000016</td>
-                                <td>
-                                    nguyễn trùng khánh
-                                </td>
-                                <td>7:51 17/11/2021</td>
-                                <td>
-                                    <div
-                                        class="main-latest-invoice-table__payment-status main-latest-invoice-table__payment-status--paid">
-                                        <div class="dot"></div>
-                                        <span>Hoàn tất</span>
-                                    </div>
-                                </td>
-                                <td>10</td>
-                                <td>123.000 đ</td>
-                            </tr>
-                            <tr>
-                                <td>HD0000016</td>
-                                <td>
-                                    nguyễn trùng khánh
-                                </td>
-                                <td>7:51 17/11/2021</td>
-                                <td>
-                                    <div
-                                        class="main-latest-invoice-table__payment-status main-latest-invoice-table__payment-status--paid">
-                                        <div class="dot"></div>
-                                        <span>Hoàn tất</span>
-                                    </div>
-                                </td>
-                                <td>10</td>
-                                <td>123.000 đ</td>
-                            </tr>
-                            <tr>
-                                <td>HD0000016</td>
-                                <td>
-                                    nguyễn trùng khánh
-                                </td>
-                                <td>7:51 17/11/2021</td>
-                                <td>
-                                    <div
-                                        class="main-latest-invoice-table__payment-status main-latest-invoice-table__payment-status--paid">
-                                        <div class="dot"></div>
-                                        <span>Hoàn tất</span>
-                                    </div>
-                                </td>
-                                <td>10</td>
-                                <td>123.000 đ</td>
-                            </tr>
-                            <tr>
-                                <td>HD0000016</td>
-                                <td>
-                                    nguyễn trùng khánh
-                                </td>
-                                <td>7:51 17/11/2021</td>
-                                <td>
-                                    <div
-                                        class="main-latest-invoice-table__payment-status main-latest-invoice-table__payment-status--paid">
-                                        <div class="dot"></div>
-                                        <span>Hoàn tất</span>
-                                    </div>
-                                </td>
-                                <td>10</td>
-                                <td>123.000 đ</td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -455,6 +353,9 @@
 
     </div>
 </div>
+<script src="{{ $chart->cdn() }}"></script>
+
+{{ $chart->script() }}
 
 <!-- END MAIN-CONTENT -->
 @endsection

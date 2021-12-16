@@ -1,5 +1,6 @@
 <?php
 
+use App\Charts\LastSevenDayRevenueChart;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BrandController;
@@ -59,8 +60,8 @@ Route::get('/login', [SessionController::class, 'create'])->name('login')->middl
 Route::post('/login', [SessionController::class, 'store'])->name('login')->middleware('guest');
 
 // Dashboard
-Route::get('/dashboard', function () {
-    return view('main.dashboard');
+Route::get('/dashboard', function (LastSevenDayRevenueChart $chart) {
+    return view('main.dashboard', ['chart' => $chart->build()]);
 })->middleware('auth')->name('dashboard');
 
 // User
