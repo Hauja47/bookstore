@@ -17,6 +17,7 @@ class Receipt extends Model
         'employee_id',
         'money',
         'can_edit_note',
+        'can_delete',
         'note'
     ];
 
