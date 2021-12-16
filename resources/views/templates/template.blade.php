@@ -160,12 +160,14 @@
                         </li>
                     </ul>
                 </li> --}}
+                @can('admin')
                 <li class="sidebar__menu-item {{ $active_employee }}">
                     <a href="{{ route('employees.index') }}" class="sidebar__menu-link">
                         <i class='sidebar__menu-item-icon bx bx-user-pin'></i>
                         Nhân viên
                     </a>
                 </li>
+                @endcan
                 <li class="sidebar__sub-menu">
                     <div class="sidebar__menu-dropdown">
                         <i class='sidebar__menu-item-icon bx bx-cog'></i>

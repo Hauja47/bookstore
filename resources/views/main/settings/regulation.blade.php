@@ -58,9 +58,11 @@
                     <div class="box info-general">
                         <div class="box-header">
                             Thông tin quy định
-                            <button type="submit" class="btn-function btn-function__save">
-                                Lưu
-                            </button>
+                            @can('admin')
+                                <button type="submit" class="btn-function btn-function__save">
+                                    Lưu
+                                </button>
+                            @endcan
                         </div>
                         <div class="box-body">
                             <div class="grid row">
