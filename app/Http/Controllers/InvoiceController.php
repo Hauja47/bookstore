@@ -81,7 +81,7 @@ class InvoiceController extends Controller
 
             if ($p->in_stock - $quantity[$i] < 0)
             {
-                Alert::error('Số lượng sản phẩm '.$p->name.' sau bán ít nhỏ hơn 0');
+                Alert::error('Số lượng sản phẩm '.$p->name.' sau bán nhỏ hơn 0');
                 return back();
             }
         }
@@ -92,6 +92,16 @@ class InvoiceController extends Controller
             'total' => request('total_price'),
             'paid' => request('paid'),
             'balance' => request('balance')
+        ]);
+
+        $invoice->receipt()->create([
+            'employee_id' => $invoice->employee_id,
+            'money' => $invoice->paid,
+            'note' => 'Phiếu chi tạo tự động cho HD'.$invoice->id,
+            'giver_type' => 'Khách hàng',
+            'giver_id' => $invoice->customer_id,
+            'can_delete' => 0,
+            'can_edit_note' => 0,
         ]);
 
         for ($i = 0; $i < $count; $i++)
@@ -164,7 +174,11 @@ class InvoiceController extends Controller
                 'in_stock' => $detail->product->in_stock + $detail->quantity,
             ]);
         }
+        $invoice->customer()->update([
+            'debt' => $invoice->customer->debt + $invoice->balance
+        ]);
         $invoice->delete();
+        $invoice->receipt()->delete();
 
         return back();
     }
