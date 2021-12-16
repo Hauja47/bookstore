@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Parameter;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ParameterController extends Controller
 {
@@ -101,7 +102,8 @@ class ParameterController extends Controller
             'value' => request('rate_price')
         ]);
 
-        return back()->withSucces('Thay đổi quy định thành công');
+        Alert::success('Thay đổi quy định thành công');
+        return back();
     }
 
     /**
