@@ -53,17 +53,17 @@ class InvoiceController extends Controller
         ]);
 
         // if (Parameter::find(3)->value > 0 && Customer::find(request('customer_id'))->debt >= Parameter::find(3)->value)
-        if (Customer::find(request('customer_id'))->debt >= Parameter::find(3)->value)
+        if (Customer::find(request('customer_id'))->debt > Parameter::find(3)->value)
         {
             Alert::error('Số tiền nợ của khách hàng lớn hơn số tiền nợ tối đa');
-            return redirect(route('invoices.index'));
+            return back();
         }
 
         // if (Parameter::find(3)->value > 0 && request('balance') + Customer::find(request('customer_id'))->debt >= Parameter::find(3)->value)
-        if (request('balance') + Customer::find(request('customer_id'))->debt >= Parameter::find(3)->value)
+        if (request('balance') + Customer::find(request('customer_id'))->debt > Parameter::find(3)->value)
         {
             Alert::error('Số tiền nợ của khách hàng sau khi mua lớn hơn số tiền nợ tối đa');
-            return redirect(route('invoices.index'));
+            return back();
         }
 
         $product_id = request('product_id');
@@ -76,13 +76,13 @@ class InvoiceController extends Controller
             if (Parameter::find(4)->value > 0 && (($p->in_stock - $quantity[$i]) < Parameter::find(4)->value))
             {
                 Alert::error('Số lượng sản phẩm '.$p->name.' sau bán ít hơn số lượng tối thiểu qui định');
-                return redirect(route('invoices.index'));
+                return back();
             }
 
             if ($p->in_stock - $quantity[$i] < 0)
             {
                 Alert::error('Số lượng sản phẩm '.$p->name.' sau bán ít nhỏ hơn 0');
-                return redirect(route('invoices.index'));
+                return back();
             }
         }
 
