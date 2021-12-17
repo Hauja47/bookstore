@@ -60,7 +60,9 @@ class ReceiptController extends Controller
             return back();
         }
 
+        $customer = Customer::find(request('giver_customer_id'));
         $invoice = Invoice::find(request('invoice_id'));
+
         if (request('invoice_id') && request('giver_type') == 'Khách hàng')
         {
             if (!$invoice)
@@ -69,10 +71,9 @@ class ReceiptController extends Controller
                 return back();
             }
 
-            $customer = Customer::find(request('giver_customer_id'));
             if (!$customer->invoices->find(request('invoice_id')))
             {
-                Alert::error('Khách hàng '.$customer->full_name.' không mua đơn hàng DH'.request('invoice_id'));
+                Alert::error('Khách hàng '.$customer->full_name.' không mua đơn hàng HD'.request('invoice_id'));
                 return back();
             }
 
