@@ -162,7 +162,7 @@
                                 <div class="col l-6 md-6 c-12" id="receipt_id_div" style="display: none">
                                     <div class="input-wrapper" >
                                         <label for="" class="input-label">
-                                            Mã hoá đơn trả nợ <span class="required">*</span>
+                                            Mã hoá đơn (nếu trả nợ)
                                         </label>
 
                                         HD<input type="number" name="receipt_id" id="receipt_id" style="width: 60px; padding: 8px 0;">
