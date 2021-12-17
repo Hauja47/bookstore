@@ -8,7 +8,6 @@ use App\Models\Employee;
 use App\Models\Payment;
 use App\Models\Provider;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
 class PaymentController extends Controller
 {
@@ -63,7 +62,7 @@ class PaymentController extends Controller
         }
         else if (request('receiver_type') == 'Nhân viên')
         {
-            $payment = Employee::find(request('receiver_employee_id'))->payments()->create([
+            $payment = Employee::find(request('receiver_employee_id'))->paymentReceiver()->create([
                 'employee_id' => auth()->user()->employee->id,
                 'money' => request('money'),
                 'note' => request('note')
