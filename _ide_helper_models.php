@@ -240,7 +240,8 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\InvoiceDetail[] $details
  * @property-read int|null $details_count
  * @property-read \App\Models\Employee $employee
- * @property-read \App\Models\Receipt|null $receipt
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Receipt[] $receipt
+ * @property-read int|null $receipt_count
  * @method static \Database\Factories\InvoiceFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Invoice newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Invoice newQuery()
