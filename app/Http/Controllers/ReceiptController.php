@@ -48,7 +48,7 @@ class ReceiptController extends Controller
             'giver_type' => 'required',
             'note' => [
                 Rule::requiredIf(function () use ($request) {
-                    return request('invoice_id') != null;
+                    return request('invoice_id') == null;
                 })
             ],
             'money' => 'required|gt:0'
@@ -72,7 +72,7 @@ class ReceiptController extends Controller
             $customer = Customer::find(request('giver_customer_id'));
             if (!$customer->invoices->find('invoice_id'))
             {
-                Alert::error('Khách hàng'.$customer->full_name.' không mua đơn hàng DH'.request('invoice_id'));
+                Alert::error('Khách hàng '.$customer->full_name.' không mua đơn hàng DH'.request('invoice_id'));
                 return back();
             }
 
