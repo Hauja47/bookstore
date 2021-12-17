@@ -186,7 +186,7 @@ class ReceiptController extends Controller
 
             if ($customer->debt + $receipt->money < request('money'))
             {
-                Alert::error('Số tiền nợ sau khi thay đổi của khách hàng nhỏ hơn số tiền nộp');
+                Alert::error('Số tiền nợ sau khi thay đổi của khách hàng nhỏ hơn 0');
                 return back();
             }
 
