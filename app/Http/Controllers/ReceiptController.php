@@ -70,7 +70,7 @@ class ReceiptController extends Controller
             }
 
             $customer = Customer::find(request('giver_customer_id'));
-            if (!$customer->invoices->find('invoice_id'))
+            if (!$customer->invoices->find(request('invoice_id')))
             {
                 Alert::error('Khách hàng '.$customer->full_name.' không mua đơn hàng DH'.request('invoice_id'));
                 return back();
@@ -97,7 +97,7 @@ class ReceiptController extends Controller
                 'note' => $invoice ?
                             (request('note') ?
                                     request('note').'. Phiếu thu tiền còn lại cho hóa đơn HD'.$invoice->id :
-                                    'Phiếu thu tiền còn lại cho hóa đơn HD'
+                                    'Phiếu thu tiền còn lại cho hóa đơn HD'.$invoice->id
                             ) : request('note')
             ]);
 
