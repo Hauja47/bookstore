@@ -158,17 +158,11 @@
                                         <div class="dot"></div>
                                         <span>Chưa thanh toán</span>
                                     </div>
-                                    @php
-                                        // dd($invoice->balance);
-                                    @endphp
                                     @else
                                         <div class="main-invoice-table__payment-status main-invoice-table__payment-status--pending">
                                             <div class="dot"></div>
                                             <span>Một phần</span>
                                         </div>
-                                        @php
-                                        dd($invoice->balance);
-                                    @endphp
                                     @endif
                                 </td>
                                 <td>{{ number_format($invoice->total,).'đ' }}</td>
