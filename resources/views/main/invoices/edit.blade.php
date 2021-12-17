@@ -1,6 +1,6 @@
 @extends('templates.template', [
-'title'=> 'Sửa Thông tin hoá đơn',
-'main_header'=> 'Sửa Thông tin hoá đơn',
+'title'=> 'Thông tin hoá đơn',
+'main_header'=> 'Thông tin hoá đơn',
 
 'active_dashboard' => '',
 'open_invoice' => 'sidebar__menu-dropdown-icon--open',
