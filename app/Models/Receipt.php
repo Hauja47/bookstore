@@ -15,6 +15,7 @@ class Receipt extends Model
         'giver_id',
         // 'payment_method_id',
         'employee_id',
+        'invoice_id',
         'money',
         'can_edit_note',
         'can_delete',
