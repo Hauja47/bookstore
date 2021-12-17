@@ -36,7 +36,7 @@
 
 @section('main-content')
     <div class="main-content">
-        <form action="{{ route('payments.create') }}" method="post" id="form-main" enctype="multipart/form-data">
+        <form action="{{ route('payments.edit', ['payment' => $payment]) }}" method="post" id="form-main" enctype="multipart/form-data">
             @csrf
             <!-- FUNCTION BUTTON -->
             <div class="row main-function">
