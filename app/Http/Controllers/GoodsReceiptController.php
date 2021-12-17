@@ -66,7 +66,7 @@ class GoodsReceiptController extends Controller
         foreach ($quantity as $n)
         {
             $product = Product::find($id);
-            if ($product->in_stock > Parameter::find(1)->value)
+            if ($quantity < Parameter::find(1)->value)
             {
                 Alert::error('Sản phẩm '.$product->name.' của '.$product->brand->name.' có số lượng nhập nhỏ hơn số lượng nhập tối thiểu');
                 return back();
@@ -82,7 +82,7 @@ class GoodsReceiptController extends Controller
         $goodsReceipt->payment()->create([
             'employee_id' => $goodsReceipt->employee_id,
             'money' => $goodsReceipt->total_price,
-            'note' => 'Phiếu chi tạo tự động cho DNH'.$goodsReceipt->id,
+            'note' => 'Phiếu chi tạo tự động cho DNK'.$goodsReceipt->id,
             'receiver_type' => 'Nhà cung cấp',
             'receiver_id' => $goodsReceipt->provider_id,
             'can_delete' => 0,
