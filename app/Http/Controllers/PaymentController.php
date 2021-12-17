@@ -117,7 +117,19 @@ class PaymentController extends Controller
      */
     public function update(Request $request, Payment $payment)
     {
-        //
+        request()->validate([
+            'money' => 'required',
+            'text' => 'required',
+        ]);
+
+        if ($payment->update([
+            'money' => request('money'),
+            'note' => request('text')
+        ]))
+        {
+            return redirect(route('payments.index'))->withSuccess('Thay đổi phiếu chi thành công');
+        }
+        return redirect(route('payments.index'))->withErrors('Thay đổi phiếu chi thất bại');
     }
 
     /**
