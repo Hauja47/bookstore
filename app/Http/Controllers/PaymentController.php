@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Alert;
+use App\Models\Customer;
+use App\Models\Employee;
 use App\Models\Payment;
+use App\Models\Provider;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PaymentController extends Controller
 {
@@ -36,9 +41,48 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
+        // dd(request());
         request()->validate([
-            'money' => 'required|numberic',
+            'receiver_type' => 'required',
+            'note' => 'required',
         ]);
+
+        if (request('receiver_customer_id') == null && request('receiver_provider_id') == null && request('receiver_employee_id') == null)
+        {
+            Alert::error('Tên đối tượng không được bỏ trống!');
+            return back();
+        }
+
+        if (request('receiver_type') == 'Khách hàng')
+        {
+            $payment = Customer::find(request('receiver_customer_id'))->payments()->create([
+                'employee_id' => auth()->user()->employee->id,
+                'money' => request('money'),
+                'note' => request('note')
+            ]);
+        }
+        else if (request('receiver_type') == 'Nhân viên')
+        {
+            $payment = Employee::find(request('receiver_employee_id'))->payments()->create([
+                'employee_id' => auth()->user()->employee->id,
+                'money' => request('money'),
+                'note' => request('note')
+            ]);
+        }
+        else if (request('receiver_type') == 'Nhà cung cấp')
+        {
+            $payment = Provider::find(request('receiver_provider_id'))->payments()->create([
+                'employee_id' => auth()->user()->employee->id,
+                'money' => request('money'),
+                'note' => request('note')
+            ]);
+        }
+
+        if ($payment)
+        {
+            return redirect(route('payments.index'))->withSuccess('Tạo phiếu chi thành công');
+        }
+        return redirect(route('payments.index'))->withErrors('Tạo phiếu chi thất bại');
     }
 
     /**
@@ -85,6 +129,9 @@ class PaymentController extends Controller
      */
     public function destroy(Payment $payment)
     {
-        //
+        $payment->delete();
+
+        Alert::alert('Xóa Phiếu chi thành công');
+        return back();
     }
 }
