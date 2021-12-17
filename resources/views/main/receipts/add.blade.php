@@ -178,8 +178,8 @@
                                     'required' => 'required',
                                     'disabled' => '',
                                     'input_type' => 'text',
-                                    'input_id' => 'text',
-                                    'input_name' => 'text',
+                                    'input_id' => 'note',
+                                    'input_name' => 'note',
                                     'input_value' => '',
                                     'message' => '',
                                     ])
