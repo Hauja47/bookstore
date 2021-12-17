@@ -23,7 +23,7 @@
 ])
 
 @section('css')
-
+<link rel="stylesheet" href="{{ asset('css/invoice_list.css') }}">
 @endsection
 
 @section('main-content')
@@ -111,9 +111,9 @@
                                                                     ->groupBy('product_id')
                                                                     ->orderByRaw('sum(quantity) DESC')
                                                                     ->whereRaw('created_at >= DATE(NOW()) - INTERVAL 7 DAY')
-                                                                    ->take(4)
+                                                                    ->take(5)
                                                                     ->get() as $detail)
-                            <a href="" class="main-top-product__item">
+                            <a href="{{ route('products.edit', ['product' => $detail->product]) }}" class="main-top-product__item">
                                 <img src={{ "images/home/number-".$i.".png" }} alt="Ảnh sản phẩm"
                                     class="main-top-product__item-img">
                                 <div class="main-top-product__item-info">
@@ -334,11 +334,22 @@
                                 </td>
                                 <td>{{ $invoice->created_at }}</td>
                                 <td>
-                                    <div
-                                        class="main-latest-invoice-table__payment-status main-latest-invoice-table__payment-status--paid">
+                                    @if ($invoice->balance == 0)
+                                        <div class="main-invoice-table__payment-status main-invoice-table__payment-status--paid">
+                                            <div class="dot"></div>
+                                            <span>Hoàn tất</span>
+                                        </div>
+                                    @elseif ($invoice->balance == $invoice->total)
+                                    <div class="main-invoice-table__payment-status main-invoice-table__payment-status--not-paid">
                                         <div class="dot"></div>
-                                        <span>Hoàn tất</span>
+                                        <span>Chưa thanh toán</span>
                                     </div>
+                                    @else
+                                        <div class="main-invoice-table__payment-status main-invoice-table__payment-status--pending">
+                                            <div class="dot"></div>
+                                            <span>Một phần</span>
+                                        </div>
+                                    @endif
                                 </td>
                                 <td>{{ $invoice->details->sum('quantity') }}</td>
                                 <td>{{ $invoice->total }} đ</td>
