@@ -43,6 +43,6 @@ class LastSevenDayRevenueChart
                 Carbon::now()->subDays(1)->toDate()->format('d-m-Y'),
                 Carbon::now()->subDays(0)->toDate()->format('d-m-Y'),
             ])
-            ->setGrid();;
+            ->setGrid();
     }
 }
