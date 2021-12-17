@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
                 // 'payment_method_id' => PaymentMethod::all()->random()->id,
                 'employee_id' => Employee::all()->random()->id,
                 'money' => rand(0, 100) * 1000,
-                'note' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde nihil quo quidem aperiam, praesentium minima numquam excepturi tempore debitis vel esse hic incidunt laborum mollitia illum quod cupiditate. Provident, natus!'
+                'note' => 'Lorem, ipsum dolor.'
             ]);
 
             $customer->receipts()->create([
@@ -65,7 +65,7 @@ class DatabaseSeeder extends Seeder
                 // 'payment_method_id' => PaymentMethod::all()->random()->id,
                 'employee_id' => Employee::all()->random()->id,
                 'money' => rand(0, 100) * 1000,
-                'note' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde nihil quo quidem aperiam, praesentium minima numquam excepturi tempore debitis vel esse hic incidunt laborum mollitia illum quod cupiditate. Provident, natus!',
+                'note' => 'Lorem, ipsum dolor.',
             ]);
         }
 
@@ -76,7 +76,7 @@ class DatabaseSeeder extends Seeder
                 // 'payment_method_id' => PaymentMethod::all()->random()->id,
                 'employee_id' => Employee::all()->random()->id,
                 'money' => rand(0, 100) * 1000,
-                'note' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde nihil quo quidem aperiam, praesentium minima numquam excepturi tempore debitis vel esse hic incidunt laborum mollitia illum quod cupiditate. Provident, natus!'
+                'note' => 'Lorem, ipsum dolor.'
             ]);
 
             $employee->receiptGiver()->create([
@@ -84,7 +84,7 @@ class DatabaseSeeder extends Seeder
                 // 'payment_method_id' => PaymentMethod::all()->random()->id,
                 'employee_id' => Employee::all()->random()->id,
                 'money' => rand(0, 100) * 1000,
-                'note' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde nihil quo quidem aperiam, praesentium minima numquam excepturi tempore debitis vel esse hic incidunt laborum mollitia illum quod cupiditate. Provident, natus!'
+                'note' => 'Lorem, ipsum dolor.'
             ]);
         }
 
@@ -95,7 +95,7 @@ class DatabaseSeeder extends Seeder
                 // 'payment_method_id' => PaymentMethod::all()->random()->id,
                 'employee_id' => Employee::all()->random()->id,
                 'money' => rand(0, 100) * 1000,
-                'note' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde nihil quo quidem aperiam, praesentium minima numquam excepturi tempore debitis vel esse hic incidunt laborum mollitia illum quod cupiditate. Provident, natus!'
+                'note' => 'Lorem, ipsum dolor.'
             ]);
 
             $provider->receipts()->create([
@@ -103,7 +103,7 @@ class DatabaseSeeder extends Seeder
                 // 'payment_method_id' => PaymentMethod::all()->random()->id,
                 'employee_id' => Employee::all()->random()->id,
                 'money' => rand(0, 100) * 1000,
-                'note' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde nihil quo quidem aperiam, praesentium minima numquam excepturi tempore debitis vel esse hic incidunt laborum mollitia illum quod cupiditate. Provident, natus!',
+                'note' => 'Lorem, ipsum dolor.',
             ]);
         }
 
