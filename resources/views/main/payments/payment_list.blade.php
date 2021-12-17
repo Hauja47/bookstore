@@ -83,7 +83,7 @@
                                 <td>{{ number_format($payment->money,).'đ' }}</td>
                                 <td>
                                     <a href="{{ route('payments.edit', ['payment' => $payment]) }}" class="btn btn-outline btn-edit">
-                                        @if ($payment->can_delete == 1)
+                                        @if ($payment->can_edit_note == 1)
                                             <i class='btn-icon bx bx-edit-alt' ></i>
                                         @else
                                             <i class='btn-icon bx bx-info-circle'></i>
