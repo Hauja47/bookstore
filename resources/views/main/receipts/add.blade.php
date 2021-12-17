@@ -165,8 +165,8 @@
                                             Mã hoá đơn (nếu trả nợ)
                                         </label>
 
-                                        HD<input type="number" name="receipt_id" id="receipt_id" style="width: 60px; padding: 8px 0;">
-                                        @error('receipt_id')
+                                        HD<input type="number" name="invoice_id" id="receipt_id" style="width: 60px; padding: 8px 0;">
+                                        @error('invoice_id')
                                             <p class="error-msg">{{ $message }}</p>
                                         @enderror
                                     </div>
