@@ -197,6 +197,11 @@ return [
         'provider' => 'Nhà cung cấp',
         'product' => 'Sản phẩm',
         'product_id' => 'Sản phẩm đã thêm',
-        'customer_id' => 'Khách hàng'
+        'customer_id' => 'Khách hàng',
+        'receiver_type' => 'Loại đối tượng',
+        'receiver_customer_id' => 'Khách hàng nhận tiền',
+        'receiver_employee_id' => 'Nhân viên nhận tiền',
+        'receiver_provider_id' => 'Nhà cung cấp nhận tiền',
+        'note' => 'Ghi chú'
     ],
 ];
