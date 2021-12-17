@@ -54,9 +54,10 @@ class ReceiptController extends Controller
             return back();
         }
 
+        $invoice = Invoice::find(request('invoice_id'));
         if (request('invoice_id') && request('giver_type') == 'Khách hàng')
         {
-            if (!($invoice = Invoice::find(request('invoice_id'))))
+            if (!$invoice)
             {
                 Alert::error('Hóa đơn HD'.request('invoice_id').' không tồn tại');
                 return back();
