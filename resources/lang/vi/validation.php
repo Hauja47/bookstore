@@ -202,6 +202,11 @@ return [
         'receiver_customer_id' => 'Khách hàng nhận tiền',
         'receiver_employee_id' => 'Nhân viên nhận tiền',
         'receiver_provider_id' => 'Nhà cung cấp nhận tiền',
-        'note' => 'Ghi chú'
+        'note' => 'Ghi chú',
+        'money' => 'Tiền',
+        'giver_type' => 'Loại đối tượng',
+        'giver_customer_id' => 'Khách hàng gửi tiền',
+        'giver_employee_id' => 'Nhân viên gửi tiền',
+        'giver_provider_id' => 'Nhà cung cấp gửi tiền',
     ],
 ];
