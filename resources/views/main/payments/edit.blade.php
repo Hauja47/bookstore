@@ -110,7 +110,7 @@
                                             Đối tượng nhận <span class="required">*</span>
                                         </label>
 
-                                        <select class="header__search-select" name="receiver_type" id="receiver_type" {{ ($payment->can_delete != 1) ? 'disabled' : '' }}>
+                                        <select class="header__search-select" name="receiver_type" id="receiver_type" disabled>
                                             <option hidden value=""></option>
                                             <option value="Nhân viên"
                                                 {{ $receiver_type == 'Nhân viên' ? 'selected' : '' }}>
@@ -129,6 +129,7 @@
                                         @enderror
                                     </div>
                                 </div>
+                                {{-- TÊN ĐỐI TƯỢNG --}}
                                 <div class="col l-6 md-6 c-12 " id="receiver_names_div" >
 
                                     {{-- Nhân viên --}}
@@ -138,12 +139,12 @@
                                         </label>
 
                                         <select class="header__search-select" name="receiver_employee_id"
-                                            id="receiver_employee_id" {{ ($payment->can_delete != 1) ? 'disabled' : ''}}>
+                                            id="receiver_employee_id" disabled>
                                             <option hidden value=""></option>
                                             @foreach (\App\Models\Employee::all() as $employee)
                                                 <option
-                                                value="{{ $employee->id }}
-                                                {{ ($receiver_type == 'Nhân viên' && $employee->id == $receiver_id) ? 'selected' : '' }}"
+                                                value="{{ $employee->id }}"
+                                                {{ ($receiver_type == 'Nhân viên' && $employee->id == $receiver_id) ? 'selected' : '' }}
                                                 >
                                                     {{ $employee->full_name . ' _ ' . $employee->phone_number }}</option>
                                             @endforeach
@@ -160,7 +161,7 @@
                                         </label>
 
                                         <select class="header__search-select" name="receiver_customer_id"
-                                            id="receiver_customer_id" {{ ($payment->can_delete != 1) ? 'disabled' : ''}}>
+                                            id="receiver_customer_id" disabled>
                                             <option hidden value=""></option>
                                             @foreach (\App\Models\Customer::all() as $customer)
                                                 <option
@@ -182,7 +183,7 @@
                                         </label>
 
                                         <select class="header__search-select" name="receiver_provider_id"
-                                            id="receiver_provider_id" {{ ($payment->can_delete != 1) ? 'disabled' : ''}}>
+                                            id="receiver_provider_id" disabled>
                                             <option hidden value=""></option>
                                             @foreach (\App\Models\Provider::all() as $provider)
                                                 <option
