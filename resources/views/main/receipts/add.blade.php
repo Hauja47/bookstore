@@ -145,24 +145,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col l-6 md-6 c-12">
-                                    {{-- Nhân viên thực hiện --}}
-                                    <div class="input-wrapper" id="">
-                                        <label for="" class="input-label">
-                                            Nhân viên thực hiện <span class="required">*</span>
-                                        </label>
 
-                                        <select class="header__search-select" name="employee_id" id="employee_id">
-                                            <option hidden value=""></option>
-                                            @foreach (\App\Models\Employee::all() as $employee)
-                                                <option value="{{ $employee->id }}">{{ $employee->full_name.' _ '.$employee->phone_number }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('employee_id')
-                                            <p class="error-msg">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
                                 <div class="col l-6 md-6 c-12">
                                     @include('includes.input', [
                                     'label_title' => 'Số tiền thu (VND)',
@@ -175,6 +158,20 @@
                                     'message' => '',
                                     ])
                                 </div>
+
+                                <div class="col l-6 md-6 c-12" id="receipt_id_div" style="display: none">
+                                    <div class="input-wrapper" >
+                                        <label for="" class="input-label">
+                                            Mã hoá đơn trả nợ <span class="required">*</span>
+                                        </label>
+
+                                        HD<input type="number" name="receipt_id" id="receipt_id" style="width: 60px; padding: 8px 0;">
+                                        @error('receipt_id')
+                                            <p class="error-msg">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+
                                 <div class="col l-12 md-12 c-12">
                                     @include('includes.input', [
                                     'label_title' => 'Ghi chú',

@@ -51,6 +51,10 @@
             </div>
             <!-- END  -->
 
+            @php
+                $disabled = 'readonly';
+            @endphp
+
             {{-- FORM --}}
             <div class="row">
                 <!-- FORM ADD provider -->
@@ -62,15 +66,19 @@
                                 <button type="submit" class="btn-function btn-function__save">
                                     Lưu
                                 </button>
+                                @php
+                                    $disabled = '';
+                                @endphp
                             @endcan
                         </div>
+
                         <div class="box-body">
                             <div class="grid row">
                                 <div class="col l-6 md-6 c-12">
                                     @include('includes.input', [
                                     'label_title' => 'Số lượng nhập tối thiểu',
                                     'required' => 'required',
-                                    'disabled' => '',
+                                    'disabled' => $disabled,
                                     'input_type' => 'number',
                                     'input_id' => 'min_imported_number',
                                     'input_name' => 'min_imported_number',
@@ -82,7 +90,7 @@
                                     @include('includes.input', [
                                     'label_title' => 'Số lượng tồn tối đa trước khi nhập kkho',
                                     'required' => 'required',
-                                    'disabled' => '',
+                                    'disabled' => $disabled,
                                     'input_type' => 'number',
                                     'input_id' => 'max_in_stock_number_before_import',
                                     'input_name' => 'max_in_stock_number_before_import',
@@ -94,7 +102,7 @@
                                     @include('includes.input', [
                                     'label_title' => 'Số tiền nợ tối đa',
                                     'required' => 'required',
-                                    'disabled' => '',
+                                    'disabled' => $disabled,
                                     'input_type' => 'number',
                                     'input_id' => 'max_debt',
                                     'input_name' => 'max_debt',
@@ -106,7 +114,7 @@
                                     @include('includes.input', [
                                     'label_title' => 'Số lượng tồn tối thiểu sau khi bán',
                                     'required' => 'required',
-                                    'disabled' => '',
+                                    'disabled' => $disabled,
                                     'input_type' => 'number',
                                     'input_id' => 'min_in_stock_number_after_sale',
                                     'input_name' => 'min_in_stock_number_after_sale',
@@ -118,7 +126,7 @@
                                     @include('includes.input', [
                                     'label_title' => 'Tỉ giá bán thêm vào (%)',
                                     'required' => 'required',
-                                    'disabled' => '',
+                                    'disabled' => $disabled,
                                     'input_type' => 'number',
                                     'input_id' => 'rate_price',
                                     'input_name' => 'rate_price',

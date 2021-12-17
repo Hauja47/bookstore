@@ -12,6 +12,8 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ParameterController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReceiptController;
+use App\Http\Controllers\ReportStockController;
+
 
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
@@ -244,13 +246,28 @@ Route::prefix('receipt')->middleware('auth')->group(function () {
 });
 
 // Reports
-Route::prefix('reports')->middleware('auth')->group(function () {
+Route::prefix('report')->middleware('auth')->group(function () {
     Route::get('/stock', function () {
         return view('main.reports.stock');
     })->name('reports.stock');
+
     Route::get('/debt', function () {
         return view('main.reports.debt');
     })->name('reports.debt');
+
+    Route::get('/budget', function () {
+        return view('main.reports.budget');
+    })->name('reports.budget');
+});
+
+// Settings
+Route::prefix('setting')->middleware('auth')->group(function () {
+    Route::get('/regulation', function () {
+        return view('main.settings.regulation', ['parameters' => \App\Models\Parameter::all()]);
+    })->name('settings.regulation');
+
+    // Xử lý edit
+    Route::post('/regulation', [ParameterController::class, 'update'])->middleware('can:admin')->name('settings.regulation.edit');
 });
 
 // Employees

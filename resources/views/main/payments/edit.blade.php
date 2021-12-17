@@ -1,6 +1,6 @@
 @extends('templates.template', [
-'title'=> 'Sửa phiếu thu',
-'main_header'=> 'Sửa phiếu thu',
+'title'=> 'Sửa phiếu chi',
+'main_header'=> 'Sửa phiếu chi',
 
 'active_dashboard' => '',
 'open_invoice' => '',
@@ -43,7 +43,7 @@
                 <div class="col l-6 md-6 c-6">
                     <a href="{{ route('payments.index') }}" class="btn-function btn-function__back">
                         <i class='btn-function-icon btn-function__back-icon bx bx-chevron-left'></i>
-                        Quay lại danh sách phiếu thu
+                        Quay lại danh sách phiếu chi
                     </a>
                 </div>
                 <div class="col l-6 md-6 c-6 {{ ($payment->can_delete != 1) ? 'd-none' : ''}}">
@@ -76,13 +76,13 @@
                 <div class="col l-8 md-10 c-12 l-o-2 md-o-1">
                     <div class="box info-general">
                         <div class="box-header">
-                            Thông tin phiếu thu
+                            Thông tin phiếu chi
                         </div>
                         <div class="box-body">
                             <div class="grid row">
                                 <div class="col l-6 md-6 c-12">
                                     @include('includes.input', [
-                                    'label_title' => 'Mã phiếu thu',
+                                    'label_title' => 'Mã phiếu chi',
                                     'required' => 'required',
                                     'disabled' => 'disabled',
                                     'input_type' => 'text',
@@ -218,7 +218,7 @@
                                 </div>
                                 <div class="col l-6 md-6 c-12">
                                     @include('includes.input', [
-                                    'label_title' => 'Số tiền thu (VND)',
+                                    'label_title' => 'Số tiền chi (VND)',
                                     'required' => 'required',
                                     'disabled' => ($payment->can_delete != 1) ? 'disabled' : '',
                                     'input_type' => 'number',

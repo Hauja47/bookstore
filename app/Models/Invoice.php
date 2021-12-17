@@ -39,6 +39,6 @@ class Invoice extends Model
 
     public function receipt()
     {
-        return $this->hasOne(Receipt::class);
+        return $this->hasMany(Receipt::class, 'invoice_id');
     }
 }

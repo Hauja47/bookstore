@@ -123,11 +123,13 @@
                         <span class="sidebar__menu-dropdown-icon {{ $open_budget }}"></span>
                     </div>
                     <ul class="sidebar__sub-menu-list">
+                        @can('admin')
                         <li class="sidebar__sub-menu-item {{ $active_payment }}">
                             <a href="{{ route('payments.index') }}" class="sidebar__sub-menu-link">
                                 Phiếu chi
                             </a>
                         </li>
+                        @endcan
                         <li class="sidebar__sub-menu-item {{ $active_receipt }}">
                             <a href="{{ route('receipts.index') }}" class="sidebar__sub-menu-link">
                                 Phiếu thu
@@ -141,6 +143,7 @@
                     </ul>
                 </li>
                 {{-- Báo cáo --}}
+                @can('admin')
                 {{-- <li class="sidebar__sub-menu">
                     <div class="sidebar__menu-dropdown">
                         <i class='sidebar__menu-item-icon bx bx-bar-chart-alt-2'></i>
@@ -150,7 +153,7 @@
                     <ul class="sidebar__sub-menu-list">
                         <li class="sidebar__sub-menu-item {{ $active_report_stock }}">
                             <a href="{{ route('reports.stock') }}" class="sidebar__sub-menu-link">
-                                Báo cáo kho
+                                Báo cáo tồn kho
                             </a>
                         </li>
                         <li class="sidebar__sub-menu-item {{ $active_report_dept }}">
@@ -158,8 +161,14 @@
                                 Báo cáo công nợ
                             </a>
                         </li>
+                        <li class="sidebar__sub-menu-item {{ $active_report_dept }}">
+                            <a href="{{ route('reports.debt') }}" class="sidebar__sub-menu-link">
+                                Báo cáo sổ quỹ
+                            </a>
+                        </li>
                     </ul>
                 </li> --}}
+                @endcan
                 @can('admin')
                 <li class="sidebar__menu-item {{ $active_employee }}">
                     <a href="{{ route('employees.index') }}" class="sidebar__menu-link">

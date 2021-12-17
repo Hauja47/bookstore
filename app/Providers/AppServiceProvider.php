@@ -56,7 +56,7 @@ class AppServiceProvider extends ServiceProvider
             'Nhân viên' => 'App\Models\Employee',
             'Nhà cung cấp' => 'App\Models\Provider',
             'Khách hàng' => 'App\Models\Customer',
-            'Đơn nhập hàng' => 'App\Models\GoodsReceipt',
+            'Đơn nhập kho' => 'App\Models\GoodsReceipt',
             'Đơn trả hàng' => ReturnGoodsReceipt::class
         ]);
 

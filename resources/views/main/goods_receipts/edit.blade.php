@@ -195,6 +195,40 @@
                             </table>
                         </div>
                     </div>
+
+                    <div class="box info-general">
+                        <div class="box-header">
+                            Phiếu chi
+                        </div>
+                        <div class="box-body">
+                            <table class="main-product-table">
+                                <thead>
+                                    <tr>
+                                        <th>Mã phiếu thu</th>
+                                        <th>Nhân viên thực hiện</th>
+                                        <th>Ghi chú</th>
+                                        <th>Số tiền thu</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $payment = \App\Models\GoodsReceipt::find($goods_receipt->id)->payment
+                                    @endphp
+                                    <tr>
+                                        <td>PC{{ $payment->id }}</td>
+                                        <td>
+                                            {{ $payment->employee->full_name }}
+                                        </td>
+                                        <td>
+                                            {{ $payment->note }}
+                                        </td>
+                                        <td>{{ number_format($payment->money) . 'đ' }}</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
                 <!-- END goods_receipt TABLE -->
             </div>

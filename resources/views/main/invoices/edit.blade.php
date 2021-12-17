@@ -31,7 +31,8 @@
 
 @section('main-content')
     <div class="main-content">
-        <form action="{{ route('invoices.edit', ['invoice'=> $invoice]) }}" method="post" id="form-main" enctype="multipart/form-data">
+        <form action="{{ route('invoices.edit', ['invoice' => $invoice]) }}" method="post" id="form-main"
+            enctype="multipart/form-data">
             @csrf
             <!-- FUNCTION BUTTON -->
             <div class="row main-function">
@@ -80,15 +81,15 @@
                         </div>
                         <div class="box-body">
                             @include('includes.input', [
-                                'label_title' => 'Mã hoá đơn',
-                                'required' => 'required',
-                                'disabled' => 'disabled',
-                                'input_type' => 'text',
-                                'input_id' => 'id',
-                                'input_name' => 'id',
-                                'input_value' => 'HD'.$id,
-                                'message' => '',
-                                ])
+                            'label_title' => 'Mã hoá đơn',
+                            'required' => 'required',
+                            'disabled' => 'disabled',
+                            'input_type' => 'text',
+                            'input_id' => 'id',
+                            'input_name' => 'id',
+                            'input_value' => 'HD'.$id,
+                            'message' => '',
+                            ])
                             <div class="input-wrapper">
                                 <label for="" class="input-label">
                                     Khách hàng <span class="required">*</span>
@@ -96,7 +97,8 @@
                                 <select class="header__search-select" name="customer_id" id="customer_id" disabled>
                                     <option hidden value=""></option>
                                     @foreach (\App\Models\Customer::all() as $customer)
-                                        <option value="{{ $customer->id }}" {{ ($customer_id == $customer->id) ? 'selected' : '' }}>
+                                        <option value="{{ $customer->id }}"
+                                            {{ $customer_id == $customer->id ? 'selected' : '' }}>
                                             {{ $customer->full_name . ' - ' . $customer->phone_number }}</option>
                                     @endforeach
                                 </select>
@@ -106,26 +108,26 @@
                                 @enderror
                             </div>
                             @include('includes.input', [
-                                    'label_title' => 'Nhân viên thực hiện',
-                                    'required' => 'required',
-                                    'disabled' => 'readonly',
-                                    'input_type' => 'text',
-                                    'input_id' => 'employee_name',
-                                    'input_name' => 'employee_name',
-                                    'input_value' => $employee_name,
-                                    'message' => '',
-                                    ])
+                            'label_title' => 'Nhân viên thực hiện',
+                            'required' => 'required',
+                            'disabled' => 'readonly',
+                            'input_type' => 'text',
+                            'input_id' => 'employee_name',
+                            'input_name' => 'employee_name',
+                            'input_value' => $employee_name,
+                            'message' => '',
+                            ])
 
-                                @include('includes.input', [
-                                'label_title' => 'Ngày tạo đơn',
-                                'required' => 'required',
-                                'disabled' => 'readonly',
-                                'input_type' => 'datetime',
-                                'input_id' => 'created_at',
-                                'input_name' => 'created_at',
-                                'input_value' => \Carbon\Carbon::parse($invoice->created_at)->format("H:i d/m/Y"),
-                                'message' => '',
-                                ])
+                            @include('includes.input', [
+                            'label_title' => 'Ngày tạo đơn',
+                            'required' => 'required',
+                            'disabled' => 'readonly',
+                            'input_type' => 'datetime',
+                            'input_id' => 'created_at',
+                            'input_name' => 'created_at',
+                            'input_value' => \Carbon\Carbon::parse($invoice->created_at)->format("H:i d/m/Y"),
+                            'message' => '',
+                            ])
                         </div>
                     </div>
                     {{-- <div class="box info-general">
@@ -190,9 +192,9 @@
                                         <label for="total_price" class="input-label d-none">
                                             <span class="d-none">*</span>
                                         </label>
-                                        <input type="number" readonly placeholder="" value="{{ $total_price }}" name="total_price"
-                                            id="total_price" class="input-text  text-center p-3 font-weight-bold" min="0"
-                                            step="1000">
+                                        <input type="number" readonly placeholder="" value="{{ $total_price }}"
+                                            name="total_price" id="total_price"
+                                            class="input-text  text-center p-3 font-weight-bold" min="0" step="1000">
                                     </div>
                                 </div>
                             </div>
@@ -248,25 +250,59 @@
                                         {{-- @if ($invoice_detail->invoice_id == $id) --}}
                                         <tr>
                                             <td>
-                                                <input hidden value="{{ $invoice_detail->product->id }}" name="product_id[]">
+                                                <input hidden value="{{ $invoice_detail->product->id }}"
+                                                    name="product_id[]">
                                                 {{ $invoice_detail->product->name }}
                                             </td>
                                             <td>{{ $invoice_detail->product->version }}</td>
                                             <td>{{ $invoice_detail->product->brand->name }}</td>
                                             <td>
                                                 <input hidden value="{{ $invoice_detail->cost }}" name="cost[]">
-                                                {{ $invoice_detail->cost.'đ' }}
+                                                {{ $invoice_detail->cost . 'đ' }}
                                             </td>
                                             <td>
                                                 <input hidden value="{{ $invoice_detail->quantity }}" name="quantity[]">
                                                 {{ $invoice_detail->quantity }}
                                             </td>
                                             <td>
-                                            <input hidden value="{{ $invoice_detail->total }}" name="total[]">
-                                                {{ $invoice_detail->total.'đ' }}
+                                                <input hidden value="{{ $invoice_detail->total }}" name="total[]">
+                                                {{ $invoice_detail->total . 'đ' }}
                                             </td>
                                         </tr>
                                         {{-- @endif --}}
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="box info-general">
+                        <div class="box-header">
+                            Phiếu thu
+                        </div>
+                        <div class="box-body">
+                            <table class="main-product-table">
+                                <thead>
+                                    <tr>
+                                        <th>Mã phiếu thu</th>
+                                        <th>Nhân viên thực hiện</th>
+                                        <th>Ghi chú</th>
+                                        <th>Số tiền thu</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (\App\Models\Invoice::find($invoice->id)->receipt as $receipt)
+                                        <tr>
+                                            <td>{{ 'PT' . $receipt->id }}</td>
+                                            <td>
+                                                {{ $receipt->employee->full_name }}
+                                            </td>
+                                            <td>
+                                                {{ $receipt->note }}
+                                            </td>
+                                            <td>{{ number_format($receipt->money) . 'đ' }}</td>
+                                        </tr>
                                     @endforeach
 
                                 </tbody>

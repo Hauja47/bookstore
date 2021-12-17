@@ -148,10 +148,28 @@
                                 </td>
                                 <td>{{ \Carbon\Carbon::parse($invoice->created_at)->format('H:i d/m/Y')}}</td>
                                 <td>
-                                    <div class="main-invoice-table__payment-status main-invoice-table__payment-status--paid">
+                                    @if ($invoice->balance == 0)
+                                        <div class="main-invoice-table__payment-status main-invoice-table__payment-status--paid">
+                                            <div class="dot"></div>
+                                            <span>Hoàn tất</span>
+                                        </div>
+                                    @elseif ($invoice->balance == $invoice->total)
+                                    <div class="main-invoice-table__payment-status main-invoice-table__payment-status--not-paid">
                                         <div class="dot"></div>
-                                        <span>Hoàn tất</span>
+                                        <span>Chưa thanh toán</span>
                                     </div>
+                                    @php
+                                        // dd($invoice->balance);
+                                    @endphp
+                                    @else
+                                        <div class="main-invoice-table__payment-status main-invoice-table__payment-status--pending">
+                                            <div class="dot"></div>
+                                            <span>Một phần</span>
+                                        </div>
+                                        @php
+                                        dd($invoice->balance);
+                                    @endphp
+                                    @endif
                                 </td>
                                 <td>{{ number_format($invoice->total,).'đ' }}</td>
                                 <td>
