@@ -378,6 +378,6 @@
         let mytable = new JSTable('table');
     </script> --}}
 
-    <script src="{{ asset('js/product_add') }}"></script>
+    <script src="{{ asset('js/product_add.js') }}"></script>
     <script src="{{ asset('js/photo.js') }}"></script>
 @endsection
