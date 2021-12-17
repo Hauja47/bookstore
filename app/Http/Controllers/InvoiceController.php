@@ -97,7 +97,7 @@ class InvoiceController extends Controller
         $invoice->receipt()->create([
             'employee_id' => $invoice->employee_id,
             'money' => $invoice->paid,
-            'note' => 'Phiếu chi tạo tự động cho HD'.$invoice->id,
+            'note' => 'Phiếu thu tạo tự động cho HD'.$invoice->id,
             'giver_type' => 'Khách hàng',
             'giver_id' => $invoice->customer_id,
             'can_delete' => 0,
