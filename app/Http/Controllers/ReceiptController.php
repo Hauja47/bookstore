@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Invoice;
 use App\Models\Receipt;
 use App\Models\Customer;
 use App\Models\Employee;
-use App\Models\Invoice;
-use App\Models\Parameter;
 use App\Models\Provider;
+use App\Models\Parameter;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ReceiptController extends Controller
@@ -45,7 +46,12 @@ class ReceiptController extends Controller
     {
         request()->validate([
             'giver_type' => 'required',
-            'note' => 'required',
+            'note' => [
+                Rule::requiredIf(function () use ($request) {
+                    return request('invoice_id') != null;
+                })
+            ],
+            'money' => 'required|gt:0'
         ]);
 
         if (request('giver_customer_id') == null && request('giver_provider_id') == null && request('giver_employee_id') == null)
@@ -60,6 +66,13 @@ class ReceiptController extends Controller
             if (!$invoice)
             {
                 Alert::error('Hóa đơn HD'.request('invoice_id').' không tồn tại');
+                return back();
+            }
+
+            $customer = Customer::find(request('giver_customer_id'));
+            if (!$customer->invoices->find('invoice_id'))
+            {
+                Alert::error('Khách hàng'.$customer->full_name.' không mua đơn hàng DH'.request('invoice_id'));
                 return back();
             }
 
@@ -78,11 +91,14 @@ class ReceiptController extends Controller
 
         if (request('giver_type') == 'Khách hàng')
         {
-            $customer = Customer::find(request('giver_customer_id'));
             $receipt = $customer->receipts()->create([
                 'employee_id' => auth()->user()->employee->id,
                 'money' => request('money'),
-                'note' => $invoice ? request('note').'. Phiếu thu tiền còn lại cho hóa đơn HD'.$invoice->id : request('note')
+                'note' => $invoice ?
+                            (request('note') ?
+                                    request('note').'. Phiếu thu tiền còn lại cho hóa đơn HD'.$invoice->id :
+                                    'Phiếu thu tiền còn lại cho hóa đơn HD'
+                            ) : request('note')
             ]);
 
             if (request('invoice_id'))
