@@ -1,6 +1,6 @@
 @extends('templates.template', [
-'title'=> 'Sửa phiếu chi',
-'main_header'=> 'Sửa phiếu chi',
+'title'=> (($payment->can_delete != 1) ? 'Thông tin' : 'Sửa').' phiếu chi',
+'main_header'=> (($payment->can_delete != 1) ? 'Thông tin' : 'Sửa').' phiếu chi',
 
 'active_dashboard' => '',
 'open_invoice' => '',
