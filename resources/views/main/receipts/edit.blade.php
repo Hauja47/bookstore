@@ -142,8 +142,8 @@
                                             <option hidden value=""></option>
                                             @foreach (\App\Models\Employee::all() as $employee)
                                                 <option
-                                                value="{{ $employee->id }}
-                                                {{ ($giver_type == 'Nhân viên' && $employee->id == $giver_id) ? 'selected' : '' }}"
+                                                value="{{ $employee->id }}"
+                                                {{ ($giver_type == 'Nhân viên' && $employee->id == $giver_id) ? 'selected' : '' }}
                                                 >
                                                     {{ $employee->full_name . ' _ ' . $employee->phone_number }}</option>
                                             @endforeach
