@@ -1,6 +1,6 @@
 @extends('templates.template', [
-'title'=> 'Sửa phiếu thu',
-'main_header'=> 'Sửa phiếu thu',
+'title'=> (($receipt->can_delete != 1) ? 'Thông tin' : 'Sửa').' phiếu thu',
+'main_header'=> (($receipt->can_delete != 1) ? 'Thông tin' : 'Sửa').' phiếu thu',
 
 'active_dashboard' => '',
 'open_invoice' => '',
@@ -110,7 +110,7 @@
                                             Đối tượng gửi <span class="required">*</span>
                                         </label>
 
-                                        <select class="header__search-select" name="giver_type" id="giver_type" {{ ($receipt->can_delete != 1) ? 'disabled' : '' }}>
+                                        <select class="header__search-select" name="giver_type" id="giver_type" disabled>
                                             <option hidden value=""></option>
                                             <option value="Nhân viên"
                                                 {{ $giver_type == 'Nhân viên' ? 'selected' : '' }}>
@@ -138,7 +138,7 @@
                                         </label>
 
                                         <select class="header__search-select" name="giver_employee_id"
-                                            id="giver_employee_id" {{ ($receipt->can_delete != 1) ? 'disabled' : ''}}>
+                                            id="giver_employee_id" disabled>
                                             <option hidden value=""></option>
                                             @foreach (\App\Models\Employee::all() as $employee)
                                                 <option
@@ -160,7 +160,7 @@
                                         </label>
 
                                         <select class="header__search-select" name="giver_customer_id"
-                                            id="giver_customer_id" {{ ($receipt->can_delete != 1) ? 'disabled' : ''}}>
+                                            id="giver_customer_id" disabled>
                                             <option hidden value=""></option>
                                             @foreach (\App\Models\Customer::all() as $customer)
                                                 <option
@@ -182,7 +182,7 @@
                                         </label>
 
                                         <select class="header__search-select" name="giver_provider_id"
-                                            id="giver_provider_id" {{ ($receipt->can_delete != 1) ? 'disabled' : ''}}>
+                                            id="giver_provider_id" disabled>
                                             <option hidden value=""></option>
                                             @foreach (\App\Models\Provider::all() as $provider)
                                                 <option
