@@ -292,7 +292,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (\App\Models\Invoice::find($invoice->id)->receipt as $receipt)
+                                    @foreach (\App\Models\Invoice::find($invoice->id)->receipts as $receipt)
                                         <tr>
                                             <td>{{ 'PT' . $receipt->id }}</td>
                                             <td>
