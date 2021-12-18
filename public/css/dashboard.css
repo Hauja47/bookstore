@@ -1,0 +1,75 @@
+.main-latest-invoice-table th:nth-last-child(3),
+.main-latest-invoice-table td:nth-last-child(3) {
+    text-align: center;
+}
+
+.main-latest-invoice-table th:nth-last-child(2),
+.main-latest-invoice-table td:nth-last-child(2) {
+    text-align: center;
+}
+
+/* .main-latest-invoice-table th:last-child,
+.main-latest-invoice-table td:last-child {
+    text-align: center;
+} */
+
+.main-latest-invoice-table__latest-invoice-owner {
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.main-latest-invoice-table__latest-invoice-owner-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.main-latest-invoice-table__latest-invoice-status {
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.main-latest-invoice-table__latest-invoice-status--ready {
+    color: #2a59d1;
+    background-color: rgba(62, 121, 247, 0.1);
+}
+
+.main-latest-invoice-table__latest-invoice-status--shipped {
+    color: #00ab6f;
+    background-color: rgba(4, 209, 130, 0.1);
+}
+
+.main-latest-invoice-table__latest-invoice-status--shipping {
+    color: #e4a30b;
+    background-color: rgba(228, 163, 11, 0.1);
+
+}
+
+.main-latest-invoice-table__payment-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-latest-invoice-table__payment-status .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.main-latest-invoice-table__payment-status--paid .dot {
+    background-color: #04d182;
+}
+
+.main-latest-invoice-table__payment-status--pending .dot {
+    background-color: #ffc542;
+}
+
+.main-latest-invoice-table__payment-status--not-paid .dot {
+    background-color: #ff4242;
+}

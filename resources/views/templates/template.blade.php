@@ -98,11 +98,13 @@
                                 Danh sách sản phẩm
                             </a>
                         </li>
+                        @can('admin')
                         <li class="sidebar__sub-menu-item {{ $active_goods_receipt }}">
                             <a href="{{ route('goods_receipts.index') }}" class="sidebar__sub-menu-link">
                                 Đơn nhập kho
                             </a>
                         </li>
+                        @endcan
                         <li class="sidebar__sub-menu-item {{ $active_provider }}">
                             <a href="{{ route('providers.index') }}" class="sidebar__sub-menu-link">
                                 Nhà cung cấp

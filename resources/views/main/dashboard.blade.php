@@ -23,14 +23,14 @@
 ])
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/invoice_list.css') }}">
+<link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 @endsection
 
 @section('main-content')
 <!-- MAIN-CONTENT -->
 <div class="main-content">
     <!-- COUNTER -->
-    {{-- <div class="row main-counter">
+    <div class="row main-counter">
         <div class="col l-3 md-6 c-12">
             <div class="main-counter__item">
                 <div class="box box-hover">
@@ -39,7 +39,7 @@
                     </div>
                     <div class="main-counter__item-info">
                         <span class="main-counter__item-count">
-                            60
+                            {{ (\App\Models\Invoice::all()->count()) }}
                         </span>
                         <i class='main-counter__item-icon bx bx-receipt'></i>
                     </div>
@@ -54,7 +54,13 @@
                     </div>
                     <div class="main-counter__item-info">
                         <span class="main-counter__item-count">
-                            0%
+                            @php
+                                $doanhthu = \App\Models\Receipt::sum('money');
+                                $chiphi = \App\Models\Payment::sum('money');
+                                $loinhuan = ($doanhthu - $chiphi) / $doanhthu * 100;
+
+                            @endphp
+                            {{ ($loinhuan <= 0) ? 0 : number_format($loinhuan, 1, ".", ",") }}%
                         </span>
                         <i class='main-counter__item-icon bx bx-wallet'></i>
                     </div>
@@ -69,7 +75,7 @@
                     </div>
                     <div class="main-counter__item-info">
                         <span class="main-counter__item-count">
-                            10,000,000đ
+                            {{ number_format($chiphi,) }}đ
                         </span>
                         <i class='main-counter__item-icon bx bx-money'></i>
                     </div>
@@ -84,14 +90,14 @@
                     </div>
                     <div class="main-counter__item-info">
                         <span class="main-counter__item-count">
-                            20
+                            {{ (\App\Models\Customer::all()->count()) }}
                         </span>
                         <i class='main-counter__item-icon bx bx-user'></i>
                     </div>
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
     <!-- END COUNTER -->
 
     <div class="row">
@@ -335,17 +341,17 @@
                                 <td>{{ $invoice->created_at }}</td>
                                 <td>
                                     @if ($invoice->balance == 0)
-                                        <div class="main-invoice-table__payment-status main-invoice-table__payment-status--paid">
+                                        <div class="main-latest-invoice-table__payment-status main-latest-invoice-table__payment-status--paid">
                                             <div class="dot"></div>
                                             <span>Hoàn tất</span>
                                         </div>
                                     @elseif ($invoice->balance == $invoice->total)
-                                    <div class="main-invoice-table__payment-status main-invoice-table__payment-status--not-paid">
+                                    <div class="main-latest-invoice-table__payment-status main-latest-invoice-table__payment-status--not-paid">
                                         <div class="dot"></div>
                                         <span>Chưa thanh toán</span>
                                     </div>
                                     @else
-                                        <div class="main-invoice-table__payment-status main-invoice-table__payment-status--pending">
+                                        <div class="main-latest-invoice-table__payment-status main-latest-invoice-table__payment-status--pending">
                                             <div class="dot"></div>
                                             <span>Một phần</span>
                                         </div>
@@ -372,5 +378,8 @@
 @endsection
 
 @section('js')
-
+{{-- <script>
+    let table = document.getElementsByTagName('table')[0];
+    let mytable = new JSTable('table');
+</script> --}}
 @endsection

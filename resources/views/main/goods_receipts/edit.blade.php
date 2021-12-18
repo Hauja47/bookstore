@@ -204,10 +204,10 @@
                             <table class="main-product-table">
                                 <thead>
                                     <tr>
-                                        <th>Mã phiếu thu</th>
+                                        <th>Mã phiếu chi</th>
                                         <th>Nhân viên thực hiện</th>
                                         <th>Ghi chú</th>
-                                        <th>Số tiền thu</th>
+                                        <th>Số tiền chi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
