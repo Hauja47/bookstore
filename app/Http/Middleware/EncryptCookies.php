@@ -13,5 +13,8 @@ class EncryptCookies extends Middleware
      */
     protected $except = [
         //
+
+        // Add by Huy
+        'theme'
     ];
 }

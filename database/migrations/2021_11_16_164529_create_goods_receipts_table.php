@@ -16,6 +16,7 @@ class CreateGoodsReceiptsTable extends Migration
         Schema::create('goods_receipts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('employee_id')->constrained('employees');
+            $table->foreignId('provider_id')->constrained('providers');
             $table->integer('total_price');
             $table->timestamps();
         });

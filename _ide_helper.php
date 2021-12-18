@@ -15733,7 +15733,1014 @@
      
 }
 
-        namespace Facade\Ignition\Facades { 
+        namespace RealRashid\SweetAlert\Facades { 
+            /**
+     * 
+     *
+     */ 
+        class Alert {
+                    /**
+         * The default configuration for middleware alert.
+         *
+         * @return \RealRashid\SweetAlert\$config 
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function middleware()
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->middleware();
+        }
+                    /**
+         * Flash an alert message.
+         *
+         * @param string $title
+         * @param string $text
+         * @param array $icon
+         * @return void 
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function alert($title = '', $text = '', $icon = null)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        $instance->alert($title, $text, $icon);
+        }
+                    /**
+         * Display a success typed alert message with a text and a title.
+         *
+         * @param string $title
+         * @param string $text
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function success($title = '', $text = '')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->success($title, $text);
+        }
+                    /**
+         * Display a info typed alert message with a text and a title.
+         *
+         * @param string $title
+         * @param string $text
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function info($title = '', $text = '')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->info($title, $text);
+        }
+                    /**
+         * Display a warning typed alert message with a text and a title.
+         *
+         * @param string $title
+         * @param string $text
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function warning($title = '', $text = '')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->warning($title, $text);
+        }
+                    /**
+         * Display a question typed alert message with a text and a title.
+         *
+         * @param string $title
+         * @param string $text
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function question($title = '', $text = '')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->question($title, $text);
+        }
+                    /**
+         * Display a error typed alert message with a text and a title.
+         *
+         * @param string $title
+         * @param string $text
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function error($title = '', $text = '')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->error($title, $text);
+        }
+                    /**
+         * Display a message with a custom image and CSS animation disabled.
+         *
+         * @param string $title
+         * @param string $text
+         * @param string $imageUrl
+         * @param integer $imageWidth
+         * @param integer $imageHeight
+         * @param string $imageAlt
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function image($title, $text, $imageUrl, $imageWidth, $imageHeight, $imageAlt)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->image($title, $text, $imageUrl, $imageWidth, $imageHeight, $imageAlt);
+        }
+                    /**
+         * Display a html typed alert message with html code.
+         *
+         * @param string $title
+         * @param string $code
+         * @param string $icon
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function html($title = '', $code = '', $icon = '')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->html($title, $code, $icon);
+        }
+                    /**
+         * Display a toast message
+         *
+         * @param string $title
+         * @param string $icon
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function toast($title = '', $icon = '')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->toast($title, $icon);
+        }
+                    /**
+         * Convert any alert modal to Toast
+         *
+         * @param string $position
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function toToast($position = '')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->toToast($position);
+        }
+                    /**
+         * Convert any alert modal to html
+         *
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function toHtml()
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->toHtml();
+        }
+                    /**
+         * Add a custom image to alert
+         *
+         * @param string $imageUrl
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function addImage($imageUrl)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->addImage($imageUrl);
+        }
+                    /**
+         * Add footer section to alert()
+         *
+         * @param string $code
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function footer($code)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->footer($code);
+        }
+                    /**
+         * positioned alert dialog
+         *
+         * @param string $position
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function position($position = 'top-end')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->position($position);
+        }
+                    /**
+         * Modal window width
+         * including paddings
+         * (box-sizing: border-box).
+         * 
+         * Can be in px or %. The default width is 32rem
+         *
+         * @param string $width
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function width($width = '32rem')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->width($width);
+        }
+                    /**
+         * Modal window padding.
+         * 
+         * The default padding is 1.25rem.
+         *
+         * @param string $padding
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function padding($padding = '1.25rem')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->padding($padding);
+        }
+                    /**
+         * Modal window background
+         * (CSS background property).
+         * 
+         * The default background is '#fff'.
+         *
+         * @param string $background
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function background($background = '#fff')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->background($background);
+        }
+                    /**
+         * Set to false if you want to
+         * focus the first element in tab
+         * order instead of "Confirm"-button by default.
+         *
+         * @param boolean $focus
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function focusConfirm($focus = true)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->focusConfirm($focus);
+        }
+                    /**
+         * Set to true if you want to focus the
+         * "Cancel"-button by default.
+         *
+         * @param boolean $focus
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function focusCancel($focus = false)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->focusCancel($focus);
+        }
+                    /**
+         * Custom animation with [Animate.css](https://daneden.github.io/animate.css/)
+         * CSS classes for animations when showing a popup (fade in):
+         * CSS classes for animations when hiding a popup (fade out):
+         *
+         * @param string $showAnimation
+         * @param string $hideAnimation
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function animation($showAnimation, $hideAnimation)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->animation($showAnimation, $hideAnimation);
+        }
+                    /**
+         * Persistent the alert modal
+         *
+         * @param boolean $showConfirmBtn
+         * @param boolean $showCloseBtn
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function persistent($showConfirmBtn = true, $showCloseBtn = false)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->persistent($showConfirmBtn, $showCloseBtn);
+        }
+                    /**
+         * auto close alert modal after
+         * specifid time
+         *
+         * @param integer $milliseconds
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function autoClose($milliseconds = 5000)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->autoClose($milliseconds);
+        }
+                    /**
+         * Display confirm button
+         *
+         * @param string $btnText
+         * @param string $btnColor
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function showConfirmButton($btnText = 'Ok', $btnColor = '#3085d6')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->showConfirmButton($btnText, $btnColor);
+        }
+                    /**
+         * Display cancel button
+         *
+         * @param string $btnText
+         * @param string $btnColor
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function showCancelButton($btnText = 'Cancel', $btnColor = '#aaa')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->showCancelButton($btnText, $btnColor);
+        }
+                    /**
+         * Display close button
+         *
+         * @param string $closeButtonAriaLabel
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function showCloseButton($closeButtonAriaLabel = 'aria-label')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->showCloseButton($closeButtonAriaLabel);
+        }
+                    /**
+         * Hide close button from alert or toast
+         *
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function hideCloseButton()
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->hideCloseButton();
+        }
+                    /**
+         * Apply default styling to buttons.
+         * 
+         * If you want to use your own classes (e.g. Bootstrap classes)
+         * set this parameter to false.
+         *
+         * @param boolean $buttonsStyling
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function buttonsStyling($buttonsStyling)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->buttonsStyling($buttonsStyling);
+        }
+                    /**
+         * Use any HTML inside icons (e.g. Font Awesome)
+         *
+         * @param string $iconHtml
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function iconHtml($iconHtml)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->iconHtml($iconHtml);
+        }
+                    /**
+         * If set to true, the timer will have a progress bar at the bottom of a popup.
+         * 
+         * Mostly, this feature is useful with toasts.
+         *
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function timerProgressBar()
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->timerProgressBar();
+        }
+                    /**
+         * Reverse buttons position
+         *
+         * @author Faber44 <https://github.com/Faber44>
+         * @static 
+         */ 
+        public static function reverseButtons()
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->reverseButtons();
+        }
+                    /**
+         * Flash the config options for alert.
+         *
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function flash()
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->flash();
+        }
+                    /**
+         * Build Flash config options for flashing.
+         *
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function buildConfig()
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->buildConfig();
+        }
+         
+    }
+     
+}
+
+    namespace ArielMejiaDev\LarapexCharts\Facades { 
+            /**
+     * 
+     *
+     */ 
+        class LarapexChart {
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function pieChart()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->pieChart();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function donutChart()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->donutChart();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function radialChart()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->radialChart();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function polarAreaChart()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->polarAreaChart();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function lineChart()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->lineChart();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function areaChart()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->areaChart();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function barChart()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->barChart();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function horizontalBarChart()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->horizontalBarChart();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function heatMapChart()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->heatMapChart();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function radarChart()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->radarChart();
+        }
+                    /**
+         * 
+         *
+         * @deprecated deprecated since version 2.0
+         * @param null $type
+         * @return \ArielMejiaDev\LarapexCharts\LarapexChart 
+         * @static 
+         */ 
+        public static function setType($type = null)
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->setType($type);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setFontFamily($fontFamily)
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->setFontFamily($fontFamily);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setFontColor($fontColor)
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->setFontColor($fontColor);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setDataset($dataset)
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->setDataset($dataset);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setHeight($height)
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->setHeight($height);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setWidth($width)
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->setWidth($width);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setColors($colors)
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->setColors($colors);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setHorizontal($horizontal)
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->setHorizontal($horizontal);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setTitle($title)
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->setTitle($title);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setSubtitle($subtitle, $position = 'left')
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->setSubtitle($subtitle, $position);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setLabels($labels)
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->setLabels($labels);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setXAxis($categories)
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->setXAxis($categories);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setGrid($transparent = true, $color = '#e5e5e5', $opacity = 0.1)
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->setGrid($transparent, $color, $opacity);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setMarkers($colors = [], $width = 4, $hoverSize = 7)
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->setMarkers($colors, $width, $hoverSize);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setStroke($width, $colors = [])
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->setStroke($width, $colors);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setToolbar($show, $zoom = true)
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->setToolbar($show, $zoom);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setDataLabels($enabled = true)
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->setDataLabels($enabled);
+        }
+                    /**
+         * 
+         *
+         * @param array $array
+         * @return array|false|string 
+         * @static 
+         */ 
+        public static function transformLabels($array)
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->transformLabels($array);
+        }
+                    /**
+         * 
+         *
+         * @return mixed 
+         * @static 
+         */ 
+        public static function container()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->container();
+        }
+                    /**
+         * 
+         *
+         * @return mixed 
+         * @static 
+         */ 
+        public static function script()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->script();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function cdn()
+        {
+                        return \ArielMejiaDev\LarapexCharts\LarapexChart::cdn();
+        }
+                    /**
+         * 
+         *
+         * @return false|string 
+         * @static 
+         */ 
+        public static function id()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->id();
+        }
+                    /**
+         * 
+         *
+         * @return mixed 
+         * @static 
+         */ 
+        public static function title()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->title();
+        }
+                    /**
+         * 
+         *
+         * @return mixed 
+         * @static 
+         */ 
+        public static function subtitle()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->subtitle();
+        }
+                    /**
+         * 
+         *
+         * @return mixed 
+         * @static 
+         */ 
+        public static function subtitlePosition()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->subtitlePosition();
+        }
+                    /**
+         * 
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function type()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->type();
+        }
+                    /**
+         * 
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function fontFamily()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->fontFamily();
+        }
+                    /**
+         * 
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function foreColor()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->foreColor();
+        }
+                    /**
+         * 
+         *
+         * @return mixed 
+         * @static 
+         */ 
+        public static function labels()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->labels();
+        }
+                    /**
+         * 
+         *
+         * @return mixed 
+         * @static 
+         */ 
+        public static function dataset()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->dataset();
+        }
+                    /**
+         * 
+         *
+         * @return int 
+         * @static 
+         */ 
+        public static function height()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->height();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function width()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->width();
+        }
+                    /**
+         * 
+         *
+         * @return false|string 
+         * @static 
+         */ 
+        public static function colors()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->colors();
+        }
+                    /**
+         * 
+         *
+         * @return false|string 
+         * @static 
+         */ 
+        public static function horizontal()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->horizontal();
+        }
+                    /**
+         * 
+         *
+         * @return mixed 
+         * @static 
+         */ 
+        public static function xAxis()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->xAxis();
+        }
+                    /**
+         * 
+         *
+         * @return false|string 
+         * @static 
+         */ 
+        public static function grid()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->grid();
+        }
+                    /**
+         * 
+         *
+         * @return false|string 
+         * @static 
+         */ 
+        public static function markers()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->markers();
+        }
+                    /**
+         * 
+         *
+         * @return mixed 
+         * @static 
+         */ 
+        public static function stroke()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->stroke();
+        }
+                    /**
+         * 
+         *
+         * @return true|boolean 
+         * @static 
+         */ 
+        public static function toolbar()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->toolbar();
+        }
+                    /**
+         * 
+         *
+         * @return true|boolean 
+         * @static 
+         */ 
+        public static function zoom()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->zoom();
+        }
+                    /**
+         * 
+         *
+         * @return true|boolean 
+         * @static 
+         */ 
+        public static function dataLabels()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->dataLabels();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function toJson()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->toJson();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function toVue()
+        {
+                        /** @var \ArielMejiaDev\LarapexCharts\LarapexChart $instance */
+                        return $instance->toVue();
+        }
+         
+    }
+     
+}
+
+    namespace Facade\Ignition\Facades { 
             /**
      * Class Flare.
      *
@@ -19504,6 +20511,8 @@ namespace  {
             class URL extends \Illuminate\Support\Facades\URL {}
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
+            class Alert extends \RealRashid\SweetAlert\Facades\Alert {}
+            class LarapexChart extends \ArielMejiaDev\LarapexCharts\Facades\LarapexChart {}
             class Flare extends \Facade\Ignition\Facades\Flare {}
      
 }

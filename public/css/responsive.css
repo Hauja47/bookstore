@@ -1,0 +1,57 @@
+@media only screen and (max-width: 1500px) {
+    .app .sidebar {
+        transition: transform 0.3s ease-in-out;
+        -webkit-transition: transform 0.3s ease-in-out;
+        -moz-transition: transform 0.3s ease-in-out;
+        -ms-transition: transform 0.3s ease-in-out;
+        -o-transition: transform 0.3s ease-in-out;
+        max-width: 100%;
+        z-index: 100;
+        transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+        -moz-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+        -o-transform: translateX(-100%);
+    }
+
+    .sidebar.active {
+        transform: translateX(0%);
+        -webkit-transform: translateX(0%);
+        -moz-transform: translateX(0%);
+        -ms-transform: translateX(0%);
+        -o-transform: translateX(0%);
+}
+
+    .app .main {
+        padding-left: 0;
+    }
+
+    .main-header__mobile-menu,
+    .sidebar__logo-mobile-close {
+        display: flex;
+    }
+
+    .app__overlay.active {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 739px) {
+    .dt-top {
+        justify-content: center;
+    }
+
+    .dt-search {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .dt-bottom {
+        justify-content: center;
+    }
+
+    .dt-pagination {
+        /* width: 100%; */
+        /* text-align: center; */
+    }
+}

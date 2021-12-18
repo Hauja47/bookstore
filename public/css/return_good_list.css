@@ -1,0 +1,102 @@
+
+.main-function {
+    padding: 0 20px;
+}
+
+.main-function .col:last-child{
+    text-align: right;
+}
+
+.btn-function__export {
+    color: var(--text-color);
+    background-color: unset;
+
+}
+
+.btn-function__export:hover{
+    color: var(--main-color);
+    background-color: unset;
+}
+
+.btn-function__export-icon {
+    vertical-align: top;
+}
+
+.btn-function__add-icon{
+    position: relative;
+    top: 3px;
+}
+
+/* RETURN_GOOD TABLE */
+.main-return_good-table th:nth-last-child(2),
+.main-return_good-table td:nth-last-child(2) {
+    text-align: right;
+    width: 200px;
+}
+
+.main-return_good-table th:last-child,
+.main-return_good-table td:last-child {
+    text-align: center;
+    width: 150px;
+}
+
+.main-return_good-table__invoice-owner {
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.main-return_good-table__invoice-owner-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.main-return_good-table__invoice-status {
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.main-return_good-table__invoice-status--ready {
+    color: #2a59d1;
+    background-color: rgba(62, 121, 247, 0.1);
+}
+
+.main-return_good-table__invoice-status--shipped {
+    color: #00ab6f;
+    background-color: rgba(4, 209, 130, 0.1);
+}
+
+.main-return_good-table__invoice-status--shipping {
+    color: #e4a30b;
+    background-color: rgba(228, 163, 11, 0.1);
+
+}
+
+.main-return_good-table__payment-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-return_good-table__payment-status .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.main-return_good-table__payment-status--paid .dot {
+    background-color: #04d182;
+}
+
+.main-return_good-table__payment-status--pending .dot {
+    background-color: #ffc542;
+}
+
+.main-return_good-table__payment-status--not-paid .dot {
+    background-color: #ff4242;
+}

@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Stationery extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        // 'product_id',
+        'material',
+        'color',
+        'origin',
+    ];
+
+    public function product()
+    {
+        return $this->morphOne(Product::class, 'productable');
+    }
 }
