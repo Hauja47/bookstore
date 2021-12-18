@@ -57,8 +57,11 @@
                             @php
                                 $doanhthu = \App\Models\Receipt::sum('money');
                                 $chiphi = \App\Models\Payment::sum('money');
-                                $loinhuan = ($doanhthu - $chiphi) / $doanhthu * 100;
-
+                                $loinhuan = 0;
+                                if ($doanhthu)
+                                {
+                                    $loinhuan = ($doanhthu - $chiphi) / $doanhthu * 100;
+                                }
                             @endphp
                             {{ ($loinhuan <= 0) ? 0 : number_format($loinhuan, 1, ".", ",") }}%
                         </span>
