@@ -50,62 +50,62 @@ class DatabaseSeeder extends Seeder
         $employees = Employee::factory(10)->create();
         $providers = Provider::factory(10)->create();
 
-        foreach ($customers as $customer)
-        {
-            $customer->payments()->create([
-                // 'payment_type_id' => PaymentType::all()->random()->id,
-                // 'payment_method_id' => PaymentMethod::all()->random()->id,
-                'employee_id' => Employee::all()->random()->id,
-                'money' => rand(0, 100) * 1000,
-                'note' => 'Lorem, ipsum dolor.'
-            ]);
+        // foreach ($customers as $customer)
+        // {
+        //     $customer->payments()->create([
+        //         // 'payment_type_id' => PaymentType::all()->random()->id,
+        //         // 'payment_method_id' => PaymentMethod::all()->random()->id,
+        //         'employee_id' => Employee::all()->random()->id,
+        //         'money' => rand(0, 100) * 1000,
+        //         'note' => 'Lorem, ipsum dolor.'
+        //     ]);
 
-            $customer->receipts()->create([
-                // 'receipt_type_id' => ReceiptType::all()->random()->id,
-                // 'payment_method_id' => PaymentMethod::all()->random()->id,
-                'employee_id' => Employee::all()->random()->id,
-                'money' => rand(0, 100) * 1000,
-                'note' => 'Lorem, ipsum dolor.',
-            ]);
-        }
+        //     $customer->receipts()->create([
+        //         // 'receipt_type_id' => ReceiptType::all()->random()->id,
+        //         // 'payment_method_id' => PaymentMethod::all()->random()->id,
+        //         'employee_id' => Employee::all()->random()->id,
+        //         'money' => rand(0, 100) * 1000,
+        //         'note' => 'Lorem, ipsum dolor.',
+        //     ]);
+        // }
 
-        foreach ($employees as $employee)
-        {
-            $employee->paymentReceiver()->create([
-                // 'payment_type_id' => PaymentType::all()->random()->id,
-                // 'payment_method_id' => PaymentMethod::all()->random()->id,
-                'employee_id' => Employee::all()->random()->id,
-                'money' => rand(0, 100) * 1000,
-                'note' => 'Lorem, ipsum dolor.'
-            ]);
+        // foreach ($employees as $employee)
+        // {
+        //     $employee->paymentReceiver()->create([
+        //         // 'payment_type_id' => PaymentType::all()->random()->id,
+        //         // 'payment_method_id' => PaymentMethod::all()->random()->id,
+        //         'employee_id' => Employee::all()->random()->id,
+        //         'money' => rand(0, 100) * 1000,
+        //         'note' => 'Lorem, ipsum dolor.'
+        //     ]);
 
-            $employee->receiptGiver()->create([
-                // 'receipt_type_id' => PaymentType::all()->random()->id,
-                // 'payment_method_id' => PaymentMethod::all()->random()->id,
-                'employee_id' => Employee::all()->random()->id,
-                'money' => rand(0, 100) * 1000,
-                'note' => 'Lorem, ipsum dolor.'
-            ]);
-        }
+        //     $employee->receiptGiver()->create([
+        //         // 'receipt_type_id' => PaymentType::all()->random()->id,
+        //         // 'payment_method_id' => PaymentMethod::all()->random()->id,
+        //         'employee_id' => Employee::all()->random()->id,
+        //         'money' => rand(0, 100) * 1000,
+        //         'note' => 'Lorem, ipsum dolor.'
+        //     ]);
+        // }
 
-        foreach ($providers as $provider)
-        {
-            $provider->payments()->create([
-                // 'payment_type_id' => PaymentType::all()->random()->id,
-                // 'payment_method_id' => PaymentMethod::all()->random()->id,
-                'employee_id' => Employee::all()->random()->id,
-                'money' => rand(0, 100) * 1000,
-                'note' => 'Lorem, ipsum dolor.'
-            ]);
+        // foreach ($providers as $provider)
+        // {
+        //     $provider->payments()->create([
+        //         // 'payment_type_id' => PaymentType::all()->random()->id,
+        //         // 'payment_method_id' => PaymentMethod::all()->random()->id,
+        //         'employee_id' => Employee::all()->random()->id,
+        //         'money' => rand(0, 100) * 1000,
+        //         'note' => 'Lorem, ipsum dolor.'
+        //     ]);
 
-            $provider->receipts()->create([
-                // 'receipt_type_id' => ReceiptType::all()->random()->id,
-                // 'payment_method_id' => PaymentMethod::all()->random()->id,
-                'employee_id' => Employee::all()->random()->id,
-                'money' => rand(0, 100) * 1000,
-                'note' => 'Lorem, ipsum dolor.',
-            ]);
-        }
+        //     $provider->receipts()->create([
+        //         // 'receipt_type_id' => ReceiptType::all()->random()->id,
+        //         // 'payment_method_id' => PaymentMethod::all()->random()->id,
+        //         'employee_id' => Employee::all()->random()->id,
+        //         'money' => rand(0, 100) * 1000,
+        //         'note' => 'Lorem, ipsum dolor.',
+        //     ]);
+        // }
 
         $books = Book::factory(10)->create();
 
@@ -115,8 +115,8 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Test '.$book->id,
                 'brand_id' => Brand::all()->random()->id,
                 'version' => '100',
-                'price' => '10000',
-                'in_stock' => '100'
+                // 'price' => '10000',
+                // 'in_stock' => '100'
             ]);
         }
 
@@ -128,39 +128,39 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Test '.$stationery->id,
                 'brand_id' => Brand::all()->random()->id,
                 'version' => '100',
-                'price' => '10000',
-                'in_stock' => '100'
+                // 'price' => '10000',
+                // 'in_stock' => '100'
             ]);
         }
 
-        $goodsReceipts = GoodsReceipt::factory(10)->create([
-            'employee_id' => Employee::all()->random()->id,
-            'provider_id' => Provider::all()->random()->id,
-            'total_price' => 0
-        ]);
+        // $goodsReceipts = GoodsReceipt::factory(10)->create([
+        //     'employee_id' => Employee::all()->random()->id,
+        //     'provider_id' => Provider::all()->random()->id,
+        //     'total_price' => 0
+        // ]);
 
-        foreach ($goodsReceipts as $goodsReceipt)
-        {
-            $details = GoodsReceiptDetail::factory(rand(1, 10))->create([
-                'goods_receipt_id' => $goodsReceipt->id,
-            ]);
-            $goodsReceipt->update([
-                'total_price' => $details->sum('total')
-            ]);
-        }
+        // foreach ($goodsReceipts as $goodsReceipt)
+        // {
+        //     $details = GoodsReceiptDetail::factory(rand(1, 10))->create([
+        //         'goods_receipt_id' => $goodsReceipt->id,
+        //     ]);
+        //     $goodsReceipt->update([
+        //         'total_price' => $details->sum('total')
+        //     ]);
+        // }
 
-        foreach ($goodsReceipts as $goodsReceipt)
-        {
-            $goodsReceipt->payment()->create([
-                // 'payment_type_id' => PaymentType::all()->random()->id,
-                // 'payment_method_id' => PaymentMethod::all()->random()->id,
-                'employee_id' => $goodsReceipt->employee_id,
-                'money' => $goodsReceipt->total_price,
-                'note' => 'Phiếu chi tạo tự động cho DNH'.$goodsReceipt->id,
-                'receiver_type' => 'Nhà cung cấp',
-                'receiver_id' => $goodsReceipt->provider_id
-            ]);
-        }
+        // foreach ($goodsReceipts as $goodsReceipt)
+        // {
+        //     $goodsReceipt->payment()->create([
+        //         // 'payment_type_id' => PaymentType::all()->random()->id,
+        //         // 'payment_method_id' => PaymentMethod::all()->random()->id,
+        //         'employee_id' => $goodsReceipt->employee_id,
+        //         'money' => $goodsReceipt->total_price,
+        //         'note' => 'Phiếu chi tạo tự động cho DNH'.$goodsReceipt->id,
+        //         'receiver_type' => 'Nhà cung cấp',
+        //         'receiver_id' => $goodsReceipt->provider_id
+        //     ]);
+        // }
 
         // $invoice = Invoice::create([
         //     'customer_id' => Customer::all()->random()->id,
