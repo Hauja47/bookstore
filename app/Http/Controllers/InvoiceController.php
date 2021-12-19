@@ -94,7 +94,7 @@ class InvoiceController extends Controller
             'balance' => request('balance')
         ]);
 
-        $invoice->receipt()->create([
+        $invoice->receipts()->create([
             'employee_id' => $invoice->employee_id,
             'money' => $invoice->paid,
             'note' => 'Phiếu thu tạo tự động cho HD'.$invoice->id,
@@ -182,7 +182,7 @@ class InvoiceController extends Controller
             'debt' => $invoice->customer->debt - $invoice->balance
         ]);
         $invoice->delete();
-        $invoice->receipt()->delete();
+        $invoice->receipts()->delete();
 
         return back();
     }
